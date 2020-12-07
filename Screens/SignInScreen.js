@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SignInScreen = ({ navigation }) => {
+const SignInScreen = ({ navigation, setReduxUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [responseOk, setResponseOk] = useState(true);
@@ -25,9 +25,14 @@ const SignInScreen = ({ navigation }) => {
     });
 
     let response = await rawResponse.json();
-    console.log(response);
+    // console.log(response);
     if (response.result) {
       setResponseOk(true);
+      setReduxUser(
+        response.userExists.name,
+        response.userExists._id,
+        response.userExists.token
+      );
       navigation.navigate("Carousel");
     } else {
       setResponseOk(false);
@@ -155,4 +160,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+function mapDispatchToProps(dispatch) {
+  return {
+    setReduxUser: function (pseudo, id, token) {
+      dispatch({ type: "userdata", pseudo, id, token });
+      console.log("dispatch", pseudo, id, token);
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(SignInScreen);
