@@ -27,7 +27,7 @@ function LandingScreen({ navigation }) {
             borderRadius: 20,
           }}
           title="Connexion"
-          onPress={() => navigation.navigate("SignInScreen")}
+          onPress={() => navigation.navigate("Connexion")}
         />
 
         <Button
@@ -38,7 +38,7 @@ function LandingScreen({ navigation }) {
             borderRadius: 20,
           }}
           title="Inscription"
-          onPress={() => navigation.navigate("SignUpScreen")}
+          onPress={() => navigation.navigate("Inscription")}
         />
         <Button
           buttonStyle={{
