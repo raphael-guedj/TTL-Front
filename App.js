@@ -5,6 +5,9 @@ import { LogBox } from "react-native";
 LogBox.ignoreAllLogs(true);
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
+import pseudo from "./reducers/pseudo";
+import id from "./reducers/id";
+import token from "./reducers/token";
 import { AppLoading } from "expo";
 
 import SignUpScreen from "./Screens/SignUpScreen";
@@ -22,11 +25,12 @@ import {
   OpenSans_300Light,
   OpenSans_800ExtraBold,
 } from "@expo-google-fonts/open-sans";
+import { AnnieUseYourTelescope_400Regular } from "@expo-google-fonts/annie-use-your-telescope";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-// const store = createStore(combineReducers({}));
+const store = createStore(combineReducers({ pseudo, id, token }));
 
 // const PageTab = () => {
 //   return (
@@ -67,24 +71,24 @@ export default function App() {
     OpenSans_400Regular,
     OpenSans_300Light,
     OpenSans_800ExtraBold,
+    AnnieUseYourTelescope_400Regular,
   });
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
     return (
-      // <Provider store={store}>
-      <NavigationContainer>
-        {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
-        <Stack.Navigator initialRouteName="CarouselScreen" headerMode="none">
-          <Stack.Screen name="Carousel" component={CarouselScreen} />
-          <Stack.Screen name="Landing Page" component={LandingScreen} />
-          <Stack.Screen name="Inscription" component={SignUpScreen} />
-          <Stack.Screen name="Connexion" component={SignInScreen} />
-
-          {/* <Stack.Screen name="Déjeunez" component={PageTab} /> */}
-        </Stack.Navigator>
-      </NavigationContainer>
-      // </Provider>
+      <Provider store={store}>
+        <NavigationContainer>
+          {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
+          <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
+            <Stack.Screen name="LandingScreen" component={LandingScreen} />
+            <Stack.Screen name="Inscription" component={SignUpScreen} />
+            <Stack.Screen name="Connexion" component={SignInScreen} />
+            <Stack.Screen name="Carousel" component={CarouselScreen} />
+            {/* <Stack.Screen name="Déjeunez" component={PageTab} /> */}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     );
   }
 }

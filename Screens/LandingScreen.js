@@ -14,8 +14,13 @@ function LandingScreen({ navigation }) {
           source={require("../assets/Logo_Forky_light.png")}
           style={styles.logo}
         ></Image>
-        <Text style={[styles.text, { fontFamily: "OpenSans_400Regular" }]}>
-          Welcome !!
+        <Text
+          style={[
+            styles.text,
+            { fontFamily: "AnnieUseYourTelescope_400Regular" },
+          ]}
+        >
+          Forky ? For vous !
         </Text>
       </View>
       <View style={styles.view}>
@@ -75,7 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 34,
+    fontSize: 45,
     color: "#fafae0",
     paddingVertical: 20,
     letterSpacing: 4,
