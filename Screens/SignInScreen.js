@@ -15,6 +15,26 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [responseOk, setResponseOk] = useState(true);
+
+  const handleSignIn = async () => {
+    let rawResponse = await fetch("http://172.16.0.20:3000/sign-in", {
+      method: "post",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `email=${email}&password=${password}`,
+    });
+
+    let response = await rawResponse.json();
+    console.log(response);
+    if (response.result) {
+      setResponseOk(true);
+      navigation.navigate("LandingScreen");
+    } else {
+      setResponseOk(false);
+      setEmail("");
+      setPassword("");
+    }
+  };
 
   return (
     <ImageBackground
@@ -73,12 +93,17 @@ const SignInScreen = ({ navigation }) => {
               borderBottomColor: "#fafae0",
             }}
           />
+          {!responseOk && (
+            <Text style={styles.responseText}>
+              Email ou mot de passe introuvable, re-vérifiez vos informations
+            </Text>
+          )}
         </View>
         <Button
           buttonStyle={styles.button}
           title="Connexion !"
           onPress={() => {
-            navigation.navigate("Carrousel");
+            handleSignIn();
           }}
         ></Button>
       </KeyboardAvoidingView>
@@ -91,7 +116,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
-
     backgroundColor: "#000000a0",
   },
   logo: {
@@ -117,6 +141,12 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 250,
     borderRadius: 20,
+  },
+  responseText: {
+    textAlign: "center",
+    color: "#d90429",
+    fontStyle: "italic",
+    fontSize: 15,
   },
 });
 

@@ -12,24 +12,30 @@ import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SignUpScreen = ({ navigation }) => {
+const SignUpScreen = ({ navigation, setReduxUser }) => {
   const [pseudo, setPseudo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [passwordError, setPasswordError] = useState(false);
 
-  useEffect(() => {
-    console.log(pseudo);
-    console.log(email);
-    console.log(password);
-    console.log(passwordConfirm);
-  }, [passwordConfirm]);
+  useEffect(() => {}, []);
 
-  const handleSignUp = () => {
-    if (password === passwordConfirm) {
+  const handleSignUp = async () => {
+    if (password === passwordConfirm && pseudo !== "" && email !== "") {
       setPasswordError(false);
-      navigation.navigate("Connexion");
+      let rawResponse = await fetch("http://172.16.0.20:3000/sign-up", {
+        method: "post",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `name=${pseudo}&email=${email}&password=${password}`,
+      });
+
+      let response = await rawResponse.json();
+      console.log(response);
+      if (response.result) {
+        setReduxUser(pseudo, response.user._id, response.user.token);
+        navigation.navigate("Connexion");
+      }
     } else {
       setPasswordError(true);
     }
@@ -140,8 +146,7 @@ const SignUpScreen = ({ navigation }) => {
           title="C'est parti"
           onPress={() => {
             handleSignUp();
-            setPseudo("");
-            setEmail(""), setPassword(""), setPasswordConfirm("");
+            setPassword(""), setPasswordConfirm("");
           }}
         ></Button>
       </KeyboardAvoidingView>
@@ -154,7 +159,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
-
     backgroundColor: "#000000a0",
   },
   logo: {
@@ -189,4 +193,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+function mapDispatchToProps(dispatch) {
+  return {
+    setReduxUser: function (pseudo, id, token) {
+      dispatch({ type: "userdata", pseudo, id, token });
+      console.log("dispatch", pseudo, id, token);
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(SignUpScreen);
