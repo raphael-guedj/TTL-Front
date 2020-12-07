@@ -6,9 +6,12 @@ LogBox.ignoreAllLogs(true);
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import { AppLoading } from "expo";
+
 import SignUpScreen from "./Screens/SignUpScreen";
 import SignInScreen from "./Screens/SignInScreen";
 import LandingScreen from "./Screens/LandingScreen";
+import CarouselScreen from "./Screens/CarouselScreen";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -72,7 +75,8 @@ export default function App() {
       // <Provider store={store}>
       <NavigationContainer>
         {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
-        <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
+        <Stack.Navigator initialRouteName="CarouselScreen" headerMode="none">
+          <Stack.Screen name="Carousel" component={CarouselScreen} />
           <Stack.Screen name="Landing Page" component={LandingScreen} />
           <Stack.Screen name="Inscription" component={SignUpScreen} />
           <Stack.Screen name="Connexion" component={SignInScreen} />

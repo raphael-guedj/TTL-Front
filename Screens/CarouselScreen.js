@@ -1,103 +1,101 @@
-// import React from "react";
-// import { Button } from "react-native-elements";
-// import { Dimensions } from "react-native";
-// import AwesomeIcon from "react-native-vector-icons/FontAwesome";
-// import faker from "faker";
+import React from "react";
 
-// export const carouselData = [
-//   {
-//     title: "Facebook",
-//     description: "Connect with friends and the world around you on Facebook.",
-//     renderIcon: () => <AwesomeIcon name="facebook-square" size={28} />,
-//     bgColor: "#3B5998",
-//   },
-//   {
-//     title: "WhatsApp",
-//     description:
-//       "With WhatsApp, you will get fast, simple, secure messaging and calling for free*, available on phones all over the world.",
-//     renderIcon: () => <AwesomeIcon name="whatsapp" size={28} />,
-//     bgColor: "#43d854",
-//   },
-//   {
-//     title: "Instagram",
-//     description: "Bringing you closer to the people and things you love.",
-//     renderIcon: () => <AwesomeIcon name="instagram" size={28} />,
-//     bgColor: "#C13584",
-//   },
-// ];
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ImageBackground,
+  StatusBar,
+  SafeAreaView,
+} from "react-native";
+import AppIntroSlider from "react-native-app-intro-slider";
 
-// export const colors = {
-//   kellyGreen: "#6BCD28",
-//   shipCove: "#7A8EB1",
-//   white: "#FFFFFF",
-//   biscay: "#2B3857",
-// };
+// slides
+const slides = [
+  {
+    key: "Slide 1",
+    title: "",
+    text: "",
+    image: require("../assets/lunch.jpg"),
+  },
+  {
+    key: "Slide 2",
+    image: require("../assets/color_food.jpg"),
+  },
+  {
+    key: "Slide 3",
+    image: require("../assets/landing_image.jpg"),
+  },
+];
 
-// export const USERS = Array(10)
-//   .fill(null)
-//   .map((_, idx) => ({
-//     id: idx,
-//     avatar: faker.image.avatar(),
-//     fullName: `${faker.name.firstName()} ${faker.name.lastName()}`,
-//   }));
+// const Item = typeof slides[0];
 
-// export const SCREEN_WIDTH = Dimensions.get("window").width;
-// export const CAROUSEL_VERTICAL_OUTPUT = 56;
-// export const CAROUSEL_ITEM_WIDTH = SCREEN_WIDTH - CAROUSEL_VERTICAL_OUTPUT;
+function CarouselScreen() {
+  const _renderItem = ({ item }) => {
+    return (
+      <ImageBackground source={item.image} style={styles.imageBackground}>
+        <SafeAreaView style={styles.slide}>
+          <Text style={styles.title}>{item.title}</Text>
+        </SafeAreaView>
+      </ImageBackground>
+    );
+  };
 
-// function CarouselScreen({ navigation }) {
-//   return (
-//     <Button
-//       buttonStyle={{
-//         backgroundColor: "#F9B34C",
-//         margin: 10,
-//         width: 250,
-//         borderRadius: 20,
-//       }}
-//       title="Inscription"
-//       onPress={() => navigation.navigate("SignUpScreen")}
-//     />
-//   );
-// }
+  return (
+    <View style={{ flex: 1 }}>
+      <StatusBar translucent backgroundColor="transparent" />
+      <AppIntroSlider
+        // keyExtractor={_keyExtractor}
+        renderItem={_renderItem}
+        bottomButton={false}
+        showSkipButton
+        showPrevButton
+        data={slides}
+        skipLabel="Passer"
+        nextLabel="Suivant"
+        prevLabel="Précédent"
+        doneLabel="Terminer"
+      />
+    </View>
+  );
+}
 
-// const styles = StyleSheet.create({
-//   view: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//     backgroundColor: "#000000a0",
-//   },
+const styles = StyleSheet.create({
+  slide: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    width: 400,
+    height: 400,
+    marginVertical: 32,
+  },
+  imageBackground: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+  },
+  text: {
+    color: "rgba(255, 255, 255, 0.8)",
+    textAlign: "center",
+  },
+  title: {
+    fontSize: 25,
+    color: "white",
+    textAlign: "center",
+  },
+  button: {
+    backgroundColor: "#F9B34C",
+    margin: 10,
+    width: 250,
+    borderRadius: 20,
+  },
+  logo: {
+    width: 160,
+    height: 160,
+  },
+});
 
-//   container: {
-//     flex: 1,
-//     flexDirection: "column",
-//   },
-//   image: {
-//     flex: 1,
-//     resizeMode: "cover",
-//     justifyContent: "center",
-//   },
-//   text: {
-//     color: "white",
-//     fontSize: 35,
-//     fontWeight: "bold",
-//     textAlign: "center",
-//   },
-//   button: {
-//     color: "#009788",
-//   },
-//   logo: {
-//     width: 160,
-//     height: 160,
-//   },
-//   linkedin: {
-//     color: "white",
-//     margin: 20,
-//   },
-//   linkedinImage: {
-//     width: 30,
-//     height: 30,
-//   },
-// });
-
-// export default CarouselScreen;
+export default CarouselScreen;
