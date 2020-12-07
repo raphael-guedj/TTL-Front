@@ -14,7 +14,9 @@ function LandingScreen({ navigation }) {
           source={require("../assets/Logo_Forky_light.png")}
           style={styles.logo}
         ></Image>
-        <Text style={styles.text}>Welcome !!</Text>
+        <Text style={[styles.text, { fontFamily: "OpenSans_400Regular" }]}>
+          Welcome !!
+        </Text>
       </View>
       <View style={styles.view}>
         <Button
@@ -73,10 +75,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    color: "white",
-    fontSize: 35,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontSize: 34,
+    color: "#fafae0",
+    paddingVertical: 20,
+    letterSpacing: 4,
+    lineHeight: 35,
   },
   button: {
     color: "#009788",

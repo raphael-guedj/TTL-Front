@@ -6,7 +6,7 @@ LogBox.ignoreAllLogs(true);
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import { AppLoading } from "expo";
-import SignUpScreen from "./screens/signupscreen";
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -20,7 +20,8 @@ import {
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 import LandingScreen from "./Screens/LandingScreen";
-import CarousselScreen from "./Screens/CarousselScreen";
+// import CarouselScreen from "./Screens/CarouselScreen";
+import SignUpScreen from "./Screens/SignUpScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -61,17 +62,6 @@ const Tab = createBottomTabNavigator();
 // };
 
 export default function App() {
-<<<<<<< HEAD
-  return (
-    <NavigationContainer>
-      {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
-      <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
-        <Stack.Screen name="LandingScreen" component={LandingScreen} />
-        <Stack.Screen name="CarousselScreen" component={CarousselScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-=======
   let [fontsLoaded] = useFonts({
     OpenSans_400Regular,
     OpenSans_300Light,
@@ -84,11 +74,10 @@ export default function App() {
       // <Provider store={store}>
       <NavigationContainer>
         {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
-        <Stack.Navigator
-          initialRouteName="Valider l'inscription"
-          headerMode="none"
-        >
+        <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
+          <Stack.Screen name="Landing Page" component={LandingScreen} />
           <Stack.Screen name="Valider l'inscription" component={SignUpScreen} />
+
           {/* <Stack.Screen name="Valider " component={SignInScreen} />
             <Stack.Screen name="Déjeunez" component={PageTab} /> */}
         </Stack.Navigator>
@@ -96,7 +85,6 @@ export default function App() {
       // </Provider>
     );
   }
->>>>>>> main
 }
 
 const styles = StyleSheet.create({

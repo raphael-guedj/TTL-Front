@@ -117,7 +117,7 @@ const SignUpScreen = ({ navigation }) => {
           buttonStyle={styles.button}
           title="C'est parti"
           onPress={() => {
-            navigation.navigate("Carrousel");
+            navigation.navigate("CarouselScreen");
           }}
         ></Button>
       </KeyboardAvoidingView>
