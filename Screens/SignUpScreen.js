@@ -24,15 +24,6 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
   useEffect(() => {}, []);
 
   const handleSignUp = async () => {
-<<<<<<< HEAD
-    if (password === passwordConfirm && pseudo !== "" && email !== "") {
-      setPasswordError(false);
-      let rawResponse = await fetch("http://172.16.0.22:3000/sign-up", {
-        method: "post",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `name=${pseudo}&email=${email}&password=${password}`,
-      });
-=======
     setPasswordError(false);
     setSignupError(false);
     setEmptyField(false);
@@ -49,7 +40,6 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: `name=${pseudo}&email=${email}&password=${password}`,
         });
->>>>>>> main
 
         let response = await rawResponse.json();
         console.log(response);
