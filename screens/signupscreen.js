@@ -17,6 +17,25 @@ const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+
+  useEffect(() => {
+    console.log(pseudo);
+    console.log(email);
+    console.log(password);
+    console.log(passwordConfirm);
+  }, [passwordConfirm]);
+
+  let passwordDiff;
+
+  const handleSignUp = () => {
+    if (password === passwordConfirm) {
+      setPasswordError(false);
+      navigation.navigate("Connexion");
+    } else {
+      setPasswordError(true);
+    }
+  };
 
   return (
     <ImageBackground
@@ -36,7 +55,7 @@ const SignUpScreen = ({ navigation }) => {
             Inscrivez vous !
           </Text>
         </View>
-        <View style={{ width: "100%", paddingHorizontal: 68 }}>
+        <View style={{ width: "100%", paddingHorizontal: 60 }}>
           <Input
             placeholder="Prénom"
             onChangeText={(e) => setPseudo(e)}
@@ -59,7 +78,7 @@ const SignUpScreen = ({ navigation }) => {
             placeholder="E-mail"
             onChangeText={(e) => setEmail(e)}
             value={email}
-            // textContentType={"emailAddress"}
+            textContentType={"emailAddress"}
             placeholderTextColor="#fafae0"
             leftIcon={<Ionicons name="ios-mail" size={30} color="#fafae0" />}
             leftIconContainerStyle={{
@@ -75,7 +94,7 @@ const SignUpScreen = ({ navigation }) => {
             }}
           />
           <Input
-            placeholder="Mot de passe"
+            placeholder="Password"
             onChangeText={(e) => setPassword(e)}
             value={password}
             secureTextEntry={true}
@@ -94,7 +113,7 @@ const SignUpScreen = ({ navigation }) => {
             }}
           />
           <Input
-            placeholder="Confirmez le mot de passe"
+            placeholder="Confirmez le password"
             onChangeText={(e) => setPasswordConfirm(e)}
             value={passwordConfirm}
             secureTextEntry={true}
@@ -112,12 +131,20 @@ const SignUpScreen = ({ navigation }) => {
               borderBottomColor: "#fafae0",
             }}
           />
+          {passwordError && (
+            <Text style={styles.passwordText}>
+              Les deux mots de passe ne sont pas identiques
+            </Text>
+          )}
         </View>
         <Button
           buttonStyle={styles.button}
           title="C'est parti"
           onPress={() => {
-            navigation.navigate("Carrousel");
+            handleSignUp();
+
+            setPseudo("");
+            setEmail(""), setPassword(""), setPasswordConfirm("");
           }}
         ></Button>
       </KeyboardAvoidingView>
@@ -156,6 +183,12 @@ const styles = StyleSheet.create({
     margin: 10,
     width: 250,
     borderRadius: 20,
+  },
+  passwordText: {
+    textAlign: "center",
+    color: "#d90429",
+    fontStyle: "italic",
+    fontSize: 15,
   },
 });
 

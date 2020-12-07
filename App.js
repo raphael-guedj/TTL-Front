@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import { AppLoading } from "expo";
 import SignUpScreen from "./screens/signupscreen";
+import SignInScreen from "./screens/signinscreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -70,13 +71,10 @@ export default function App() {
       // <Provider store={store}>
       <NavigationContainer>
         {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
-        <Stack.Navigator
-          initialRouteName="Valider l'inscription"
-          headerMode="none"
-        >
-          <Stack.Screen name="Valider l'inscription" component={SignUpScreen} />
-          {/* <Stack.Screen name="Valider " component={SignInScreen} />
-            <Stack.Screen name="Déjeunez" component={PageTab} /> */}
+        <Stack.Navigator initialRouteName="Inscription" headerMode="none">
+          <Stack.Screen name="Inscription" component={SignUpScreen} />
+          <Stack.Screen name="Connexion" component={SignInScreen} />
+          {/* <Stack.Screen name="Déjeunez" component={PageTab} /> */}
         </Stack.Navigator>
       </NavigationContainer>
       // </Provider>
