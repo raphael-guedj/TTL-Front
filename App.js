@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect } from "react";
 import "react-native-gesture-handler";
 import { LogBox } from "react-native";
 LogBox.ignoreAllLogs(true);
@@ -9,6 +9,7 @@ import pseudo from "./reducers/pseudo";
 import id from "./reducers/id";
 import token from "./reducers/token";
 import { AppLoading } from "expo";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import SignUpScreen from "./Screens/SignUpScreen";
 import SignInScreen from "./Screens/SignInScreen";
@@ -67,6 +68,18 @@ const store = createStore(combineReducers({ pseudo, id, token }));
 // };
 
 export default function App() {
+  useEffect(() => {
+    const getUserToken = async () => {
+      var userToken = await AsyncStorage.getItem(
+        "userToken",
+        function (error, data) {
+          console.log(data);
+        }
+      );
+    };
+    getUserToken();
+  }, []);
+
   let [fontsLoaded] = useFonts({
     OpenSans_400Regular,
     OpenSans_300Light,

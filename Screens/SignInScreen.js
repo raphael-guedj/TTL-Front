@@ -17,8 +17,20 @@ const SignInScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [responseOk, setResponseOk] = useState(true);
 
+  useEffect(() => {
+    const getUserToken = async () => {
+      var userToken = await AsyncStorage.getItem(
+        "userToken",
+        function (error, data) {
+          console.log(data);
+        }
+      );
+    };
+    getUserToken();
+  }, [responseOk]);
+
   const handleSignIn = async () => {
-    let rawResponse = await fetch("http://172.16.0.32:3000/sign-in", {
+    let rawResponse = await fetch("http://172.16.0.44:3000/sign-in", {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `email=${email}&password=${password}`,
