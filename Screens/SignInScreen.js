@@ -18,7 +18,7 @@ const SignInScreen = ({ navigation }) => {
   const [responseOk, setResponseOk] = useState(true);
 
   const handleSignIn = async () => {
-    let rawResponse = await fetch("http://172.16.0.20:3000/sign-in", {
+    let rawResponse = await fetch("http://172.16.0.32:3000/sign-in", {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `email=${email}&password=${password}`,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 45,
+    fontSize: 40,
     color: "#fafae0",
     paddingVertical: 20,
     letterSpacing: 4,

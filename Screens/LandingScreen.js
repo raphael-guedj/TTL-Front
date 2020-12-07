@@ -80,8 +80,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 45,
+    fontSize: 40,
     color: "#fafae0",
+    textAlign: "center",
     paddingVertical: 20,
     letterSpacing: 4,
     lineHeight: 35,
