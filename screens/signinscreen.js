@@ -31,33 +31,15 @@ const SignInScreen = ({ navigation }) => {
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
           <Text style={[styles.text, { fontFamily: "OpenSans_400Regular" }]}>
-            Inscrivez vous !
+            Connexion
           </Text>
         </View>
         <View style={{ width: "100%", paddingHorizontal: 68 }}>
           <Input
-            placeholder="Prénom"
-            onChangeText={(e) => setPseudo(e)}
-            value={pseudo}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-person" size={30} color="#fafae0" />}
-            leftIconContainerStyle={{
-              marginHorizontal: 8,
-            }}
-            inputStyle={{
-              color: "#fff",
-              fontSize: 15,
-              fontFamily: "OpenSans_400Regular",
-            }}
-            inputContainerStyle={{
-              borderBottomColor: "#fafae0",
-            }}
-          />
-          <Input
             placeholder="E-mail"
             onChangeText={(e) => setEmail(e)}
             value={email}
-            // textContentType={"emailAddress"}
+            textContentType={"emailAddress"}
             placeholderTextColor="#fafae0"
             leftIcon={<Ionicons name="ios-mail" size={30} color="#fafae0" />}
             leftIconContainerStyle={{
@@ -91,29 +73,10 @@ const SignInScreen = ({ navigation }) => {
               borderBottomColor: "#fafae0",
             }}
           />
-          <Input
-            placeholder="Confirmez le mot de passe"
-            onChangeText={(e) => setPasswordConfirm(e)}
-            value={passwordConfirm}
-            secureTextEntry={true}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-eye-off" size={30} color="#fafae0" />}
-            leftIconContainerStyle={{
-              marginHorizontal: 5,
-            }}
-            inputStyle={{
-              color: "#fff",
-              fontSize: 15,
-              fontFamily: "OpenSans_400Regular",
-            }}
-            inputContainerStyle={{
-              borderBottomColor: "#fafae0",
-            }}
-          />
         </View>
         <Button
           buttonStyle={styles.button}
-          title="C'est parti"
+          title="Connexion !"
           onPress={() => {
             navigation.navigate("Carrousel");
           }}
@@ -157,4 +120,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUpScreen;
+export default SignInScreen;
