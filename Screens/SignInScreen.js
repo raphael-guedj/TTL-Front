@@ -18,11 +18,7 @@ const SignInScreen = ({ navigation }) => {
   const [responseOk, setResponseOk] = useState(true);
 
   const handleSignIn = async () => {
-<<<<<<< HEAD
     let rawResponse = await fetch("http://172.16.0.22:3000/sign-in", {
-=======
-    let rawResponse = await fetch("http://172.16.0.32:3000/sign-in", {
->>>>>>> main
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `email=${email}&password=${password}`,
