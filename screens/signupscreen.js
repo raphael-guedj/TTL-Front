@@ -140,7 +140,6 @@ const SignUpScreen = ({ navigation }) => {
           title="C'est parti"
           onPress={() => {
             handleSignUp();
-
             setPseudo("");
             setEmail(""), setPassword(""), setPasswordConfirm("");
           }}
