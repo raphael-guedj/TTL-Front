@@ -6,12 +6,8 @@ LogBox.ignoreAllLogs(true);
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import { AppLoading } from "expo";
-<<<<<<< HEAD
-
-=======
 import SignUpScreen from "./screens/signupscreen";
 import SignInScreen from "./screens/signinscreen";
->>>>>>> signin-up
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -84,7 +80,7 @@ export default function App() {
           <Stack.Screen name="Inscription" component={SignUpScreen} />
 
           <Stack.Screen name="Connexion" component={SignInScreen} />
-            {/* <Stack.Screen name="Déjeunez" component={PageTab} /> */} 
+          {/* <Stack.Screen name="Déjeunez" component={PageTab} /> */}
         </Stack.Navigator>
       </NavigationContainer>
       // </Provider>
