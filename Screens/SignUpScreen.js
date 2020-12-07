@@ -24,7 +24,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
   const handleSignUp = async () => {
     if (password === passwordConfirm && pseudo !== "" && email !== "") {
       setPasswordError(false);
-      let rawResponse = await fetch("http://172.16.0.20:3000/sign-up", {
+      let rawResponse = await fetch("http://172.16.0.22:3000/sign-up", {
         method: "post",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `name=${pseudo}&email=${email}&password=${password}`,
