@@ -50,7 +50,12 @@ const SignInScreen = ({ navigation }) => {
             style={styles.logo}
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
-          <Text style={[styles.text, { fontFamily: "OpenSans_400Regular" }]}>
+          <Text
+            style={[
+              styles.text,
+              { fontFamily: "AnnieUseYourTelescope_400Regular" },
+            ]}
+          >
             Connexion
           </Text>
         </View>
@@ -68,7 +73,7 @@ const SignInScreen = ({ navigation }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "OpenSans_400Regular",
+              // fontFamily: "OpenSans_400Regular",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
@@ -87,7 +92,7 @@ const SignInScreen = ({ navigation }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "OpenSans_400Regular",
+              // fontFamily: "OpenSans_400Regular",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
@@ -101,7 +106,7 @@ const SignInScreen = ({ navigation }) => {
         </View>
         <Button
           buttonStyle={styles.button}
-          title="Connexion !"
+          title="Connexion"
           onPress={() => {
             handleSignIn();
           }}
@@ -124,7 +129,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 34,
+    fontSize: 45,
     color: "#fafae0",
     paddingVertical: 20,
     letterSpacing: 4,

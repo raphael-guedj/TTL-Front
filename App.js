@@ -22,6 +22,7 @@ import {
   OpenSans_300Light,
   OpenSans_800ExtraBold,
 } from "@expo-google-fonts/open-sans";
+import { AnnieUseYourTelescope_400Regular } from "@expo-google-fonts/annie-use-your-telescope";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
@@ -67,6 +68,7 @@ export default function App() {
     OpenSans_400Regular,
     OpenSans_300Light,
     OpenSans_800ExtraBold,
+    AnnieUseYourTelescope_400Regular,
   });
   if (!fontsLoaded) {
     return <AppLoading />;
