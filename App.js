@@ -6,8 +6,9 @@ LogBox.ignoreAllLogs(true);
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import { AppLoading } from "expo";
-import SignUpScreen from "./screens/signupscreen";
-import SignInScreen from "./screens/signinscreen";
+import SignUpScreen from "./screens/SignUpScreen";
+import SignInScreen from "./screens/SignInScreen";
+import LandingScreen from "./screens/LandingScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -19,10 +20,6 @@ import {
   OpenSans_800ExtraBold,
 } from "@expo-google-fonts/open-sans";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
-
-import LandingScreen from "./Screens/LandingScreen";
-// import CarouselScreen from "./Screens/CarouselScreen";
-import SignUpScreen from "./Screens/SignUpScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
