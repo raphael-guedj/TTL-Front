@@ -55,8 +55,13 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             style={styles.logo}
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
-          <Text style={[styles.text, { fontFamily: "OpenSans_400Regular" }]}>
-            Inscrivez vous !
+          <Text
+            style={[
+              styles.text,
+              { fontFamily: "AnnieUseYourTelescope_400Regular" },
+            ]}
+          >
+            Inscrivez-vous !
           </Text>
         </View>
         <View style={{ width: "100%", paddingHorizontal: 60 }}>
@@ -167,7 +172,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 34,
+    fontSize: 40,
     color: "#fafae0",
     paddingVertical: 20,
     letterSpacing: 4,
