@@ -28,7 +28,7 @@ const SignInScreen = ({ navigation }) => {
     console.log(response);
     if (response.result) {
       setResponseOk(true);
-      navigation.navigate("LandingScreen");
+      navigation.navigate("Carousel");
     } else {
       setResponseOk(false);
       setEmail("");

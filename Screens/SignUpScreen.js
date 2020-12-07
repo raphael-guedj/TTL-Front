@@ -34,7 +34,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
       console.log(response);
       if (response.result) {
         setReduxUser(pseudo, response.user._id, response.user.token);
-        navigation.navigate("Connexion");
+        navigation.navigate("Carousel");
       }
     } else {
       setPasswordError(true);
