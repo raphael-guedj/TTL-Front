@@ -26,8 +26,6 @@ const SignUpScreen = ({ navigation }) => {
     console.log(passwordConfirm);
   }, [passwordConfirm]);
 
-  let passwordDiff;
-
   const handleSignUp = () => {
     if (password === passwordConfirm) {
       setPasswordError(false);
