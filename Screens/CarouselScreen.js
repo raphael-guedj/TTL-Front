@@ -25,7 +25,15 @@ const slides = [
   },
   {
     key: "Slide 3",
+    image: require("../assets/food.jpg"),
+  },
+  {
+    key: "Slide 4",
     image: require("../assets/landing_image.jpg"),
+  },
+  {
+    key: "Slide 5",
+    image: require("../assets/people_lunch.jpg"),
   },
 ];
 
