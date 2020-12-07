@@ -22,6 +22,7 @@ import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import LandingScreen from "./Screens/LandingScreen";
 // import CarouselScreen from "./Screens/CarouselScreen";
 import SignUpScreen from "./Screens/SignUpScreen";
+import SignInScreen from "./Screens/SignInScreen";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -76,7 +77,8 @@ export default function App() {
         {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
         <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
           <Stack.Screen name="Landing Page" component={LandingScreen} />
-          <Stack.Screen name="Valider l'inscription" component={SignUpScreen} />
+          <Stack.Screen name="Inscription" component={SignUpScreen} />
+          <Stack.Screen name="Connexion" component={SignInScreen} />
 
           {/* <Stack.Screen name="Valider " component={SignInScreen} />
             <Stack.Screen name="Déjeunez" component={PageTab} /> */}
