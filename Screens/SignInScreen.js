@@ -18,7 +18,11 @@ const SignInScreen = ({ navigation }) => {
   const [responseOk, setResponseOk] = useState(true);
 
   const handleSignIn = async () => {
+<<<<<<< HEAD
     let rawResponse = await fetch("http://172.16.0.22:3000/sign-in", {
+=======
+    let rawResponse = await fetch("http://172.16.0.32:3000/sign-in", {
+>>>>>>> main
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `email=${email}&password=${password}`,
@@ -28,7 +32,7 @@ const SignInScreen = ({ navigation }) => {
     console.log(response);
     if (response.result) {
       setResponseOk(true);
-      navigation.navigate("LandingScreen");
+      navigation.navigate("Carousel");
     } else {
       setResponseOk(false);
       setEmail("");
@@ -129,7 +133,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 45,
+    fontSize: 40,
     color: "#fafae0",
     paddingVertical: 20,
     letterSpacing: 4,
