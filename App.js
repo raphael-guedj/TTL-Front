@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import user from "./reducers/user";
 import { AppLoading } from "expo";
-
 import { NavigationContainer } from "@react-navigation/native";
 import {
   useFonts,
@@ -15,8 +14,8 @@ import {
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
 import { AnnieUseYourTelescope_400Regular } from "@expo-google-fonts/annie-use-your-telescope";
+import { FaunaOne_400Regular } from "@expo-google-fonts/fauna-one";
 import Navigation from "./Screens/Navigation";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const store = createStore(combineReducers({ user }));
 
@@ -26,6 +25,7 @@ export default function App() {
     Roboto_400Regular,
     Roboto_700Bold,
     AnnieUseYourTelescope_400Regular,
+    FaunaOne_400Regular,
   });
   if (!fontsLoaded) {
     return <AppLoading />;

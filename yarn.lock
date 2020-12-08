@@ -1009,6 +1009,16 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/annie-use-your-telescope/-/annie-use-your-telescope-0.1.0.tgz#db7564ef2197021581ce09116ce101cd3e21bb10"
   integrity sha512-qDaeIDp+cub3srJTuDnQ7kGiNF665/qL3Rv+58gYg/QuKj/qyvYVzNXkjgtNHhOpR53E53cAwoygNvIfnHjXcQ==
 
+"@expo-google-fonts/cagliostro@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/cagliostro/-/cagliostro-0.1.0.tgz#316c7d965a32f252bf6063c76019f4c6c3853205"
+  integrity sha512-T/K1zB3HKqeeJK+wPybSRoB103TyLS0YBrEbLb5tL5k1NC1SagW5Lg1tu2FYrwrB0UH7wEAYw9H5ckIUFiqAyw==
+
+"@expo-google-fonts/fauna-one@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/fauna-one/-/fauna-one-0.1.0.tgz#9ccd89ba6b0aaddf29f1e3015899a8fe64aa43ae"
+  integrity sha512-xyLpUSqgakQwygoZRJwoIA8kgGtkJxk893ByrLrz3elJhuxx+xQDDSXfQK7m1qJMPcPwk4WljGzVqtmHrjR2og==
+
 "@expo-google-fonts/open-sans@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/open-sans/-/open-sans-0.1.0.tgz#3825d48afa7b9176af7202be28067ad774536819"
@@ -1303,6 +1313,14 @@
     nanoid "^3.1.15"
     query-string "^6.13.6"
     react-is "^16.13.0"
+
+"@react-navigation/drawer@^5.11.4":
+  version "5.11.4"
+  resolved "https://registry.yarnpkg.com/@react-navigation/drawer/-/drawer-5.11.4.tgz#8cc4c6ccd2579e78ee1d84948e2eedb2aff9d891"
+  integrity sha512-6Wpv2Ng9+ZMcmZ8AhwAvV+QvWERPlPUr2IH9ogufGu/fc/ppURStdJcMhHZPH4oOc1OcPow87Ew4oaMmjX4Pvw==
+  dependencies:
+    color "^3.1.3"
+    react-native-iphone-x-helper "^1.3.0"
 
 "@react-navigation/native@^5.8.10":
   version "5.8.10"
@@ -2669,7 +2687,7 @@ expo-linking@~1.0.4:
     qs "^6.5.0"
     url-parse "^1.4.4"
 
-expo-location@~9.0.0:
+expo-location@^9.0.1, expo-location@~9.0.0:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-9.0.1.tgz#adf93b8adf5e9dcf9570cba1d66c8e3831329156"
   integrity sha512-yl4V2IelxrjG1h3nshkyILwghysNJvvEuR4Of0U7oYAsBrT0cq8NxFuaDemRvqt9Yb19wVFNMoVtYFNpthcqpQ==
@@ -4895,6 +4913,11 @@ react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
+
+react-native-maps@^0.27.1:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.27.1.tgz#2f10cd417bb2fd938c9e015b1c9b6d9b1a44b97f"
+  integrity sha512-HygBkZBecTnIVRYrSiLRAvu4OmXOYso/A7c6Cy73HkOh9CgGV8Ap5eBea24tvmFGptjj5Hg8AJ94/YbmWK1Okw==
 
 react-native-ratings@^7.3.0:
   version "7.3.0"

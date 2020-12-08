@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
-
 import SignUpScreen from "./SignUpScreen";
 import SignInScreen from "./SignInScreen";
 import LandingScreen from "./LandingScreen";
@@ -8,13 +7,10 @@ import CarouselScreen from "./CarouselScreen";
 import HomeScreen from "./HomeScreen";
 import SettingsScreen from "./SettingsScreen";
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
-
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
-import user from "../reducers/user";
 import ProfileScreen from "./ProfileScreen";
 
 const Stack = createStackNavigator();
@@ -84,7 +80,7 @@ const PageTab = (
 
         if (route.name === "Dejeunez") {
           iconName = "ios-search";
-        } else if (route.name === "Forky") {
+        } else if (route.name === "Mes Forky") {
           iconName = "ios-list";
         } else if (route.name === "Profil") {
           iconName = "md-person";
@@ -102,7 +98,7 @@ const PageTab = (
     }}
   >
     <Tab.Screen name="Dejeunez" component={HomeStack} />
-    <Tab.Screen name="Forky" component={LunchStack} />
+    <Tab.Screen name="Mes Forky" component={LunchStack} />
     <Tab.Screen name="Profil" component={ProfilStack} />
   </Tab.Navigator>
 );
@@ -124,7 +120,7 @@ function Navigation({ setReduxUser, userState }) {
     const getUserDB = async () => {
       if (token) {
         var rawResponse = await fetch(
-          "http://172.16.0.44:3000/get-user?token=" + token
+          "http://192.168.1.62:3000/get-user?token=" + token
         );
 
         const jsonResponse = await rawResponse.json();
@@ -160,7 +156,6 @@ function mapDispatchToProps(dispatch) {
   return {
     setReduxUser: function (user) {
       dispatch({ type: "user", user });
-      // console.log("dispatch", pseudo, id, token);
     },
   };
 }

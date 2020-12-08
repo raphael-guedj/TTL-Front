@@ -12,13 +12,13 @@ import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SignInScreen = ({ setReduxUser }) => {
+const SignInScreen = ({ setReduxUser, navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [responseOk, setResponseOk] = useState(true);
 
   const handleSignIn = async () => {
-    let rawResponse = await fetch("http://172.16.0.22:3000/sign-in", {
+    let rawResponse = await fetch("http://192.168.1.62:3000/sign-in", {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `email=${email}&password=${password}`,
@@ -29,7 +29,7 @@ const SignInScreen = ({ setReduxUser }) => {
     if (response.result) {
       setResponseOk(true);
       setReduxUser({
-        name: response.userExists.name,
+        pseudo: response.userExists.name,
         id: response.userExists._id,
         token: response.userExists.token,
       });
@@ -56,12 +56,7 @@ const SignInScreen = ({ setReduxUser }) => {
             style={styles.logo}
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
-          <Text
-            style={[
-              styles.text,
-              { fontFamily: "AnnieUseYourTelescope_400Regular" },
-            ]}
-          >
+          <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
             Connexion
           </Text>
         </View>
@@ -110,13 +105,22 @@ const SignInScreen = ({ setReduxUser }) => {
             </Text>
           )}
         </View>
-        <Button
-          buttonStyle={styles.button}
-          title="Connexion"
-          onPress={() => {
-            handleSignIn();
-          }}
-        ></Button>
+        <View>
+          <Button
+            buttonStyle={styles.button}
+            title="Connexion"
+            onPress={() => {
+              handleSignIn();
+            }}
+          ></Button>
+          <Button
+            buttonStyle={styles.buttonback}
+            title="Revenir en arrière"
+            onPress={() => {
+              navigation.navigate("LandingScreen");
+            }}
+          ></Button>
+        </View>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
@@ -135,10 +139,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 40,
+    fontSize: 34,
     color: "#fafae0",
     paddingVertical: 20,
-    letterSpacing: 4,
+    letterSpacing: 3,
     lineHeight: 35,
   },
   image_hero: {
@@ -149,6 +153,12 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#F9B34C",
+    margin: 10,
+    width: 250,
+    borderRadius: 20,
+  },
+  buttonback: {
+    backgroundColor: "#418581",
     margin: 10,
     width: 250,
     borderRadius: 20,

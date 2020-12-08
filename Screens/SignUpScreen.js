@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SignUpScreen = ({ setReduxUser }) => {
+const SignUpScreen = ({ setReduxUser, navigation }) => {
   const [pseudo, setPseudo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +33,7 @@ const SignUpScreen = ({ setReduxUser }) => {
     ) {
       if (password === passwordConfirm) {
         setPasswordError(false);
-        let rawResponse = await fetch("http://172.16.0.44:3000/sign-up", {
+        let rawResponse = await fetch("http://192.168.1.62:3000/sign-up", {
           method: "post",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: `name=${pseudo}&email=${email}&password=${password}`,
@@ -76,12 +76,7 @@ const SignUpScreen = ({ setReduxUser }) => {
             style={styles.logo}
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
-          <Text
-            style={[
-              styles.text,
-              { fontFamily: "AnnieUseYourTelescope_400Regular" },
-            ]}
-          >
+          <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
             Inscrivez-vous !
           </Text>
         </View>
@@ -175,14 +170,23 @@ const SignUpScreen = ({ setReduxUser }) => {
             <Text style={styles.passwordText}>L'un des champs est vide</Text>
           )}
         </View>
-        <Button
-          buttonStyle={styles.button}
-          title="C'est parti"
-          onPress={() => {
-            handleSignUp();
-            setPassword(""), setPasswordConfirm("");
-          }}
-        ></Button>
+        <View>
+          <Button
+            buttonStyle={styles.button}
+            title="C'est parti"
+            onPress={() => {
+              handleSignUp();
+              setPassword(""), setPasswordConfirm("");
+            }}
+          ></Button>
+          <Button
+            buttonStyle={styles.buttonback}
+            title="Retour en arrière"
+            onPress={() => {
+              navigation.navigate("LandingScreen");
+            }}
+          ></Button>
+        </View>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
@@ -201,10 +205,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 40,
+    fontSize: 30,
     color: "#fafae0",
     paddingVertical: 20,
-    letterSpacing: 4,
+    letterSpacing: 3,
     lineHeight: 35,
   },
   image_hero: {
@@ -215,6 +219,12 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#F9B34C",
+    margin: 10,
+    width: 250,
+    borderRadius: 20,
+  },
+  buttonback: {
+    backgroundColor: "#418581",
     margin: 10,
     width: 250,
     borderRadius: 20,
