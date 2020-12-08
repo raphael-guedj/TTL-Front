@@ -15,6 +15,8 @@ import SignInScreen from "./Screens/SignInScreen";
 import LandingScreen from "./Screens/LandingScreen";
 import CarouselScreen from "./Screens/CarouselScreen";
 import HomeScreen from "./Screens/HomeScreen";
+import SettingsScreen from "./Screens/SettingsScreen";
+import ProfileScreen from "./Screens/ProfileScreen";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -117,12 +119,9 @@ export default function App() {
     return (
       <Provider store={store}>
         <NavigationContainer>
-<<<<<<< HEAD
-          {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
-          <Stack.Navigator initialRouteName="SettingScreen" headerMode="none">
-=======
-          <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
->>>>>>> main
+          <Stack.Navigator initialRouteName="ProfileScreen" headerMode="none">
+            <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+            <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
             <Stack.Screen name="LandingScreen" component={LandingScreen} />
 
             <Stack.Screen name="Inscription" component={SignUpScreen} />
