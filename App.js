@@ -1,5 +1,6 @@
+import { connect } from "react-redux";
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "react-native-gesture-handler";
 import { LogBox } from "react-native";
 LogBox.ignoreAllLogs(true);
@@ -14,6 +15,7 @@ import SignUpScreen from "./Screens/SignUpScreen";
 import SignInScreen from "./Screens/SignInScreen";
 import LandingScreen from "./Screens/LandingScreen";
 import CarouselScreen from "./Screens/CarouselScreen";
+import LogOutScreen from "./Screens/LogOutScreen";
 import HomeScreen from "./Screens/HomeScreen";
 import SettingsScreen from "./Screens/SettingsScreen";
 import ProfileScreen from "./Screens/ProfileScreen";
@@ -30,83 +32,111 @@ import {
 } from "@expo-google-fonts/roboto";
 import { AnnieUseYourTelescope_400Regular } from "@expo-google-fonts/annie-use-your-telescope";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createStackNavigator();
+const StackHome = createStackNavigator();
+const StackNotif = createStackNavigator();
+const StackLunch = createStackNavigator();
+const StackProfil = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const store = createStore(combineReducers({ pseudo, id, token }));
 
 const NotifStack = () => {
   return (
-    <Stack.Navigator initialRouteName="NotifEnvoye">
-      <Stack.Screen name="NotifEnvoye" component={HomeScreen} />
-      <Stack.Screen name="NotifRecu" component={HomeScreen} />
-    </Stack.Navigator>
+    <StackNotif.Navigator initialRouteName="NotifEnvoye">
+      <StackNotif.Screen name="NotifEnvoye" component={HomeScreen} />
+      <StackNotif.Screen name="NotifRecu" component={HomeScreen} />
+    </StackNotif.Navigator>
   );
 };
 
 const HomeStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="HomeNotif" component={NotifStack} />
-    </Stack.Navigator>
+    <StackHome.Navigator>
+      <StackHome.Screen
+        options={{
+          title: "My home",
+          headerStyle: {
+            backgroundColor: "#FAFAE0",
+          },
+          headerTintColor: "#0b090a",
+        }}
+        name="Home"
+        component={HomeScreen}
+      />
+      <StackHome.Screen name="HomeNotif" component={NotifStack} />
+    </StackHome.Navigator>
   );
 };
 const LunchStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Lunch">
-      <Stack.Screen name="Lunch" component={HomeScreen} />
-      <Stack.Screen name="LunchNotif" component={NotifStack} />
-      <Stack.Screen name="Detail" component={HomeScreen} />
-      <Stack.Screen name="Confirmation" component={HomeScreen} />
-    </Stack.Navigator>
+    <StackLunch.Navigator>
+      <StackLunch.Screen name="Lunch" component={HomeScreen} />
+      <StackLunch.Screen name="LunchNotif" component={NotifStack} />
+      <StackLunch.Screen name="Detail" component={HomeScreen} />
+      <StackLunch.Screen name="Confirmation" component={HomeScreen} />
+    </StackLunch.Navigator>
   );
 };
 
 const ProfilStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Profil">
-      <Stack.Screen name="Profil" component={HomeScreen} />
-      <Stack.Screen name="Modifier" component={HomeScreen} />
-      <Stack.Screen name="Reglage" component={HomeScreen} />
-    </Stack.Navigator>
+    <StackProfil.Navigator>
+      <StackProfil.Screen name="Profil" component={HomeScreen} />
+      <StackProfil.Screen name="Modifier" component={HomeScreen} />
+      <StackProfil.Screen name="Reglage" component={HomeScreen} />
+    </StackProfil.Navigator>
   );
 };
 
-const PageTab = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+const PageTab = (
+  <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
 
-          if (route.name === "Dejeunez") {
-            iconName = "ios-search";
-          } else if (route.name === "Forky") {
-            iconName = "ios-list";
-          } else if (route.name === "Profil") {
-            iconName = "md-person";
-          }
-          return <Ionicons name={iconName} size={34} color={color} />;
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: "#418581",
-        inactiveTintColor: "#c2e1df",
-        style: {
-          backgroundColor: "#FAFAE0",
-          paddingVertical: 8,
-        },
-      }}
-    >
-      <Tab.Screen name="Dejeunez" component={HomeStack} />
-      <Tab.Screen name="Forky" component={LunchStack} />
-      <Tab.Screen name="Profil" component={ProfilStack} />
-    </Tab.Navigator>
-  );
-};
+        if (route.name === "Dejeunez") {
+          iconName = "ios-search";
+        } else if (route.name === "Forky") {
+          iconName = "ios-list";
+        } else if (route.name === "Profil") {
+          iconName = "md-person";
+        }
+        return <Ionicons name={iconName} size={34} color={color} />;
+      },
+    })}
+    tabBarOptions={{
+      activeTintColor: "#418581",
+      inactiveTintColor: "#c2e1df",
+      style: {
+        backgroundColor: "#FAFAE0",
+        paddingVertical: 8,
+      },
+    }}
+  >
+    <Tab.Screen name="Dejeunez" component={HomeStack} />
+    <Tab.Screen name="Forky" component={LunchStack} />
+    <Tab.Screen name="Profil" component={ProfilStack} />
+  </Tab.Navigator>
+);
 
 export default function App() {
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const userToken = await AsyncStorage.getItem(
+        "userToken",
+        function (error, data) {
+          setToken(data);
+        }
+      );
+    })();
+  }, []);
+
+  console.log("token", token);
+
   let [fontsLoaded] = useFonts({
     Roboto_300Light,
     Roboto_400Regular,
@@ -119,6 +149,7 @@ export default function App() {
     return (
       <Provider store={store}>
         <NavigationContainer>
+<<<<<<< HEAD
           <Stack.Navigator initialRouteName="ProfileScreen" headerMode="none">
             <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
             <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
@@ -129,6 +160,18 @@ export default function App() {
             <Stack.Screen name="Carousel" component={CarouselScreen} />
             <Stack.Screen name="Home" component={PageTab} />
           </Stack.Navigator>
+=======
+          {token ? (
+            PageTab
+          ) : (
+            <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
+              <Stack.Screen name="LandingScreen" component={LandingScreen} />
+              <Stack.Screen name="Inscription" component={SignUpScreen} />
+              <Stack.Screen name="Connexion" component={SignInScreen} />
+              <Stack.Screen name="Carousel" component={CarouselScreen} />
+            </Stack.Navigator>
+          )}
+>>>>>>> main
         </NavigationContainer>
       </Provider>
     );

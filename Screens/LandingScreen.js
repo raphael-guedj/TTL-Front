@@ -1,16 +1,9 @@
 import React from "react";
 import { Button } from "react-native-elements";
-import {
-  Text,
-  View,
-  ImageBackground,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, ImageBackground, StyleSheet, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-function LandingScreen({ navigation }) {
+export default function LandingScreen({ navigation }) {
   return (
     <ImageBackground
       source={require("../assets/lunch.jpg")}
@@ -110,5 +103,3 @@ const styles = StyleSheet.create({
     height: 30,
   },
 });
-
-export default LandingScreen;

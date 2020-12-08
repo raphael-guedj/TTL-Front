@@ -21,8 +21,6 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
   const [signupError, setSignupError] = useState(false);
   const [emptyField, setEmptyField] = useState(false);
 
-  useEffect(() => {}, []);
-
   const handleSignUp = async () => {
     setPasswordError(false);
     setSignupError(false);
@@ -35,7 +33,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
     ) {
       if (password === passwordConfirm) {
         setPasswordError(false);
-        let rawResponse = await fetch("http://172.16.0.22:3000/sign-up", {
+        let rawResponse = await fetch("http://172.16.0.44:3000/sign-up", {
           method: "post",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: `name=${pseudo}&email=${email}&password=${password}`,
@@ -45,6 +43,11 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
         console.log(response);
         if (response.result) {
           setReduxUser(pseudo, response.user._id, response.user.token);
+          AsyncStorage.setItem(
+            "userToken",
+            JSON.stringify(response.user.token)
+          );
+
           navigation.navigate("Carousel");
           setSignupError(false);
         } else {
