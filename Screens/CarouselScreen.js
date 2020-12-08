@@ -101,7 +101,7 @@ function CarouselScreen({ navigation }) {
         renderDoneButton={_renderDoneButton}
         renderSkipButton={_renderSkipButton}
         onDone={() => {
-          navigation.navigate("Home");
+          navigation.navigate("Dejeunez");
         }}
       />
     </View>
