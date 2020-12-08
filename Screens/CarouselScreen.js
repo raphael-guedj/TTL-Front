@@ -10,6 +10,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
+import LandingScreen from "./LandingScreen";
 
 // slides
 const slides = [

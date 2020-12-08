@@ -80,8 +80,9 @@ export default function App() {
       <Provider store={store}>
         <NavigationContainer>
           {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
-          <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
+          <Stack.Navigator initialRouteName="SettingScreen" headerMode="none">
             <Stack.Screen name="LandingScreen" component={LandingScreen} />
+
             <Stack.Screen name="Inscription" component={SignUpScreen} />
             <Stack.Screen name="Connexion" component={SignInScreen} />
             <Stack.Screen name="Carousel" component={CarouselScreen} />
