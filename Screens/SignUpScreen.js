@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SignUpScreen = ({ navigation, setReduxUser }) => {
+const SignUpScreen = ({ setReduxUser }) => {
   const [pseudo, setPseudo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,15 +40,16 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
         });
 
         let response = await rawResponse.json();
-        console.log(response);
+        console.log("utilisateur créer", response);
         if (response.result) {
-          setReduxUser(pseudo, response.user._id, response.user.token);
-          AsyncStorage.setItem(
-            "userToken",
-            JSON.stringify(response.user.token)
-          );
+          setReduxUser({
+            pseudo: response.user.name,
+            id: response.user._id,
+            token: response.user.token,
+          });
+          AsyncStorage.setItem("userToken", response.user.token);
 
-          navigation.navigate("Carousel");
+          // navigation.navigate("Carousel");
           setSignupError(false);
         } else {
           setSignupError(true);
@@ -228,9 +229,9 @@ const styles = StyleSheet.create({
 
 function mapDispatchToProps(dispatch) {
   return {
-    setReduxUser: function (pseudo, id, token) {
-      dispatch({ type: "userdata", pseudo, id, token });
-      console.log("dispatch", pseudo, id, token);
+    setReduxUser: function (user) {
+      dispatch({ type: "user", user });
+      console.log("dispatch", user);
     },
   };
 }

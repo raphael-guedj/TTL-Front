@@ -10,7 +10,6 @@ import {
   SafeAreaView,
 } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 // slides
 const slides = [
