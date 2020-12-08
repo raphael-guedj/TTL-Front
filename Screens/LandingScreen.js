@@ -1,32 +1,9 @@
-import { connect } from "react-redux";
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "react-native-elements";
-import {
-  Text,
-  View,
-  ImageBackground,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, ImageBackground, StyleSheet, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import token from "../reducers/token";
 
-function LandingScreen({ navigation, getUserToken, userToken }) {
-  useEffect(() => {
-    (async () => {
-      await AsyncStorage.getItem("userToken", function (error, data) {
-        console.log(data);
-        if (data) {
-          getUserToken(data);
-        } else {
-          return "no data";
-        }
-      });
-    })();
-  }, []);
-
+export default function LandingScreen({ navigation }) {
   return (
     <ImageBackground
       source={require("../assets/lunch.jpg")}
@@ -126,17 +103,3 @@ const styles = StyleSheet.create({
     height: 30,
   },
 });
-
-function mapDispatchToProps(dispatch) {
-  return {
-    getUserToken: function (token) {
-      dispatch({ type: "getToken", token });
-    },
-  };
-}
-
-function mapStateToProps(state) {
-  return { userToken: state.token };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LandingScreen);
