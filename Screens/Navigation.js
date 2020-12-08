@@ -7,6 +7,7 @@ import LandingScreen from "./LandingScreen";
 import CarouselScreen from "./CarouselScreen";
 import HomeScreen from "./HomeScreen";
 import SettingsScreen from "./SettingsScreen";
+import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -37,11 +38,15 @@ const HomeStack = () => {
     <StackHome.Navigator>
       <StackHome.Screen
         options={{
-          title: "My home",
+          title: "Accueil",
           headerStyle: {
-            backgroundColor: "#FAFAE0",
+            backgroundColor: "#Fff",
+            height: 90,
           },
+          headerTitleAlign: "center",
           headerTintColor: "#0b090a",
+          headerLeft: () => <HeaderBarImage />,
+          headerRight: () => <IconBar />,
         }}
         name="Home"
         component={HomeScreen}
@@ -91,7 +96,7 @@ const PageTab = (
       activeTintColor: "#418581",
       inactiveTintColor: "#c2e1df",
       style: {
-        backgroundColor: "#FAFAE0",
+        backgroundColor: "#FFF",
         paddingVertical: 8,
       },
     }}
