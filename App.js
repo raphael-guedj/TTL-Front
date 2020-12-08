@@ -1,5 +1,6 @@
+import { connect } from "react-redux";
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "react-native-gesture-handler";
 import { LogBox } from "react-native";
 LogBox.ignoreAllLogs(true);
@@ -9,12 +10,12 @@ import pseudo from "./reducers/pseudo";
 import id from "./reducers/id";
 import token from "./reducers/token";
 import { AppLoading } from "expo";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import SignUpScreen from "./Screens/SignUpScreen";
 import SignInScreen from "./Screens/SignInScreen";
 import LandingScreen from "./Screens/LandingScreen";
 import CarouselScreen from "./Screens/CarouselScreen";
+import LogOutScreen from "./Screens/LogOutScreen";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -28,6 +29,7 @@ import {
 } from "@expo-google-fonts/open-sans";
 import { AnnieUseYourTelescope_400Regular } from "@expo-google-fonts/annie-use-your-telescope";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -68,17 +70,20 @@ const store = createStore(combineReducers({ pseudo, id, token }));
 // };
 
 export default function App() {
+  const [token, setToken] = useState("");
+
   useEffect(() => {
-    const getUserToken = async () => {
-      var userToken = await AsyncStorage.getItem(
+    (async () => {
+      const userToken = await AsyncStorage.getItem(
         "userToken",
         function (error, data) {
-          console.log(data);
+          setToken(data);
         }
       );
-    };
-    getUserToken();
+    })();
   }, []);
+
+  console.log("token", token);
 
   let [fontsLoaded] = useFonts({
     OpenSans_400Regular,
@@ -94,10 +99,15 @@ export default function App() {
         <NavigationContainer>
           {/* Stack navigation pour les premières routes...Conditions a renseigner avec token ou pas aprés inscription en BDD */}
           <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
-            <Stack.Screen name="LandingScreen" component={LandingScreen} />
-            <Stack.Screen name="Inscription" component={SignUpScreen} />
-            <Stack.Screen name="Connexion" component={SignInScreen} />
-            <Stack.Screen name="Carousel" component={CarouselScreen} />
+            {!token && (
+              <>
+                <Stack.Screen name="LandingScreen" component={LandingScreen} />
+                <Stack.Screen name="Inscription" component={SignUpScreen} />
+                <Stack.Screen name="Connexion" component={SignInScreen} />
+                <Stack.Screen name="Carousel" component={CarouselScreen} />
+              </>
+            )}
+            <Stack.Screen name="Logout" component={LogOutScreen} />
             {/* <Stack.Screen name="Déjeunez" component={PageTab} /> */}
           </Stack.Navigator>
         </NavigationContainer>

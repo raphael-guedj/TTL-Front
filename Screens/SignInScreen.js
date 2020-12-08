@@ -17,18 +17,6 @@ const SignInScreen = ({ navigation, setReduxUser }) => {
   const [password, setPassword] = useState("");
   const [responseOk, setResponseOk] = useState(true);
 
-  useEffect(() => {
-    const getUserToken = async () => {
-      var userToken = await AsyncStorage.getItem(
-        "userToken",
-        function (error, data) {
-          console.log(data);
-        }
-      );
-    };
-    getUserToken();
-  }, [responseOk]);
-
   const handleSignIn = async () => {
     let rawResponse = await fetch("http://172.16.0.44:3000/sign-in", {
       method: "post",
@@ -44,6 +32,10 @@ const SignInScreen = ({ navigation, setReduxUser }) => {
         response.userExists.name,
         response.userExists._id,
         response.userExists.token
+      );
+      AsyncStorage.setItem(
+        "userToken",
+        JSON.stringify(response.userExists.token)
       );
       navigation.navigate("Carousel");
     } else {
