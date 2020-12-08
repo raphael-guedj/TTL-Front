@@ -107,6 +107,9 @@ function CarouselScreen({ navigation }) {
         renderPrevButton={_renderPrevButton}
         renderDoneButton={_renderDoneButton}
         renderSkipButton={_renderSkipButton}
+        onDone={() => {
+          navigation.navigate("Dejeunez");
+        }}
       />
     </View>
   );

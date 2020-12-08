@@ -97,7 +97,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "Roboto, sans-serif",
+              fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
@@ -116,7 +116,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "Roboto, sans-serif",
+              fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
@@ -135,7 +135,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "Roboto, sans-serif",
+              fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
@@ -154,7 +154,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "Roboto, sans-serif",
+              fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
