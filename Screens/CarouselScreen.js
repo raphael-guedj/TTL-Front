@@ -39,7 +39,7 @@ const slides = [
 
 // const Item = typeof slides[0];
 
-function CarouselScreen() {
+function CarouselScreen({ navigation }) {
   const _renderItem = ({ item }) => {
     return (
       <ImageBackground source={item.image} style={styles.imageBackground}>
@@ -100,6 +100,9 @@ function CarouselScreen() {
         renderPrevButton={_renderPrevButton}
         renderDoneButton={_renderDoneButton}
         renderSkipButton={_renderSkipButton}
+        onDone={() => {
+          navigation.navigate("Home");
+        }}
       />
     </View>
   );
