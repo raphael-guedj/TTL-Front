@@ -50,6 +50,38 @@ function CarouselScreen() {
     );
   };
 
+  _renderNextButton = () => {
+    return (
+      <View style={styles.button}>
+        <Text>Suivant</Text>
+      </View>
+    );
+  };
+
+  _renderPrevButton = () => {
+    return (
+      <View style={styles.button}>
+        <Text>Précédent</Text>
+      </View>
+    );
+  };
+
+  _renderDoneButton = () => {
+    return (
+      <View style={styles.skip}>
+        <Text>Terminer</Text>
+      </View>
+    );
+  };
+
+  _renderSkipButton = () => {
+    return (
+      <View style={styles.skip}>
+        <Text>Passer</Text>
+      </View>
+    );
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <StatusBar translucent backgroundColor="transparent" />
@@ -64,6 +96,10 @@ function CarouselScreen() {
         nextLabel="Suivant"
         prevLabel="Précédent"
         doneLabel="Terminer"
+        renderNextButton={_renderNextButton}
+        renderPrevButton={_renderPrevButton}
+        renderDoneButton={_renderDoneButton}
+        renderSkipButton={_renderSkipButton}
       />
     </View>
   );
@@ -74,11 +110,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  image: {
-    width: 400,
-    height: 400,
-    marginVertical: 32,
   },
   imageBackground: {
     flex: 1,
@@ -97,8 +128,20 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#F9B34C",
     margin: 10,
-    width: 250,
+    width: 100,
+    height: 30,
     borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  skip: {
+    backgroundColor: "#418581",
+    margin: 10,
+    width: 100,
+    height: 30,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
   logo: {
     width: 160,

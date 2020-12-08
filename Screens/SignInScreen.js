@@ -90,7 +90,7 @@ const SignInScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              // fontFamily: "OpenSans_400Regular",
+              fontFamily: "Roboto, sans-serif",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
@@ -109,7 +109,7 @@ const SignInScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              // fontFamily: "OpenSans_400Regular",
+              fontFamily: "Roboto, sans-serif",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",

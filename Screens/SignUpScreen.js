@@ -35,7 +35,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
     ) {
       if (password === passwordConfirm) {
         setPasswordError(false);
-        let rawResponse = await fetch("http://172.16.0.32:3000/sign-up", {
+        let rawResponse = await fetch("http://172.16.0.22:3000/sign-up", {
           method: "post",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: `name=${pseudo}&email=${email}&password=${password}`,
@@ -94,12 +94,12 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             placeholderTextColor="#fafae0"
             leftIcon={<Ionicons name="ios-person" size={30} color="#fafae0" />}
             leftIconContainerStyle={{
-              marginHorizontal: 8,
+              marginHorizontal: 5,
             }}
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "OpenSans_400Regular",
+              fontFamily: "Roboto, sans-serif",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
@@ -118,14 +118,14 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "OpenSans_400Regular",
+              fontFamily: "Roboto, sans-serif",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
             }}
           />
           <Input
-            placeholder="Password"
+            placeholder="Mot de passe"
             onChangeText={(e) => setPassword(e)}
             value={password}
             secureTextEntry={true}
@@ -137,14 +137,14 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "OpenSans_400Regular",
+              fontFamily: "Roboto, sans-serif",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
             }}
           />
           <Input
-            placeholder="Confirmez le password"
+            placeholder="Confirmez mot de passe"
             onChangeText={(e) => setPasswordConfirm(e)}
             value={passwordConfirm}
             secureTextEntry={true}
@@ -156,7 +156,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "OpenSans_400Regular",
+              fontFamily: "Roboto, sans-serif",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
