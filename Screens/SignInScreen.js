@@ -33,10 +33,7 @@ const SignInScreen = ({ setReduxUser }) => {
         id: response.userExists._id,
         token: response.userExists.token,
       });
-      AsyncStorage.setItem(
-        "userToken",
-        JSON.stringify(response.userExists.token)
-      );
+      AsyncStorage.setItem("userToken", response.userExists.token);
       // navigation.navigate("Carousel");
     } else {
       setResponseOk(false);

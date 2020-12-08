@@ -6,6 +6,7 @@ import SignInScreen from "./SignInScreen";
 import LandingScreen from "./LandingScreen";
 import CarouselScreen from "./CarouselScreen";
 import HomeScreen from "./HomeScreen";
+import SettingsScreen from "./SettingsScreen";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -13,6 +14,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 import user from "../reducers/user";
+import ProfileScreen from "./ProfileScreen";
 
 const Stack = createStackNavigator();
 const StackHome = createStackNavigator();
@@ -62,9 +64,9 @@ const LunchStack = () => {
 const ProfilStack = () => {
   return (
     <StackProfil.Navigator>
-      <StackProfil.Screen name="Profil" component={HomeScreen} />
+      <StackProfil.Screen name="Profil" component={ProfileScreen} />
       <StackProfil.Screen name="Modifier" component={HomeScreen} />
-      <StackProfil.Screen name="Reglage" component={HomeScreen} />
+      <StackProfil.Screen name="Reglage" component={SettingsScreen} />
     </StackProfil.Navigator>
   );
 };
@@ -106,6 +108,7 @@ function Navigation({ setReduxUser, userState }) {
   useEffect(() => {
     const getUser = async () => {
       await AsyncStorage.getItem("userToken", function (error, data) {
+        console.log("data", data);
         setToken(data);
       });
     };
@@ -114,23 +117,29 @@ function Navigation({ setReduxUser, userState }) {
 
   useEffect(() => {
     const getUserDB = async () => {
-      console.log("userToken", userState.token);
-      console.log("useEffect", JSON.parse(token));
       if (token) {
         var rawResponse = await fetch(
-          "http://172.16.0.44:3000/get-user?token="
+          "http://172.16.0.44:3000/get-user?token=" + token
         );
 
-        console.log("ma réponse", rawResponse);
+        const jsonResponse = await rawResponse.json();
+        console.log("ma réponse", jsonResponse);
 
-        // setReduxUser({ user: "toto", id: "akndlakn", token: userToken });
+        setReduxUser({
+          pseudo: jsonResponse.user.name,
+          id: jsonResponse.user._id,
+          token: jsonResponse.user.token,
+        });
       }
     };
     getUserDB();
   }, [token]);
 
-  console.log("token", token);
-  return user.token ? (
+  useEffect(() => {
+    setToken(userState.token);
+  }, [userState]);
+
+  return userState.token ? (
     PageTab
   ) : (
     <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">

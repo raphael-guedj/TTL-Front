@@ -12,6 +12,7 @@ function ProfileScreen({ navigation }) {
       }}
     >
       <Button
+        onPress={() => navigation.navigate("Reglage")}
         icon={
           <Feather
             style={styles.settings}

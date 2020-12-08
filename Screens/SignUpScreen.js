@@ -40,17 +40,14 @@ const SignUpScreen = ({ setReduxUser }) => {
         });
 
         let response = await rawResponse.json();
-        console.log(response);
+        console.log("utilisateur créer", response);
         if (response.result) {
           setReduxUser({
             pseudo: response.user.name,
             id: response.user._id,
             token: response.user.token,
           });
-          AsyncStorage.setItem(
-            "userToken",
-            JSON.stringify(response.user.token)
-          );
+          AsyncStorage.setItem("userToken", response.user.token);
 
           // navigation.navigate("Carousel");
           setSignupError(false);
