@@ -69,15 +69,9 @@ function CarouselScreen({ navigation }) {
 
   _renderDoneButton = () => {
     return (
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Logout");
-        }}
-      >
-        <View style={styles.skip}>
-          <Text>Terminer</Text>
-        </View>
-      </TouchableOpacity>
+      <View style={styles.skip}>
+        <Text>Terminer</Text>
+      </View>
     );
   };
 

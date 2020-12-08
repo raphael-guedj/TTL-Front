@@ -15,7 +15,7 @@ import SignUpScreen from "./Screens/SignUpScreen";
 import SignInScreen from "./Screens/SignInScreen";
 import LandingScreen from "./Screens/LandingScreen";
 import CarouselScreen from "./Screens/CarouselScreen";
-import LogOutScreen from "./Screens/LogOutScreen";
+import { HeaderBarImage, IconBar } from "./Screens/ImageHeaderBar";
 import HomeScreen from "./Screens/HomeScreen";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -54,11 +54,15 @@ const HomeStack = () => {
     <StackHome.Navigator>
       <StackHome.Screen
         options={{
-          title: "My home",
+          title: "Accueil",
           headerStyle: {
-            backgroundColor: "#FAFAE0",
+            backgroundColor: "#Fff",
+            height: 90,
           },
+          headerTitleAlign: "center",
           headerTintColor: "#0b090a",
+          headerLeft: () => <HeaderBarImage />,
+          headerRight: () => <IconBar />,
         }}
         name="Home"
         component={HomeScreen}
@@ -108,7 +112,7 @@ const PageTab = (
       activeTintColor: "#418581",
       inactiveTintColor: "#c2e1df",
       style: {
-        backgroundColor: "#FAFAE0",
+        backgroundColor: "#FFF",
         paddingVertical: 8,
       },
     }}
@@ -124,12 +128,9 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const userToken = await AsyncStorage.getItem(
-        "userToken",
-        function (error, data) {
-          setToken(data);
-        }
-      );
+      await AsyncStorage.getItem("userToken", function (error, data) {
+        setToken(data);
+      });
     })();
   }, []);
 
@@ -147,7 +148,7 @@ export default function App() {
     return (
       <Provider store={store}>
         <NavigationContainer>
-          {token ? (
+          {true ? (
             PageTab
           ) : (
             <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
