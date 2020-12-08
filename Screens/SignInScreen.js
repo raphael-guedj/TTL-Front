@@ -90,7 +90,7 @@ const SignInScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "Roboto, sans-serif",
+              fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
@@ -109,7 +109,7 @@ const SignInScreen = ({ navigation, setReduxUser }) => {
             inputStyle={{
               color: "#fff",
               fontSize: 15,
-              fontFamily: "Roboto, sans-serif",
+              fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
               borderBottomColor: "#fafae0",
@@ -176,7 +176,7 @@ function mapDispatchToProps(dispatch) {
   return {
     setReduxUser: function (pseudo, id, token) {
       dispatch({ type: "userdata", pseudo, id, token });
-      console.log("dispatch", pseudo, id, token);
+      // console.log("dispatch", pseudo, id, token);
     },
   };
 }
