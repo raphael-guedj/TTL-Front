@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import SignUpScreen from "./SignUpScreen";
 import SignInScreen from "./SignInScreen";
 import LandingScreen from "./LandingScreen";
-import CarouselScreen from "./CarouselScreen";
 import HomeScreen from "./HomeScreen";
 import SettingsScreen from "./SettingsScreen";
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
@@ -12,6 +11,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 import ProfileScreen from "./ProfileScreen";
+import InvitationScreen from "./InvitationScreen";
 
 const Stack = createStackNavigator();
 const StackHome = createStackNavigator();
@@ -54,7 +54,7 @@ const HomeStack = () => {
 const LunchStack = () => {
   return (
     <StackLunch.Navigator>
-      <StackLunch.Screen name="Lunch" component={HomeScreen} />
+      <StackLunch.Screen name="Invitation" component={InvitationScreen} />
       <StackLunch.Screen name="LunchNotif" component={NotifStack} />
       <StackLunch.Screen name="Detail" component={HomeScreen} />
       <StackLunch.Screen name="Confirmation" component={HomeScreen} />
@@ -120,7 +120,7 @@ function Navigation({ setReduxUser, userState }) {
     const getUserDB = async () => {
       if (token) {
         var rawResponse = await fetch(
-          "http://172.16.0.24:3000/get-user?token=" + token
+          "http://172.16.0.44:3000/get-user?token=" + token
         );
 
         const jsonResponse = await rawResponse.json();

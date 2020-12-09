@@ -13,7 +13,7 @@ import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
 
-const HomeScreen = (props) => {
+const HomeScreen = ({ navigation }) => {
   const [isTokenExist, setIsTokenExist] = useState(false);
 
   useEffect(() => {
@@ -157,10 +157,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff9f0",
   },
 });
-
-function mapStateToProps(state) {
-  // console.log(state.data);
-  // return { user: state.user };
-}
 
 export default HomeScreen;
