@@ -10,7 +10,10 @@ import {
   SafeAreaView,
 } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
+<<<<<<< HEAD
 // import { TouchableOpacity } from "react-native-gesture-handler";
+=======
+>>>>>>> main
 
 // slides
 const slides = [
@@ -69,15 +72,9 @@ function CarouselScreen({ navigation }) {
 
   _renderDoneButton = () => {
     return (
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Logout");
-        }}
-      >
-        <View style={styles.skip}>
-          <Text>Terminer</Text>
-        </View>
-      </TouchableOpacity>
+      <View style={styles.skip}>
+        <Text>Terminer</Text>
+      </View>
     );
   };
 

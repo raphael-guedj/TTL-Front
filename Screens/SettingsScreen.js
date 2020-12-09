@@ -1,8 +1,16 @@
+import { connect } from "react-redux";
 import React, { useEffect } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button } from "react-native-elements";
 
-function SettingsScreen({ navigation }) {
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+function SettingsScreen({ navigation, setReduxUser }) {
+  const handleLogOut = async () => {
+    AsyncStorage.removeItem("userToken");
+    setReduxUser({ id: null, pseudo: null, token: null });
+  };
+
   return (
     <View style={styles.card}>
       <ScrollView style={{ marginTop: 15 }}>
@@ -34,7 +42,7 @@ function SettingsScreen({ navigation }) {
               type="clear"
               titleStyle={{ color: "black" }}
               title="Déconnexion"
-              onPress={() => navigation.navigate("LandingScreen")}
+              onPress={() => handleLogOut()}
             />
           </View>
         </Card>
@@ -98,4 +106,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingsScreen;
+function mapDispatchToProps(dispatch) {
+  return {
+    setReduxUser: function (user) {
+      dispatch({ type: "user", user });
+      // console.log("dispatch", pseudo, id, token);
+    },
+  };
+}
+
+export default connect(null, mapDispatchToProps)(SettingsScreen);

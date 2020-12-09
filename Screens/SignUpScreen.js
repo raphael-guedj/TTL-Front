@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SignUpScreen = ({ navigation, setReduxUser }) => {
+const SignUpScreen = ({ setReduxUser, navigation }) => {
   const [pseudo, setPseudo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,22 +33,23 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
     ) {
       if (password === passwordConfirm) {
         setPasswordError(false);
-        let rawResponse = await fetch("http://172.16.0.44:3000/sign-up", {
+        let rawResponse = await fetch("http://192.168.1.62:3000/sign-up", {
           method: "post",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: `name=${pseudo}&email=${email}&password=${password}`,
         });
 
         let response = await rawResponse.json();
-        console.log(response);
+        console.log("utilisateur créer", response);
         if (response.result) {
-          setReduxUser(pseudo, response.user._id, response.user.token);
-          AsyncStorage.setItem(
-            "userToken",
-            JSON.stringify(response.user.token)
-          );
+          setReduxUser({
+            pseudo: response.user.name,
+            id: response.user._id,
+            token: response.user.token,
+          });
+          AsyncStorage.setItem("userToken", response.user.token);
 
-          navigation.navigate("Carousel");
+          // navigation.navigate("Carousel");
           setSignupError(false);
         } else {
           setSignupError(true);
@@ -75,12 +76,7 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             style={styles.logo}
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
-          <Text
-            style={[
-              styles.text,
-              { fontFamily: "AnnieUseYourTelescope_400Regular" },
-            ]}
-          >
+          <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
             Inscrivez-vous !
           </Text>
         </View>
@@ -174,14 +170,23 @@ const SignUpScreen = ({ navigation, setReduxUser }) => {
             <Text style={styles.passwordText}>L'un des champs est vide</Text>
           )}
         </View>
-        <Button
-          buttonStyle={styles.button}
-          title="C'est parti"
-          onPress={() => {
-            handleSignUp();
-            setPassword(""), setPasswordConfirm("");
-          }}
-        ></Button>
+        <View>
+          <Button
+            buttonStyle={styles.button}
+            title="C'est parti"
+            onPress={() => {
+              handleSignUp();
+              setPassword(""), setPasswordConfirm("");
+            }}
+          ></Button>
+          <Button
+            buttonStyle={styles.buttonback}
+            title="Retour en arrière"
+            onPress={() => {
+              navigation.navigate("LandingScreen");
+            }}
+          ></Button>
+        </View>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
@@ -200,10 +205,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 40,
+    fontSize: 30,
     color: "#fafae0",
     paddingVertical: 20,
-    letterSpacing: 4,
+    letterSpacing: 3,
     lineHeight: 35,
   },
   image_hero: {
@@ -218,6 +223,12 @@ const styles = StyleSheet.create({
     width: 250,
     borderRadius: 20,
   },
+  buttonback: {
+    backgroundColor: "#418581",
+    margin: 10,
+    width: 250,
+    borderRadius: 20,
+  },
   passwordText: {
     textAlign: "center",
     color: "#d90429",
@@ -228,9 +239,9 @@ const styles = StyleSheet.create({
 
 function mapDispatchToProps(dispatch) {
   return {
-    setReduxUser: function (pseudo, id, token) {
-      dispatch({ type: "userdata", pseudo, id, token });
-      console.log("dispatch", pseudo, id, token);
+    setReduxUser: function (user) {
+      dispatch({ type: "user", user });
+      console.log("dispatch", user);
     },
   };
 }

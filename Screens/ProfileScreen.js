@@ -16,7 +16,7 @@ function ProfileScreen({ navigation }) {
         name="settings"
         size={28}
         color="#F9B34C"
-        onPress={() => navigation.navigate("SettingsScreen")}
+        onPress={() => navigation.navigate("Reglage")}
       />
       <View
         style={{

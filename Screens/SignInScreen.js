@@ -12,13 +12,13 @@ import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const SignInScreen = ({ navigation, setReduxUser }) => {
+const SignInScreen = ({ setReduxUser, navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [responseOk, setResponseOk] = useState(true);
 
   const handleSignIn = async () => {
-    let rawResponse = await fetch("http://172.16.0.44:3000/sign-in", {
+    let rawResponse = await fetch("http://192.168.1.62:3000/sign-in", {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `email=${email}&password=${password}`,
@@ -28,16 +28,13 @@ const SignInScreen = ({ navigation, setReduxUser }) => {
     // console.log(response);
     if (response.result) {
       setResponseOk(true);
-      setReduxUser(
-        response.userExists.name,
-        response.userExists._id,
-        response.userExists.token
-      );
-      AsyncStorage.setItem(
-        "userToken",
-        JSON.stringify(response.userExists.token)
-      );
-      navigation.navigate("Carousel");
+      setReduxUser({
+        pseudo: response.userExists.name,
+        id: response.userExists._id,
+        token: response.userExists.token,
+      });
+      AsyncStorage.setItem("userToken", response.userExists.token);
+      // navigation.navigate("Carousel");
     } else {
       setResponseOk(false);
       setEmail("");
@@ -59,12 +56,7 @@ const SignInScreen = ({ navigation, setReduxUser }) => {
             style={styles.logo}
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
-          <Text
-            style={[
-              styles.text,
-              { fontFamily: "AnnieUseYourTelescope_400Regular" },
-            ]}
-          >
+          <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
             Connexion
           </Text>
         </View>
@@ -113,13 +105,22 @@ const SignInScreen = ({ navigation, setReduxUser }) => {
             </Text>
           )}
         </View>
-        <Button
-          buttonStyle={styles.button}
-          title="Connexion"
-          onPress={() => {
-            handleSignIn();
-          }}
-        ></Button>
+        <View>
+          <Button
+            buttonStyle={styles.button}
+            title="Connexion"
+            onPress={() => {
+              handleSignIn();
+            }}
+          ></Button>
+          <Button
+            buttonStyle={styles.buttonback}
+            title="Revenir en arrière"
+            onPress={() => {
+              navigation.navigate("LandingScreen");
+            }}
+          ></Button>
+        </View>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
@@ -138,10 +139,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 40,
+    fontSize: 34,
     color: "#fafae0",
     paddingVertical: 20,
-    letterSpacing: 4,
+    letterSpacing: 3,
     lineHeight: 35,
   },
   image_hero: {
@@ -156,6 +157,12 @@ const styles = StyleSheet.create({
     width: 250,
     borderRadius: 20,
   },
+  buttonback: {
+    backgroundColor: "#418581",
+    margin: 10,
+    width: 250,
+    borderRadius: 20,
+  },
   responseText: {
     textAlign: "center",
     color: "#d90429",
@@ -166,8 +173,8 @@ const styles = StyleSheet.create({
 
 function mapDispatchToProps(dispatch) {
   return {
-    setReduxUser: function (pseudo, id, token) {
-      dispatch({ type: "userdata", pseudo, id, token });
+    setReduxUser: function (user) {
+      dispatch({ type: "user", user });
       // console.log("dispatch", pseudo, id, token);
     },
   };
