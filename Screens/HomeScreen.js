@@ -79,7 +79,12 @@ const HomeScreen = ({ userState }) => {
       </View>
       <View>
         {listUser.map((user, i) => (
-          <TouchableOpacity key={i} onPress={() => {}}>
+          <TouchableOpacity
+            key={i}
+            onPress={() => {
+              navigation.navigate("UserProfil");
+            }}
+          >
             <Card containerStyle={{ padding: 0, marginVertical: 25 }}>
               <View style={styles.wrapper}>
                 <View

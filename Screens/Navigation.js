@@ -5,6 +5,7 @@ import SignInScreen from "./SignInScreen";
 import LandingScreen from "./LandingScreen";
 import CarouselScreen from "./CarouselScreen";
 import HomeScreen from "./HomeScreen";
+import UserProfilScreen from "./UserProfilScreen";
 import SettingsScreen from "./SettingsScreen";
 import ProfileScreen from "./ProfileScreen";
 import EditProfileScreen from "./EditProfileScreen";
@@ -50,6 +51,7 @@ const HomeStack = () => {
         component={HomeScreen}
       />
       <StackHome.Screen name="HomeNotif" component={NotifStack} />
+      <StackHome.Screen name="UserProfil" component={UserProfilScreen} />
     </StackHome.Navigator>
   );
 };
