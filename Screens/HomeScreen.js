@@ -13,8 +13,7 @@ import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
 
-const HomeScreen = ({ userState }) => {
-  const [isConnected, setIsConnected] = useState(false);
+const HomeScreen = ({ userState, navigation }) => {
   const [listUser, setListUser] = useState([]);
 
   useEffect(() => {
@@ -54,7 +53,12 @@ const HomeScreen = ({ userState }) => {
       </View>
       <View>
         {listUser.map((user, i) => (
-          <TouchableOpacity key={i} onPress={() => {}}>
+          <TouchableOpacity
+            key={i}
+            onPress={() => {
+              navigation.navigate("UserProfil");
+            }}
+          >
             <Card containerStyle={{ padding: 0, marginVertical: 25 }}>
               <View style={styles.wrapper}>
                 <View
