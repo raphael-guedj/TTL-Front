@@ -5,8 +5,10 @@ import { Card, Button } from "react-native-elements";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-function SettingsScreen({ navigation, setReduxUser }) {
+function SettingsScreen({ navigation, setReduxUser, userToken }) {
   const handleLogOut = async () => {
+    await fetch(`http://172.16.0.15:3000/logout?token=${userToken}`);
+
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });
   };
@@ -115,4 +117,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(SettingsScreen);
+function mapStateToProps(state) {
+  return { userToken: state.user.token };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

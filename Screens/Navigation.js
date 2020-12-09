@@ -111,7 +111,7 @@ function Navigation({ setReduxUser, userState }) {
   useEffect(() => {
     const getUser = async () => {
       await AsyncStorage.getItem("userToken", function (error, data) {
-        console.log("data", data);
+        // console.log("data", data);
         setToken(data);
       });
     };
@@ -122,11 +122,11 @@ function Navigation({ setReduxUser, userState }) {
     const getUserDB = async () => {
       if (token) {
         var rawResponse = await fetch(
-          "http://172.16.0.24:3000/get-user?token=" + token
+          "http://172.16.0.15:3000/get-user?token=" + token
         );
 
         const jsonResponse = await rawResponse.json();
-        console.log("ma réponse", jsonResponse);
+        // console.log("ma réponse", jsonResponse);
 
         setReduxUser({
           pseudo: jsonResponse.user.name,
