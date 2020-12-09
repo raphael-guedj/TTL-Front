@@ -5,6 +5,7 @@ import {
   View,
   Image,
   Text,
+  RefreshControl,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
@@ -12,10 +13,23 @@ import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
+import Constants from "expo-constants";
+
+const wait = (timeout) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+};
 
 const HomeScreen = ({ userState }) => {
-  const [isConnected, setIsConnected] = useState(false);
   const [listUser, setListUser] = useState([]);
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
 
   useEffect(() => {
     async function askPermissions() {
@@ -39,13 +53,24 @@ const HomeScreen = ({ userState }) => {
   }, []);
 
   useEffect(() => {
-    console.log(listUser);
-  }, [listUser]);
+    const getUser = async () => {
+      let rawResponse = await fetch(
+        `http://172.16.0.15:3000/alluser?id=${userState.id}`
+      );
+      let response = await rawResponse.json();
+      // console.log(response);
+      setListUser(response.userExcl);
+    };
+    getUser();
+  }, [refreshing]);
 
   return (
     <ScrollView
       style={styles.container}
       contentContainerStyle={{ paddingVertical: 25 }}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
     >
       <View style={{ alignSelf: "center" }}>
         <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
@@ -123,6 +148,7 @@ const HomeScreen = ({ userState }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // marginTop: Constants.statusBarHeight,
   },
   text: {
     fontSize: 26,
@@ -170,7 +196,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log("state", state.user.id);
+  // console.log("state", state.user.id);
   return { userState: state.user };
 }
 
