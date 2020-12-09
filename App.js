@@ -33,20 +33,7 @@ export default function App() {
     return (
       <Provider store={store}>
         <NavigationContainer>
-<<<<<<< HEAD
-          {token ? (
-            PageTab
-          ) : (
-            <Stack.Navigator initialRouteName="LandingScreen" headerMode="none">
-              <Stack.Screen name="LandingScreen" component={LandingScreen} />
-              <Stack.Screen name="Inscription" component={SignUpScreen} />
-              <Stack.Screen name="Connexion" component={SignInScreen} />
-              <Stack.Screen name="Carousel" component={CarouselScreen} />
-            </Stack.Navigator>
-          )}
-=======
           <Navigation />
->>>>>>> main
         </NavigationContainer>
       </Provider>
     );
