@@ -3,9 +3,8 @@ import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button, Avatar, Accessory, Input } from "react-native-elements";
 import DropDownPicker from "react-native-dropdown-picker";
 
-import { Feather } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function EditProfileScreen({ navigation }) {
   const [name, setName] = useState("");
@@ -15,6 +14,7 @@ function EditProfileScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [activity, setActivity] = useState([]);
   const [language, setLanguage] = useState([]);
+  const [food, setFood] = useState([]);
 
   return (
     <ScrollView
@@ -161,8 +161,12 @@ function EditProfileScreen({ navigation }) {
         placeholder={"Choisir un ou plusieurs secteur(s) d'activité"}
         defaultValue={activity}
         dropDownMaxHeight={200}
-        style={{ paddingVertical: 10 }}
-        containerStyle={{ height: 40 }}
+        style={{
+          width: "100%",
+          justifyContent: "center",
+          alignSelf: "center",
+        }}
+        containerStyle={{ height: 40, margin: 10 }}
         itemStyle={{
           justifyContent: "flex-start",
         }}
@@ -195,6 +199,13 @@ function EditProfileScreen({ navigation }) {
             ),
           },
           {
+            label: "Français",
+            value: "fr",
+            icon: () => (
+              <MaterialIcons name="language" size={24} color="#418581" />
+            ),
+          },
+          {
             label: "Russe",
             value: "ru",
             icon: () => (
@@ -208,29 +219,134 @@ function EditProfileScreen({ navigation }) {
               <MaterialIcons name="language" size={24} color="#418581" />
             ),
           },
-          {
-            label: "Français",
-            value: "fr",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
         ]}
         multiple={true}
         multipleText="%d langue(s) parlée(s)"
         min={0}
         max={10}
         placeholder={"Choisir une ou plusieurs langue(s)"}
-        defaultValue={activity}
+        defaultValue={language}
         dropDownMaxHeight={200}
-        style={{ paddingVertical: 10 }}
+        style={{
+          width: "95%",
+          justifyContent: "center",
+          alignSelf: "center",
+        }}
         containerStyle={{ height: 40 }}
         itemStyle={{
           justifyContent: "flex-start",
         }}
         arrowStyle={{ marginRight: 10 }}
         onChangeItem={
-          (item) => setActivity(item) // an array of the selected items
+          (item) => setLanguage(item) // an array of the selected items
+        }
+      />
+      <Input
+        placeholder="Zone de texte"
+        onChangeText={(e) => setEmail(e)}
+        value={email}
+        placeholderTextColor="#606770"
+        leftIcon={<Entypo name="email" size={19} color="black" />}
+        leftIconContainerStyle={{
+          marginHorizontal: 5,
+        }}
+        inputStyle={{
+          color: "black",
+          fontSize: 15,
+          fontFamily: "Roboto_400Regular",
+        }}
+        inputContainerStyle={{
+          borderBottomColor: "black",
+        }}
+      />
+      <DropDownPicker
+        items={[
+          {
+            label: "Thai",
+            value: "thai",
+            icon: () => (
+              <MaterialCommunityIcons
+                name="food-fork-drink"
+                size={24}
+                color="#418581"
+              />
+            ),
+          },
+          {
+            label: "Italien",
+            value: "italian",
+            icon: () => (
+              <MaterialCommunityIcons
+                name="food-fork-drink"
+                size={24}
+                color="#418581"
+              />
+            ),
+          },
+          {
+            label: "Chinois",
+            value: "china",
+            icon: () => (
+              <MaterialCommunityIcons
+                name="food-fork-drink"
+                size={24}
+                color="#418581"
+              />
+            ),
+          },
+          {
+            label: "Americain",
+            value: "burger",
+            icon: () => (
+              <MaterialCommunityIcons
+                name="food-fork-drink"
+                size={24}
+                color="#418581"
+              />
+            ),
+          },
+          {
+            label: "Japonais",
+            value: "jap",
+            icon: () => (
+              <MaterialCommunityIcons
+                name="food-fork-drink"
+                size={24}
+                color="#418581"
+              />
+            ),
+          },
+          {
+            label: "Autre",
+            value: "other",
+            icon: () => (
+              <MaterialCommunityIcons
+                name="food-fork-drink"
+                size={24}
+                color="#418581"
+              />
+            ),
+          },
+        ]}
+        multiple={true}
+        multipleText="%d mes cuisine(s) préférée(s)"
+        min={0}
+        max={10}
+        placeholder={"Choisir un ou plusieurs type(s) de cuisine(s)"}
+        defaultValue={food}
+        dropDownMaxHeight={200}
+        style={{
+          width: "95%",
+          justifyContent: "center",
+          alignSelf: "center",
+        }}
+        containerStyle={{ height: 40 }}
+        itemStyle={{
+          justifyContent: "flex-start",
+        }}
+        arrowStyle={{ marginRight: 10 }}
+        onChangeItem={
+          (item) => setFood(item) // an array of the selected items
         }
       />
 
@@ -238,7 +354,7 @@ function EditProfileScreen({ navigation }) {
         <Button
           buttonStyle={{
             backgroundColor: "#418581",
-            margin: 10,
+            margin: 20,
             width: 250,
             borderRadius: 20,
             alignSelf: "center",
@@ -276,6 +392,8 @@ const styles = StyleSheet.create({
   },
   avatar: {
     flexDirection: "row",
+    margin: 10,
+    alignItems: "center",
   },
   image: {
     width: 120,
