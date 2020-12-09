@@ -332,8 +332,13 @@ function EditProfileScreen({ navigation }) {
         multipleText="%d mes cuisine(s) préférée(s)"
         min={0}
         max={10}
+<<<<<<< HEAD
         placeholder={"Choisir un ou plusieurs type(s) de cuisine(s)"}
         defaultValue={food}
+=======
+        placeholder={"Choisir une ou plusieurs langue(s)"}
+        defaultValue={language}
+>>>>>>> main
         dropDownMaxHeight={200}
         style={{
           width: "95%",
@@ -346,7 +351,11 @@ function EditProfileScreen({ navigation }) {
         }}
         arrowStyle={{ marginRight: 10 }}
         onChangeItem={
+<<<<<<< HEAD
           (item) => setFood(item) // an array of the selected items
+=======
+          (item) => setLanguage(item) // an array of the selected items
+>>>>>>> main
         }
       />
 

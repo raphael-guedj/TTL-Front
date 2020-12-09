@@ -21,7 +21,7 @@ const wait = (timeout) => {
   });
 };
 
-const HomeScreen = ({ userState }) => {
+const HomeScreen = ({ userState, navigation }) => {
   const [listUser, setListUser] = useState([]);
   const [refreshing, setRefreshing] = React.useState(false);
 
@@ -79,7 +79,12 @@ const HomeScreen = ({ userState }) => {
       </View>
       <View>
         {listUser.map((user, i) => (
-          <TouchableOpacity key={i} onPress={() => {}}>
+          <TouchableOpacity
+            key={i}
+            onPress={() => {
+              navigation.navigate("Profil Utilisateur", user);
+            }}
+          >
             <Card containerStyle={{ padding: 0, marginVertical: 25 }}>
               <View style={styles.wrapper}>
                 <View

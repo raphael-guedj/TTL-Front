@@ -5,6 +5,7 @@ import SignInScreen from "./SignInScreen";
 import LandingScreen from "./LandingScreen";
 import CarouselScreen from "./CarouselScreen";
 import HomeScreen from "./HomeScreen";
+import UserProfilScreen from "./UserProfilScreen";
 import SettingsScreen from "./SettingsScreen";
 import ProfileScreen from "./ProfileScreen";
 import EditProfileScreen from "./EditProfileScreen";
@@ -50,6 +51,21 @@ const HomeStack = () => {
         component={HomeScreen}
       />
       <StackHome.Screen name="HomeNotif" component={NotifStack} />
+      <StackHome.Screen
+        options={{
+          title: "Profil",
+          headerStyle: {
+            backgroundColor: "#Fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+
+          headerRight: () => <IconBar />,
+        }}
+        name="Profil Utilisateur"
+        component={UserProfilScreen}
+      />
     </StackHome.Navigator>
   );
 };
