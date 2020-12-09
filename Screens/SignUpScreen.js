@@ -33,7 +33,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
     ) {
       if (password === passwordConfirm) {
         setPasswordError(false);
-        let rawResponse = await fetch("http://192.168.1.62:3000/sign-up", {
+        let rawResponse = await fetch("http://172.16.0.24:3000/sign-up", {
           method: "post",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: `name=${pseudo}&email=${email}&password=${password}`,

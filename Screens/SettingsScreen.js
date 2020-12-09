@@ -13,7 +13,7 @@ function SettingsScreen({ navigation, setReduxUser }) {
 
   return (
     <View style={styles.card}>
-      <ScrollView style={{ marginTop: 15 }}>
+      <ScrollView>
         <Card>
           <Card.Title style={styles.title}>Mentions légales</Card.Title>
           <Card.Divider />
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     color: "#418581",
   },
   card: {
-    marginTop: 40,
+    marginTop: 0,
   },
 });
 

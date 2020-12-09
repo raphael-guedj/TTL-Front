@@ -8,14 +8,14 @@ function ProfileScreen({ navigation }) {
     <View
       style={{
         flex: 1,
-        margin: 30,
+        margin: 10,
       }}
     >
       <Feather
         style={styles.settings}
         name="settings"
         size={28}
-        color="#F9B34C"
+        color="#418581"
         onPress={() => navigation.navigate("Reglage")}
       />
       <View
@@ -49,7 +49,7 @@ function ProfileScreen({ navigation }) {
         <View>
           <Button
             buttonStyle={{
-              backgroundColor: "#F9B34C",
+              backgroundColor: "#418581",
               margin: 10,
               width: 250,
               borderRadius: 20,
@@ -60,7 +60,7 @@ function ProfileScreen({ navigation }) {
           />
           <Button
             buttonStyle={{
-              backgroundColor: "#F9B34C",
+              backgroundColor: "#418581",
               margin: 10,
               width: 250,
               borderRadius: 20,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
   title1: {
     fontSize: 20,
-    color: "#F9B34C",
+    color: "#418581",
     margin: 10,
   },
   title2: {
@@ -112,9 +112,9 @@ const styles = StyleSheet.create({
   avatar: {
     justifyContent: "center",
     alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#F9B34C",
-    borderRadius: 30,
+    // borderWidth: 1,
+    // borderColor: "#418581",
+    // borderRadius: 30,
     padding: 10,
   },
   image: {
