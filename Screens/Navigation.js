@@ -5,6 +5,9 @@ import SignInScreen from "./SignInScreen";
 import LandingScreen from "./LandingScreen";
 import HomeScreen from "./HomeScreen";
 import SettingsScreen from "./SettingsScreen";
+import ProfileScreen from "./ProfileScreen";
+import EditProfileScreen from "./EditProfileScreen";
+
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -66,7 +69,7 @@ const ProfilStack = () => {
   return (
     <StackProfil.Navigator>
       <StackProfil.Screen name="Profil" component={ProfileScreen} />
-      <StackProfil.Screen name="Modifier" component={HomeScreen} />
+      <StackProfil.Screen name="Modifier" component={EditProfileScreen} />
       <StackProfil.Screen name="Reglage" component={SettingsScreen} />
     </StackProfil.Navigator>
   );
@@ -109,7 +112,7 @@ function Navigation({ setReduxUser, userState }) {
   useEffect(() => {
     const getUser = async () => {
       await AsyncStorage.getItem("userToken", function (error, data) {
-        console.log("data", data);
+        // console.log("data", data);
         setToken(data);
       });
     };
@@ -124,7 +127,7 @@ function Navigation({ setReduxUser, userState }) {
         );
 
         const jsonResponse = await rawResponse.json();
-        console.log("ma réponse", jsonResponse);
+        // console.log("ma réponse", jsonResponse);
 
         setReduxUser({
           pseudo: jsonResponse.user.name,

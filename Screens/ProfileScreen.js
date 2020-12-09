@@ -33,14 +33,17 @@ function ProfileScreen({ navigation }) {
           <Card.Title style={styles.title1}>Profil</Card.Title>
 
           <Text>
+            {/* <Feather name="edit" size={20} color="black" /> */}
             <Text style={styles.title2}> Prénom: </Text>
             <Text style={styles.text}> Paul</Text>
           </Text>
           <Text>
+            {/* <Feather name="map-pin" size={20} color="black" /> */}
             <Text style={styles.title2}> Ville: </Text>
             <Text style={styles.text}> Marseille</Text>
           </Text>
           <Text>
+            {/* <Feather name="briefcase" size={20} color="black" /> */}
             <Text style={styles.title2}> Profession: </Text>
             <Text style={styles.text}>Développeur web </Text>
           </Text>
@@ -56,7 +59,7 @@ function ProfileScreen({ navigation }) {
               alignSelf: "center",
             }}
             title="Modifier mon profil"
-            onPress={() => navigation.navigate("LandingScreen")}
+            onPress={() => navigation.navigate("Modifier")}
           />
           <Button
             buttonStyle={{

@@ -13,7 +13,7 @@ import {
   Roboto_400Regular,
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
-import { AnnieUseYourTelescope_400Regular } from "@expo-google-fonts/annie-use-your-telescope";
+
 import { FaunaOne_400Regular } from "@expo-google-fonts/fauna-one";
 import Navigation from "./Screens/Navigation";
 
@@ -24,7 +24,6 @@ export default function App() {
     Roboto_300Light,
     Roboto_400Regular,
     Roboto_700Bold,
-    AnnieUseYourTelescope_400Regular,
     FaunaOne_400Regular,
   });
   if (!fontsLoaded) {
