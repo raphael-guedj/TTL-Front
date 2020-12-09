@@ -6,12 +6,14 @@ import LandingScreen from "./LandingScreen";
 import CarouselScreen from "./CarouselScreen";
 import HomeScreen from "./HomeScreen";
 import SettingsScreen from "./SettingsScreen";
+import ProfileScreen from "./ProfileScreen";
+import EditProfileScreen from "./EditProfileScreen";
+
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
-import ProfileScreen from "./ProfileScreen";
 
 const Stack = createStackNavigator();
 const StackHome = createStackNavigator();
@@ -66,7 +68,7 @@ const ProfilStack = () => {
   return (
     <StackProfil.Navigator>
       <StackProfil.Screen name="Profil" component={ProfileScreen} />
-      <StackProfil.Screen name="Modifier" component={HomeScreen} />
+      <StackProfil.Screen name="Modifier" component={EditProfileScreen} />
       <StackProfil.Screen name="Reglage" component={SettingsScreen} />
     </StackProfil.Navigator>
   );
