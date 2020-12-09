@@ -149,18 +149,6 @@ export default function App() {
     return (
       <Provider store={store}>
         <NavigationContainer>
-<<<<<<< HEAD
-          <Stack.Navigator initialRouteName="ProfileScreen" headerMode="none">
-            <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-            <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
-            <Stack.Screen name="LandingScreen" component={LandingScreen} />
-
-            <Stack.Screen name="Inscription" component={SignUpScreen} />
-            <Stack.Screen name="Connexion" component={SignInScreen} />
-            <Stack.Screen name="Carousel" component={CarouselScreen} />
-            <Stack.Screen name="Home" component={PageTab} />
-          </Stack.Navigator>
-=======
           {token ? (
             PageTab
           ) : (
@@ -171,7 +159,6 @@ export default function App() {
               <Stack.Screen name="Carousel" component={CarouselScreen} />
             </Stack.Navigator>
           )}
->>>>>>> main
         </NavigationContainer>
       </Provider>
     );

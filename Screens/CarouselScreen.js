@@ -10,11 +10,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
-<<<<<<< HEAD
-import LandingScreen from "./LandingScreen";
-=======
-import { TouchableOpacity } from "react-native-gesture-handler";
->>>>>>> main
+// import { TouchableOpacity } from "react-native-gesture-handler";
 
 // slides
 const slides = [

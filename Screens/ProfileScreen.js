@@ -8,76 +8,68 @@ function ProfileScreen({ navigation }) {
     <View
       style={{
         flex: 1,
-        justifyContent: "space-around",
+        margin: 30,
       }}
     >
-      <Button
-        icon={
-          <Feather
-            style={styles.settings}
-            name="settings"
-            size={28}
-            color="#418581"
-          />
-        }
-        type="outline"
-        buttonStyle={{
-          backgroundColor: "#ffffff",
-          width: 90,
-          height: 60,
-          margin: 20,
+      <Feather
+        style={styles.settings}
+        name="settings"
+        size={28}
+        color="#F9B34C"
+        onPress={() => navigation.navigate("SettingsScreen")}
+      />
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "space-evenly",
         }}
-      ></Button>
+      >
+        <View style={styles.avatar}>
+          <Image
+            style={styles.image}
+            source={require("../assets/profile.jpg")}
+          />
 
-      <Card containerStyle={styles.container}>
-        <View style={styles.row}>
-          <View>
-            <Avatar
-              size="xlarge"
-              rounded
-              // source={require("../assets/profile.jpg")}
-              source={{
-                uri:
-                  "https://www.polymtl.ca/calendrier/sites/calendrier.amigow2020.polymtl.ca/files/googlelogo.jpg",
-              }}
-              onPress={() => console.log("Works!")}
-              activeOpacity={0.7}
-            >
-              {/* <Accessory /> */}
-            </Avatar>
-          </View>
+          <Card.Title style={styles.title1}>Profil</Card.Title>
 
-          <View>
-            <Text style={styles.text}>Prénom: Kevin</Text>
-            <Text style={styles.text}>Ville: Marseille </Text>
-            <Text style={styles.text}>Profession: Développeur</Text>
-          </View>
+          <Text>
+            <Text style={styles.title2}> Prénom: </Text>
+            <Text style={styles.text}> Paul</Text>
+          </Text>
+          <Text>
+            <Text style={styles.title2}> Ville: </Text>
+            <Text style={styles.text}> Marseille</Text>
+          </Text>
+          <Text>
+            <Text style={styles.title2}> Profession: </Text>
+            <Text style={styles.text}>Développeur web </Text>
+          </Text>
         </View>
-      </Card>
 
-      <View>
-        <Button
-          buttonStyle={{
-            backgroundColor: "#418581",
-            margin: 10,
-            width: 250,
-            borderRadius: 20,
-            alignSelf: "center",
-          }}
-          title="Modifier mon profil"
-          onPress={() => navigation.navigate("LandingScreen")}
-        />
-        <Button
-          buttonStyle={{
-            backgroundColor: "#418581",
-            margin: 10,
-            width: 250,
-            borderRadius: 20,
-            alignSelf: "center",
-          }}
-          title="Mes lunchs"
-          onPress={() => navigation.navigate("LandingScreen")}
-        />
+        <View>
+          <Button
+            buttonStyle={{
+              backgroundColor: "#F9B34C",
+              margin: 10,
+              width: 250,
+              borderRadius: 20,
+              alignSelf: "center",
+            }}
+            title="Modifier mon profil"
+            onPress={() => navigation.navigate("LandingScreen")}
+          />
+          <Button
+            buttonStyle={{
+              backgroundColor: "#F9B34C",
+              margin: 10,
+              width: 250,
+              borderRadius: 20,
+              alignSelf: "center",
+            }}
+            title="Mes lunchs"
+            onPress={() => navigation.navigate("LandingScreen")}
+          />
+        </View>
       </View>
     </View>
   );
@@ -92,40 +84,49 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    height: "40%",
+    justifyContent: "space-around",
   },
-  // title:{
-  //   fontSize:
-  // },
-  text: {
+  title1: {
     fontSize: 20,
+    color: "#F9B34C",
+    margin: 10,
+  },
+  title2: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "black",
+    margin: 10,
+  },
+
+  text: {
+    fontSize: 15,
     color: "black",
     margin: 5,
     justifyContent: "center",
     alignSelf: "center",
   },
+
   button: {
     color: "#009788",
   },
-  logo: {
-    width: 120,
-    height: 120,
-    flex: 1,
-    justifyContent: "center",
-    alignSelf: "center",
-  },
-
   avatar: {
-    flex: 1,
     justifyContent: "center",
-    alignSelf: "center",
-  },
-  row: {
     alignItems: "center",
-    justifyContent: "space-evenly",
+    borderWidth: 1,
+    borderColor: "#F9B34C",
+    borderRadius: 30,
+    padding: 10,
+  },
+  image: {
+    width: 160,
+    height: 160,
+    borderRadius: 100,
   },
   settings: {
     margin: 20,
+  },
+  space: {
+    justifyContent: "space-around",
   },
 });
 
