@@ -221,7 +221,7 @@ function EditProfileScreen({ navigation }) {
         min={0}
         max={10}
         placeholder={"Choisir une ou plusieurs langue(s)"}
-        defaultValue={activity}
+        defaultValue={language}
         dropDownMaxHeight={200}
         style={{ paddingVertical: 10 }}
         containerStyle={{ height: 40 }}
@@ -230,7 +230,7 @@ function EditProfileScreen({ navigation }) {
         }}
         arrowStyle={{ marginRight: 10 }}
         onChangeItem={
-          (item) => setActivity(item) // an array of the selected items
+          (item) => setLanguage(item) // an array of the selected items
         }
       />
 

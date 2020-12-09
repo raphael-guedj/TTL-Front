@@ -51,7 +51,21 @@ const HomeStack = () => {
         component={HomeScreen}
       />
       <StackHome.Screen name="HomeNotif" component={NotifStack} />
-      <StackHome.Screen name="UserProfil" component={UserProfilScreen} />
+      <StackHome.Screen
+        options={{
+          title: "Profil",
+          headerStyle: {
+            backgroundColor: "#Fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+
+          headerRight: () => <IconBar />,
+        }}
+        name="Profil Utilisateur"
+        component={UserProfilScreen}
+      />
     </StackHome.Navigator>
   );
 };

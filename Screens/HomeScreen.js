@@ -21,7 +21,7 @@ const wait = (timeout) => {
   });
 };
 
-const HomeScreen = ({ userState }) => {
+const HomeScreen = ({ userState, navigation }) => {
   const [listUser, setListUser] = useState([]);
   const [refreshing, setRefreshing] = React.useState(false);
 
@@ -82,7 +82,7 @@ const HomeScreen = ({ userState }) => {
           <TouchableOpacity
             key={i}
             onPress={() => {
-              navigation.navigate("UserProfil");
+              navigation.navigate("Profil Utilisateur", user);
             }}
           >
             <Card containerStyle={{ padding: 0, marginVertical: 25 }}>
