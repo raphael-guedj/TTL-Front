@@ -109,7 +109,7 @@ function Navigation({ setReduxUser, userState }) {
   useEffect(() => {
     const getUser = async () => {
       await AsyncStorage.getItem("userToken", function (error, data) {
-        console.log("data", data);
+        // console.log("data", data);
         setToken(data);
       });
     };
@@ -124,7 +124,7 @@ function Navigation({ setReduxUser, userState }) {
         );
 
         const jsonResponse = await rawResponse.json();
-        console.log("ma réponse", jsonResponse);
+        // console.log("ma réponse", jsonResponse);
 
         setReduxUser({
           pseudo: jsonResponse.user.name,

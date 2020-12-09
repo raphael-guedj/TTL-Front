@@ -13,8 +13,9 @@ import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
 
-const HomeScreen = (props) => {
-  const [isTokenExist, setIsTokenExist] = useState(false);
+const HomeScreen = ({ userState }) => {
+  const [isConnected, setIsConnected] = useState(false);
+  const [listUser, setListUser] = useState([]);
 
   useEffect(() => {
     async function askPermissions() {
@@ -27,12 +28,19 @@ const HomeScreen = (props) => {
     }
     askPermissions();
     const getUser = async () => {
-      // let rawResponse = await fetch("http://172.16.0.22:3000/user-list");
-      // let response = await rawResponse.json();
+      let rawResponse = await fetch(
+        `http://172.16.0.15:3000/alluser?id=${userState.id}`
+      );
+      let response = await rawResponse.json();
       // console.log(response);
+      setListUser(response.userExcl);
     };
     getUser();
   }, []);
+
+  useEffect(() => {
+    console.log(listUser);
+  }, [listUser]);
 
   return (
     <ScrollView
@@ -45,7 +53,7 @@ const HomeScreen = (props) => {
         </Text>
       </View>
       <View>
-        {[1, 2, 3, 4].map((e, i) => (
+        {listUser.map((user, i) => (
           <TouchableOpacity key={i} onPress={() => {}}>
             <Card containerStyle={{ padding: 0, marginVertical: 25 }}>
               <View style={styles.wrapper}>
@@ -60,8 +68,9 @@ const HomeScreen = (props) => {
                         source={require("../assets/clara.jpg")}
                         style={styles.img}
                       />
+
                       <Badge
-                        status="success"
+                        status={user.isConnected ? "success" : "error"}
                         containerStyle={{
                           position: "absolute",
                           top: 2,
@@ -70,7 +79,7 @@ const HomeScreen = (props) => {
                       />
                     </View>
                     <View style={{ paddingHorizontal: 10 }}>
-                      <ListItem.Title>Clara</ListItem.Title>
+                      <ListItem.Title>{user.name}</ListItem.Title>
                       <ListItem.Subtitle>15 reviews</ListItem.Subtitle>
                     </View>
                   </View>
@@ -100,7 +109,8 @@ const HomeScreen = (props) => {
               </View>
 
               <View style={styles.containerJob}>
-                <Text>Profession: Architecte</Text>
+                <Text style={{ fontWeight: "bold" }}>Profession: </Text>
+                <Text>Architecte</Text>
               </View>
             </Card>
           </TouchableOpacity>
@@ -153,14 +163,15 @@ const styles = StyleSheet.create({
   containerJob: {
     width: "100%",
     paddingVertical: 8,
-    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
     backgroundColor: "#fff9f0",
   },
 });
 
 function mapStateToProps(state) {
-  // console.log(state.data);
-  // return { user: state.user };
+  console.log("state", state.user.id);
+  return { userState: state.user };
 }
 
-export default HomeScreen;
+export default connect(mapStateToProps, null)(HomeScreen);
