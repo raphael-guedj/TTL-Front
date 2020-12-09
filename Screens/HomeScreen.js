@@ -23,7 +23,7 @@ const wait = (timeout) => {
 
 const HomeScreen = ({ userState, navigation }) => {
   const [listUser, setListUser] = useState([]);
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
