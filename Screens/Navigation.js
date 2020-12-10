@@ -5,7 +5,6 @@ import SignInScreen from "./SignInScreen";
 import LandingScreen from "./LandingScreen";
 import HomeScreen from "./HomeScreen";
 import SettingsScreen from "./SettingsScreen";
-import ProfileScreen from "./ProfileScreen";
 import EditProfileScreen from "./EditProfileScreen";
 
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
