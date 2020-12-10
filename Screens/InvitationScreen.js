@@ -34,7 +34,7 @@ const InvitationScreen = () => {
 
   // ======= All states that manage date ======= //
   const [hours, setHours] = useState("");
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState("date");
   const [day, setDay] = useState(0);
@@ -116,6 +116,14 @@ const InvitationScreen = () => {
 
   const changeHeight = async () => {
     setHeightDropdown(200);
+  };
+
+  const sendInvitation = async () => {
+    let rawResponse = await fetch("http://172.16.0.44:3000/send-invitation", {
+      method: "post",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `name=${pseudo}&email=${email}&password=${password}`,
+    });
   };
 
   return (

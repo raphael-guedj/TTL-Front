@@ -8,14 +8,13 @@ import UserProfilScreen from "./UserProfilScreen";
 import SettingsScreen from "./SettingsScreen";
 import ProfileScreen from "./ProfileScreen";
 import EditProfilScreen from "./EditProfileScreen";
+import InvitationScreen from "./InvitationScreen";
 
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
-import ProfileScreen from "./ProfileScreen";
-import InvitationScreen from "./InvitationScreen";
 
 const Stack = createStackNavigator();
 const StackHome = createStackNavigator();
