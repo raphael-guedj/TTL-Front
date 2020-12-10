@@ -33,16 +33,12 @@ const InvitationScreen = () => {
   const [duration, setDuration] = useState(0);
 
   // ======= All states that manage date ======= //
-  const [hours, setHours] = useState("");
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState("date");
-  const [day, setDay] = useState(0);
-  const [month, setMonth] = useState(0);
-  const [year, setYear] = useState(0);
-  const [dateIsChange, setDateIsChange] = useState(false); // Handle the state when change date
-  const [lastDate, setLastDate] = useState(""); // To keep the last date in DatePicker => value to return in POST method
 
+  // ======= State that keep value of hour in dropdown ======= //
+  const [hours, setHours] = useState("");
   // ======= State that keep value of kitchen in dropdown ======= //
   const [kitchen, setKitchen] = useState("");
 
@@ -51,6 +47,8 @@ const InvitationScreen = () => {
 
   // ======= State that keep value of address in input ======= //
   const [address, setAddress] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState(false);
 
   useEffect(() => {
     console.log(inputMessage);
@@ -76,29 +74,6 @@ const InvitationScreen = () => {
     console.log(address);
   }, [address]);
 
-  useEffect(() => {
-    const saveLastDate = async () => {
-      setLastDate(`${day}/${month}/${year}`);
-      console.log(lastDate);
-      setDateIsChange(false);
-    };
-    saveLastDate();
-  }, [dateIsChange]);
-
-  const setTheLastDate = async () => {
-    console.log(date.getDate());
-    setDay(date.getDate());
-    console.log(date.getMonth() + 1);
-    setMonth(date.getMonth() + 1);
-    console.log(date.getFullYear());
-    setYear(date.getFullYear());
-    setDateIsChange(true);
-  };
-
-  useEffect(() => {
-    setTheLastDate();
-  }, [date]);
-
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === "ios");
@@ -119,11 +94,29 @@ const InvitationScreen = () => {
   };
 
   const sendInvitation = async () => {
-    let rawResponse = await fetch("http://172.16.0.44:3000/send-invitation", {
-      method: "post",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `name=${pseudo}&email=${email}&password=${password}`,
-    });
+    if (
+      inputMessage !== "" &&
+      duration !== "" &&
+      date !== "" &&
+      hours !== "" &&
+      kitchen !== "" &&
+      location !== "" &&
+      address !== ""
+    ) {
+      let rawResponse = await fetch("http://172.16.0.44:3000/new-invitation", {
+        method: "post",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=5fd22e37f06c1f1f9855acdd&receiver=5fd0f4804586b61e24acbb0f`,
+      });
+
+      var responseJSON = await rawResponse.json();
+      console.log(responseJSON);
+      if (responseJSON.response) {
+        console.log("ma réponse est bonne");
+      }
+    } else {
+      setErrorMessage(true);
+    }
   };
 
   return (
@@ -270,9 +263,25 @@ const InvitationScreen = () => {
               />
             </View>
             <View style={styles.date}>
-              <Text style={{ marginBottom: 5 }}>Date proposée</Text>
+              <Text style={{ marginBottom: 20 }}>Date proposée</Text>
               <View>
-                <Button onPress={showDatepicker} title="Choisir une date" />
+                <Button
+                  icon={<Feather name="calendar" size={24} color="black" />}
+                  style={{
+                    width: "90%",
+                    alignSelf: "center",
+                  }}
+                  buttonStyle={{ backgroundColor: "#F9B34C" }}
+                  titleStyle={{ color: "black" }}
+                  onPress={showDatepicker}
+                  title={
+                    !date
+                      ? "Choisir une date"
+                      : `${date.getDate()}/${
+                          date.getMonth() + 1
+                        }/${date.getFullYear()}`
+                  }
+                />
               </View>
               {show && (
                 <DateTimePicker
@@ -538,6 +547,11 @@ const InvitationScreen = () => {
               />
             </View>
             <View>
+              {errorMessage && (
+                <Text style={{ color: "red" }}>
+                  Vérifier que toutes les informations ont bien été remplies
+                </Text>
+              )}
               <Button
                 buttonStyle={{
                   backgroundColor: "#418581",
