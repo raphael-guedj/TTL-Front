@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
-import { Card, Button, Avatar, Accessory, Input } from "react-native-elements";
+import {
+  Card,
+  Button,
+  Avatar,
+  Accessory,
+  Input,
+  CheckBox,
+} from "react-native-elements";
 
 import DropDownPicker from "react-native-dropdown-picker";
 import Textarea from "react-native-textarea";
+import InputScrollView from "react-native-input-scroll-view";
 
 import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -18,6 +26,10 @@ function EditProfileScreen({ navigation }) {
   const [language, setLanguage] = useState([]);
   const [food, setFood] = useState([]);
   const [text, setText] = useState("");
+  const [wishes1, setWishes1] = useState(true);
+  const [wishes2, setWishes2] = useState(true);
+  const [wishes3, setWishes3] = useState(true);
+  const [wishes4, setWishes4] = useState(true);
 
   return (
     <ScrollView
@@ -158,10 +170,10 @@ function EditProfileScreen({ navigation }) {
           },
         ]}
         multiple={true}
-        multipleText="%d secteur(s) d'activité séléctionné(s)"
+        multipleText="%d secteur d'activité séléctionné"
         min={0}
-        max={3}
-        placeholder={"Choisir un ou plusieurs secteur(s) d'activité"}
+        max={1}
+        placeholder={"Choisir un secteur d'activité"}
         defaultValue={activity}
         dropDownMaxHeight={200}
         style={{
@@ -226,7 +238,7 @@ function EditProfileScreen({ navigation }) {
         multiple={true}
         multipleText="%d langue(s) parlée(s)"
         min={0}
-        max={10}
+        max={3}
         placeholder={"Choisir une ou plusieurs langue(s)"}
         defaultValue={language}
         dropDownMaxHeight={200}
@@ -244,18 +256,54 @@ function EditProfileScreen({ navigation }) {
           (item) => setLanguage(item) // an array of the selected items
         }
       />
+
       <View style={styles.container}>
-        <Textarea
-          containerStyle={styles.textareaContainer}
-          style={styles.textarea}
-          onChangeText={(e) => setText(e)}
-          defaultValue={text}
-          maxLength={150}
-          placeholder={"Type your text here..."}
-          placeholderTextColor={"#606770"}
-          underlineColorAndroid={"transparent"}
+        <InputScrollView>
+          <Textarea
+            containerStyle={styles.textareaContainer}
+            style={styles.textarea}
+            onChangeText={(e) => setText(e)}
+            defaultValue={text}
+            maxLength={300}
+            minLength={80}
+            placeholder={"Type your text here..."}
+            placeholderTextColor={"#606770"}
+            underlineColorAndroid={"transparent"}
+          />
+        </InputScrollView>
+      </View>
+      <View style={{ marginTop: 10, marginBottom: 15 }}>
+        <CheckBox
+          title="Rencontrer de nouvelles personnes"
+          onPress={() => setWishes1(!wishes1)}
+          checked={wishes1}
+          checkedColor="#418581"
+          size={20}
+        />
+        <CheckBox
+          title="En reconversion professionnelle"
+          onPress={() => setWishes2(!wishes2)}
+          checked={wishes2}
+          checkedColor="#418581"
+          size={20}
+        />
+        <CheckBox
+          title="Recherche d'opportunités professionnelles"
+          onPress={() => setWishes3(!wishes3)}
+          checked={wishes3}
+          checkedColor="#418581"
+          size={20}
+        />
+        <CheckBox
+          title="Sortir du bureau"
+          onPress={() => setWishes4(!wishes4)}
+          checked={wishes4}
+          checkedColor="#418581"
+          size={20}
+          fontFamily="Roboto_400Regular"
         />
       </View>
+
       <DropDownPicker
         items={[
           {
@@ -328,7 +376,7 @@ function EditProfileScreen({ navigation }) {
         multiple={true}
         multipleText="%d mes cuisine(s) préférée(s)"
         min={0}
-        max={10}
+        max={3}
         placeholder={"Choisir un ou plusieurs type(s) de cuisine(s)"}
         defaultValue={food}
         dropDownMaxHeight={200}
@@ -398,7 +446,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   textareaContainer: {
-    height: 100,
+    height: 130,
     padding: 5,
     backgroundColor: "#FFFFFF",
     borderWidth: 0.5,
@@ -408,8 +456,14 @@ const styles = StyleSheet.create({
   textarea: {
     textAlignVertical: "top", // hack android
     height: 170,
-    fontSize: 14,
+    fontSize: 12,
     color: "#333",
+  },
+  rowArea: {
+    width: "95%",
+    paddingVertical: 8,
+    flexDirection: "row",
+    marginLeft: 10,
   },
 });
 
