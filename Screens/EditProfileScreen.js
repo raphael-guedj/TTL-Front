@@ -69,9 +69,9 @@ const EditProfilScreen = ({ navigation, userState }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(activity);
-  }, [activity]);
+  // useEffect(() => {
+  // console.log(activity);
+  // }, [activity]);
 
   return (
     <ScrollView
@@ -245,7 +245,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
         }}
         arrowStyle={{ marginRight: 10 }}
         onChangeItem={
-          (item) => setActivity(item) // an array of the selected items
+          (item) => setActivity(item.value) // an array of the selected items
         }
       />
       <DropDownPicker
@@ -323,9 +323,9 @@ const EditProfilScreen = ({ navigation, userState }) => {
           },
         ]}
         multiple={true}
-        multipleText="%d langue(s) parlée(s)"
+        multipleText="%d langue(s) sélectionnée(s)"
         min={0}
-        max={10}
+        max={3}
         placeholder={"Choisir une ou plusieurs langue(s) (3 max)"}
         defaultValue={language}
         dropDownMaxHeight={200}
