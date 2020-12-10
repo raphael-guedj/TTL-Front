@@ -66,6 +66,25 @@ const HomeStack = () => {
         name="Profil Utilisateur"
         component={UserProfilScreen}
       />
+      <StackProfil.Screen
+        name="Modifier le profil"
+        component={EditProfilScreen}
+      />
+      <StackHome.Screen
+        options={{
+          title: "Invitation",
+          headerStyle: {
+            backgroundColor: "#Fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+
+          headerRight: () => <IconBar />,
+        }}
+        name="Invitation"
+        component={InvitationScreen}
+      />
     </StackHome.Navigator>
   );
 };
@@ -141,7 +160,7 @@ function Navigation({ setReduxUser, userState }) {
     const getUserDB = async () => {
       if (token) {
         var rawResponse = await fetch(
-          "http://172.16.0.44:3000/get-user?token=" + token
+          "http://172.16.0.21:3000/get-user?token=" + token
         );
 
         const jsonResponse = await rawResponse.json();

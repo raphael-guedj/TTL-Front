@@ -79,18 +79,18 @@ const InvitationScreen = () => {
   useEffect(() => {
     const saveLastDate = async () => {
       setLastDate(`${day}/${month}/${year}`);
-      console.log(lastDate);
+      // console.log(lastDate);
       setDateIsChange(false);
     };
     saveLastDate();
   }, [dateIsChange]);
 
   const setTheLastDate = async () => {
-    console.log(date.getDate());
+    // console.log(date.getDate());
     setDay(date.getDate());
-    console.log(date.getMonth() + 1);
+    // console.log(date.getMonth() + 1);
     setMonth(date.getMonth() + 1);
-    console.log(date.getFullYear());
+    // console.log(date.getFullYear());
     setYear(date.getFullYear());
     setDateIsChange(true);
   };
@@ -119,7 +119,7 @@ const InvitationScreen = () => {
   };
 
   const sendInvitation = async () => {
-    let rawResponse = await fetch("http://172.16.0.44:3000/send-invitation", {
+    let rawResponse = await fetch("http://172.16.0.21:3000/send-invitation", {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `name=${pseudo}&email=${email}&password=${password}`,
