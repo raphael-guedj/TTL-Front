@@ -21,9 +21,9 @@ const wait = (timeout) => {
   });
 };
 
-const HomeScreen = ({ userState }) => {
+const HomeScreen = ({ userState, navigation }) => {
   const [listUser, setListUser] = useState([]);
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -55,7 +55,7 @@ const HomeScreen = ({ userState }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.15:3000/alluser?id=${userState.id}`
+        `http://172.16.0.21:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);
@@ -79,7 +79,12 @@ const HomeScreen = ({ userState }) => {
       </View>
       <View>
         {listUser.map((user, i) => (
-          <TouchableOpacity key={i} onPress={() => {}}>
+          <TouchableOpacity
+            key={i}
+            onPress={() => {
+              navigation.navigate("Profil Utilisateur", user);
+            }}
+          >
             <Card containerStyle={{ padding: 0, marginVertical: 25 }}>
               <View style={styles.wrapper}>
                 <View

@@ -4,8 +4,10 @@ import SignUpScreen from "./SignUpScreen";
 import SignInScreen from "./SignInScreen";
 import LandingScreen from "./LandingScreen";
 import HomeScreen from "./HomeScreen";
+import UserProfilScreen from "./UserProfilScreen";
 import SettingsScreen from "./SettingsScreen";
-import EditProfileScreen from "./EditProfileScreen";
+import ProfileScreen from "./ProfileScreen";
+import EditProfilScreen from "./EditProfileScreen";
 
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -50,6 +52,21 @@ const HomeStack = () => {
         component={HomeScreen}
       />
       <StackHome.Screen name="HomeNotif" component={NotifStack} />
+      <StackHome.Screen
+        options={{
+          title: "Profil",
+          headerStyle: {
+            backgroundColor: "#Fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+
+          headerRight: () => <IconBar />,
+        }}
+        name="Profil Utilisateur"
+        component={UserProfilScreen}
+      />
     </StackHome.Navigator>
   );
 };
@@ -68,7 +85,10 @@ const ProfilStack = () => {
   return (
     <StackProfil.Navigator>
       <StackProfil.Screen name="Profil" component={ProfileScreen} />
-      <StackProfil.Screen name="Modifier" component={EditProfileScreen} />
+      <StackProfil.Screen
+        name="Modifier le profil"
+        component={EditProfilScreen}
+      />
       <StackProfil.Screen name="Reglage" component={SettingsScreen} />
     </StackProfil.Navigator>
   );
