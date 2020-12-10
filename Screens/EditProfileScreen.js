@@ -157,7 +157,7 @@ function EditProfileScreen({ navigation }) {
         multiple={true}
         multipleText="%d secteur(s) d'activité séléctionné(s)"
         min={0}
-        max={10}
+        max={3}
         placeholder={"Choisir un ou plusieurs secteur(s) d'activité"}
         defaultValue={activity}
         dropDownMaxHeight={200}
