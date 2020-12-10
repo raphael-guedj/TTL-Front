@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button, Avatar, Accessory, Input } from "react-native-elements";
+
 import DropDownPicker from "react-native-dropdown-picker";
+import Textarea from "react-native-textarea";
 
 import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -15,6 +17,7 @@ function EditProfileScreen({ navigation }) {
   const [activity, setActivity] = useState([]);
   const [language, setLanguage] = useState([]);
   const [food, setFood] = useState([]);
+  const [text, setText] = useState("");
 
   return (
     <ScrollView
@@ -241,24 +244,18 @@ function EditProfileScreen({ navigation }) {
           (item) => setLanguage(item) // an array of the selected items
         }
       />
-      <Input
-        placeholder="Zone de texte"
-        onChangeText={(e) => setEmail(e)}
-        value={email}
-        placeholderTextColor="#606770"
-        leftIcon={<Entypo name="email" size={19} color="black" />}
-        leftIconContainerStyle={{
-          marginHorizontal: 5,
-        }}
-        inputStyle={{
-          color: "black",
-          fontSize: 15,
-          fontFamily: "Roboto_400Regular",
-        }}
-        inputContainerStyle={{
-          borderBottomColor: "black",
-        }}
-      />
+      <View style={styles.container}>
+        <Textarea
+          containerStyle={styles.textareaContainer}
+          style={styles.textarea}
+          onChangeText={(e) => setText(e)}
+          defaultValue={text}
+          maxLength={150}
+          placeholder={"Type your text here..."}
+          placeholderTextColor={"#606770"}
+          underlineColorAndroid={"transparent"}
+        />
+      </View>
       <DropDownPicker
         items={[
           {
@@ -266,7 +263,7 @@ function EditProfileScreen({ navigation }) {
             value: "thai",
             icon: () => (
               <MaterialCommunityIcons
-                name="food-fork-drink"
+                name="silverware-fork"
                 size={24}
                 color="#418581"
               />
@@ -277,7 +274,7 @@ function EditProfileScreen({ navigation }) {
             value: "italian",
             icon: () => (
               <MaterialCommunityIcons
-                name="food-fork-drink"
+                name="silverware-fork"
                 size={24}
                 color="#418581"
               />
@@ -288,7 +285,7 @@ function EditProfileScreen({ navigation }) {
             value: "china",
             icon: () => (
               <MaterialCommunityIcons
-                name="food-fork-drink"
+                name="silverware-fork"
                 size={24}
                 color="#418581"
               />
@@ -299,7 +296,7 @@ function EditProfileScreen({ navigation }) {
             value: "burger",
             icon: () => (
               <MaterialCommunityIcons
-                name="food-fork-drink"
+                name="silverware-fork"
                 size={24}
                 color="#418581"
               />
@@ -310,7 +307,7 @@ function EditProfileScreen({ navigation }) {
             value: "jap",
             icon: () => (
               <MaterialCommunityIcons
-                name="food-fork-drink"
+                name="silverware-fork"
                 size={24}
                 color="#418581"
               />
@@ -321,7 +318,7 @@ function EditProfileScreen({ navigation }) {
             value: "other",
             icon: () => (
               <MaterialCommunityIcons
-                name="food-fork-drink"
+                name="silverware-fork"
                 size={24}
                 color="#418581"
               />
@@ -399,6 +396,20 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 100,
+  },
+  textareaContainer: {
+    height: 100,
+    padding: 5,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 0.5,
+    borderColor: "#949494",
+    borderRadius: 5,
+  },
+  textarea: {
+    textAlignVertical: "top", // hack android
+    height: 170,
+    fontSize: 14,
+    color: "#333",
   },
 });
 
