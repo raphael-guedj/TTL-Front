@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
+import { connect } from "react-redux";
 import { Button, CheckBox } from "react-native-elements";
 
-import DropDownPicker from "react-native-dropdown-picker";
-import Textarea from "react-native-textarea";
-
-import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TextInput } from "react-native-gesture-handler";
-
-function EditProfileScreen({ navigation }) {
+function UserProfilScreen({ navigation, userState }) {
   const [language, setLanguage] = useState(true);
   const [food, setFood] = useState([]);
+
+  const handleinvit = async () => {
+    let rawResponse = await fetch(
+      `http://172.16.0.21:3000/mydataprofile?id=${userState.id}`
+    );
+    let response = await rawResponse.json();
+    if (response.result) {
+      navigation.navigate("Invitation");
+    } else {
+      navigation.navigate("Modifier le profil");
+    }
+    console.log(response);
+  };
 
   return (
     <ScrollView
@@ -23,12 +30,10 @@ function EditProfileScreen({ navigation }) {
         <Image style={styles.image} source={require("../assets/profile.jpg")} />
         <View style={{ width: "70%" }}>
           <View style={styles.containerArea}>
-            {/* <Feather name="edit" size={20} color="black" /> */}
             <Text style={styles.title2}> Prénom: </Text>
-            <Text style={styles.text}> Paul</Text>
+            <Text style={styles.text}> John</Text>
           </View>
           <View style={styles.containerArea}>
-            {/* <Feather name="edit" size={20} color="black" /> */}
             <Text style={styles.title2}> Profession: </Text>
             <Text style={styles.text}> Architecte</Text>
           </View>
@@ -36,24 +41,20 @@ function EditProfileScreen({ navigation }) {
       </View>
       <View style={{ width: "45%", flexDirection: "row" }}>
         <View style={styles.rowArea}>
-          {/* <Feather name="edit" size={20} color="black" /> */}
           <Text style={styles.title2}> Ville: </Text>
           <Text style={styles.text}> Marseille</Text>
         </View>
         <View style={styles.containerArea}>
-          {/* <Feather name="edit" size={20} color="black" /> */}
           <Text style={styles.title2}> Arrondissement: </Text>
-          <Text style={styles.text}> 13007</Text>
+          <Text style={styles.text}> 13008</Text>
         </View>
       </View>
       <View style={styles.containerArea}>
-        {/* <Feather name="edit" size={20} color="black" /> */}
         <Text style={styles.title2}> Email: </Text>
-        <Text style={styles.text}> paul.architecte@gmail.com</Text>
+        <Text style={styles.text}> john.architecte@gmail.com</Text>
       </View>
 
       <View style={styles.containerArea}>
-        {/* <Feather name="edit" size={20} color="black" /> */}
         <Text style={styles.title2}> Secteur d'activité: </Text>
         <Text style={styles.text}> Architecture/Urbanisme</Text>
       </View>
@@ -64,18 +65,21 @@ function EditProfileScreen({ navigation }) {
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Anglais"
           checked={false}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Italien"
           checked={false}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
       </View>
 
@@ -86,25 +90,28 @@ function EditProfileScreen({ navigation }) {
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="En reconversion professionnelle"
           checked={false}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Recherche d'opportunités professionnelles"
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Sortir du bureau"
           checked={false}
           checkedColor="#418581"
           size={20}
-          fontFamily="Roboto_400Regular"
+          textStyle={{ fontWeight: "normal" }}
         />
       </View>
 
@@ -126,18 +133,21 @@ function EditProfileScreen({ navigation }) {
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Italien"
           checked={false}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Méditéranéen"
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
       </View>
 
@@ -150,8 +160,19 @@ function EditProfileScreen({ navigation }) {
             borderRadius: 20,
             alignSelf: "center",
           }}
-          title="Enregistrer"
-          onPress={() => navigation.navigate("Enregistrer")}
+          title="Envoyer une invitation"
+          onPress={() => handleinvit()}
+        />
+        <Button
+          buttonStyle={{
+            backgroundColor: "#418581",
+            marginBottom: 30,
+            width: 250,
+            borderRadius: 20,
+            alignSelf: "center",
+          }}
+          title="Retour à l'accueil"
+          onPress={() => navigation.navigate("Home")}
         />
       </View>
     </ScrollView>
@@ -206,7 +227,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   textarea: {
-    textAlignVertical: "top", // hack android
+    textAlignVertical: "top",
     height: 170,
     fontSize: 14,
     color: "#333",
@@ -225,4 +246,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EditProfileScreen;
+<<<<<<< HEAD
+export default UserProfilScreen;
+=======
+function mapStateToProps(state) {
+  console.log("state", state.user.id);
+  return { userState: state.user };
+}
+
+export default connect(mapStateToProps, null)(UserProfilScreen);
+>>>>>>> main

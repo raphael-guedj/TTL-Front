@@ -23,15 +23,16 @@ const EditProfilScreen = ({ navigation, userState }) => {
   const [city, setCity] = useState("");
   const [postcode, setPostcode] = useState("");
   const [email, setEmail] = useState("");
-  const [activity, setActivity] = useState("");
+  const [activity, setActivity] = useState();
   const [language, setLanguage] = useState([]);
   const [food, setFood] = useState([]);
-  const [envies, setEnvies] = useState([]);
   const [text, setText] = useState("");
-  const [wishes1, setWishes1] = useState(true);
-  const [wishes2, setWishes2] = useState(true);
-  const [wishes3, setWishes3] = useState(true);
-  const [wishes4, setWishes4] = useState(true);
+  const [wish1, setWish1] = useState(false);
+  const [wish2, setWish2] = useState(false);
+  const [wish3, setWish3] = useState(false);
+  const [wish4, setWish4] = useState(false);
+  const [wish5, setWish5] = useState(false);
+  const [wish6, setWish6] = useState(false);
   const [emptyProfil, setEmptyProfil] = useState(false);
 
   useEffect(() => {
@@ -40,30 +41,43 @@ const EditProfilScreen = ({ navigation, userState }) => {
         `http://172.16.0.21:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      console.log(response);
-      setName(response.myUser.name);
-      setEmail(response.myUser.email);
-      setJob(response.myUser.profession);
-      setJob(response.myUser.profession);
-      setCity(response.myUser.city);
-      setPostcode(response.myUser.arrondissement);
-      setText(response.myUser.description);
-      setActivity(response.myUser.secteur);
-      // setLanguage(response.myUser.language);
-      // setFood(response.myUser.cuisines);
+      // console.log(response);
+      response.myUser.name && setName(response.myUser.name);
+      response.myUser.email && setEmail(response.myUser.email);
+      response.myUser.profession && setJob(response.myUser.profession);
+      response.myUser.profession && setJob(response.myUser.profession);
+      response.myUser.city && setCity(response.myUser.city);
+      response.myUser.arrondissement &&
+        setPostcode(response.myUser.arrondissement);
+      response.myUser.description && setText(response.myUser.description);
+      response.myUser.secteur && setActivity(response.myUser.secteur);
+      response.myUser.wish1 && setWish1(response.myUser.wish1);
+      response.myUser.wish2 && setWish2(response.myUser.wish2);
+      response.myUser.wish3 && setWish3(response.myUser.wish3);
+      response.myUser.wish4 && setWish4(response.myUser.wish4);
+      response.myUser.wish5 && setWish5(response.myUser.wish5);
+      response.myUser.wish6 && setWish6(response.myUser.wish6);
+      response.myUser.language && setLanguage(response.myUser.language);
+      response.myUser.food && setFood(response.myUser.food);
     };
     getUser();
   }, []);
 
-  const handleSignUp = async () => {
+  const handleRecord = async () => {
     let rawResponse = await fetch(`http://172.16.0.21:3000/recordmydata`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${language}&envies=${envies}&text=${text}&food=${food}&id=${userState.id}`,
+      body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
+        language
+      )}&text=${text}&food=${JSON.stringify(
+        food
+      )}&wish1=${wish1}&wish2=${wish2}&wish3=${wish3}&wish4=${wish4}&wish5=${wish5}&wish6=${wish6}&id=${
+        userState.id
+      }`,
     });
 
     let response = await rawResponse.json();
-    console.log(response);
+    // console.log(response);
     if (
       name !== "" &&
       job !== "" &&
@@ -82,16 +96,11 @@ const EditProfilScreen = ({ navigation, userState }) => {
     }
   };
 
-  // useEffect(() => {
-  // console.log(activity);
-  // }, [activity]);
-
   return (
     <ScrollView
       style={{ flex: 1 }}
       contentContainerStyle={{ minHeight: "100%" }}
     >
-      {/* <View style={styles.container}> */}
       <View style={styles.avatar}>
         <Image style={styles.image} source={require("../assets/profile.jpg")} />
         <View style={{ width: "70%" }}>
@@ -189,311 +198,360 @@ const EditProfilScreen = ({ navigation, userState }) => {
           borderBottomColor: "black",
         }}
       />
-      {/* </View> */}
+      <View style={{ marginTop: 10, marginBottom: 15 }}>
+        <Text style={styles.titleStyle}> Mon secteur d'activité: </Text>
 
-      <DropDownPicker
-        items={[
-          {
-            label: "Banque / Assurance / Finance",
-            value: "bank",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-          {
-            label: "Commerce / Négoce / Distribution",
-            value: "business",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-          {
-            label: "Art / Culture",
-            value: "art",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-          {
-            label: "Santé / Medical / Docteur",
-            value: "sante",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-          {
-            label: "Immobilier / Notariat",
-            value: "asset",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-          {
-            label: "Transport / Logistique",
-            value: "transport",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-          {
-            label: "Batiment",
-            value: "builder",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-          {
-            label: "Édition / Communication / Multimédia",
-            value: "multimedia",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-          {
-            label: "Informatique / Digital",
-            value: "it",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-          {
-            label: "Autre",
-            value: "other",
-            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
-          },
-        ]}
-        placeholder={"Choisir un secteur d'activité"}
-        defaultValue={activity}
-        dropDownMaxHeight={200}
-        style={{
-          width: "100%",
-          justifyContent: "center",
-          alignSelf: "center",
-        }}
-        containerStyle={{ height: 40, margin: 10 }}
-        itemStyle={{
-          justifyContent: "flex-start",
-        }}
-        arrowStyle={{ marginRight: 10 }}
-        onChangeItem={
-          (item) => setActivity(item.value) // an array of the selected items
-        }
-      />
-      <DropDownPicker
-        items={[
-          {
-            label: "Anglais",
-            value: "uk",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-          {
-            label: "Espagnol",
-            value: "es",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-          {
-            label: "Italien",
-            value: "it",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-
-          {
-            label: "Français",
-            value: "fr",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-          {
-            label: "Mandarin",
-            value: "ch",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-          {
-            label: "Hebreu",
-            value: "is",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-          {
-            label: "Arabe",
-            value: "ar",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-          {
-            label: "Russe",
-            value: "ru",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-          {
-            label: "Portugais",
-            value: "pt",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-          {
-            label: "Autre",
-            value: "other",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-        ]}
-        multiple={true}
-        multipleText="%d langue(s) sélectionnée(s)"
-        min={0}
-        max={3}
-        placeholder={"Choisir une ou plusieurs langue(s)"}
-        defaultValue={language}
-        dropDownMaxHeight={200}
-        style={{
-          width: "95%",
-          justifyContent: "center",
-          alignSelf: "center",
-        }}
-        containerStyle={{ height: 40 }}
-        itemStyle={{
-          justifyContent: "flex-start",
-        }}
-        arrowStyle={{ marginRight: 10 }}
-        onChangeItem={
-          (item) => setLanguage(item) // an array of the selected items
-        }
-      />
-
-      <View style={styles.container}>
-        <InputScrollView>
-          <Textarea
-            containerStyle={styles.textareaContainer}
-            style={styles.textarea}
-            onChangeText={(e) => setText(e)}
-            defaultValue={text}
-            maxLength={300}
-            minLength={80}
-            placeholder={"Type your text here..."}
-            placeholderTextColor={"#606770"}
-            underlineColorAndroid={"transparent"}
-          />
-        </InputScrollView>
+        <DropDownPicker
+          items={[
+            {
+              label: "Banque / Assurance / Finance",
+              value: "bank",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Commerce / Négoce / Distribution",
+              value: "business",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Art / Culture",
+              value: "art",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Santé / Medical / Docteur",
+              value: "sante",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Immobilier / Notariat",
+              value: "asset",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Transport / Logistique",
+              value: "transport",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Batiment",
+              value: "builder",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Édition / Communication / Multimédia",
+              value: "multimedia",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Informatique / Digital",
+              value: "it",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Autre",
+              value: "other",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+          ]}
+          placeholder={"Choisir un secteur d'activité"}
+          defaultValue={activity}
+          dropDownMaxHeight={130}
+          style={{
+            width: "100%",
+            justifyContent: "center",
+            alignSelf: "center",
+          }}
+          containerStyle={{ height: 40, margin: 10 }}
+          itemStyle={{
+            justifyContent: "flex-start",
+          }}
+          arrowStyle={{ marginRight: 10 }}
+          onChangeItem={
+            (item) => setActivity(item.value) // an array of the selected items
+          }
+        />
       </View>
       <View style={{ marginTop: 10, marginBottom: 15 }}>
+        <Text style={styles.titleStyle}> Mes langues parlées: </Text>
+        <DropDownPicker
+          items={[
+            {
+              label: "Anglais",
+              value: "uk",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+            {
+              label: "Espagnol",
+              value: "es",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+            {
+              label: "Italien",
+              value: "it",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+
+            {
+              label: "Français",
+              value: "fr",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+            {
+              label: "Mandarin",
+              value: "ch",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+            {
+              label: "Hebreu",
+              value: "is",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+            {
+              label: "Arabe",
+              value: "ar",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+            {
+              label: "Russe",
+              value: "ru",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+            {
+              label: "Portugais",
+              value: "pt",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+            {
+              label: "Autre",
+              value: "other",
+              icon: () => (
+                <MaterialIcons name="language" size={24} color="#418581" />
+              ),
+            },
+          ]}
+          multiple={true}
+          multipleText="%d langue(s) sélectionnée(s)"
+          min={0}
+          max={3}
+          placeholder={"Choisir une ou plusieurs langue(s)"}
+          defaultValue={language}
+          dropDownMaxHeight={130}
+          style={{
+            width: "95%",
+            justifyContent: "center",
+            alignSelf: "center",
+          }}
+          containerStyle={{ height: 40 }}
+          itemStyle={{
+            justifyContent: "flex-start",
+          }}
+          arrowStyle={{ marginRight: 10 }}
+          onChangeItem={
+            (item) => setLanguage(item) // an array of the selected items
+          }
+        />
+      </View>
+      <View style={{ marginTop: 10, marginBottom: 15 }}>
+        <Text style={styles.titleStyle}> A propos de moi: </Text>
+        <View style={styles.container}>
+          <InputScrollView>
+            <Textarea
+              containerStyle={styles.textareaContainer}
+              style={styles.textarea}
+              onChangeText={(e) => setText(e)}
+              defaultValue={text}
+              maxLength={300}
+              minLength={80}
+              placeholder={"Type your text here..."}
+              placeholderTextColor={"#606770"}
+              underlineColorAndroid={"transparent"}
+            />
+          </InputScrollView>
+        </View>
+      </View>
+      <View style={{ marginTop: 10, marginBottom: 15 }}>
+        <Text style={styles.titleStyle}> Mes envies: </Text>
         <CheckBox
           title="Rencontrer de nouvelles personnes"
-          onPress={() => setWishes1(!wishes1)}
-          checked={wishes1}
+          onPress={() => setWish1(!wish1)}
+          checked={wish1}
           checkedColor="#418581"
-          size={20}
+          size={14}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
-          title="En reconversion professionnelle"
-          onPress={() => setWishes2(!wishes2)}
-          checked={wishes2}
+          title="Découvrir un nouveau métier"
+          onPress={() => setWish2(!wish2)}
+          checked={wish2}
           checkedColor="#418581"
-          size={20}
+          size={14}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Recherche d'opportunités professionnelles"
-          onPress={() => setWishes3(!wishes3)}
-          checked={wishes3}
+          onPress={() => setWish3(!wish3)}
+          checked={wish3}
           checkedColor="#418581"
-          size={20}
+          size={14}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
-          title="Sortir du bureau"
-          onPress={() => setWishes4(!wishes4)}
-          checked={wishes4}
+          title="Se reconvertir professionnellement"
+          onPress={() => setWish4(!wish4)}
+          checked={wish4}
           checkedColor="#418581"
-          size={20}
-          fontFamily="Roboto_400Regular"
+          size={14}
+          textStyle={{ fontWeight: "normal" }}
+        />
+        <CheckBox
+          title="Se déconnecter du bureau"
+          onPress={() => setWish5(!wish5)}
+          checked={wish5}
+          checkedColor="#418581"
+          size={14}
+          textStyle={{ fontWeight: "normal" }}
+        />
+        <CheckBox
+          title="Découvrir le quartier autour de moi"
+          onPress={() => setWish6(!wish6)}
+          checked={wish6}
+          checkedColor="#418581"
+          size={14}
+          textStyle={{ fontWeight: "normal" }}
         />
       </View>
-
-      <DropDownPicker
-        items={[
-          {
-            label: "Thai",
-            value: "thai",
-            icon: () => (
-              <MaterialCommunityIcons
-                name="silverware-fork"
-                size={24}
-                color="#418581"
-              />
-            ),
-          },
-          {
-            label: "Italien",
-            value: "italian",
-            icon: () => (
-              <MaterialCommunityIcons
-                name="silverware-fork"
-                size={24}
-                color="#418581"
-              />
-            ),
-          },
-          {
-            label: "Chinois",
-            value: "china",
-            icon: () => (
-              <MaterialCommunityIcons
-                name="silverware-fork"
-                size={24}
-                color="#418581"
-              />
-            ),
-          },
-          {
-            label: "Americain",
-            value: "burger",
-            icon: () => (
-              <MaterialCommunityIcons
-                name="silverware-fork"
-                size={24}
-                color="#418581"
-              />
-            ),
-          },
-          {
-            label: "Japonais",
-            value: "jap",
-            icon: () => (
-              <MaterialCommunityIcons
-                name="silverware-fork"
-                size={24}
-                color="#418581"
-              />
-            ),
-          },
-          {
-            label: "Autre",
-            value: "other",
-            icon: () => (
-              <MaterialCommunityIcons
-                name="silverware-fork"
-                size={24}
-                color="#418581"
-              />
-            ),
-          },
-        ]}
-        multiple={true}
-        multipleText="%d mes cuisine(s) préférée(s)"
-        min={0}
-        max={3}
-        placeholder={"Choisir un ou plusieurs type(s) de cuisine(s)"}
-        defaultValue={food}
-        dropDownMaxHeight={200}
-        style={{
-          width: "95%",
-          justifyContent: "center",
-          alignSelf: "center",
-        }}
-        containerStyle={{ height: 40 }}
-        itemStyle={{
-          justifyContent: "flex-start",
-        }}
-        arrowStyle={{ marginRight: 10 }}
-        onChangeItem={
-          (item) => setFood(item) // an array of the selected items
-        }
-      />
+      <View style={{ marginTop: 10, marginBottom: 15 }}>
+        <Text style={styles.titleStyle}> Mes cuisines favorites: </Text>
+        <DropDownPicker
+          items={[
+            {
+              label: "Thaï",
+              value: "thai",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork"
+                  size={20}
+                  color="#418581"
+                />
+              ),
+            },
+            {
+              label: "Italien",
+              value: "italian",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork"
+                  size={20}
+                  color="#418581"
+                />
+              ),
+            },
+            {
+              label: "Chinois",
+              value: "china",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork"
+                  size={20}
+                  color="#418581"
+                />
+              ),
+            },
+            {
+              label: "Americain",
+              value: "burger",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork"
+                  size={20}
+                  color="#418581"
+                />
+              ),
+            },
+            {
+              label: "Japonais",
+              value: "jap",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork"
+                  size={20}
+                  color="#418581"
+                />
+              ),
+            },
+            {
+              label: "Autre",
+              value: "other",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork"
+                  size={20}
+                  color="#418581"
+                />
+              ),
+            },
+          ]}
+          multiple={true}
+          multipleText="%d cuisine(s) préférée(s)"
+          min={0}
+          max={3}
+          placeholder={"Choisir un ou plusieurs type(s) de cuisine(s)"}
+          defaultValue={food}
+          dropDownMaxHeight={130}
+          style={{
+            width: "95%",
+            justifyContent: "center",
+            alignSelf: "center",
+          }}
+          containerStyle={{ height: 40 }}
+          itemStyle={{
+            justifyContent: "flex-start",
+          }}
+          arrowStyle={{ marginRight: 10 }}
+          onChangeItem={
+            (item) => setFood(item) // an array of the selected items
+          }
+        />
+      </View>
 
       <View>
         {emptyProfil && (
@@ -508,9 +566,10 @@ const EditProfilScreen = ({ navigation, userState }) => {
             width: 250,
             borderRadius: 20,
             alignSelf: "center",
+            marginTop: 120,
           }}
           title="Enregistrer"
-          onPress={() => handleSignUp()}
+          onPress={() => handleRecord()}
         />
       </View>
     </ScrollView>
@@ -524,6 +583,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   title2: {
+    paddingHorizontal: 10,
     fontSize: 15,
     fontWeight: "bold",
     color: "black",
@@ -537,7 +597,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    padding: 10,
+    paddingHorizontal: 10,
     flex: 0.9,
   },
   avatar: {
@@ -570,6 +630,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginLeft: 10,
   },
+  titleStyle: {
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "black",
+  },
   emptyText: {
     textAlign: "center",
     color: "#d90429",
@@ -579,7 +646,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log("state", state.user.id);
+  // console.log("state", state.user);
   return { userState: state.user };
 }
 
