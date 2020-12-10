@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import SignUpScreen from "./SignUpScreen";
 import SignInScreen from "./SignInScreen";
 import LandingScreen from "./LandingScreen";
-import CarouselScreen from "./CarouselScreen";
 import HomeScreen from "./HomeScreen";
 import UserProfilScreen from "./UserProfilScreen";
 import SettingsScreen from "./SettingsScreen";
 import ProfileScreen from "./ProfileScreen";
 import EditProfilScreen from "./EditProfileScreen";
+import InvitationScreen from "./InvitationScreen";
 
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -72,7 +72,7 @@ const HomeStack = () => {
 const LunchStack = () => {
   return (
     <StackLunch.Navigator>
-      <StackLunch.Screen name="Lunch" component={HomeScreen} />
+      <StackLunch.Screen name="Invitation" component={InvitationScreen} />
       <StackLunch.Screen name="LunchNotif" component={NotifStack} />
       <StackLunch.Screen name="Detail" component={HomeScreen} />
       <StackLunch.Screen name="Confirmation" component={HomeScreen} />
@@ -141,7 +141,7 @@ function Navigation({ setReduxUser, userState }) {
     const getUserDB = async () => {
       if (token) {
         var rawResponse = await fetch(
-          "http://172.16.0.21:3000/get-user?token=" + token
+          "http://172.16.0.44:3000/get-user?token=" + token
         );
 
         const jsonResponse = await rawResponse.json();

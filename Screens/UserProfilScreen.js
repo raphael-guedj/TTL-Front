@@ -25,7 +25,7 @@ function EditProfileScreen({ navigation }) {
           <View style={styles.containerArea}>
             {/* <Feather name="edit" size={20} color="black" /> */}
             <Text style={styles.title2}> Prénom: </Text>
-            <Text style={styles.text}> Paul</Text>
+            <Text style={styles.text}> John</Text>
           </View>
           <View style={styles.containerArea}>
             {/* <Feather name="edit" size={20} color="black" /> */}
@@ -43,13 +43,13 @@ function EditProfileScreen({ navigation }) {
         <View style={styles.containerArea}>
           {/* <Feather name="edit" size={20} color="black" /> */}
           <Text style={styles.title2}> Arrondissement: </Text>
-          <Text style={styles.text}> 13007</Text>
+          <Text style={styles.text}> 13008</Text>
         </View>
       </View>
       <View style={styles.containerArea}>
         {/* <Feather name="edit" size={20} color="black" /> */}
         <Text style={styles.title2}> Email: </Text>
-        <Text style={styles.text}> paul.architecte@gmail.com</Text>
+        <Text style={styles.text}> john.architecte@gmail.com</Text>
       </View>
 
       <View style={styles.containerArea}>
@@ -64,18 +64,21 @@ function EditProfileScreen({ navigation }) {
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Anglais"
           checked={false}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Italien"
           checked={false}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
       </View>
 
@@ -86,25 +89,28 @@ function EditProfileScreen({ navigation }) {
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="En reconversion professionnelle"
           checked={false}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Recherche d'opportunités professionnelles"
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Sortir du bureau"
           checked={false}
           checkedColor="#418581"
           size={20}
-          fontFamily="Roboto_400Regular"
+          textStyle={{ fontWeight: "normal" }}
         />
       </View>
 
@@ -126,18 +132,21 @@ function EditProfileScreen({ navigation }) {
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Italien"
           checked={false}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Méditéranéen"
           checked={true}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
       </View>
 
@@ -150,8 +159,19 @@ function EditProfileScreen({ navigation }) {
             borderRadius: 20,
             alignSelf: "center",
           }}
-          title="Enregistrer"
+          title="Envoyer une invitation"
           onPress={() => navigation.navigate("Enregistrer")}
+        />
+        <Button
+          buttonStyle={{
+            backgroundColor: "#418581",
+            marginBottom: 30,
+            width: 250,
+            borderRadius: 20,
+            alignSelf: "center",
+          }}
+          title="Retour à l'accueil"
+          onPress={() => navigation.navigate("Home")}
         />
       </View>
     </ScrollView>

@@ -38,7 +38,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.21:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.32:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);
@@ -63,7 +63,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   }, []);
 
   const handleSignUp = async () => {
-    let rawResponse = await fetch(`http://172.16.0.21:3000/recordmydata`, {
+    let rawResponse = await fetch(`http://172.16.0.32:3000/recordmydata`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
@@ -275,7 +275,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           ]}
           placeholder={"Choisir un secteur d'activité"}
           defaultValue={activity}
-          dropDownMaxHeight={200}
+          dropDownMaxHeight={130}
           style={{
             width: "100%",
             justifyContent: "center",
@@ -373,7 +373,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           max={3}
           placeholder={"Choisir une ou plusieurs langue(s)"}
           defaultValue={language}
-          dropDownMaxHeight={200}
+          dropDownMaxHeight={130}
           style={{
             width: "95%",
             justifyContent: "center",
@@ -463,12 +463,12 @@ const EditProfilScreen = ({ navigation, userState }) => {
         <DropDownPicker
           items={[
             {
-              label: "Thai",
+              label: "Thaï",
               value: "thai",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
-                  size={24}
+                  size={20}
                   color="#418581"
                 />
               ),
@@ -479,7 +479,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
-                  size={24}
+                  size={20}
                   color="#418581"
                 />
               ),
@@ -490,7 +490,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
-                  size={24}
+                  size={20}
                   color="#418581"
                 />
               ),
@@ -501,7 +501,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
-                  size={24}
+                  size={20}
                   color="#418581"
                 />
               ),
@@ -512,7 +512,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
-                  size={24}
+                  size={20}
                   color="#418581"
                 />
               ),
@@ -523,7 +523,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
-                  size={24}
+                  size={20}
                   color="#418581"
                 />
               ),
@@ -535,7 +535,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           max={3}
           placeholder={"Choisir un ou plusieurs type(s) de cuisine(s)"}
           defaultValue={food}
-          dropDownMaxHeight={200}
+          dropDownMaxHeight={130}
           style={{
             width: "95%",
             justifyContent: "center",
@@ -565,6 +565,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             width: 250,
             borderRadius: 20,
             alignSelf: "center",
+            marginTop: 120,
           }}
           title="Enregistrer"
           onPress={() => handleSignUp()}
