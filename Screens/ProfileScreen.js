@@ -59,7 +59,7 @@ function ProfileScreen({ navigation }) {
               alignSelf: "center",
             }}
             title="Modifier mon profil"
-            onPress={() => navigation.navigate("Modifier")}
+            onPress={() => navigation.navigate("Modifier le profil")}
           />
           <Button
             buttonStyle={{

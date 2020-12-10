@@ -8,7 +8,7 @@ import HomeScreen from "./HomeScreen";
 import UserProfilScreen from "./UserProfilScreen";
 import SettingsScreen from "./SettingsScreen";
 import ProfileScreen from "./ProfileScreen";
-import EditProfileScreen from "./EditProfileScreen";
+import EditProfilScreen from "./EditProfileScreen";
 
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -84,7 +84,10 @@ const ProfilStack = () => {
   return (
     <StackProfil.Navigator>
       <StackProfil.Screen name="Profil" component={ProfileScreen} />
-      <StackProfil.Screen name="Modifier" component={EditProfileScreen} />
+      <StackProfil.Screen
+        name="Modifier le profil"
+        component={EditProfilScreen}
+      />
       <StackProfil.Screen name="Reglage" component={SettingsScreen} />
     </StackProfil.Navigator>
   );
@@ -138,7 +141,7 @@ function Navigation({ setReduxUser, userState }) {
     const getUserDB = async () => {
       if (token) {
         var rawResponse = await fetch(
-          "http://172.16.0.32:3000/get-user?token=" + token
+          "http://172.16.0.21:3000/get-user?token=" + token
         );
 
         const jsonResponse = await rawResponse.json();

@@ -1,23 +1,77 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button, Avatar, Accessory, Input } from "react-native-elements";
-
+import { connect } from "react-redux";
 import DropDownPicker from "react-native-dropdown-picker";
 import Textarea from "react-native-textarea";
 
 import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-function EditProfileScreen({ navigation }) {
+const EditProfilScreen = ({ navigation, userState }) => {
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
   const [city, setCity] = useState("");
   const [postcode, setPostcode] = useState("");
   const [email, setEmail] = useState("");
-  const [activity, setActivity] = useState([]);
+  const [activity, setActivity] = useState("");
   const [language, setLanguage] = useState([]);
   const [food, setFood] = useState([]);
+  const [envies, setEnvies] = useState([]);
   const [text, setText] = useState("");
+  const [emptyProfil, setEmptyProfil] = useState(false);
+
+  useEffect(() => {
+    const getUser = async () => {
+      let rawResponse = await fetch(
+        `http://172.16.0.21:3000/getmydata?id=${userState.id}`
+      );
+      let response = await rawResponse.json();
+      console.log(response);
+      setName(response.myUser.name);
+      setEmail(response.myUser.email);
+      setJob(response.myUser.profession);
+      setJob(response.myUser.profession);
+      setCity(response.myUser.city);
+      setPostcode(response.myUser.arrondissement);
+      setText(response.myUser.description);
+      setActivity(response.myUser.secteur);
+      // setLanguage(response.myUser.language);
+      // setFood(response.myUser.cuisines);
+    };
+    getUser();
+  }, []);
+
+  const handleSignUp = async () => {
+    let rawResponse = await fetch(`http://172.16.0.21:3000/recordmydata`, {
+      method: "post",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${language}&envies=${envies}&text=${text}&food=${food}&id=${userState.id}`,
+    });
+
+    let response = await rawResponse.json();
+    console.log(response);
+    if (
+      name !== "" &&
+      job !== "" &&
+      email !== "" &&
+      city !== "" &&
+      postcode !== "" &&
+      activity !== "" &&
+      language !== "" &&
+      text !== "" &&
+      food !== ""
+    ) {
+      setEmptyProfil(false);
+      navigation.navigate("Profil");
+    } else {
+      setEmptyProfil(true);
+    }
+  };
+
+  useEffect(() => {
+    console.log(activity);
+  }, [activity]);
 
   return (
     <ScrollView
@@ -127,7 +181,7 @@ function EditProfileScreen({ navigation }) {
       <DropDownPicker
         items={[
           {
-            label: "Banque / Assurance",
+            label: "Banque / Assurance / Finance",
             value: "bank",
             icon: () => <Feather name="briefcase" size={20} color="#418581" />,
           },
@@ -137,7 +191,22 @@ function EditProfileScreen({ navigation }) {
             icon: () => <Feather name="briefcase" size={20} color="#418581" />,
           },
           {
-            label: "Transports / Logistique",
+            label: "Art / Culture",
+            value: "art",
+            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
+          },
+          {
+            label: "Santé / Medical / Docteur",
+            value: "sante",
+            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
+          },
+          {
+            label: "Immobilier / Notariat",
+            value: "asset",
+            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
+          },
+          {
+            label: "Transport / Logistique",
             value: "transport",
             icon: () => <Feather name="briefcase" size={20} color="#418581" />,
           },
@@ -152,16 +221,17 @@ function EditProfileScreen({ navigation }) {
             icon: () => <Feather name="briefcase" size={20} color="#418581" />,
           },
           {
+            label: "Informatique / Digital",
+            value: "it",
+            icon: () => <Feather name="briefcase" size={20} color="#418581" />,
+          },
+          {
             label: "Autre",
             value: "other",
             icon: () => <Feather name="briefcase" size={20} color="#418581" />,
           },
         ]}
-        multiple={true}
-        multipleText="%d secteur(s) d'activité séléctionné(s)"
-        min={0}
-        max={3}
-        placeholder={"Choisir un ou plusieurs secteur(s) d'activité"}
+        placeholder={"Choisir un secteur d'activité"}
         defaultValue={activity}
         dropDownMaxHeight={200}
         style={{
@@ -188,19 +258,20 @@ function EditProfileScreen({ navigation }) {
             ),
           },
           {
-            label: "Italien",
-            value: "it",
-            icon: () => (
-              <MaterialIcons name="language" size={24} color="#418581" />
-            ),
-          },
-          {
             label: "Espagnol",
             value: "es",
             icon: () => (
               <MaterialIcons name="language" size={24} color="#418581" />
             ),
           },
+          {
+            label: "Italien",
+            value: "it",
+            icon: () => (
+              <MaterialIcons name="language" size={24} color="#418581" />
+            ),
+          },
+
           {
             label: "Français",
             value: "fr",
@@ -209,8 +280,36 @@ function EditProfileScreen({ navigation }) {
             ),
           },
           {
+            label: "Mandarin",
+            value: "ch",
+            icon: () => (
+              <MaterialIcons name="language" size={24} color="#418581" />
+            ),
+          },
+          {
+            label: "Hebreu",
+            value: "is",
+            icon: () => (
+              <MaterialIcons name="language" size={24} color="#418581" />
+            ),
+          },
+          {
+            label: "Arabe",
+            value: "ar",
+            icon: () => (
+              <MaterialIcons name="language" size={24} color="#418581" />
+            ),
+          },
+          {
             label: "Russe",
             value: "ru",
+            icon: () => (
+              <MaterialIcons name="language" size={24} color="#418581" />
+            ),
+          },
+          {
+            label: "Portugais",
+            value: "pt",
             icon: () => (
               <MaterialIcons name="language" size={24} color="#418581" />
             ),
@@ -227,7 +326,7 @@ function EditProfileScreen({ navigation }) {
         multipleText="%d langue(s) parlée(s)"
         min={0}
         max={10}
-        placeholder={"Choisir une ou plusieurs langue(s)"}
+        placeholder={"Choisir une ou plusieurs langue(s) (3 max)"}
         defaultValue={language}
         dropDownMaxHeight={200}
         style={{
@@ -250,8 +349,9 @@ function EditProfileScreen({ navigation }) {
           style={styles.textarea}
           onChangeText={(e) => setText(e)}
           defaultValue={text}
-          maxLength={150}
-          placeholder={"Type your text here..."}
+          maxLength={300}
+          minLength={80}
+          placeholder={"A propos de vous (80 caractères min)"}
           placeholderTextColor={"#606770"}
           underlineColorAndroid={"transparent"}
         />
@@ -348,6 +448,11 @@ function EditProfileScreen({ navigation }) {
       />
 
       <View>
+        {emptyProfil && (
+          <Text style={styles.emptyText}>
+            L'un des champs du profil est vide, re-vérifiez avant d'enregistrer
+          </Text>
+        )}
         <Button
           buttonStyle={{
             backgroundColor: "#418581",
@@ -357,12 +462,12 @@ function EditProfileScreen({ navigation }) {
             alignSelf: "center",
           }}
           title="Enregistrer"
-          onPress={() => navigation.navigate("Enregistrer")}
+          onPress={() => handleSignUp()}
         />
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   title1: {
@@ -411,6 +516,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#333",
   },
+  emptyText: {
+    textAlign: "center",
+    color: "#d90429",
+    fontStyle: "italic",
+    fontSize: 15,
+  },
 });
 
-export default EditProfileScreen;
+function mapStateToProps(state) {
+  console.log("state", state.user.id);
+  return { userState: state.user };
+}
+
+export default connect(mapStateToProps, null)(EditProfilScreen);
