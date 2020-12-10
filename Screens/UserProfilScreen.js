@@ -2,14 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Button, CheckBox } from "react-native-elements";
 
-import DropDownPicker from "react-native-dropdown-picker";
-import Textarea from "react-native-textarea";
-
-import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TextInput } from "react-native-gesture-handler";
-
-function EditProfileScreen({ navigation }) {
+function UserProfilScreen({ navigation }) {
   const [language, setLanguage] = useState(true);
   const [food, setFood] = useState([]);
 
@@ -23,12 +16,10 @@ function EditProfileScreen({ navigation }) {
         <Image style={styles.image} source={require("../assets/profile.jpg")} />
         <View style={{ width: "70%" }}>
           <View style={styles.containerArea}>
-            {/* <Feather name="edit" size={20} color="black" /> */}
             <Text style={styles.title2}> Prénom: </Text>
             <Text style={styles.text}> John</Text>
           </View>
           <View style={styles.containerArea}>
-            {/* <Feather name="edit" size={20} color="black" /> */}
             <Text style={styles.title2}> Profession: </Text>
             <Text style={styles.text}> Architecte</Text>
           </View>
@@ -36,24 +27,20 @@ function EditProfileScreen({ navigation }) {
       </View>
       <View style={{ width: "45%", flexDirection: "row" }}>
         <View style={styles.rowArea}>
-          {/* <Feather name="edit" size={20} color="black" /> */}
           <Text style={styles.title2}> Ville: </Text>
           <Text style={styles.text}> Marseille</Text>
         </View>
         <View style={styles.containerArea}>
-          {/* <Feather name="edit" size={20} color="black" /> */}
           <Text style={styles.title2}> Arrondissement: </Text>
           <Text style={styles.text}> 13008</Text>
         </View>
       </View>
       <View style={styles.containerArea}>
-        {/* <Feather name="edit" size={20} color="black" /> */}
         <Text style={styles.title2}> Email: </Text>
         <Text style={styles.text}> john.architecte@gmail.com</Text>
       </View>
 
       <View style={styles.containerArea}>
-        {/* <Feather name="edit" size={20} color="black" /> */}
         <Text style={styles.title2}> Secteur d'activité: </Text>
         <Text style={styles.text}> Architecture/Urbanisme</Text>
       </View>
@@ -160,7 +147,7 @@ function EditProfileScreen({ navigation }) {
             alignSelf: "center",
           }}
           title="Envoyer une invitation"
-          onPress={() => navigation.navigate("Enregistrer")}
+          onPress={() => navigation.navigate("")}
         />
         <Button
           buttonStyle={{
@@ -226,7 +213,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   textarea: {
-    textAlignVertical: "top", // hack android
+    textAlignVertical: "top",
     height: 170,
     fontSize: 14,
     color: "#333",
@@ -245,4 +232,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EditProfileScreen;
+export default UserProfilScreen;

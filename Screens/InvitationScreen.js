@@ -119,7 +119,7 @@ const InvitationScreen = () => {
   };
 
   const sendInvitation = async () => {
-    let rawResponse = await fetch("http://172.16.0.44:3000/send-invitation", {
+    let rawResponse = await fetch("http://172.16.0.32:3000/send-invitation", {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `name=${pseudo}&email=${email}&password=${password}`,
