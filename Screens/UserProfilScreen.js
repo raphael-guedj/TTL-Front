@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
+import { connect } from "react-redux";
 import { Button, CheckBox } from "react-native-elements";
 
-function UserProfilScreen({ navigation }) {
+function UserProfilScreen({ navigation, userState }) {
   const [language, setLanguage] = useState(true);
   const [food, setFood] = useState([]);
+
+  const handleinvit = async () => {
+    let rawResponse = await fetch(
+      `http://172.16.0.21:3000/mydataprofile?id=${userState.id}`
+    );
+    let response = await rawResponse.json();
+    if (response.result) {
+      navigation.navigate("Invitation");
+    } else {
+      navigation.navigate("Modifier le profil");
+    }
+    console.log(response);
+  };
 
   return (
     <ScrollView
@@ -147,7 +161,7 @@ function UserProfilScreen({ navigation }) {
             alignSelf: "center",
           }}
           title="Envoyer une invitation"
-          onPress={() => navigation.navigate("")}
+          onPress={() => handleinvit()}
         />
         <Button
           buttonStyle={{
@@ -232,4 +246,13 @@ const styles = StyleSheet.create({
   },
 });
 
+<<<<<<< HEAD
 export default UserProfilScreen;
+=======
+function mapStateToProps(state) {
+  console.log("state", state.user.id);
+  return { userState: state.user };
+}
+
+export default connect(mapStateToProps, null)(UserProfilScreen);
+>>>>>>> main

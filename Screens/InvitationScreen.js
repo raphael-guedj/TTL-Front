@@ -79,18 +79,18 @@ const InvitationScreen = () => {
   useEffect(() => {
     const saveLastDate = async () => {
       setLastDate(`${day}/${month}/${year}`);
-      console.log(lastDate);
+      // console.log(lastDate);
       setDateIsChange(false);
     };
     saveLastDate();
   }, [dateIsChange]);
 
   const setTheLastDate = async () => {
-    console.log(date.getDate());
+    // console.log(date.getDate());
     setDay(date.getDate());
-    console.log(date.getMonth() + 1);
+    // console.log(date.getMonth() + 1);
     setMonth(date.getMonth() + 1);
-    console.log(date.getFullYear());
+    // console.log(date.getFullYear());
     setYear(date.getFullYear());
     setDateIsChange(true);
   };

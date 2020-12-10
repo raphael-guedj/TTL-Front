@@ -38,32 +38,33 @@ const EditProfilScreen = ({ navigation, userState }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.32:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.21:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      console.log(response);
-      setName(response.myUser.name);
-      setEmail(response.myUser.email);
-      setJob(response.myUser.profession);
-      setJob(response.myUser.profession);
-      setCity(response.myUser.city);
-      setPostcode(response.myUser.arrondissement);
-      setText(response.myUser.description);
-      setActivity(response.myUser.secteur);
-      setWish1(response.myUser.wish1);
-      setWish2(response.myUser.wish2);
-      setWish3(response.myUser.wish3);
-      setWish4(response.myUser.wish4);
-      setWish5(response.myUser.wish5);
-      setWish6(response.myUser.wish6);
-      setLanguage(response.myUser.language);
-      setFood(response.myUser.food);
+      // console.log(response);
+      response.myUser.name && setName(response.myUser.name);
+      response.myUser.email && setEmail(response.myUser.email);
+      response.myUser.profession && setJob(response.myUser.profession);
+      response.myUser.profession && setJob(response.myUser.profession);
+      response.myUser.city && setCity(response.myUser.city);
+      response.myUser.arrondissement &&
+        setPostcode(response.myUser.arrondissement);
+      response.myUser.description && setText(response.myUser.description);
+      response.myUser.secteur && setActivity(response.myUser.secteur);
+      response.myUser.wish1 && setWish1(response.myUser.wish1);
+      response.myUser.wish2 && setWish2(response.myUser.wish2);
+      response.myUser.wish3 && setWish3(response.myUser.wish3);
+      response.myUser.wish4 && setWish4(response.myUser.wish4);
+      response.myUser.wish5 && setWish5(response.myUser.wish5);
+      response.myUser.wish6 && setWish6(response.myUser.wish6);
+      response.myUser.language && setLanguage(response.myUser.language);
+      response.myUser.food && setFood(response.myUser.food);
     };
     getUser();
   }, []);
 
-  const handleSignUp = async () => {
-    let rawResponse = await fetch(`http://172.16.0.32:3000/recordmydata`, {
+  const handleRecord = async () => {
+    let rawResponse = await fetch(`http://172.16.0.21:3000/recordmydata`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
@@ -76,7 +77,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
     });
 
     let response = await rawResponse.json();
-    console.log(response);
+    // console.log(response);
     if (
       name !== "" &&
       job !== "" &&
@@ -530,7 +531,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
           ]}
           multiple={true}
-          multipleText="%d mes cuisine(s) préférée(s)"
+          multipleText="%d cuisine(s) préférée(s)"
           min={0}
           max={3}
           placeholder={"Choisir un ou plusieurs type(s) de cuisine(s)"}
@@ -568,7 +569,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             marginTop: 120,
           }}
           title="Enregistrer"
-          onPress={() => handleSignUp()}
+          onPress={() => handleRecord()}
         />
       </View>
     </ScrollView>
@@ -645,7 +646,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log("state", state.user.id);
+  // console.log("state", state.user);
   return { userState: state.user };
 }
 
