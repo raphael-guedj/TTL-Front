@@ -23,7 +23,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   const [city, setCity] = useState("");
   const [postcode, setPostcode] = useState("");
   const [email, setEmail] = useState("");
-  const [activity, setActivity] = useState("");
+  const [activity, setActivity] = useState();
   const [language, setLanguage] = useState([]);
   const [food, setFood] = useState([]);
   const [envies, setEnvies] = useState([]);
@@ -37,7 +37,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.21:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.32:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);
@@ -56,7 +56,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   }, []);
 
   const handleSignUp = async () => {
-    let rawResponse = await fetch(`http://172.16.0.21:3000/recordmydata`, {
+    let rawResponse = await fetch(`http://172.16.0.32:3000/recordmydata`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${language}&envies=${envies}&text=${text}&food=${food}&id=${userState.id}`,
@@ -246,7 +246,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
         ]}
         placeholder={"Choisir un secteur d'activité"}
         defaultValue={activity}
-        dropDownMaxHeight={200}
+        dropDownMaxHeight={130}
         style={{
           width: "100%",
           justifyContent: "center",
@@ -341,7 +341,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
         max={3}
         placeholder={"Choisir une ou plusieurs langue(s)"}
         defaultValue={language}
-        dropDownMaxHeight={200}
+        dropDownMaxHeight={130}
         style={{
           width: "95%",
           justifyContent: "center",
@@ -379,6 +379,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           checked={wishes1}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="En reconversion professionnelle"
@@ -386,6 +387,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           checked={wishes2}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Recherche d'opportunités professionnelles"
@@ -393,6 +395,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           checked={wishes3}
           checkedColor="#418581"
           size={20}
+          textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Sortir du bureau"
@@ -400,7 +403,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           checked={wishes4}
           checkedColor="#418581"
           size={20}
-          fontFamily="Roboto_400Regular"
+          textStyle={{ fontWeight: "normal" }}
         />
       </View>
 
@@ -412,7 +415,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             icon: () => (
               <MaterialCommunityIcons
                 name="silverware-fork"
-                size={24}
+                size={20}
                 color="#418581"
               />
             ),
@@ -423,7 +426,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             icon: () => (
               <MaterialCommunityIcons
                 name="silverware-fork"
-                size={24}
+                size={20}
                 color="#418581"
               />
             ),
@@ -434,7 +437,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             icon: () => (
               <MaterialCommunityIcons
                 name="silverware-fork"
-                size={24}
+                size={20}
                 color="#418581"
               />
             ),
@@ -445,7 +448,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             icon: () => (
               <MaterialCommunityIcons
                 name="silverware-fork"
-                size={24}
+                size={20}
                 color="#418581"
               />
             ),
@@ -456,7 +459,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             icon: () => (
               <MaterialCommunityIcons
                 name="silverware-fork"
-                size={24}
+                size={20}
                 color="#418581"
               />
             ),
@@ -467,7 +470,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             icon: () => (
               <MaterialCommunityIcons
                 name="silverware-fork"
-                size={24}
+                size={20}
                 color="#418581"
               />
             ),
@@ -479,7 +482,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
         max={3}
         placeholder={"Choisir un ou plusieurs type(s) de cuisine(s)"}
         defaultValue={food}
-        dropDownMaxHeight={200}
+        dropDownMaxHeight={130}
         style={{
           width: "95%",
           justifyContent: "center",
@@ -508,6 +511,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             width: 250,
             borderRadius: 20,
             alignSelf: "center",
+            marginTop: 120,
           }}
           title="Enregistrer"
           onPress={() => handleSignUp()}
