@@ -246,13 +246,9 @@ const styles = StyleSheet.create({
   },
 });
 
-<<<<<<< HEAD
-export default UserProfilScreen;
-=======
 function mapStateToProps(state) {
   console.log("state", state.user.id);
   return { userState: state.user };
 }
 
 export default connect(mapStateToProps, null)(UserProfilScreen);
->>>>>>> main
