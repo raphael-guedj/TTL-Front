@@ -212,10 +212,10 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 value={duration}
               />
               <View style={styles.sliderView}>
-                <Text>12h</Text>
-                <Text>12h30</Text>
-                <Text>13h</Text>
-                <Text>13h30</Text>
+                <Text>30'</Text>
+                <Text>1h</Text>
+                <Text>1h30'</Text>
+                <Text>2h</Text>
               </View>
             </View>
             <View style={styles.hours}>
@@ -655,7 +655,7 @@ const styles = StyleSheet.create({
   },
   sliderView: {
     flexDirection: "row",
-    width: "85%",
+    width: "80%",
     justifyContent: "space-between",
     alignSelf: "center",
     marginBottom: 30,

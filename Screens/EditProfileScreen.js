@@ -38,13 +38,12 @@ const EditProfilScreen = ({ navigation, userState }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.21:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.44:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);
       response.myUser.name && setName(response.myUser.name);
       response.myUser.email && setEmail(response.myUser.email);
-      response.myUser.profession && setJob(response.myUser.profession);
       response.myUser.profession && setJob(response.myUser.profession);
       response.myUser.city && setCity(response.myUser.city);
       response.myUser.arrondissement &&
@@ -64,7 +63,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   }, []);
 
   const handleRecord = async () => {
-    let rawResponse = await fetch(`http://172.16.0.21:3000/recordmydata`, {
+    let rawResponse = await fetch(`http://172.16.0.44:3000/recordmydata`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(

@@ -13,7 +13,6 @@ import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
-import Constants from "expo-constants";
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -43,7 +42,7 @@ const HomeScreen = ({ userState, navigation }) => {
     askPermissions();
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.21:3000/alluser?id=${userState.id}`
+        `http://172.16.0.44:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);
@@ -55,7 +54,7 @@ const HomeScreen = ({ userState, navigation }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.21:3000/alluser?id=${userState.id}`
+        `http://172.16.0.44:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);
