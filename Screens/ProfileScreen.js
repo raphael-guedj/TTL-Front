@@ -1,9 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button, Avatar, Accessory } from "react-native-elements";
+import { useIsFocused } from "@react-navigation/native";
+import { connect } from "react-redux";
 import { Feather } from "@expo/vector-icons";
 
-function ProfileScreen({ navigation }) {
+function ProfileScreen({ navigation, userState }) {
+  const [name, setName] = useState("");
+  const [job, setJob] = useState("");
+  const [city, setCity] = useState("");
+  const [photo, setPhoto] = useState("");
+
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    const getUser = async () => {
+      let rawResponse = await fetch(
+        `http://172.16.0.18:3000/getmydata?id=${userState.id}`
+      );
+      let response = await rawResponse.json();
+      console.log(response);
+      response.myUser.name && setName(response.myUser.name);
+      response.myUser.profession && setJob(response.myUser.profession);
+      response.myUser.city && setCity(response.myUser.city);
+      response.myUser.photo && setPhoto(response.myUser.photo);
+    };
+    getUser();
+  }, [isFocused]);
+
   return (
     <View
       style={{
@@ -25,27 +49,24 @@ function ProfileScreen({ navigation }) {
         }}
       >
         <View style={styles.avatar}>
-          <Image
-            style={styles.image}
-            source={require("../assets/profile.jpg")}
-          />
+          <Image style={styles.image} source={{ uri: photo }} />
 
           <Card.Title style={styles.title1}>Profil</Card.Title>
 
           <Text>
             {/* <Feather name="edit" size={20} color="black" /> */}
             <Text style={styles.title2}> Prénom: </Text>
-            <Text style={styles.text}> Paul</Text>
+            <Text style={styles.text}> {name} </Text>
           </Text>
           <Text>
             {/* <Feather name="map-pin" size={20} color="black" /> */}
             <Text style={styles.title2}> Ville: </Text>
-            <Text style={styles.text}> Marseille</Text>
+            <Text style={styles.text}> {city} </Text>
           </Text>
           <Text>
             {/* <Feather name="briefcase" size={20} color="black" /> */}
             <Text style={styles.title2}> Profession: </Text>
-            <Text style={styles.text}>Développeur web </Text>
+            <Text style={styles.text}> {job} </Text>
           </Text>
         </View>
 
@@ -133,4 +154,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileScreen;
+function mapStateToProps(state) {
+  // console.log("state", state.user);
+  return { userState: state.user };
+}
+
+export default connect(mapStateToProps, null)(ProfileScreen);

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import {
-  Card,
-  Button,
-  Avatar,
-  Accessory,
-  Input,
-  CheckBox,
-} from "react-native-elements";
-
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import { Button, Input, CheckBox } from "react-native-elements";
+import { useIsFocused } from "@react-navigation/native";
 import { connect } from "react-redux";
 import DropDownPicker from "react-native-dropdown-picker";
 import Textarea from "react-native-textarea";
@@ -27,6 +27,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   const [language, setLanguage] = useState([]);
   const [food, setFood] = useState([]);
   const [text, setText] = useState("");
+  const [photo, setPhoto] = useState("");
   const [wish1, setWish1] = useState(false);
   const [wish2, setWish2] = useState(false);
   const [wish3, setWish3] = useState(false);
@@ -35,13 +36,15 @@ const EditProfilScreen = ({ navigation, userState }) => {
   const [wish6, setWish6] = useState(false);
   const [emptyProfil, setEmptyProfil] = useState(false);
 
+  const isFocused = useIsFocused();
+
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.21:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.18:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      // console.log(response);
+      console.log(response);
       response.myUser.name && setName(response.myUser.name);
       response.myUser.email && setEmail(response.myUser.email);
       response.myUser.profession && setJob(response.myUser.profession);
@@ -59,12 +62,13 @@ const EditProfilScreen = ({ navigation, userState }) => {
       response.myUser.wish6 && setWish6(response.myUser.wish6);
       response.myUser.language && setLanguage(response.myUser.language);
       response.myUser.food && setFood(response.myUser.food);
+      response.myUser.photo && setPhoto(response.myUser.photo);
     };
     getUser();
-  }, []);
+  }, [isFocused]);
 
   const handleRecord = async () => {
-    let rawResponse = await fetch(`http://172.16.0.21:3000/recordmydata`, {
+    let rawResponse = await fetch(`http://172.16.0.18:3000/recordmydata`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
@@ -77,7 +81,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
     });
 
     let response = await rawResponse.json();
-    // console.log(response);
+    console.log(response);
     if (
       name !== "" &&
       job !== "" &&
@@ -85,9 +89,9 @@ const EditProfilScreen = ({ navigation, userState }) => {
       city !== "" &&
       postcode !== "" &&
       activity !== "" &&
-      language !== "" &&
+      language.length !== 0 &&
       text !== "" &&
-      food !== ""
+      food.length !== 0
     ) {
       setEmptyProfil(false);
       navigation.navigate("Profil");
@@ -102,7 +106,9 @@ const EditProfilScreen = ({ navigation, userState }) => {
       contentContainerStyle={{ minHeight: "100%" }}
     >
       <View style={styles.avatar}>
-        <Image style={styles.image} source={require("../assets/profile.jpg")} />
+        <TouchableOpacity onPress={() => navigation.navigate("Photo")}>
+          <Image style={styles.image} source={{ uri: photo }} />
+        </TouchableOpacity>
         <View style={{ width: "70%" }}>
           <Input
             placeholder="Prénom"
@@ -566,7 +572,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             width: 250,
             borderRadius: 20,
             alignSelf: "center",
-            marginTop: 120,
+            marginTop: 40,
           }}
           title="Enregistrer"
           onPress={() => handleRecord()}
@@ -642,6 +648,7 @@ const styles = StyleSheet.create({
     color: "#d90429",
     fontStyle: "italic",
     fontSize: 15,
+    marginTop: 15,
   },
 });
 
