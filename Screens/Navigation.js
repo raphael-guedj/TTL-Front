@@ -92,7 +92,6 @@ const HomeStack = () => {
 const LunchStack = () => {
   return (
     <StackLunch.Navigator>
-      <StackLunch.Screen name="Invitation" component={InvitationScreen} />
       <StackLunch.Screen name="LunchNotif" component={NotifStack} />
       <StackLunch.Screen name="Detail" component={HomeScreen} />
       <StackLunch.Screen name="Confirmation" component={HomeScreen} />
