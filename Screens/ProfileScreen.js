@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button, Avatar, Accessory } from "react-native-elements";
 import { useIsFocused } from "@react-navigation/native";
-import { connect } from "react-redux";
 import { Feather } from "@expo/vector-icons";
 
 function ProfileScreen({ navigation, userState }) {
@@ -17,7 +16,7 @@ function ProfileScreen({ navigation, userState }) {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.44:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.18:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);

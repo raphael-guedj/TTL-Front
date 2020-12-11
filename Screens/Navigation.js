@@ -161,7 +161,7 @@ function Navigation({ setReduxUser, userState }) {
     const getUserDB = async () => {
       if (token) {
         var rawResponse = await fetch(
-          "http://172.16.0.44:3000/get-user?token=" + token
+          "http://172.16.0.18:3000/get-user?token=" + token
         );
 
         const jsonResponse = await rawResponse.json();
