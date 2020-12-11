@@ -45,7 +45,7 @@ const HomeScreen = ({ userState, navigation }) => {
         `http://172.16.0.44:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      // console.log(response);
+      console.log(response);
       setListUser(response.userExcl);
     };
     getUser();
@@ -93,10 +93,7 @@ const HomeScreen = ({ userState, navigation }) => {
                 >
                   <View style={styles.containerImgData}>
                     <View>
-                      <Image
-                        source={require("../assets/clara.jpg")}
-                        style={styles.img}
-                      />
+                      <Image source={{ uri: user.photo }} style={styles.img} />
 
                       <Badge
                         status={user.isConnected ? "success" : "error"}
@@ -132,14 +129,16 @@ const HomeScreen = ({ userState, navigation }) => {
                     }}
                   >
                     <ListItem.Title>Situé à 200m</ListItem.Title>
-                    <ListItem.Subtitle>13007 Marseille</ListItem.Subtitle>
+                    <ListItem.Subtitle>
+                      {user.arrondissement} {user.city}
+                    </ListItem.Subtitle>
                   </View>
                 </View>
               </View>
 
               <View style={styles.containerJob}>
                 <Text style={{ fontWeight: "bold" }}>Profession: </Text>
-                <Text>Architecte</Text>
+                <Text>{user.profession}</Text>
               </View>
             </Card>
           </TouchableOpacity>

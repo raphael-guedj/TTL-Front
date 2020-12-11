@@ -2,12 +2,17 @@ import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button, Avatar, Accessory } from "react-native-elements";
+import { useIsFocused } from "@react-navigation/native";
+import { connect } from "react-redux";
 import { Feather } from "@expo/vector-icons";
 
 function ProfileScreen({ navigation, userState }) {
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
   const [city, setCity] = useState("");
+  const [photo, setPhoto] = useState("");
+
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     const getUser = async () => {
@@ -15,12 +20,14 @@ function ProfileScreen({ navigation, userState }) {
         `http://172.16.0.44:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
+      console.log(response);
       response.myUser.name && setName(response.myUser.name);
       response.myUser.profession && setJob(response.myUser.profession);
       response.myUser.city && setCity(response.myUser.city);
+      response.myUser.photo && setPhoto(response.myUser.photo);
     };
     getUser();
-  }, []);
+  }, [isFocused]);
 
   return (
     <View
@@ -43,10 +50,7 @@ function ProfileScreen({ navigation, userState }) {
         }}
       >
         <View style={styles.avatar}>
-          <Image
-            style={styles.image}
-            source={require("../assets/profile.jpg")}
-          />
+          <Image style={styles.image} source={{ uri: photo }} />
 
           <Card.Title style={styles.title1}>Profil</Card.Title>
 
