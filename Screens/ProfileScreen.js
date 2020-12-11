@@ -16,7 +16,7 @@ function ProfileScreen({ navigation, userState }) {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.44:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.18:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);

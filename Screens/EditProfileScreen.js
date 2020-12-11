@@ -15,7 +15,7 @@ import Textarea from "react-native-textarea";
 import InputScrollView from "react-native-input-scroll-view";
 
 import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 const EditProfilScreen = ({ navigation, userState }) => {
   const [name, setName] = useState("");
@@ -41,7 +41,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.44:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.18:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);
@@ -67,7 +67,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   }, [isFocused]);
 
   const handleRecord = async () => {
-    let rawResponse = await fetch(`http://172.16.0.44:3000/recordmydata`, {
+    let rawResponse = await fetch(`http://172.16.0.18:3000/recordmydata`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
@@ -106,7 +106,16 @@ const EditProfilScreen = ({ navigation, userState }) => {
     >
       <View style={styles.avatar}>
         <TouchableOpacity onPress={() => navigation.navigate("Photo")}>
-          <Image style={styles.image} source={{ uri: photo }} />
+          {!photo ? (
+            <Ionicons
+              style={styles.camera}
+              name="ios-camera"
+              size={85}
+              color="#418581"
+            />
+          ) : (
+            <Image style={styles.image} source={{ uri: photo }} />
+          )}
         </TouchableOpacity>
         <View style={{ width: "70%" }}>
           <Input
@@ -614,6 +623,9 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 100,
+  },
+  camera: {
+    paddingHorizontal: 20,
   },
   textareaContainer: {
     height: 130,
