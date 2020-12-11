@@ -52,30 +52,6 @@ const InvitationScreen = ({ navigation, route, userState }) => {
 
   const [errorMessage, setErrorMessage] = useState(false);
 
-  useEffect(() => {
-    console.log(inputMessage);
-  }, [inputMessage]);
-
-  useEffect(() => {
-    console.log(hours);
-  }, [hours]);
-
-  useEffect(() => {
-    console.log(duration);
-  }, [duration]);
-
-  useEffect(() => {
-    console.log(kitchen);
-  }, [kitchen]);
-
-  useEffect(() => {
-    console.log(location);
-  }, [location]);
-
-  useEffect(() => {
-    console.log(address);
-  }, [address]);
-
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === "ios");
@@ -105,11 +81,14 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       location !== "" &&
       address !== ""
     ) {
-      let rawResponse = await fetch("http://172.16.0.18:3000/new-invitation", {
-        method: "post",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=${userState.id}&receiver=${route.params.params._id}`,
-      });
+      let rawResponse = await fetch(
+        "https://evening-bastion-71731.herokuapp.com/new-invitation",
+        {
+          method: "post",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=${userState.id}&receiver=${route.params.params._id}`,
+        }
+      );
 
       var responseJSON = await rawResponse.json();
       console.log(responseJSON);
