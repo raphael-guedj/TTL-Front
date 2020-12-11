@@ -203,77 +203,77 @@ const EditProfilScreen = ({ navigation, userState }) => {
           borderBottomColor: "black",
         }}
       />
-      <View style={{ marginTop: 10, marginBottom: 15 }}>
+      <View style={{ marginTop: 10, marginBottom: 15, zIndex: 1000 }}>
         <Text style={styles.titleStyle}> Mon secteur d'activité: </Text>
 
         <DropDownPicker
           items={[
             {
               label: "Banque / Assurance / Finance",
-              value: "bank",
+              value: "Banque / Assurance / Finance",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Commerce / Négoce / Distribution",
-              value: "business",
+              value: "Business",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Art / Culture",
-              value: "art",
+              value: "Art / Culture",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
-              label: "Santé / Medical / Docteur",
-              value: "sante",
+              label: "Santé",
+              value: "Santé",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Immobilier / Notariat",
-              value: "asset",
+              value: "Immobilier / Notariat",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Transport / Logistique",
-              value: "transport",
+              value: "Transport / Logistique",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
-              label: "Batiment",
-              value: "builder",
+              label: "Bâtiment",
+              value: "Bâtiment",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Édition / Communication / Multimédia",
-              value: "multimedia",
+              value: "Édition / Communication / Multimédia",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Informatique / Digital",
-              value: "it",
+              value: "Informatique / Digital",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Autre",
-              value: "other",
+              value: "Autre",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
@@ -297,27 +297,27 @@ const EditProfilScreen = ({ navigation, userState }) => {
           }
         />
       </View>
-      <View style={{ marginTop: 10, marginBottom: 15 }}>
+      <View style={{ marginTop: 10, marginBottom: 15, zIndex: 900 }}>
         <Text style={styles.titleStyle}> Mes langues parlées: </Text>
         <DropDownPicker
           items={[
             {
               label: "Anglais",
-              value: "uk",
+              value: "Anglais",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Espagnol",
-              value: "es",
+              value: "Espagnol",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Italien",
-              value: "it",
+              value: "Italien",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
@@ -325,49 +325,49 @@ const EditProfilScreen = ({ navigation, userState }) => {
 
             {
               label: "Français",
-              value: "fr",
+              value: "Français",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Mandarin",
-              value: "ch",
+              value: "Mandarin",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Hebreu",
-              value: "is",
+              value: "Hebreu",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Arabe",
-              value: "ar",
+              value: "Arabe",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Russe",
-              value: "ru",
+              value: "Russe",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Portugais",
-              value: "pt",
+              value: "Portugais",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Autre",
-              value: "other",
+              value: "Autre",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
@@ -381,11 +381,11 @@ const EditProfilScreen = ({ navigation, userState }) => {
           defaultValue={language}
           dropDownMaxHeight={130}
           style={{
-            width: "95%",
+            width: "100%",
             justifyContent: "center",
             alignSelf: "center",
           }}
-          containerStyle={{ height: 40 }}
+          containerStyle={{ height: 40, margin: 10 }}
           itemStyle={{
             justifyContent: "flex-start",
           }}
@@ -406,7 +406,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
               defaultValue={text}
               maxLength={300}
               minLength={80}
-              placeholder={"Type your text here..."}
+              placeholder={"Décrivez-vous ici..."}
               placeholderTextColor={"#606770"}
               underlineColorAndroid={"transparent"}
             />
@@ -470,7 +470,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           items={[
             {
               label: "Thaï",
-              value: "thai",
+              value: "Thaï",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -481,7 +481,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Italien",
-              value: "italian",
+              value: "Italien",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -492,7 +492,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Chinois",
-              value: "china",
+              value: "Chinois",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -503,7 +503,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Americain",
-              value: "burger",
+              value: "Americain",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -514,7 +514,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Japonais",
-              value: "jap",
+              value: "Japonais",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -525,7 +525,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Autre",
-              value: "other",
+              value: "Autre",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"

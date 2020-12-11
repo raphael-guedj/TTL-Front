@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button, Avatar, Accessory } from "react-native-elements";
 import { useIsFocused } from "@react-navigation/native";
-import { connect } from "react-redux";
 import { Feather } from "@expo/vector-icons";
 
 function ProfileScreen({ navigation, userState }) {
