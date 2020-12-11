@@ -1,3 +1,4 @@
+import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
@@ -21,11 +22,12 @@ import {
   FontAwesome,
   Feather,
   MaterialCommunityIcons,
+  MaterialIcons,
 } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-const InvitationScreen = () => {
+const InvitationScreen = ({ navigation, route, userState }) => {
   // ======= State that keep value of message in textarea ======= //
   const [inputMessage, setInputMessage] = useState("");
 
@@ -106,7 +108,7 @@ const InvitationScreen = () => {
       let rawResponse = await fetch("http://172.16.0.16:3000/new-invitation", {
         method: "post",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=5fd22e37f06c1f1f9855acdd&receiver=5fd0f4804586b61e24acbb0f`,
+        body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=${userState.id}&receiver=${route.params.params._id}`,
       });
 
       var responseJSON = await rawResponse.json();
@@ -118,6 +120,9 @@ const InvitationScreen = () => {
       setErrorMessage(true);
     }
   };
+
+  console.log("dans mon screen invitation", route);
+  console.log("userState", userState);
 
   return (
     <KeyboardAvoidingView
@@ -154,8 +159,10 @@ const InvitationScreen = () => {
                 </View>
               </View>
               <View style={{ paddingHorizontal: 10 }}>
-                <ListItem.Title>Clara</ListItem.Title>
-                <ListItem.Title>Architecte</ListItem.Title>
+                <ListItem.Title>{route.params.params.name}</ListItem.Title>
+                <ListItem.Title>
+                  {route.params.params.profession}
+                </ListItem.Title>
                 <ListItem.Title>Distance: 200m</ListItem.Title>
 
                 <View style={styles.reviewIcon}>
@@ -680,4 +687,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InvitationScreen;
+function mapStateToProps(state) {
+  // console.log("state", state.user.id);
+  return { userState: state.user };
+}
+
+export default connect(mapStateToProps, null)(InvitationScreen);

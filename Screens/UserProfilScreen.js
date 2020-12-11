@@ -3,22 +3,28 @@ import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { connect } from "react-redux";
 import { Button, CheckBox } from "react-native-elements";
 
-function UserProfilScreen({ navigation, userState }) {
+function UserProfilScreen({ navigation, userState, route }) {
   const [language, setLanguage] = useState(true);
   const [food, setFood] = useState([]);
 
   const handleinvit = async () => {
     let rawResponse = await fetch(
+<<<<<<< HEAD
       `http://172.16.0.16:3000/mydataprofile?id=${userState.id}`
+=======
+      `http://172.16.0.44:3000/mydataprofile?id=${userState.id}`
+>>>>>>> main
     );
     let response = await rawResponse.json();
     if (response.result) {
-      navigation.navigate("Invitation");
+      navigation.navigate("Invitation", route);
     } else {
       navigation.navigate("Modifier le profil");
     }
     console.log(response);
   };
+
+  console.log(route);
 
   return (
     <ScrollView
@@ -31,84 +37,73 @@ function UserProfilScreen({ navigation, userState }) {
         <View style={{ width: "70%" }}>
           <View style={styles.containerArea}>
             <Text style={styles.title2}> Prénom: </Text>
-            <Text style={styles.text}> John</Text>
+            <Text style={styles.text}> {route.params.name}</Text>
           </View>
           <View style={styles.containerArea}>
             <Text style={styles.title2}> Profession: </Text>
-            <Text style={styles.text}> Architecte</Text>
+            <Text style={styles.text}> {route.params.profession}</Text>
           </View>
         </View>
       </View>
       <View style={{ width: "45%", flexDirection: "row" }}>
         <View style={styles.rowArea}>
           <Text style={styles.title2}> Ville: </Text>
-          <Text style={styles.text}> Marseille</Text>
+          <Text style={styles.text}> {route.params.city}</Text>
         </View>
         <View style={styles.containerArea}>
           <Text style={styles.title2}> Arrondissement: </Text>
-          <Text style={styles.text}> 13008</Text>
+          <Text style={styles.text}> {route.params.arrondissement}</Text>
         </View>
       </View>
       <View style={styles.containerArea}>
         <Text style={styles.title2}> Email: </Text>
-        <Text style={styles.text}> john.architecte@gmail.com</Text>
+        <Text style={styles.text}> {route.params.email}</Text>
       </View>
 
       <View style={styles.containerArea}>
         <Text style={styles.title2}> Secteur d'activité: </Text>
-        <Text style={styles.text}> Architecture/Urbanisme</Text>
+        <Text style={styles.text}> {route.params.secteur}</Text>
       </View>
       <View style={{ margin: 10 }}>
         <Text style={styles.title2}> Langue(s) parlée(s): </Text>
-        <CheckBox
-          title="Français"
-          checked={true}
-          checkedColor="#418581"
-          size={20}
-          textStyle={{ fontWeight: "normal" }}
-        />
-        <CheckBox
-          title="Anglais"
-          checked={false}
-          checkedColor="#418581"
-          size={20}
-          textStyle={{ fontWeight: "normal" }}
-        />
-        <CheckBox
-          title="Italien"
-          checked={false}
-          checkedColor="#418581"
-          size={20}
-          textStyle={{ fontWeight: "normal" }}
-        />
+        {route.params.language.map((lang, i) => (
+          <CheckBox
+            key={i}
+            title={lang}
+            checked={true}
+            checkedColor="#418581"
+            size={20}
+            textStyle={{ fontWeight: "normal" }}
+          />
+        ))}
       </View>
 
       <View style={{ margin: 10 }}>
         <Text style={styles.title2}> Mes envies: </Text>
         <CheckBox
           title="Rencontrer de nouvelles personnes"
-          checked={true}
+          checked={route.params.wish1 ? true : false}
           checkedColor="#418581"
           size={20}
           textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="En reconversion professionnelle"
-          checked={false}
+          checked={route.params.wish2 ? true : false}
           checkedColor="#418581"
           size={20}
           textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Recherche d'opportunités professionnelles"
-          checked={true}
+          checked={route.params.wish3 ? true : false}
           checkedColor="#418581"
           size={20}
           textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
           title="Sortir du bureau"
-          checked={false}
+          checked={route.params.wish4 ? true : false}
           checkedColor="#418581"
           size={20}
           textStyle={{ fontWeight: "normal" }}
@@ -116,39 +111,21 @@ function UserProfilScreen({ navigation, userState }) {
       </View>
 
       <View style={styles.textareaContainer}>
-        <Text style={styles.about}>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters. Lorem Ipsum is dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s.
-        </Text>
+        <Text style={styles.about}>{route.params.description}</Text>
       </View>
 
       <View style={{ margin: 10 }}>
         <Text style={styles.title2}> Cuisine(s) favorite(s): </Text>
-        <CheckBox
-          title="Thaï"
-          checked={true}
-          checkedColor="#418581"
-          size={20}
-          textStyle={{ fontWeight: "normal" }}
-        />
-        <CheckBox
-          title="Italien"
-          checked={false}
-          checkedColor="#418581"
-          size={20}
-          textStyle={{ fontWeight: "normal" }}
-        />
-        <CheckBox
-          title="Méditéranéen"
-          checked={true}
-          checkedColor="#418581"
-          size={20}
-          textStyle={{ fontWeight: "normal" }}
-        />
+        {route.params.food.map((food, i) => (
+          <CheckBox
+            key={i}
+            title={food}
+            checked={true}
+            checkedColor="#418581"
+            size={20}
+            textStyle={{ fontWeight: "normal" }}
+          />
+        ))}
       </View>
 
       <View>
