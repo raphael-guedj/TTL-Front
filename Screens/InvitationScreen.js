@@ -103,7 +103,7 @@ const InvitationScreen = () => {
       location !== "" &&
       address !== ""
     ) {
-      let rawResponse = await fetch("http://172.16.0.44:3000/new-invitation", {
+      let rawResponse = await fetch("http://172.16.0.16:3000/new-invitation", {
         method: "post",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=5fd22e37f06c1f1f9855acdd&receiver=5fd0f4804586b61e24acbb0f`,
