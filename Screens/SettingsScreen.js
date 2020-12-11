@@ -5,9 +5,16 @@ import { Card, Button } from "react-native-elements";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-function SettingsScreen({ navigation, setReduxUser, userToken }) {
+function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
   const handleLogOut = async () => {
-    await fetch(`http://172.16.0.18:3000/logout?token=${userToken}`);
+    await fetch(`http://172.16.0.16:3000/logout?token=${userToken}`);
+
+    AsyncStorage.removeItem("userToken");
+    setReduxUser({ id: null, pseudo: null, token: null });
+  };
+
+  const handleDeleteUser = async () => {
+    await fetch(`http://172.16.0.16:3000/delete-user?id=${userID}`);
 
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });
@@ -58,7 +65,7 @@ function SettingsScreen({ navigation, setReduxUser, userToken }) {
               type="clear"
               titleStyle={{ color: "#eb4d4b" }}
               title="Supprimer mon compte"
-              onPress={() => navigation.navigate("LandingScreen")}
+              onPress={() => handleDeleteUser()}
             />
           </View>
         </Card>
@@ -118,7 +125,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { userToken: state.user.token };
+  return { userToken: state.user.token, userID: state.user.id };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);
