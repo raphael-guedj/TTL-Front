@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import {
-  Card,
-  Button,
-  Avatar,
-  Accessory,
-  Input,
-  CheckBox,
-} from "react-native-elements";
-
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import { Button, Input, CheckBox } from "react-native-elements";
+import { useIsFocused } from "@react-navigation/native";
 import { connect } from "react-redux";
 import DropDownPicker from "react-native-dropdown-picker";
 import Textarea from "react-native-textarea";
 import InputScrollView from "react-native-input-scroll-view";
 
 import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 const EditProfilScreen = ({ navigation, userState }) => {
   const [name, setName] = useState("");
@@ -27,6 +27,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   const [language, setLanguage] = useState([]);
   const [food, setFood] = useState([]);
   const [text, setText] = useState("");
+  const [photo, setPhoto] = useState("");
   const [wish1, setWish1] = useState(false);
   const [wish2, setWish2] = useState(false);
   const [wish3, setWish3] = useState(false);
@@ -35,16 +36,17 @@ const EditProfilScreen = ({ navigation, userState }) => {
   const [wish6, setWish6] = useState(false);
   const [emptyProfil, setEmptyProfil] = useState(false);
 
+  const isFocused = useIsFocused();
+
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
         `http://192.168.1.78:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      // console.log(response);
+      console.log(response);
       response.myUser.name && setName(response.myUser.name);
       response.myUser.email && setEmail(response.myUser.email);
-      response.myUser.profession && setJob(response.myUser.profession);
       response.myUser.profession && setJob(response.myUser.profession);
       response.myUser.city && setCity(response.myUser.city);
       response.myUser.arrondissement &&
@@ -59,9 +61,10 @@ const EditProfilScreen = ({ navigation, userState }) => {
       response.myUser.wish6 && setWish6(response.myUser.wish6);
       response.myUser.language && setLanguage(response.myUser.language);
       response.myUser.food && setFood(response.myUser.food);
+      response.myUser.photo && setPhoto(response.myUser.photo);
     };
     getUser();
-  }, []);
+  }, [isFocused]);
 
   const handleRecord = async () => {
     let rawResponse = await fetch(`http://192.168.1.78:3000/recordmydata`, {
@@ -85,10 +88,27 @@ const EditProfilScreen = ({ navigation, userState }) => {
       city !== "" &&
       postcode !== "" &&
       activity !== "" &&
-      language !== "" &&
+      language.length !== 0 &&
       text !== "" &&
-      food !== ""
+      food.length !== 0 &&
+      photo !== "" &&
+      (wish1 || wish2 || wish3 || wish4 || wish5 || wish6)
     ) {
+      let rawResponse = await fetch(`http://172.16.0.18:3000/recordmydata`, {
+        method: "post",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
+          language
+        )}&text=${text}&food=${JSON.stringify(
+          food
+        )}&wish1=${wish1}&wish2=${wish2}&wish3=${wish3}&wish4=${wish4}&wish5=${wish5}&wish6=${wish6}&id=${
+          userState.id
+        }`,
+      });
+
+      let response = await rawResponse.json();
+      console.log(response);
+
       setEmptyProfil(false);
       navigation.navigate("Profil");
     } else {
@@ -102,7 +122,18 @@ const EditProfilScreen = ({ navigation, userState }) => {
       contentContainerStyle={{ minHeight: "100%" }}
     >
       <View style={styles.avatar}>
-        <Image style={styles.image} source={require("../assets/profile.jpg")} />
+        <TouchableOpacity onPress={() => navigation.navigate("Photo")}>
+          {!photo ? (
+            <Ionicons
+              style={styles.camera}
+              name="ios-camera"
+              size={85}
+              color="#418581"
+            />
+          ) : (
+            <Image style={styles.image} source={{ uri: photo }} />
+          )}
+        </TouchableOpacity>
         <View style={{ width: "70%" }}>
           <Input
             placeholder="Prénom"
@@ -298,21 +329,21 @@ const EditProfilScreen = ({ navigation, userState }) => {
           items={[
             {
               label: "Anglais",
-              value: "uk",
+              value: "Anglais",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Espagnol",
-              value: "es",
+              value: "Espagnol",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Italien",
-              value: "it",
+              value: "Italien",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
@@ -320,49 +351,49 @@ const EditProfilScreen = ({ navigation, userState }) => {
 
             {
               label: "Français",
-              value: "fr",
+              value: "Français",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Mandarin",
-              value: "ch",
+              value: "Mandarin",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Hebreu",
-              value: "is",
+              value: "Hebreu",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Arabe",
-              value: "ar",
+              value: "Arabe",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Russe",
-              value: "ru",
+              value: "Russe",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Portugais",
-              value: "pt",
+              value: "Portugais",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Autre",
-              value: "other",
+              value: "Autre",
               icon: () => (
                 <MaterialIcons name="language" size={24} color="#418581" />
               ),
@@ -401,7 +432,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
               defaultValue={text}
               maxLength={300}
               minLength={80}
-              placeholder={"Type your text here..."}
+              placeholder={"Décrivez-vous ici..."}
               placeholderTextColor={"#606770"}
               underlineColorAndroid={"transparent"}
             />
@@ -465,7 +496,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           items={[
             {
               label: "Thaï",
-              value: "thai",
+              value: "Thaï",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -476,7 +507,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Italien",
-              value: "italian",
+              value: "Italien",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -487,7 +518,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Chinois",
-              value: "china",
+              value: "Chinois",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -498,7 +529,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Americain",
-              value: "burger",
+              value: "Americain",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -509,7 +540,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Japonais",
-              value: "jap",
+              value: "Japonais",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -520,7 +551,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             },
             {
               label: "Autre",
-              value: "other",
+              value: "Autre",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork"
@@ -566,7 +597,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             width: 250,
             borderRadius: 20,
             alignSelf: "center",
-            marginTop: 120,
+            marginTop: 40,
           }}
           title="Enregistrer"
           onPress={() => handleRecord()}
@@ -610,6 +641,9 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 100,
   },
+  camera: {
+    paddingHorizontal: 20,
+  },
   textareaContainer: {
     height: 130,
     padding: 5,
@@ -642,6 +676,7 @@ const styles = StyleSheet.create({
     color: "#d90429",
     fontStyle: "italic",
     fontSize: 15,
+    marginTop: 15,
   },
 });
 
