@@ -38,7 +38,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.16:3000/getmydata?id=${userState.id}`
+        `http://192.168.1.78:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);
@@ -64,7 +64,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   }, []);
 
   const handleRecord = async () => {
-    let rawResponse = await fetch(`http://172.16.0.16:3000/recordmydata`, {
+    let rawResponse = await fetch(`http://192.168.1.78:3000/recordmydata`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
@@ -376,11 +376,11 @@ const EditProfilScreen = ({ navigation, userState }) => {
           defaultValue={language}
           dropDownMaxHeight={130}
           style={{
-            width: "95%",
+            width: "100%",
             justifyContent: "center",
             alignSelf: "center",
           }}
-          containerStyle={{ height: 40 }}
+          containerStyle={{ height: 40, margin: 10 }}
           itemStyle={{
             justifyContent: "flex-start",
           }}
@@ -538,11 +538,11 @@ const EditProfilScreen = ({ navigation, userState }) => {
           defaultValue={food}
           dropDownMaxHeight={130}
           style={{
-            width: "95%",
+            width: "100%",
             justifyContent: "center",
             alignSelf: "center",
           }}
-          containerStyle={{ height: 40 }}
+          containerStyle={{ height: 40, margin: 10 }}
           itemStyle={{
             justifyContent: "flex-start",
           }}

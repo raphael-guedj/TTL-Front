@@ -9,11 +9,7 @@ function UserProfilScreen({ navigation, userState, route }) {
 
   const handleinvit = async () => {
     let rawResponse = await fetch(
-<<<<<<< HEAD
-      `http://172.16.0.16:3000/mydataprofile?id=${userState.id}`
-=======
-      `http://172.16.0.44:3000/mydataprofile?id=${userState.id}`
->>>>>>> main
+      `http://192.168.1.78:3000/mydataprofile?id=${userState.id}`
     );
     let response = await rawResponse.json();
     if (response.result) {

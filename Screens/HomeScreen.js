@@ -43,7 +43,7 @@ const HomeScreen = ({ userState, navigation }) => {
     askPermissions();
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.16:3000/alluser?id=${userState.id}`
+        `http://192.168.1.78:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);
@@ -55,7 +55,7 @@ const HomeScreen = ({ userState, navigation }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.16:3000/alluser?id=${userState.id}`
+        `http://192.168.1.78:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);
@@ -115,11 +115,11 @@ const HomeScreen = ({ userState, navigation }) => {
                   </View>
 
                   <View style={styles.reviewIcon}>
-                    <FontAwesome name="star" size={17} color="#418581" />
-                    <FontAwesome name="star" size={17} color="#418581" />
-                    <FontAwesome name="star" size={17} color="#418581" />
-                    <FontAwesome name="star-o" size={17} color="#418581" />
-                    <FontAwesome name="star-o" size={17} color="#418581" />
+                    <FontAwesome name="star" size={17} color="#f9b34c" />
+                    <FontAwesome name="star" size={17} color="#f9b34c" />
+                    <FontAwesome name="star" size={17} color="#f9b34c" />
+                    <FontAwesome name="star-o" size={17} color="#f9b34c" />
+                    <FontAwesome name="star-o" size={17} color="#f9b34c" />
                   </View>
                 </View>
                 <View style={styles.verticleLine}></View>
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     height: "80%",
     alignSelf: "center",
     width: 2,
-    backgroundColor: "#f9b34c",
+    backgroundColor: "#CCCCCC",
   },
   containerLocation: {
     flex: 0.5,

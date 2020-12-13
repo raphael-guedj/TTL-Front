@@ -134,51 +134,63 @@ const InvitationScreen = ({ navigation, route, userState }) => {
         contentContainerStyle={{ paddingVertical: 25 }}
       >
         <View>
-          <Card containerStyle={{ padding: 0, marginVertical: 5 }}>
+          <Card
+            containerStyle={{
+              padding: 0,
+              borderRadius: 5,
+              margin: 20,
+              borderWidth: 0.5,
+            }}
+          >
             <View style={styles.wrapper}>
-              <View
-                style={{
-                  flex: 0.5,
-                }}
-              >
-                <View style={styles.containerImgData}>
-                  <View>
-                    <Image
-                      source={require("../assets/clara.jpg")}
-                      style={styles.img}
-                    />
-                    <Badge
-                      status="success"
-                      containerStyle={{
-                        position: "absolute",
-                        top: 2,
-                        left: 8,
-                      }}
-                    />
-                  </View>
-                </View>
+              <View>
+                <Image
+                  source={require("../assets/clara.jpg")}
+                  style={styles.img}
+                />
+                <Badge
+                  status="success"
+                  containerStyle={{
+                    position: "absolute",
+                    top: 8,
+                    left: 10,
+                  }}
+                />
               </View>
-              <View style={{ paddingHorizontal: 10 }}>
-                <ListItem.Title>{route.params.params.name}</ListItem.Title>
-                <ListItem.Title>
-                  {route.params.params.profession}
-                </ListItem.Title>
-                <ListItem.Title>Distance: 200m</ListItem.Title>
 
-                <View style={styles.reviewIcon}>
-                  <FontAwesome name="star" size={17} color="#418581" />
-                  <FontAwesome name="star" size={17} color="#418581" />
-                  <FontAwesome name="star" size={17} color="#418581" />
-                  <FontAwesome name="star-o" size={17} color="#418581" />
-                  <FontAwesome name="star-o" size={17} color="#418581" />
-                </View>
+              <View style={styles.avatar}>
+                <Text>
+                  <Text style={styles.title2}> Prénom: </Text>
+                  <ListItem.Title style={{ fontSize: 15 }}>
+                    {route.params.params.name}
+                  </ListItem.Title>
+                </Text>
+                <Text>
+                  <Text style={styles.title2}> Profession: </Text>
+                  <ListItem.Title style={{ fontSize: 15 }}>
+                    {route.params.params.profession}
+                  </ListItem.Title>
+                </Text>
+                <Text>
+                  <Text style={styles.title2}> Distance: </Text>
+                  <ListItem.Title style={{ fontSize: 15 }}>200m</ListItem.Title>
+                </Text>
+                <Text style={{ fontSize: 15, marginTop: 10 }}>
+                  <Text style={styles.title2}> Avis: </Text>
+
+                  <FontAwesome name="star" size={15} color="#f9b34c" />
+                  <FontAwesome name="star" size={15} color="#f9b34c" />
+                  <FontAwesome name="star" size={15} color="#f9b34c" />
+                  <FontAwesome name="star-o" size={15} color="#f9b34c" />
+                  <FontAwesome name="star-o" size={15} color="#f9b34c" />
+                </Text>
               </View>
             </View>
           </Card>
           <View style={styles.invitation}>
             <View style={styles.messageField}>
-              <Text style={{ marginBottom: 5 }}>Envoyez un message</Text>
-              <View style={styles.containerTextArea}>
+              <Text style={styles.titleStyle}> Envoyer un message : </Text>
+              <View style={styles.textAreaContainer}>
                 <Textarea
                   containerStyle={styles.textareaContainer}
                   style={styles.textarea}
@@ -193,13 +205,13 @@ const InvitationScreen = ({ navigation, route, userState }) => {
             </View>
 
             <View style={styles.invitationField}>
-              <Text style={{ marginBottom: 5 }}>
-                Combien de temps proposez-vous?
+              <Text style={styles.titleStyle}>
+                Combien de temps avez-vous ?
               </Text>
 
               <Slider
                 animateTransitions={true}
-                maximumTrackTintColor="#418581"
+                maximumTrackTintColor="#CCCCCC"
                 minimumTrackTintColor="#F9B34C"
                 thumbStyle={{ width: 20, height: 20 }}
                 thumbTintColor="#F9B34C"
@@ -218,36 +230,52 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 <Text>13h30</Text>
               </View>
             </View>
-            <View style={styles.hours}>
-              <Text style={{ marginBottom: 5 }}>Heure proposée</Text>
+            <View>
+              <Text style={styles.titleStyle}> Heure proposée : </Text>
               <DropDownPicker
                 items={[
                   {
                     label: "12h",
                     value: 12,
                     icon: () => (
-                      <Feather name="briefcase" size={20} color="#418581" />
+                      <MaterialCommunityIcons
+                        name="clock-outline"
+                        size={20}
+                        color="black"
+                      />
                     ),
                   },
                   {
                     label: "12h30",
                     value: 12.5,
                     icon: () => (
-                      <Feather name="briefcase" size={20} color="#418581" />
+                      <MaterialCommunityIcons
+                        name="clock-outline"
+                        size={20}
+                        color="black"
+                      />
                     ),
                   },
                   {
                     label: "13h",
                     value: 13,
                     icon: () => (
-                      <Feather name="briefcase" size={20} color="#418581" />
+                      <MaterialCommunityIcons
+                        name="clock-outline"
+                        size={20}
+                        color="black"
+                      />
                     ),
                   },
                   {
                     label: "13h30",
                     value: 13.5,
                     icon: () => (
-                      <Feather name="briefcase" size={20} color="#418581" />
+                      <MaterialCommunityIcons
+                        name="clock-outline"
+                        size={20}
+                        color="black"
+                      />
                     ),
                   },
                 ]}
@@ -270,16 +298,18 @@ const InvitationScreen = ({ navigation, route, userState }) => {
               />
             </View>
             <View style={styles.date}>
-              <Text style={{ marginBottom: 20 }}>Date proposée</Text>
+              <Text style={styles.titleStyle}> Date proposée : </Text>
               <View>
                 <Button
-                  icon={<Feather name="calendar" size={24} color="black" />}
-                  style={{
-                    width: "90%",
+                  icon={<Feather name="calendar" size={24} color="white" />}
+                  buttonStyle={{
+                    backgroundColor: "#418581",
+                    margin: 10,
+                    width: 250,
+                    borderRadius: 20,
                     alignSelf: "center",
                   }}
-                  buttonStyle={{ backgroundColor: "#F9B34C" }}
-                  titleStyle={{ color: "black" }}
+                  titleStyle={{ color: "white", margin: 10 }}
                   onPress={showDatepicker}
                   title={
                     !date
@@ -301,7 +331,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
               )}
             </View>
             <View style={styles.kitchen}>
-              <Text style={{ marginBottom: 5 }}>Cuisine proposée</Text>
+              <Text style={styles.titleStyle}> Cuisine proposée : </Text>
               <DropDownPicker
                 items={[
                   {
@@ -309,7 +339,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Locale",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -320,7 +350,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Thailandais",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -331,7 +361,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Vietnamien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -342,7 +372,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Chinois",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -353,7 +383,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Fast food",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -364,7 +394,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Français",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -375,7 +405,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Tapas",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -386,7 +416,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Italien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -397,7 +427,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Indien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -408,7 +438,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Pakistanais",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -419,7 +449,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Turk",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -430,7 +460,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Espagnol",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -441,7 +471,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Vegan",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -452,7 +482,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Arménien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -463,7 +493,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Libanais",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -474,7 +504,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Tunisien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -485,7 +515,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Créole",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="food-fork-drink"
+                        name="silverware-fork"
                         size={20}
                         color="#418581"
                       />
@@ -512,7 +542,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
               />
             </View>
             <View style={styles.location}>
-              <Text>Nom du restaurant</Text>
+              <Text style={styles.titleStyle}> Nom du restaurant : </Text>
               <Input
                 placeholder="Renseignez le nom du restaurant"
                 onChangeText={(e) => setLocation(e)}
@@ -533,7 +563,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
               />
             </View>
             <View style={styles.address}>
-              <Text>Adresse du restaurant</Text>
+              <Text style={styles.titleStyle}> Adresse du restaurant : </Text>
               <Input
                 placeholder="Renseignez l'adresse du restaurant"
                 onChangeText={(e) => setAddress(e)}
@@ -592,22 +622,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 15,
   },
-  containerImgData: {
-    paddingVertical: 2,
-    flexDirection: "row",
-    alignItems: "center",
-  },
+
   img: {
-    width: 60,
-    height: 60,
+    width: 100,
+    height: 100,
     borderRadius: 100 / 2,
   },
-  reviewIcon: {
-    paddingVertical: 5,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignSelf: "flex-start",
-  },
+  // reviewIcon: {
+  //   paddingVertical: 5,
+  //   flexDirection: "row",
+  //   justifyContent: "center",
+  //   alignSelf: "flex-start",
+  // },
   verticleLine: {
     height: "80%",
     alignSelf: "center",
@@ -636,22 +662,38 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     marginBottom: 10,
   },
-  containerTextArea: {
-    flex: 1,
-    padding: 30,
-    justifyContent: "center",
-    alignItems: "center",
+  title2: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "black",
+    margin: 10,
+  },
+  titleStyle: {
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "black",
   },
   textareaContainer: {
     height: 180,
     padding: 5,
     backgroundColor: "#F5FCFF",
   },
+
   textarea: {
     textAlignVertical: "top", // hack android
     height: 170,
-    fontSize: 14,
+    fontSize: 12,
     color: "#333",
+  },
+  textareaContainer: {
+    height: 130,
+    padding: 5,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 0.5,
+    borderColor: "#c9c9d0",
+    borderRadius: 5,
   },
   sliderView: {
     flexDirection: "row",
@@ -684,6 +726,10 @@ const styles = StyleSheet.create({
   },
   address: {
     marginBottom: 30,
+  },
+  avatar: {
+    flex: 1,
+    marginLeft: 20,
   },
 });
 
