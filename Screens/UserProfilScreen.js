@@ -105,7 +105,9 @@ function UserProfilScreen({ navigation, userState, route }) {
           textStyle={{ fontWeight: "normal" }}
         />
       </View>
-
+      <View style={styles.containerArea}>
+        <Text style={styles.title2}> A propos: </Text>
+      </View>
       <View style={styles.textareaContainer}>
         <Text style={styles.about}>{route.params.description}</Text>
       </View>

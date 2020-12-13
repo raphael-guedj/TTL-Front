@@ -7,14 +7,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
   const handleLogOut = async () => {
-    await fetch(`http://172.16.0.16:3000/logout?token=${userToken}`);
+    await fetch(`http://172.16.0.18:3000/logout?token=${userToken}`);
 
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });
   };
 
   const handleDeleteUser = async () => {
-    await fetch(`http://172.16.0.16:3000/delete-user?id=${userID}`);
+    await fetch(`http://172.16.0.18:3000/delete-user?id=${userID}`);
 
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });

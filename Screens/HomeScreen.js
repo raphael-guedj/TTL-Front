@@ -13,7 +13,6 @@ import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
-import Constants from "expo-constants";
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -43,10 +42,10 @@ const HomeScreen = ({ userState, navigation }) => {
     askPermissions();
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.16:3000/alluser?id=${userState.id}`
+        `http://172.16.0.18:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      // console.log(response);
+      console.log(response);
       setListUser(response.userExcl);
     };
     getUser();
@@ -55,7 +54,7 @@ const HomeScreen = ({ userState, navigation }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.16:3000/alluser?id=${userState.id}`
+        `http://172.16.0.44:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);
@@ -94,10 +93,7 @@ const HomeScreen = ({ userState, navigation }) => {
                 >
                   <View style={styles.containerImgData}>
                     <View>
-                      <Image
-                        source={require("../assets/clara.jpg")}
-                        style={styles.img}
-                      />
+                      <Image source={{ uri: user.photo }} style={styles.img} />
 
                       <Badge
                         status={user.isConnected ? "success" : "error"}
@@ -133,14 +129,16 @@ const HomeScreen = ({ userState, navigation }) => {
                     }}
                   >
                     <ListItem.Title>Situé à 200m</ListItem.Title>
-                    <ListItem.Subtitle>13007 Marseille</ListItem.Subtitle>
+                    <ListItem.Subtitle>
+                      {user.arrondissement} {user.city}
+                    </ListItem.Subtitle>
                   </View>
                 </View>
               </View>
 
               <View style={styles.containerJob}>
                 <Text style={{ fontWeight: "bold" }}>Profession: </Text>
-                <Text>Architecte</Text>
+                <Text>{user.profession}</Text>
               </View>
             </Card>
           </TouchableOpacity>
