@@ -318,7 +318,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 />
               )}
             </View>
-            <View style={styles.kitchen}>
+            <View>
               <Text style={styles.titleStyle}> Cuisine proposée : </Text>
               <DropDownPicker
                 items={[
@@ -513,7 +513,6 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 placeholder="Proposez une cuisine"
                 defaultValue={kitchen}
                 dropDownMaxHeight={130}
-                onPress={() => changeHeight()}
                 style={{
                   width: "100%",
                   justifyContent: "center",
@@ -709,13 +708,14 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   kitchen: {
-    zIndex: 99,
     justifyContent: "space-between",
     marginBottom: 30,
+    zIndex: 100,
   },
   location: {
     justifyContent: "space-between",
     marginBottom: 30,
+    marginTop: 100,
   },
   address: {
     marginBottom: 30,

@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 100,
     borderWidth: 3,
-    borderColor: "#fbc87d",
+    borderColor: "#d9eceb",
   },
   textareaContainer: {
     height: 130,
@@ -257,6 +257,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 10,
     flexDirection: "row",
+    flexWrap: "wrap",
   },
   rowArea: {
     width: "95%",

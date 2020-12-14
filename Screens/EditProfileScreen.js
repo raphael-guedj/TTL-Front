@@ -128,7 +128,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             onChangeText={(e) => setName(e)}
             value={name}
             placeholderTextColor="#606770"
-            leftIcon={<Feather name="edit" size={20} color="black" />}
+            leftIcon={<Feather name="edit" size={20} color="#c7d3dc" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
@@ -146,7 +146,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
             onChangeText={(e) => setJob(e)}
             value={job}
             placeholderTextColor="#606770"
-            leftIcon={<Feather name="briefcase" size={20} color="black" />}
+            leftIcon={<Feather name="briefcase" size={20} color="#c7d3dc" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
@@ -167,7 +167,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           onChangeText={(e) => setCity(e)}
           value={city}
           placeholderTextColor="#606770"
-          leftIcon={<Feather name="map-pin" size={20} color="black" />}
+          leftIcon={<Feather name="map-pin" size={20} color="#c7d3dc" />}
           leftIconContainerStyle={{
             marginHorizontal: 5,
           }}
@@ -185,7 +185,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           onChangeText={(e) => setPostcode(e)}
           value={postcode}
           placeholderTextColor="#606770"
-          leftIcon={<Feather name="plus-circle" size={20} color="black" />}
+          leftIcon={<Feather name="plus-circle" size={20} color="#c7d3dc" />}
           leftIconContainerStyle={{
             marginHorizontal: 5,
           }}
@@ -204,7 +204,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
         onChangeText={(e) => setEmail(e)}
         value={email}
         placeholderTextColor="#606770"
-        leftIcon={<Entypo name="email" size={19} color="black" />}
+        leftIcon={<Entypo name="email" size={19} color="#c7d3dc" />}
         leftIconContainerStyle={{
           marginHorizontal: 5,
         }}
@@ -628,6 +628,8 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 100,
+    borderWidth: 3,
+    borderColor: "#d9eceb",
   },
   camera: {
     paddingHorizontal: 20,
