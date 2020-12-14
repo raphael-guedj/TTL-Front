@@ -42,10 +42,10 @@ const HomeScreen = ({ userState, navigation }) => {
     askPermissions();
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.20:3000/alluser?id=${userState.id}`
+        `http://172.16.0.18:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      console.log(response);
+      // console.log(response);
       setListUser(response.userExcl);
     };
     getUser();
@@ -54,7 +54,7 @@ const HomeScreen = ({ userState, navigation }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.20:3000/alluser?id=${userState.id}`
+        `http://172.16.0.18:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);

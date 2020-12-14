@@ -81,16 +81,16 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       location !== "" &&
       address !== ""
     ) {
-      let rawResponse = await fetch("http://172.16.0.20:3000/new-invitation", {
+      let rawResponse = await fetch("http://172.16.0.18:3000/new-invitation", {
         method: "post",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=${userState.id}&receiver=${route.params.params._id}`,
       });
 
       var responseJSON = await rawResponse.json();
-      console.log(responseJSON);
+      // console.log(responseJSON);
       if (responseJSON.response) {
-        console.log("ma réponse est bonne");
+        // console.log("ma réponse est bonne");
       }
     } else {
       setErrorMessage(true);
@@ -98,7 +98,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
   };
 
   console.log("dans mon screen invitation", route);
-  console.log("userState", userState);
+  // console.log("userState", userState);
 
   return (
     <KeyboardAvoidingView
@@ -114,7 +114,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
             <View style={styles.wrapper}>
               <View>
                 <Image
-                  source={require("../assets/clara.jpg")}
+                  source={{ uri: route.params.params.photo }}
                   style={styles.img}
                 />
                 <Badge
@@ -142,6 +142,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 </Text>
                 <Text>
                   <Text style={styles.title2}> Distance: </Text>
+
                   <ListItem.Title style={{ fontSize: 15 }}>200m</ListItem.Title>
                 </Text>
                 <Text style={{ fontSize: 15, marginTop: 10 }}>

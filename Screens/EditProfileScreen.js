@@ -41,7 +41,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.20:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.18:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);
@@ -80,7 +80,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
       photo !== "" &&
       (wish1 || wish2 || wish3 || wish4 || wish5 || wish6)
     ) {
-      let rawResponse = await fetch(`http://172.16.0.20:3000/recordmydata`, {
+      let rawResponse = await fetch(`http://172.16.0.18:3000/recordmydata`, {
         method: "post",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(

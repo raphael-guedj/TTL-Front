@@ -9,7 +9,7 @@ function UserProfilScreen({ navigation, userState, route }) {
 
   const handleinvit = async () => {
     let rawResponse = await fetch(
-      `http://172.16.0.20:3000/mydataprofile?id=${userState.id}`
+      `http://172.16.0.18:3000/mydataprofile?id=${userState.id}`
     );
     let response = await rawResponse.json();
     if (response.result) {
@@ -17,7 +17,7 @@ function UserProfilScreen({ navigation, userState, route }) {
     } else {
       navigation.navigate("Modifier le profil");
     }
-    console.log(response);
+    // console.log(response);
   };
 
   console.log(route);
@@ -29,10 +29,7 @@ function UserProfilScreen({ navigation, userState, route }) {
     >
       <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
         <View style={styles.avatar}>
-          <Image
-            style={styles.image}
-            source={require("../assets/profile.jpg")}
-          />
+          <Image style={styles.image} source={{ uri: route.params.photo }} />
           <View style={{ width: "70%" }}>
             <View style={styles.containerArea}>
               <Text style={styles.title1}> Prénom: </Text>
@@ -71,7 +68,7 @@ function UserProfilScreen({ navigation, userState, route }) {
             key={i}
             title={lang}
             checked={true}
-            checkedColor="#F9B34C"
+            checkedColor="#418581"
             size={20}
             textStyle={{ fontWeight: "normal" }}
             containerStyle={{
@@ -89,7 +86,7 @@ function UserProfilScreen({ navigation, userState, route }) {
         <CheckBox
           title="Rencontrer de nouvelles personnes"
           checked={route.params.wish1 ? true : false}
-          checkedColor="#F9B34C"
+          checkedColor="#418581"
           size={20}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
@@ -102,7 +99,7 @@ function UserProfilScreen({ navigation, userState, route }) {
         <CheckBox
           title="En reconversion professionnelle"
           checked={route.params.wish2 ? true : false}
-          checkedColor="#F9B34C"
+          checkedColor="#418581"
           size={20}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
@@ -115,7 +112,7 @@ function UserProfilScreen({ navigation, userState, route }) {
         <CheckBox
           title="Recherche d'opportunités professionnelles"
           checked={route.params.wish3 ? true : false}
-          checkedColor="#F9B34C"
+          checkedColor="#418581"
           size={20}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
@@ -128,7 +125,7 @@ function UserProfilScreen({ navigation, userState, route }) {
         <CheckBox
           title="Sortir du bureau"
           checked={route.params.wish4 ? true : false}
-          checkedColor="#F9B34C"
+          checkedColor="#418581"
           size={20}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
@@ -153,7 +150,7 @@ function UserProfilScreen({ navigation, userState, route }) {
             key={i}
             title={food}
             checked={true}
-            checkedColor="#F9B34C"
+            checkedColor="#418581"
             size={20}
             textStyle={{ fontWeight: "normal" }}
             containerStyle={{

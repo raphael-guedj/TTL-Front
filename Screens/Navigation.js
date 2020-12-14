@@ -10,26 +10,44 @@ import ProfileScreen from "./ProfileScreen";
 import EditProfilScreen from "./EditProfileScreen";
 import InvitationScreen from "./InvitationScreen";
 import SnapScreen from "./SnapScreen";
-
+import NotifScreenReceived from "./NotifScreen";
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 const StackHome = createStackNavigator();
-const StackNotif = createStackNavigator();
+const TopTabNotif = createMaterialTopTabNavigator();
 const StackLunch = createStackNavigator();
 const StackProfil = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const NotifStack = () => {
   return (
-    <StackNotif.Navigator initialRouteName="NotifEnvoye">
-      <StackNotif.Screen name="NotifEnvoye" component={HomeScreen} />
-      <StackNotif.Screen name="NotifRecu" component={HomeScreen} />
-    </StackNotif.Navigator>
+    <TopTabNotif.Navigator
+      tabBarOptions={{
+        activeTintColor: "#418581",
+        indicatorStyle: { backgroundColor: "#F9B34C", height: 1 },
+        labelStyle: { fontSize: 12 },
+        style: {
+          marginTop: 10,
+          height: 45,
+        },
+      }}
+      initialRouteName="NotifEnvoye"
+    >
+      <TopTabNotif.Screen
+        name="Invitations envoyés"
+        component={NotifScreenReceived}
+      />
+      <TopTabNotif.Screen
+        name="Invitations reçues"
+        component={NotifScreenReceived}
+      />
+    </TopTabNotif.Navigator>
   );
 };
 
@@ -51,7 +69,18 @@ const HomeStack = () => {
         name="Home"
         component={HomeScreen}
       />
-      <StackHome.Screen name="HomeNotif" component={NotifStack} />
+      <StackHome.Screen
+        options={{
+          title: "Mes invitations",
+          headerStyle: {
+            backgroundColor: "#Fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+        }}
+        name="Notifications"
+        component={NotifStack}
+      />
       <StackHome.Screen
         options={{
           title: "Profil",
@@ -161,7 +190,7 @@ function Navigation({ setReduxUser, userState }) {
     const getUserDB = async () => {
       if (token) {
         var rawResponse = await fetch(
-          "http://172.16.0.20:3000/get-user?token=" + token
+          "http://172.16.0.18:3000/get-user?token=" + token
         );
 
         const jsonResponse = await rawResponse.json();

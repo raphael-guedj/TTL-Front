@@ -45,7 +45,7 @@ const SnapScreen = ({ userState, navigation }) => {
       });
       //   console.log("data", data);
       let rawResponse = await fetch(
-        `http://172.16.0.20:3000/uploadPhoto?id=${userState.id}`,
+        `http://172.16.0.18:3000/uploadPhoto?id=${userState.id}`,
         {
           method: "post",
           body: data,

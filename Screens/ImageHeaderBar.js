@@ -3,6 +3,7 @@ import React from "react";
 import { View, Image, TouchableOpacity } from "react-native";
 import { Badge } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const HeaderBarImage = () => {
   return (
@@ -21,9 +22,10 @@ const HeaderBarImage = () => {
 };
 
 const IconBar = () => {
+  const navigation = useNavigation();
   return (
     <View style={{ paddingRight: 20 }}>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={() => navigation.navigate("Notifications")}>
         <Ionicons name="md-notifications" size={34} color="#418581" />
         <Badge
           status="error"
