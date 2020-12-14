@@ -50,7 +50,12 @@ function ProfileScreen({ navigation, userState }) {
         }}
       >
         <View style={styles.avatar}>
-          <Image style={styles.image} source={{ uri: photo }} />
+          <Image
+            style={styles.image}
+            source={
+              photo ? { uri: photo } : require("../assets/default_avatar.jpg")
+            }
+          />
 
           <Card.Title style={styles.title1}>Profil</Card.Title>
 
