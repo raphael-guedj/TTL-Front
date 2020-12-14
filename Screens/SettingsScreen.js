@@ -5,6 +5,8 @@ import { Card, Button, Overlay } from "react-native-elements";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { PRIVATE_URL } from "../App";
+
 function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
   const toggleOverlay = () => {
     setVisible(!visible);
@@ -13,14 +15,14 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
   const [visible, setVisible] = useState(false);
 
   const handleLogOut = async () => {
-    await fetch(`http://172.16.0.20:3000/logout?token=${userToken}`);
+    await fetch(`${PRIVATE_URL}/logout?token=${userToken}`);
 
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });
   };
 
   const handleDeleteUser = async () => {
-    await fetch(`http://172.16.0.20:3000/delete-user?id=${userID}`);
+    await fetch(`${PRIVATE_URL}/delete-user?id=${userID}`);
 
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });

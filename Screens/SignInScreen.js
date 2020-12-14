@@ -11,6 +11,7 @@ import { Input, Button } from "react-native-elements";
 import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { PRIVATE_URL } from "../App";
 
 const SignInScreen = ({ setReduxUser, navigation }) => {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
   const [responseOk, setResponseOk] = useState(true);
 
   const handleSignIn = async () => {
-    let rawResponse = await fetch("http://172.16.0.20:3000/sign-in", {
+    let rawResponse = await fetch(`${PRIVATE_URL}/sign-in`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `email=${email}&password=${password}`,
