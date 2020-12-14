@@ -4,6 +4,7 @@ import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button, Avatar, Accessory } from "react-native-elements";
 import { useIsFocused } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
+import { PRIVATE_URL } from "../App";
 
 function ProfileScreen({ navigation, userState }) {
   const [name, setName] = useState("");
@@ -16,7 +17,7 @@ function ProfileScreen({ navigation, userState }) {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.18:3000/getmydata?id=${userState.id}`
+        `${PRIVATE_URL}/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);

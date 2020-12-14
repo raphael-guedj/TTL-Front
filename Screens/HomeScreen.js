@@ -14,6 +14,8 @@ import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
 
+import { PRIVATE_URL } from "../App";
+
 const wait = (timeout) => {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
@@ -41,9 +43,7 @@ const HomeScreen = ({ userState, navigation }) => {
     }
     askPermissions();
     const getUser = async () => {
-      let rawResponse = await fetch(
-        `http://172.16.0.18:3000/alluser?id=${userState.id}`
-      );
+      let rawResponse = await fetch(`${PRIVATE_URL}alluser?id=${userState.id}`);
       let response = await rawResponse.json();
       console.log(response);
       setListUser(response.userExcl);
@@ -53,9 +53,7 @@ const HomeScreen = ({ userState, navigation }) => {
 
   useEffect(() => {
     const getUser = async () => {
-      let rawResponse = await fetch(
-        `http://172.16.0.44:3000/alluser?id=${userState.id}`
-      );
+      let rawResponse = await fetch(`${PRIVATE_URL}alluser?id=${userState.id}`);
       let response = await rawResponse.json();
       // console.log(response);
       setListUser(response.userExcl);

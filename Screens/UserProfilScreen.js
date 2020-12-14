@@ -3,13 +3,15 @@ import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { connect } from "react-redux";
 import { Button, CheckBox } from "react-native-elements";
 
+import { PRIVATE_URL } from "../App";
+
 function UserProfilScreen({ navigation, userState, route }) {
   const [language, setLanguage] = useState(true);
   const [food, setFood] = useState([]);
 
   const handleinvit = async () => {
     let rawResponse = await fetch(
-      `http://172.16.0.18:3000/mydataprofile?id=${userState.id}`
+      `${PRIVATE_URL}/mydataprofile?id=${userState.id}`
     );
     let response = await rawResponse.json();
     if (response.result) {

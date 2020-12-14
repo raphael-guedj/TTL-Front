@@ -18,6 +18,7 @@ import { FaunaOne_400Regular } from "@expo-google-fonts/fauna-one";
 import Navigation from "./Screens/Navigation";
 
 const store = createStore(combineReducers({ user }));
+export const PRIVATE_URL = "http://172.16.0.44:3000";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
