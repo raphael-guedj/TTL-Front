@@ -67,20 +67,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
   }, [isFocused]);
 
   const handleRecord = async () => {
-    let rawResponse = await fetch(`http://172.16.0.20:3000/recordmydata`, {
-      method: "post",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
-        language
-      )}&text=${text}&food=${JSON.stringify(
-        food
-      )}&wish1=${wish1}&wish2=${wish2}&wish3=${wish3}&wish4=${wish4}&wish5=${wish5}&wish6=${wish6}&id=${
-        userState.id
-      }`,
-    });
-
-    let response = await rawResponse.json();
-    // console.log(response);
     if (
       name !== "" &&
       job !== "" &&
@@ -238,70 +224,70 @@ const EditProfilScreen = ({ navigation, userState }) => {
               label: "Banque / Assurance / Finance",
               value: "bank",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Commerce / Négoce / Distribution",
               value: "business",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Art / Culture",
               value: "art",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Santé / Medical / Docteur",
               value: "sante",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Immobilier / Notariat",
               value: "asset",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Transport / Logistique",
               value: "transport",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Batiment",
               value: "builder",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Édition / Communication / Multimédia",
               value: "multimedia",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Informatique / Digital",
               value: "it",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Autre",
               value: "other",
               icon: () => (
-                <Feather name="briefcase" size={20} color="#F9B34C" />
+                <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
           ]}
@@ -312,8 +298,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
             width: "100%",
             justifyContent: "center",
             alignSelf: "center",
-            borderRadius: 5,
-            borderColor: "#abd6d3",
           }}
           containerStyle={{ height: 40, margin: 10 }}
           itemStyle={{
@@ -333,21 +317,21 @@ const EditProfilScreen = ({ navigation, userState }) => {
               label: "Anglais",
               value: "Anglais",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Espagnol",
               value: "Espagnol",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Italien",
               value: "Italien",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
 
@@ -355,49 +339,49 @@ const EditProfilScreen = ({ navigation, userState }) => {
               label: "Français",
               value: "Français",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Mandarin",
               value: "Mandarin",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Hebreu",
               value: "Hebreu",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Arabe",
               value: "Arabe",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Russe",
               value: "Russe",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Portugais",
               value: "Portugais",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
             {
               label: "Autre",
               value: "Autre",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#F9B34C" />
+                <MaterialIcons name="language" size={24} color="#418581" />
               ),
             },
           ]}
@@ -412,8 +396,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
             width: "100%",
             justifyContent: "center",
             alignSelf: "center",
-            borderRadius: 5,
-            borderColor: "#abd6d3",
           }}
           containerStyle={{ height: 40, margin: 10 }}
           itemStyle={{
@@ -460,10 +442,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
           checkedColor="#418581"
           size={14}
           textStyle={{ fontWeight: "normal" }}
-          containerStyle={{
-            borderRadius: 5,
-            borderColor: "#abd6d3",
-          }}
         />
         <CheckBox
           title="Recherche d'opportunités professionnelles"
@@ -472,10 +450,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
           checkedColor="#418581"
           size={14}
           textStyle={{ fontWeight: "normal" }}
-          containerStyle={{
-            borderRadius: 5,
-            borderColor: "#abd6d3",
-          }}
         />
         <CheckBox
           title="Se reconvertir professionnellement"
@@ -484,10 +458,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
           checkedColor="#418581"
           size={14}
           textStyle={{ fontWeight: "normal" }}
-          containerStyle={{
-            borderRadius: 5,
-            borderColor: "#abd6d3",
-          }}
         />
         <CheckBox
           title="Se déconnecter du bureau"
@@ -496,10 +466,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
           checkedColor="#418581"
           size={14}
           textStyle={{ fontWeight: "normal" }}
-          containerStyle={{
-            borderRadius: 5,
-            borderColor: "#abd6d3",
-          }}
         />
         <CheckBox
           title="Découvrir le quartier autour de moi"
@@ -508,10 +474,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
           checkedColor="#418581"
           size={14}
           textStyle={{ fontWeight: "normal" }}
-          containerStyle={{
-            borderRadius: 5,
-            borderColor: "#abd6d3",
-          }}
         />
       </View>
       <View style={{ marginTop: 10, marginBottom: 15 }}>
@@ -593,13 +555,11 @@ const EditProfilScreen = ({ navigation, userState }) => {
           defaultValue={food}
           dropDownMaxHeight={130}
           style={{
-            width: "100%",
+            width: "95%",
             justifyContent: "center",
             alignSelf: "center",
-            borderRadius: 5,
-            borderColor: "#abd6d3",
           }}
-          containerStyle={{ height: 40, margin: 10 }}
+          containerStyle={{ height: 40 }}
           itemStyle={{
             justifyContent: "flex-start",
           }}

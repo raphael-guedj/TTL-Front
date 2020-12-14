@@ -81,14 +81,11 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       location !== "" &&
       address !== ""
     ) {
-      let rawResponse = await fetch(
-        "https://evening-bastion-71731.herokuapp.com/new-invitation",
-        {
-          method: "post",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=${userState.id}&receiver=${route.params.params._id}`,
-        }
-      );
+      let rawResponse = await fetch("http://172.16.0.20:3000/new-invitation", {
+        method: "post",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=${userState.id}&receiver=${route.params.params._id}`,
+      });
 
       var responseJSON = await rawResponse.json();
       console.log(responseJSON);
