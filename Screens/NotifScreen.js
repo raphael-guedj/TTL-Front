@@ -8,14 +8,11 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import Modal from "react-native-modal";
 import { Button, Card, Badge, ListItem } from "react-native-elements";
 import { useIsFocused } from "@react-navigation/native";
 import { connect } from "react-redux";
-import {
-  FontAwesome,
-  MaterialCommunityIcons,
-  Ionicons,
-} from "@expo/vector-icons";
+import { FontAwesome, MaterialIcons, Ionicons } from "@expo/vector-icons";
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -25,7 +22,13 @@ const wait = (timeout) => {
 
 const NotifScreenReceived = ({ userState, navigation }) => {
   const [listUser, setListUser] = useState([]);
+  const [invit, setInvit] = useState();
   const [refreshing, setRefreshing] = useState(false);
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -90,26 +93,65 @@ const NotifScreenReceived = ({ userState, navigation }) => {
               </View>
               <View style={styles.verticleLine}></View>
               <View style={styles.containerLocation}>
-                <View style={{ paddingHorizontal: 15 }}>
-                  <FontAwesome name="map-marker" size={34} color="#F9B34C" />
-                </View>
+                <View style={{ paddingHorizontal: 10 }}></View>
                 <View
                   style={{
                     alignItems: "center",
+                    flexDirection: "row",
+                    justifyContent: "space-around",
                   }}
                 >
-                  <ListItem.Title>Situé à 200m</ListItem.Title>
-                  <ListItem.Subtitle>
+                  <ListItem.Title>
                     {user.arrondissement} {user.city}
-                  </ListItem.Subtitle>
+                  </ListItem.Title>
+                  <MaterialIcons name="cancel" size={30} color="#F9B34C" />
                 </View>
               </View>
             </View>
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity onPress={toggleModal}>
               <View style={styles.containerInvit}>
                 <Text style={{ fontWeight: "bold", color: "#f5f3f4" }}>
                   Voir les détails de l'invitation
                 </Text>
+                <Modal isVisible={isModalVisible} backdropColor={"#f5f3f4"}>
+                  <View>
+                    <Card
+                      containerStyle={{
+                        padding: 0,
+                        marginVertical: 25,
+                        borderRadius: 5,
+                        borderColor: "#abd6d3",
+                      }}
+                    >
+                      <View style={styles.wrapper}>
+                        <View
+                          style={{
+                            flex: 0.5,
+                          }}
+                        >
+                          <View></View>
+                          <View style={{ paddingHorizontal: 10 }}>
+                            <ListItem.Title>{user.name}</ListItem.Title>
+                            <ListItem.Subtitle>
+                              {user.profession}
+                            </ListItem.Subtitle>
+                          </View>
+                        </View>
+                      </View>
+                    </Card>
+                    <Button
+                      buttonStyle={{
+                        backgroundColor: "#F9B34C",
+                        margin: 10,
+                        width: 250,
+                        borderRadius: 20,
+                        alignSelf: "center",
+                      }}
+                      title="Retour à mes invitations envoyées"
+                      onPress={toggleModal}
+                    />
+                  </View>
+                </Modal>
               </View>
             </TouchableOpacity>
           </Card>
