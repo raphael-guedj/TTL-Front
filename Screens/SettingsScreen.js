@@ -1,11 +1,17 @@
 import { connect } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
-import { Card, Button } from "react-native-elements";
+import { Card, Button, Overlay } from "react-native-elements";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
+
+  const [visible, setVisible] = useState(false);
+
   const handleLogOut = async () => {
     await fetch(`http://172.16.0.20:3000/logout?token=${userToken}`);
 
@@ -71,8 +77,30 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
               type="clear"
               titleStyle={{ color: "#eb4d4b" }}
               title="Supprimer mon compte"
-              onPress={() => handleDeleteUser()}
+              onPress={toggleOverlay}
             />
+            <Overlay
+              isVisible={visible}
+              onBackdropPress={toggleOverlay}
+              overlayStyle={{
+                borderRadius: 5,
+                width: "80%",
+                height: "20%",
+                justifyContent: "space-between",
+                borderWidth: 1,
+                borderColor: "#418581",
+              }}
+            >
+              <Text style={styles.titleModal}>
+                Êtes-vous sur de vouloir supprimer votre compte ?
+              </Text>
+              <Button
+                type="clear"
+                titleStyle={{ color: "#eb4d4b" }}
+                title="Supprimer mon compte"
+                onPress={() => handleDeleteUser()}
+              />
+            </Overlay>
           </View>
         </Card>
       </ScrollView>
@@ -94,9 +122,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#f1faee",
   },
+  titleModal: {
+    fontSize: 16,
+    color: "black",
+    textAlign: "center",
+    marginTop: 10,
+    alignSelf: "center",
+  },
   text: {
     fontSize: 15,
     color: "black",
+    justifyContent: "center",
     margin: 5,
   },
   button: {

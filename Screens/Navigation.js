@@ -10,6 +10,7 @@ import ProfileScreen from "./ProfileScreen";
 import EditProfilScreen from "./EditProfileScreen";
 import InvitationScreen from "./InvitationScreen";
 import SnapScreen from "./SnapScreen";
+import MyLunchesScreen from "./MyLunchesScreen";
 
 import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -92,9 +93,22 @@ const HomeStack = () => {
 const LunchStack = () => {
   return (
     <StackLunch.Navigator>
-      <StackLunch.Screen name="LunchNotif" component={NotifStack} />
-      <StackLunch.Screen name="Detail" component={HomeScreen} />
-      <StackLunch.Screen name="Confirmation" component={HomeScreen} />
+      <StackLunch.Screen
+        options={{
+          title: "Mes Lunchs",
+          headerStyle: {
+            backgroundColor: "#fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+
+          headerRight: () => <IconBar />,
+        }}
+        name="Detail"
+        component={MyLunchesScreen}
+      />
+      <StackLunch.Screen name="Confirmation" component={MyLunchesScreen} />
     </StackLunch.Navigator>
   );
 };
