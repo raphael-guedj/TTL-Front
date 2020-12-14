@@ -19,7 +19,7 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
   const [responseOk, setResponseOk] = useState(true);
 
   const handleSignIn = async () => {
-    let rawResponse = await fetch(`${PRIVATE_URL}sign-in`, {
+    let rawResponse = await fetch(`${PRIVATE_URL}/sign-in`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `email=${email}&password=${password}`,

@@ -25,7 +25,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   const [city, setCity] = useState("");
   const [postcode, setPostcode] = useState("");
   const [email, setEmail] = useState("");
-  const [activity, setActivity] = useState();
+  const [activity, setActivity] = useState("");
   const [language, setLanguage] = useState([]);
   const [food, setFood] = useState([]);
   const [text, setText] = useState("");
@@ -69,20 +69,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
   }, [isFocused]);
 
   const handleRecord = async () => {
-    let rawResponse = await fetch(`${PRIVATE_URL}recordmydata`, {
-      method: "post",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
-        language
-      )}&text=${text}&food=${JSON.stringify(
-        food
-      )}&wish1=${wish1}&wish2=${wish2}&wish3=${wish3}&wish4=${wish4}&wish5=${wish5}&wish6=${wish6}&id=${
-        userState.id
-      }`,
-    });
-
-    let response = await rawResponse.json();
-    console.log(response);
     if (
       name !== "" &&
       job !== "" &&
@@ -92,8 +78,25 @@ const EditProfilScreen = ({ navigation, userState }) => {
       activity !== "" &&
       language.length !== 0 &&
       text !== "" &&
-      food.length !== 0
+      food.length !== 0 &&
+      photo !== "" &&
+      (wish1 || wish2 || wish3 || wish4 || wish5 || wish6)
     ) {
+      let rawResponse = await fetch(`${PRIVATE_URL}/recordmydata`, {
+        method: "post",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(
+          language
+        )}&text=${text}&food=${JSON.stringify(
+          food
+        )}&wish1=${wish1}&wish2=${wish2}&wish3=${wish3}&wish4=${wish4}&wish5=${wish5}&wish6=${wish6}&id=${
+          userState.id
+        }`,
+      });
+
+      let response = await rawResponse.json();
+      console.log(response);
+
       setEmptyProfil(false);
       navigation.navigate("Profil");
     } else {
@@ -214,77 +217,77 @@ const EditProfilScreen = ({ navigation, userState }) => {
           borderBottomColor: "black",
         }}
       />
-      <View style={{ marginTop: 10, marginBottom: 15, zIndex: 1000 }}>
+      <View style={{ marginTop: 10, marginBottom: 15 }}>
         <Text style={styles.titleStyle}> Mon secteur d'activité: </Text>
 
         <DropDownPicker
           items={[
             {
               label: "Banque / Assurance / Finance",
-              value: "Banque / Assurance / Finance",
+              value: "bank",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Commerce / Négoce / Distribution",
-              value: "Business",
+              value: "business",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Art / Culture",
-              value: "Art / Culture",
+              value: "art",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
-              label: "Santé",
-              value: "Santé",
+              label: "Santé / Medical / Docteur",
+              value: "sante",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Immobilier / Notariat",
-              value: "Immobilier / Notariat",
+              value: "asset",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Transport / Logistique",
-              value: "Transport / Logistique",
+              value: "transport",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
-              label: "Bâtiment",
-              value: "Bâtiment",
+              label: "Batiment",
+              value: "builder",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Édition / Communication / Multimédia",
-              value: "Édition / Communication / Multimédia",
+              value: "multimedia",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Informatique / Digital",
-              value: "Informatique / Digital",
+              value: "it",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
               label: "Autre",
-              value: "Autre",
+              value: "other",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
@@ -308,7 +311,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           }
         />
       </View>
-      <View style={{ marginTop: 10, marginBottom: 15, zIndex: 900 }}>
+      <View style={{ marginTop: 10, marginBottom: 15 }}>
         <Text style={styles.titleStyle}> Mes langues parlées: </Text>
         <DropDownPicker
           items={[

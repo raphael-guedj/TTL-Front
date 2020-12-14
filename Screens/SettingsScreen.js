@@ -25,7 +25,7 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
   return (
     <View style={styles.card}>
       <ScrollView>
-        <Card>
+        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
           <Card.Title style={styles.title}>Mentions légales</Card.Title>
           <Card.Divider />
 
@@ -36,7 +36,7 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
           </View>
         </Card>
 
-        <Card>
+        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
           <Card.Title style={styles.title}>À propos</Card.Title>
           <Card.Divider />
 
@@ -47,7 +47,7 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
           </View>
         </Card>
 
-        <Card>
+        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
           <View>
             <Button
               type="clear"
@@ -61,7 +61,13 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
           source={require("../assets/Logo_Forky_dark.png")}
           style={styles.logo}
         ></Image>
-        <Card>
+        <Card
+          containerStyle={{
+            borderRadius: 5,
+            borderColor: "#ed8764",
+            marginBottom: 20,
+          }}
+        >
           <View>
             <Button
               type="clear"

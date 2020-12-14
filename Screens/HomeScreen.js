@@ -43,7 +43,9 @@ const HomeScreen = ({ userState, navigation }) => {
     }
     askPermissions();
     const getUser = async () => {
-      let rawResponse = await fetch(`${PRIVATE_URL}alluser?id=${userState.id}`);
+      let rawResponse = await fetch(
+        `${PRIVATE_URL}/alluser?id=${userState.id}`
+      );
       let response = await rawResponse.json();
       console.log(response);
       setListUser(response.userExcl);
@@ -53,7 +55,9 @@ const HomeScreen = ({ userState, navigation }) => {
 
   useEffect(() => {
     const getUser = async () => {
-      let rawResponse = await fetch(`${PRIVATE_URL}alluser?id=${userState.id}`);
+      let rawResponse = await fetch(
+        `${PRIVATE_URL}/alluser?id=${userState.id}`
+      );
       let response = await rawResponse.json();
       // console.log(response);
       setListUser(response.userExcl);
@@ -82,7 +86,14 @@ const HomeScreen = ({ userState, navigation }) => {
               navigation.navigate("Profil Utilisateur", user);
             }}
           >
-            <Card containerStyle={{ padding: 0, marginVertical: 25 }}>
+            <Card
+              containerStyle={{
+                padding: 0,
+                marginVertical: 25,
+                borderRadius: 5,
+                borderColor: "#abd6d3",
+              }}
+            >
               <View style={styles.wrapper}>
                 <View
                   style={{
@@ -109,11 +120,11 @@ const HomeScreen = ({ userState, navigation }) => {
                   </View>
 
                   <View style={styles.reviewIcon}>
-                    <FontAwesome name="star" size={17} color="#418581" />
-                    <FontAwesome name="star" size={17} color="#418581" />
-                    <FontAwesome name="star" size={17} color="#418581" />
-                    <FontAwesome name="star-o" size={17} color="#418581" />
-                    <FontAwesome name="star-o" size={17} color="#418581" />
+                    <FontAwesome name="star" size={17} color="#f9b34c" />
+                    <FontAwesome name="star" size={17} color="#f9b34c" />
+                    <FontAwesome name="star" size={17} color="#f9b34c" />
+                    <FontAwesome name="star-o" size={17} color="#f9b34c" />
+                    <FontAwesome name="star-o" size={17} color="#f9b34c" />
                   </View>
                 </View>
                 <View style={styles.verticleLine}></View>
@@ -180,7 +191,7 @@ const styles = StyleSheet.create({
     height: "80%",
     alignSelf: "center",
     width: 2,
-    backgroundColor: "#f9b34c",
+    backgroundColor: "#CCCCCC",
   },
   containerLocation: {
     flex: 0.5,
