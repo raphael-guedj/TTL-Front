@@ -113,14 +113,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
         contentContainerStyle={{ paddingVertical: 25 }}
       >
         <View>
-          <Card
-            containerStyle={{
-              padding: 0,
-              borderRadius: 5,
-              margin: 20,
-              borderWidth: 0.5,
-            }}
-          >
+          <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
             <View style={styles.wrapper}>
               <View>
                 <Image
@@ -220,7 +213,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="clock-outline"
                         size={20}
-                        color="black"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -231,7 +224,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="clock-outline"
                         size={20}
-                        color="black"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -242,7 +235,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="clock-outline"
                         size={20}
-                        color="black"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -253,20 +246,36 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="clock-outline"
                         size={20}
-                        color="black"
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "14h",
+                    value: 14,
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="clock-outline"
+                        size={20}
+                        color="#F9B34C"
                       />
                     ),
                   },
                 ]}
                 placeholder="Proposez une heure"
                 defaultValue={hours}
-                dropDownMaxHeight={200}
+                dropDownMaxHeight={130}
                 style={{
                   width: "100%",
                   justifyContent: "center",
                   alignSelf: "center",
+                  borderRadius: 5,
+                  borderColor: "#abd6d3",
                 }}
-                containerStyle={{ height: 40, margin: 10 }}
+                containerStyle={{
+                  height: 40,
+                  marginBottom: 15,
+                }}
                 itemStyle={{
                   justifyContent: "flex-start",
                 }}
@@ -282,7 +291,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 <Button
                   icon={<Feather name="calendar" size={24} color="white" />}
                   buttonStyle={{
-                    backgroundColor: "#418581",
+                    backgroundColor: "#fbc87d",
                     margin: 10,
                     width: 250,
                     borderRadius: 20,
@@ -320,7 +329,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -331,7 +340,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -342,7 +351,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -353,7 +362,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -364,7 +373,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -375,7 +384,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -386,7 +395,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -397,7 +406,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -408,7 +417,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -419,7 +428,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -430,7 +439,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -441,7 +450,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -452,7 +461,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -463,7 +472,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -474,7 +483,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -485,7 +494,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
@@ -496,21 +505,26 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                       <MaterialCommunityIcons
                         name="silverware-fork"
                         size={20}
-                        color="#418581"
+                        color="#F9B34C"
                       />
                     ),
                   },
                 ]}
                 placeholder="Proposez une cuisine"
                 defaultValue={kitchen}
-                dropDownMaxHeight={200}
+                dropDownMaxHeight={130}
                 onPress={() => changeHeight()}
                 style={{
                   width: "100%",
                   justifyContent: "center",
                   alignSelf: "center",
+                  borderRadius: 5,
+                  borderColor: "#abd6d3",
                 }}
-                containerStyle={{ height: 40, margin: 10 }}
+                containerStyle={{
+                  height: 40,
+                  marginBottom: 15,
+                }}
                 itemStyle={{
                   justifyContent: "flex-start",
                 }}
@@ -527,7 +541,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 onChangeText={(e) => setLocation(e)}
                 value={location}
                 placeholderTextColor="#606770"
-                leftIcon={<Feather name="edit" size={20} color="black" />}
+                leftIcon={<Feather name="edit" size={20} color="#F9B34C" />}
                 leftIconContainerStyle={{
                   marginHorizontal: 5,
                 }}
@@ -537,7 +551,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                   fontFamily: "Roboto_400Regular",
                 }}
                 inputContainerStyle={{
-                  borderBottomColor: "black",
+                  borderBottomColor: "#abd6d3",
                 }}
               />
             </View>
@@ -548,7 +562,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 onChangeText={(e) => setAddress(e)}
                 value={address}
                 placeholderTextColor="#606770"
-                leftIcon={<Feather name="edit" size={20} color="black" />}
+                leftIcon={<Feather name="edit" size={20} color="#F9B34C" />}
                 leftIconContainerStyle={{
                   marginHorizontal: 5,
                 }}
@@ -558,7 +572,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                   fontFamily: "Roboto_400Regular",
                 }}
                 inputContainerStyle={{
-                  borderBottomColor: "black",
+                  borderBottomColor: "#abd6d3",
                 }}
               />
             </View>
@@ -638,8 +652,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   messageField: {
-    justifyContent: "space-evenly",
-    marginBottom: 10,
+    marginBottom: 15,
   },
   title2: {
     fontSize: 15,
@@ -668,10 +681,11 @@ const styles = StyleSheet.create({
   },
   textareaContainer: {
     height: 130,
+    width: "100%",
     padding: 5,
     backgroundColor: "#FFFFFF",
-    borderWidth: 0.5,
-    borderColor: "#c9c9d0",
+    borderWidth: 1,
+    borderColor: "#abd6d3",
     borderRadius: 5,
   },
   sliderView: {

@@ -7,14 +7,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
   const handleLogOut = async () => {
-    await fetch(`http://192.168.1.78:3000/logout?token=${userToken}`);
+    await fetch(`http://172.16.0.20:3000/logout?token=${userToken}`);
 
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });
   };
 
   const handleDeleteUser = async () => {
-    await fetch(`http://192.168.1.78:3000/delete-user?id=${userID}`);
+    await fetch(`http://172.16.0.20:3000/delete-user?id=${userID}`);
 
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });
@@ -23,7 +23,7 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
   return (
     <View style={styles.card}>
       <ScrollView>
-        <Card>
+        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
           <Card.Title style={styles.title}>Mentions légales</Card.Title>
           <Card.Divider />
 
@@ -34,7 +34,7 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
           </View>
         </Card>
 
-        <Card>
+        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
           <Card.Title style={styles.title}>À propos</Card.Title>
           <Card.Divider />
 
@@ -45,7 +45,7 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
           </View>
         </Card>
 
-        <Card>
+        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
           <View>
             <Button
               type="clear"
@@ -59,7 +59,13 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
           source={require("../assets/Logo_Forky_dark.png")}
           style={styles.logo}
         ></Image>
-        <Card>
+        <Card
+          containerStyle={{
+            borderRadius: 5,
+            borderColor: "#ed8764",
+            marginBottom: 20,
+          }}
+        >
           <View>
             <Button
               type="clear"

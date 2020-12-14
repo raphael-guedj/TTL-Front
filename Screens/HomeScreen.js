@@ -42,7 +42,7 @@ const HomeScreen = ({ userState, navigation }) => {
     askPermissions();
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://192.168.1.78:3000/alluser?id=${userState.id}`
+        `http://172.16.0.20:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);
@@ -54,7 +54,7 @@ const HomeScreen = ({ userState, navigation }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://192.168.1.78:3000/alluser?id=${userState.id}`
+        `http://172.16.0.20:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
       // console.log(response);
@@ -84,7 +84,14 @@ const HomeScreen = ({ userState, navigation }) => {
               navigation.navigate("Profil Utilisateur", user);
             }}
           >
-            <Card containerStyle={{ padding: 0, marginVertical: 25 }}>
+            <Card
+              containerStyle={{
+                padding: 0,
+                marginVertical: 25,
+                borderRadius: 5,
+                borderColor: "#abd6d3",
+              }}
+            >
               <View style={styles.wrapper}>
                 <View
                   style={{

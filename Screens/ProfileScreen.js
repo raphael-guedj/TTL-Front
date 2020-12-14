@@ -16,7 +16,7 @@ function ProfileScreen({ navigation, userState }) {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://192.168.1.78:3000/getmydata?id=${userState.id}`
+        `http://172.16.0.20:3000/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);
@@ -48,31 +48,32 @@ function ProfileScreen({ navigation, userState }) {
           justifyContent: "space-evenly",
         }}
       >
-        <View style={styles.avatar}>
-          <Image style={styles.image} source={{ uri: photo }} />
+        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
+          <View style={styles.avatar}>
+            <Image style={styles.image} source={{ uri: photo }} />
 
-          <Card.Title style={styles.title1}>Profil</Card.Title>
+            <Card.Title style={styles.title1}>Profil</Card.Title>
 
-          <Text>
-            {/* <Feather name="edit" size={20} color="black" /> */}
-            <Text style={styles.title2}> Prénom: </Text>
-            <Text style={styles.text}>
-              {name != "" ? name : "Non renseigné"}
+            <Text>
+              <Text style={styles.title2}> Prénom: </Text>
+              <Text style={styles.text}>
+                {name != "" ? name : "Non renseigné"}
+              </Text>
             </Text>
-          </Text>
-          <Text>
-            {/* <Feather name="map-pin" size={20} color="black" /> */}
-            <Text style={styles.title2}> Ville: </Text>
-            <Text style={styles.text}>
-              {city != "" ? city : "Non renseigné"}
+            <Text>
+              <Text style={styles.title2}> Ville: </Text>
+              <Text style={styles.text}>
+                {city != "" ? city : "Non renseigné"}
+              </Text>
             </Text>
-          </Text>
-          <Text>
-            {/* <Feather name="briefcase" size={20} color="black" /> */}
-            <Text style={styles.title2}> Profession: </Text>
-            <Text style={styles.text}>{job != "" ? job : "Non renseigné"}</Text>
-          </Text>
-        </View>
+            <Text>
+              <Text style={styles.title2}> Profession: </Text>
+              <Text style={styles.text}>
+                {job != "" ? job : "Non renseigné"}
+              </Text>
+            </Text>
+          </View>
+        </Card>
 
         <View>
           <Button
@@ -88,7 +89,7 @@ function ProfileScreen({ navigation, userState }) {
           />
           <Button
             buttonStyle={{
-              backgroundColor: "#418581",
+              backgroundColor: "#F9B34C",
               margin: 10,
               width: 250,
               borderRadius: 20,
@@ -149,6 +150,8 @@ const styles = StyleSheet.create({
     width: 160,
     height: 160,
     borderRadius: 100,
+    borderWidth: 3,
+    borderColor: "#fbc87d",
   },
   settings: {
     margin: 20,
