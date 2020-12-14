@@ -18,6 +18,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
+import { PRIVATE_URL } from "../App";
+
 const Stack = createStackNavigator();
 const StackHome = createStackNavigator();
 const TopTabNotif = createMaterialTopTabNavigator();
@@ -189,9 +191,7 @@ function Navigation({ setReduxUser, userState }) {
   useEffect(() => {
     const getUserDB = async () => {
       if (token) {
-        var rawResponse = await fetch(
-          "http://172.16.0.18:3000/get-user?token=" + token
-        );
+        var rawResponse = await fetch(`${PRIVATE_URL}/get-user?token=` + token);
 
         const jsonResponse = await rawResponse.json();
         // console.log("ma réponse", jsonResponse);

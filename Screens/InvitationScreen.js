@@ -27,6 +27,8 @@ import {
 import DropDownPicker from "react-native-dropdown-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
+import { PRIVATE_URL } from "../App";
+
 const InvitationScreen = ({ navigation, route, userState }) => {
   // ======= State that keep value of message in textarea ======= //
   const [inputMessage, setInputMessage] = useState("");
@@ -81,7 +83,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       location !== "" &&
       address !== ""
     ) {
-      let rawResponse = await fetch("http://172.16.0.18:3000/new-invitation", {
+      let rawResponse = await fetch(`${PRIVATE_URL}/new-invitation`, {
         method: "post",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `message=${inputMessage}&duration=${duration}&date=${date}&hour=${hours}&kitchen=${kitchen}&location=${location}&address=${address}&sender=${userState.id}&receiver=${route.params.params._id}`,

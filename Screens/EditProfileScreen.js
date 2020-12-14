@@ -17,13 +17,15 @@ import InputScrollView from "react-native-input-scroll-view";
 import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
+import { PRIVATE_URL } from "../App";
+
 const EditProfilScreen = ({ navigation, userState }) => {
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
   const [city, setCity] = useState("");
   const [postcode, setPostcode] = useState("");
   const [email, setEmail] = useState("");
-  const [activity, setActivity] = useState();
+  const [activity, setActivity] = useState("");
   const [language, setLanguage] = useState([]);
   const [food, setFood] = useState([]);
   const [text, setText] = useState("");
@@ -41,7 +43,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.18:3000/getmydata?id=${userState.id}`
+        `${PRIVATE_URL}/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
       console.log(response);
@@ -80,7 +82,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
       photo !== "" &&
       (wish1 || wish2 || wish3 || wish4 || wish5 || wish6)
     ) {
-      let rawResponse = await fetch(`http://172.16.0.18:3000/recordmydata`, {
+      let rawResponse = await fetch(`${PRIVATE_URL}/recordmydata`, {
         method: "post",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `name=${name}&email=${email}&job=${job}&city=${city}&postcode=${postcode}&activity=${activity}&language=${JSON.stringify(

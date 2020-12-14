@@ -6,6 +6,8 @@ import { useIsFocused } from "@react-navigation/native";
 import { Button, Overlay } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 
+import { PRIVATE_URL } from "../App";
+
 const SnapScreen = ({ userState, navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
@@ -45,7 +47,7 @@ const SnapScreen = ({ userState, navigation }) => {
       });
       //   console.log("data", data);
       let rawResponse = await fetch(
-        `http://172.16.0.18:3000/uploadPhoto?id=${userState.id}`,
+        `${PRIVATE_URL}/uploadPhoto?id=${userState.id}`,
         {
           method: "post",
           body: data,
