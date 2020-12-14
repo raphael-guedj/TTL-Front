@@ -318,7 +318,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 />
               )}
             </View>
-            <View style={styles.kitchen}>
+            <View>
               <Text style={styles.titleStyle}> Cuisine proposée : </Text>
               <DropDownPicker
                 items={[
@@ -578,14 +578,14 @@ const InvitationScreen = ({ navigation, route, userState }) => {
             </View>
             <View>
               {errorMessage && (
-                <Text style={{ color: "red" }}>
+                <Text style={{ color: "red", textAlign: "center" }}>
                   Vérifier que toutes les informations ont bien été remplies
                 </Text>
               )}
               <Button
                 buttonStyle={{
                   backgroundColor: "#418581",
-                  margin: 10,
+                  margin: 20,
                   width: 250,
                   borderRadius: 20,
                   alignSelf: "center",
@@ -718,7 +718,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   address: {
-    marginBottom: 30,
+    marginBottom: 15,
   },
   avatar: {
     flex: 1,
