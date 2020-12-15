@@ -91,7 +91,7 @@ function UserProfilScreen({ navigation, userState, route }) {
             title={lang}
             checked={true}
             checkedColor="#418581"
-            size={20}
+            size={18}
             textStyle={{ fontWeight: "normal" }}
             containerStyle={{
               marginLeft: 14,
@@ -109,7 +109,7 @@ function UserProfilScreen({ navigation, userState, route }) {
           title="Rencontrer de nouvelles personnes"
           checked={route.params.wish1 ? true : false}
           checkedColor="#418581"
-          size={20}
+          size={18}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
             marginLeft: 14,
