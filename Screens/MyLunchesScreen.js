@@ -1,3 +1,4 @@
+import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
@@ -10,8 +11,17 @@ import {
 import Modal from "react-native-modal";
 import { Card, Button, Avatar, Badge, ListItem } from "react-native-elements";
 import { Feather, FontAwesome } from "@expo/vector-icons";
+import { PRIVATE_URL } from "../App";
 
 function MyLunchesScreen({ navigation, userState }) {
+  useEffect(() => {
+    const getHistory = async () => {
+      let response = await fetch(`${PRIVATE_URL}/history?id=${userState.id}`);
+      console.log(response);
+    };
+    getHistory();
+  }, []);
+
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -487,4 +497,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyLunchesScreen;
+function mapStateToProps(state) {
+  // console.log("state", state.user.id);
+  return { userState: state.user };
+}
+
+export default connect(mapStateToProps, null)(MyLunchesScreen);
