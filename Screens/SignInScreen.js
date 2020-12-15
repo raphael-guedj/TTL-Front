@@ -150,7 +150,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    opacity: 1,
   },
   button: {
     backgroundColor: "#F9B34C",

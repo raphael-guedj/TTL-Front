@@ -96,7 +96,7 @@ function ProfileScreen({ navigation, userState }) {
               alignSelf: "center",
             }}
             title="Mes lunchs"
-            onPress={() => navigation.navigate("LandingScreen")}
+            onPress={() => navigation.navigate("Detail")}
           />
         </View>
       </View>
