@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  ScrollView,
-  RefreshControl,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-} from "react-native";
-import { useIsFocused } from "@react-navigation/native";
+import { StyleSheet, ScrollView, RefreshControl } from "react-native";
+import { PRIVATE_URL } from "../App";
 import { connect } from "react-redux";
 import MyInvitationScreen from "./MyInvitationScreen";
 
@@ -22,23 +14,29 @@ const NotifScreenReceived = ({ userState, navigation }) => {
   const [invit, setInvit] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
+  const getInvitSent = async () => {
+    let rawResponse = await fetch(
+      `${PRIVATE_URL}/invitsent?id=${userState.id}`
+    );
+    let response = await rawResponse.json();
+    // console.log("invit receive", response);
+    setInvit(response.invit);
+  };
+
+  useEffect(() => {
+    getInvitSent();
+  }, []);
+
   const onRefresh = React.useCallback(() => {
+    getInvitSent();
     setRefreshing(true);
 
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
   useEffect(() => {
-    const getInvitSent = async () => {
-      let rawResponse = await fetch(
-        `http://172.16.0.18:3000/invitsent?id=${userState.id}`
-      );
-      let response = await rawResponse.json();
-      // console.log("invit receive", response);
-      setInvit(response.invit);
-    };
-    getInvitSent();
-  }, []);
+    console.log(invit);
+  }, [invit]);
 
   return (
     <ScrollView
@@ -48,8 +46,12 @@ const NotifScreenReceived = ({ userState, navigation }) => {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
     >
-      {invit.map((invitation) => (
-        <MyInvitationScreen dataInvit={invitation} />
+      {invit.map((invitation, i) => (
+        <MyInvitationScreen
+          key={invitation._id}
+          dataInvit={invitation}
+          onRefresh={onRefresh}
+        />
       ))}
     </ScrollView>
   );
@@ -58,7 +60,6 @@ const NotifScreenReceived = ({ userState, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginTop: Constants.statusBarHeight,
   },
   wrapper: {
     flexDirection: "row",

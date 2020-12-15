@@ -11,12 +11,14 @@ import {
 import AppLoading from "expo-app-loading";
 import Modal from "react-native-modal";
 import { Button, Card, Badge, ListItem } from "react-native-elements";
+import { PRIVATE_URL } from "../App";
 import { useIsFocused } from "@react-navigation/native";
 import { connect } from "react-redux";
-import { FontAwesome, MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
-const MyInvitationScreen = ({ dataInvit }) => {
+const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isModalCancelVisible, setModalCancelVisible] = useState(false);
   const [listUser, setListUser] = useState();
 
   const toggleModal = () => {
@@ -26,7 +28,7 @@ const MyInvitationScreen = ({ dataInvit }) => {
   useEffect(() => {
     const getUserData = async () => {
       let rawResponse = await fetch(
-        `http://172.16.0.18:3000/mydataprofile?id=${dataInvit.id_receiver}`
+        `${PRIVATE_URL}/mydataprofile?id=${dataInvit.id_receiver}`
       );
       let response = await rawResponse.json();
       setListUser(response.user);
@@ -34,9 +36,17 @@ const MyInvitationScreen = ({ dataInvit }) => {
     getUserData();
   }, []);
 
-  //   useEffect(() => {
-  //     console.log("user", listUser);
-  //   }, [listUser]);
+  const toggleModalCancel = () => {
+    const cancelInvitation = async () => {
+      let rawResponse = await fetch(
+        `${PRIVATE_URL}/cancelinvit?id=${dataInvit._id}`
+      );
+      // console.log(dataInvit._id);
+    };
+    cancelInvitation();
+    setModalCancelVisible(true);
+  };
+
   if (!listUser) {
     return <AppLoading />;
   }
@@ -89,8 +99,58 @@ const MyInvitationScreen = ({ dataInvit }) => {
               <ListItem.Title>
                 {listUser.arrondissement} {listUser.city}
               </ListItem.Title>
-              <MaterialIcons name="cancel" size={35} color="#F9B34C" />
+              <MaterialIcons
+                name="cancel"
+                size={35}
+                color="#F9B34C"
+                onPress={toggleModalCancel}
+              />
             </View>
+            <Modal isVisible={isModalCancelVisible}>
+              <View>
+                <Card
+                  containerStyle={{
+                    borderRadius: 5,
+                    borderColor: "#abd6d3",
+                    paddingHorizontal: 10,
+                    height: "40%",
+                    justifyContent: "center",
+                  }}
+                >
+                  <View
+                    style={{
+                      alignItems: "center",
+                      justifyContent: "space-evenly",
+                      height: "100%",
+                    }}
+                  >
+                    <ListItem.Title
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: 14,
+                        color: "#418581",
+                      }}
+                    >
+                      Votre invitation avec {listUser.name} a été annulé !
+                    </ListItem.Title>
+
+                    <Button
+                      buttonStyle={{
+                        backgroundColor: "#F9B34C",
+                        width: 100,
+                        borderRadius: 20,
+                        justifyContent: "center",
+                      }}
+                      title="Retour"
+                      onPress={() => {
+                        setModalCancelVisible(false);
+                        onRefresh();
+                      }}
+                    />
+                  </View>
+                </Card>
+              </View>
+            </Modal>
           </View>
         </View>
         <TouchableOpacity onPress={toggleModal}>
@@ -116,7 +176,9 @@ const MyInvitationScreen = ({ dataInvit }) => {
                     >
                       <View></View>
                       <View style={{ paddingHorizontal: 10 }}>
-                        <ListItem.Title>{dataInvit.heure}</ListItem.Title>
+                        <ListItem.Title>
+                          {dataInvit.lieu_propose}
+                        </ListItem.Title>
                         <ListItem.Subtitle>
                           {dataInvit.message}
                         </ListItem.Subtitle>
@@ -185,6 +247,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: "#418581",
+  },
+  listItem: {
+    marginTop: 20,
+    textAlign: "center",
+    padding: 5,
+    fontSize: 15,
+    letterSpacing: 1,
   },
 });
 

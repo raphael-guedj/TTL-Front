@@ -107,7 +107,7 @@ function MyLunchesScreen({ navigation, userState }) {
                       alignSelf: "stretch",
                     }}
                   >
-                    <Feather name="check-squareh" size={80} color="green" />
+                    <Feather name="check-square" size={80} color="green" />
                     <ListItem.Title
                       style={{
                         fontWeight: "bold",
@@ -245,7 +245,7 @@ function MyLunchesScreen({ navigation, userState }) {
                       alignSelf: "stretch",
                     }}
                   >
-                    <Feather name="check-squareh" size={80} color="green" />
+                    <Feather name="check-square" size={80} color="green" />
                     <ListItem.Title
                       style={{
                         fontWeight: "bold",
@@ -383,7 +383,7 @@ function MyLunchesScreen({ navigation, userState }) {
                       alignSelf: "stretch",
                     }}
                   >
-                    <Feather name="check-squareh" size={80} color="green" />
+                    <Feather name="check-square" size={80} color="green" />
                     <ListItem.Title
                       style={{
                         fontWeight: "bold",
