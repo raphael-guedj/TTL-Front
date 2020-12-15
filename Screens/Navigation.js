@@ -100,10 +100,11 @@ const HomeStack = () => {
         name="Profil Utilisateur"
         component={UserProfilScreen}
       />
-      <StackProfil.Screen
+      <StackHome.Screen
         name="Modifier le profil"
         component={EditProfilScreen}
       />
+      <StackHome.Screen name="Photo" component={SnapScreen} />
       <StackHome.Screen
         options={{
           title: "Invitation",
