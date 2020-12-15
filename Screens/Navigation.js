@@ -20,7 +20,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const Stack = createStackNavigator();
 const StackHome = createStackNavigator();
@@ -68,7 +68,7 @@ const HomeStack = () => {
           headerTitleAlign: "center",
           headerTintColor: "#0b090a",
           headerLeft: () => <HeaderBarImage />,
-          headerRight: () => <IconBar />,
+          // headerRight: () => <IconBar />,
         }}
         name="Home"
         component={HomeScreen}

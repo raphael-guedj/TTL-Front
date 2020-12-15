@@ -11,7 +11,7 @@ import {
 import AppLoading from "expo-app-loading";
 import Modal from "react-native-modal";
 import { Button, Card, Badge, ListItem } from "react-native-elements";
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 import { useIsFocused } from "@react-navigation/native";
 import { connect } from "react-redux";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
@@ -31,7 +31,6 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
       setListUser(response.user);
     };
     getUserData();
-    console.log(listUser);
   }, []);
 
   const toggleModal = () => {
@@ -39,13 +38,17 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
   };
 
   const toggleModalCancel = () => {
+    console.log("toto");
     const cancelInvitation = async () => {
       let rawResponse = await fetch(
         `${PRIVATE_URL}/cancelinvit?id=${dataInvit._id}`
       );
+      let response = await rawResponse.json();
+      if (response.result) {
+        setModalCancelVisible(true);
+      }
     };
     cancelInvitation();
-    setModalCancelVisible(true);
   };
 
   const toggleModalAccept = () => {
@@ -53,9 +56,12 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
       let rawResponse = await fetch(
         `${PRIVATE_URL}/acceptinvit?id=${dataInvit._id}`
       );
+      let response = await rawResponse.json();
+      if (response.result) {
+        setModalAcceptVisible(true);
+      }
     };
     acceptInvitation();
-    setModalAcceptVisible(true);
   };
 
   if (!listUser) {

@@ -4,7 +4,7 @@ import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { Card, Button } from "react-native-elements";
 import { useIsFocused } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 function ProfileScreen({ navigation, userState }) {

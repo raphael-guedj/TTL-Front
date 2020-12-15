@@ -17,7 +17,7 @@ import InputScrollView from "react-native-input-scroll-view";
 import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const EditProfilScreen = ({ navigation, userState }) => {
   const [name, setName] = useState("");

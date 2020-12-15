@@ -42,7 +42,7 @@ export default function LandingScreen({ navigation }) {
         />
         <Button
           buttonStyle={{
-            backgroundColor: "#F9B34C",
+            backgroundColor: "#999",
             margin: 10,
             width: 250,
             borderRadius: 20,
@@ -50,7 +50,7 @@ export default function LandingScreen({ navigation }) {
           onPress={() => navigation.navigate("#")}
           icon={<FontAwesome name="linkedin-square" size={24} color="white" />}
           iconRight
-          title="Linkedin "
+          title="Linkedin (available soon) "
         />
       </View>
     </ImageBackground>

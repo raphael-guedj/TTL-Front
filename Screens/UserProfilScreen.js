@@ -5,7 +5,7 @@ import { Button, CheckBox, Card } from "react-native-elements";
 
 import { Feather, Entypo, AntDesign } from "@expo/vector-icons";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 function UserProfilScreen({ navigation, userState, route }) {
   const [language, setLanguage] = useState(true);

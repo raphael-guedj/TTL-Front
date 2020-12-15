@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, RefreshControl } from "react-native";
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 import { connect } from "react-redux";
 import MyInvitationReceivedScreen from "./MyInvitationReceivedScreen";
 

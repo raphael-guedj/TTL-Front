@@ -6,7 +6,7 @@ import { useIsFocused } from "@react-navigation/native";
 import { Button, Overlay } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const SnapScreen = ({ userState, navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
