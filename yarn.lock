@@ -1009,6 +1009,11 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/annie-use-your-telescope/-/annie-use-your-telescope-0.1.0.tgz#db7564ef2197021581ce09116ce101cd3e21bb10"
   integrity sha512-qDaeIDp+cub3srJTuDnQ7kGiNF665/qL3Rv+58gYg/QuKj/qyvYVzNXkjgtNHhOpR53E53cAwoygNvIfnHjXcQ==
 
+"@expo-google-fonts/balsamiq-sans@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/balsamiq-sans/-/balsamiq-sans-0.1.0.tgz#411d71bc300c6f6b6bd07c93196a73e876fe7a38"
+  integrity sha512-emyTlcZH9naaHVogOtC1TLQDSlnFnqSEgXGgb3lZW3+T1+4apUXWnCSdwZFJ4dwIHLEyv0X/HXk4ll0iNcFrkw==
+
 "@expo-google-fonts/cagliostro@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/cagliostro/-/cagliostro-0.1.0.tgz#316c7d965a32f252bf6063c76019f4c6c3853205"
@@ -4377,7 +4382,7 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.5"
 
-moment@^2.22.0:
+moment@^2.22.0, moment@^2.29.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==

@@ -14,6 +14,15 @@ import {
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
 
+import {
+  BalsamiqSans_400Regular,
+  BalsamiqSans_400Regular_Italic,
+  BalsamiqSans_700Bold,
+  BalsamiqSans_700Bold_Italic,
+} from "@expo-google-fonts/balsamiq-sans";
+
+import { Salsa_400Regular } from "@expo-google-fonts/salsa";
+
 import { FaunaOne_400Regular } from "@expo-google-fonts/fauna-one";
 import Navigation from "./Screens/Navigation";
 
@@ -26,6 +35,11 @@ export default function App() {
     Roboto_400Regular,
     Roboto_700Bold,
     FaunaOne_400Regular,
+    BalsamiqSans_400Regular,
+    BalsamiqSans_400Regular_Italic,
+    BalsamiqSans_700Bold,
+    BalsamiqSans_700Bold_Italic,
+    Salsa_400Regular,
   });
   if (!fontsLoaded) {
     return <AppLoading />;

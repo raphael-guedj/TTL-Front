@@ -79,7 +79,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             style={styles.logo}
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
-          <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
+          <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
             Inscrivez-vous !
           </Text>
         </View>

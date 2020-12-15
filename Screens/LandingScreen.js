@@ -14,7 +14,7 @@ export default function LandingScreen({ navigation }) {
           source={require("../assets/Logo_Forky_light.png")}
           style={styles.logo}
         ></Image>
-        <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
+        <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
           Forky ? For vous !
         </Text>
       </View>
