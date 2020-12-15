@@ -6,17 +6,20 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const HeaderBarImage = () => {
+  const navigation = useNavigation();
   return (
     <View style={{ flexDirection: "row" }}>
-      <Image
-        source={require("../assets/Logo_Forky_dark.png")}
-        style={{
-          width: 70,
-          height: 70,
-          borderRadius: 40 / 2,
-          marginLeft: 15,
-        }}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <Image
+          source={require("../assets/Logo_Forky_dark.png")}
+          style={{
+            width: 60,
+            height: 60,
+            borderRadius: 40 / 2,
+            marginLeft: 15,
+          }}
+        />
+      </TouchableOpacity>
     </View>
   );
 };

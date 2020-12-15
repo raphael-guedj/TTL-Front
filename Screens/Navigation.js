@@ -135,6 +135,7 @@ const LunchStack = () => {
           headerTitleAlign: "center",
           headerTintColor: "#0b090a",
 
+          headerLeft: () => <HeaderBarImage />,
           headerRight: () => <IconBar />,
         }}
         name="Detail"
@@ -148,7 +149,19 @@ const LunchStack = () => {
 const ProfilStack = () => {
   return (
     <StackProfil.Navigator>
-      <StackProfil.Screen name="Profil" component={ProfileScreen} />
+      <StackProfil.Screen
+        options={{
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+
+          headerLeft: () => <HeaderBarImage />,
+          headerRight: () => <IconBar />,
+        }}
+        name="Detail"
+        component={MyLunchesScreen}
+        name="Profil"
+        component={ProfileScreen}
+      />
       <StackProfil.Screen
         name="Modifier le profil"
         component={EditProfilScreen}

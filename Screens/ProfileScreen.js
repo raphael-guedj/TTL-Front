@@ -5,6 +5,7 @@ import { Card, Button, Avatar, Accessory } from "react-native-elements";
 import { useIsFocused } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { PRIVATE_URL } from "../App";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 function ProfileScreen({ navigation, userState }) {
   const [name, setName] = useState("");
@@ -36,13 +37,16 @@ function ProfileScreen({ navigation, userState }) {
         margin: 10,
       }}
     >
-      <Feather
-        style={styles.settings}
-        name="settings"
-        size={28}
-        color="#418581"
-        onPress={() => navigation.navigate("Reglage")}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate("Reglage")}>
+        <View style={{ flexDirection: "row" }}>
+          <Feather
+            style={styles.settings}
+            name="settings"
+            size={28}
+            color="#418581"
+          />
+        </View>
+      </TouchableOpacity>
       <View
         style={{
           flex: 1,
@@ -160,7 +164,13 @@ const styles = StyleSheet.create({
     borderColor: "#d9eceb",
   },
   settings: {
-    margin: 20,
+    margin: 10,
+  },
+  settingsText: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 15,
+    marginTop: 15,
   },
   space: {
     justifyContent: "space-around",

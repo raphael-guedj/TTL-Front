@@ -32,17 +32,6 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
     <View style={styles.card}>
       <ScrollView>
         <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
-          <Card.Title style={styles.title}>Mentions légales</Card.Title>
-          <Card.Divider />
-
-          <View>
-            <Text style={styles.text}>Préférences de confidentialité</Text>
-            <Text style={styles.text}>Politique de confidentialité</Text>
-            <Text style={styles.text}>Conditions d'utilisation</Text>
-          </View>
-        </Card>
-
-        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
           <Card.Title style={styles.title}>À propos</Card.Title>
           <Card.Divider />
 
@@ -50,6 +39,16 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
             <Text style={styles.text}>Nous contacter</Text>
             <Text style={styles.text}>Qui sommes nous ?</Text>
             <Text style={styles.text}>Règles d'utilisation</Text>
+          </View>
+        </Card>
+        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
+          <Card.Title style={styles.title}>Mentions légales</Card.Title>
+          <Card.Divider />
+
+          <View>
+            <Text style={styles.text}>Préférences de confidentialité</Text>
+            <Text style={styles.text}>Politique de confidentialité</Text>
+            <Text style={styles.text}>Conditions d'utilisation</Text>
           </View>
         </Card>
 
