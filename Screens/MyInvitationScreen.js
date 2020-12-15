@@ -11,7 +11,7 @@ import {
 import AppLoading from "expo-app-loading";
 import Modal from "react-native-modal";
 import { Button, Card, Badge, ListItem } from "react-native-elements";
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 import { useIsFocused } from "@react-navigation/native";
 import { connect } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -41,10 +41,12 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
       let rawResponse = await fetch(
         `${PRIVATE_URL}/cancelinvit?id=${dataInvit._id}`
       );
-      // console.log(dataInvit._id);
+      let response = await rawResponse.json();
+      if (response.result) {
+        setModalCancelVisible(true);
+      }
     };
     cancelInvitation();
-    setModalCancelVisible(true);
   };
 
   if (!listUser) {

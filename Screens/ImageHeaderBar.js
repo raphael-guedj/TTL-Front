@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { View, Image, TouchableOpacity } from "react-native";
 import { Badge } from "react-native-elements";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { PRIVATE_URL } from "../config";
 
 const HeaderBarImage = () => {
   const navigation = useNavigation();
@@ -24,20 +25,47 @@ const HeaderBarImage = () => {
   );
 };
 
-const IconBar = () => {
+const IconBar = ({ myId, refreshing }) => {
+  const [isNotifUnRead, setIsNotifUnRead] = useState();
+
+  useEffect(() => {
+    const checkNotif = async () => {
+      let rawResponse = await fetch(
+        `${PRIVATE_URL}/checkstatusnotif?id=${myId}`
+      );
+      let response = await rawResponse.json();
+      // console.log(response);
+      setIsNotifUnRead(response.notifUnread);
+    };
+    checkNotif();
+  }, [refreshing]);
+
+  const updateNotif = async () => {
+    let rawResponse = await fetch(`${PRIVATE_URL}/updatenotif?id=${myId}`);
+    let response = await rawResponse.json();
+    console.log(response);
+  };
+
   const navigation = useNavigation();
   return (
     <View style={{ paddingRight: 20 }}>
-      <TouchableOpacity onPress={() => navigation.navigate("Notifications")}>
+      <TouchableOpacity
+        onPress={() => {
+          updateNotif();
+          navigation.navigate("Notifications");
+        }}
+      >
         <Ionicons name="md-notifications" size={34} color="#418581" />
-        <Badge
-          status="error"
-          containerStyle={{
-            position: "absolute",
-            top: 1,
-            right: 1,
-          }}
-        />
+        {isNotifUnRead && (
+          <Badge
+            status="error"
+            containerStyle={{
+              position: "absolute",
+              top: 1,
+              right: 1,
+            }}
+          />
+        )}
       </TouchableOpacity>
     </View>
   );

@@ -13,8 +13,8 @@ import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
-
-import { PRIVATE_URL } from "../App";
+import { HeaderBarImage, IconBar, SettingsBar } from "./ImageHeaderBar";
+import { PRIVATE_URL } from "../config";
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -25,6 +25,17 @@ const wait = (timeout) => {
 const HomeScreen = ({ userState, navigation }) => {
   const [listUser, setListUser] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
+  // navigation.setOptions({
+  //   headerRight: () => <IconBar myId={userState.id} />,
+  // });
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <IconBar refreshing={refreshing} myId={userState.id} />
+      ),
+    });
+  }, [navigation, refreshing, userState]);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);

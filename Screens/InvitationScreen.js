@@ -27,7 +27,7 @@ import {
 import DropDownPicker from "react-native-dropdown-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const InvitationScreen = ({ navigation, route, userState }) => {
   // ======= State that keep value of message in textarea ======= //
