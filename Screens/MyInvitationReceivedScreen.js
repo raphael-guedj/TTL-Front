@@ -14,42 +14,54 @@ import { Button, Card, Badge, ListItem } from "react-native-elements";
 import { PRIVATE_URL } from "../App";
 import { useIsFocused } from "@react-navigation/native";
 import { connect } from "react-redux";
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, Feather } from "@expo/vector-icons";
 
-const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
+const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalCancelVisible, setModalCancelVisible] = useState(false);
+  const [isModalAcceptVisible, setModalAcceptVisible] = useState(false);
   const [listUser, setListUser] = useState();
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
 
   useEffect(() => {
     const getUserData = async () => {
       let rawResponse = await fetch(
-        `${PRIVATE_URL}/mydataprofile?id=${dataInvit.id_receiver}`
+        `${PRIVATE_URL}/mydataprofile?id=${dataInvit.id_sender}`
       );
       let response = await rawResponse.json();
       setListUser(response.user);
     };
     getUserData();
+    console.log(listUser);
   }, []);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   const toggleModalCancel = () => {
     const cancelInvitation = async () => {
       let rawResponse = await fetch(
         `${PRIVATE_URL}/cancelinvit?id=${dataInvit._id}`
       );
-      // console.log(dataInvit._id);
     };
     cancelInvitation();
     setModalCancelVisible(true);
   };
 
+  const toggleModalAccept = () => {
+    const acceptInvitation = async () => {
+      let rawResponse = await fetch(
+        `${PRIVATE_URL}/acceptinvit?id=${dataInvit._id}`
+      );
+    };
+    acceptInvitation();
+    setModalAcceptVisible(true);
+  };
+
   if (!listUser) {
     return <AppLoading />;
   }
+
   return (
     <View>
       <Card
@@ -87,24 +99,24 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
           </View>
           <View style={styles.verticleLine}></View>
           <View style={styles.containerLocation}>
-            <View
-              style={{
-                alignItems: "center",
-                flexDirection: "row",
-                width: "100%",
-                justifyContent: "space-around",
-                paddingLeft: 10,
-              }}
-            >
+            <View style={styles.containerCityBouton}>
               <ListItem.Title>
                 {listUser.arrondissement} {listUser.city}
               </ListItem.Title>
-              <MaterialIcons
-                name="cancel"
-                size={35}
-                color="#F9B34C"
-                onPress={toggleModalCancel}
-              />
+              <View style={styles.iconNotif}>
+                <MaterialIcons
+                  name="cancel"
+                  size={35}
+                  color="#F9B34C"
+                  onPress={toggleModalCancel}
+                />
+                <Feather
+                  name="check-circle"
+                  size={35}
+                  color="#418581"
+                  onPress={toggleModalAccept}
+                />
+              </View>
             </View>
             <Modal isVisible={isModalCancelVisible}>
               <View>
@@ -151,6 +163,53 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                 </Card>
               </View>
             </Modal>
+
+            <Modal isVisible={isModalAcceptVisible}>
+              <View>
+                <Card
+                  containerStyle={{
+                    borderRadius: 5,
+                    borderColor: "#abd6d3",
+                    paddingHorizontal: 10,
+                    height: "40%",
+                    justifyContent: "center",
+                  }}
+                >
+                  <View
+                    style={{
+                      alignItems: "center",
+                      justifyContent: "space-evenly",
+                      height: "100%",
+                    }}
+                  >
+                    <ListItem.Title
+                      style={{
+                        fontWeight: "bold",
+                        fontSize: 14,
+                        color: "#418581",
+                      }}
+                    >
+                      Super ! Vous avez accepté l'invitation de {listUser.name},
+                      Dejeunez bien !
+                    </ListItem.Title>
+
+                    <Button
+                      buttonStyle={{
+                        backgroundColor: "#F9B34C",
+                        width: 100,
+                        borderRadius: 20,
+                        justifyContent: "center",
+                      }}
+                      title="Retour"
+                      onPress={() => {
+                        setModalAcceptVisible(false);
+                        onRefresh();
+                      }}
+                    />
+                  </View>
+                </Card>
+              </View>
+            </Modal>
           </View>
         </View>
         <TouchableOpacity onPress={toggleModal}>
@@ -174,6 +233,7 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                         flex: 0.5,
                       }}
                     >
+                      <View></View>
                       <View style={{ paddingHorizontal: 10 }}>
                         <ListItem.Title>
                           {dataInvit.lieu_propose}
@@ -254,6 +314,16 @@ const styles = StyleSheet.create({
     fontSize: 15,
     letterSpacing: 1,
   },
+  containerCityBouton: {
+    alignItems: "center",
+    width: "100%",
+    justifyContent: "space-around",
+  },
+  iconNotif: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
 });
 
-export default MyInvitationScreen;
+export default MyInvitationReceivedScreen;

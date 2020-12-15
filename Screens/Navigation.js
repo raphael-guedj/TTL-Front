@@ -11,7 +11,7 @@ import EditProfilScreen from "./EditProfileScreen";
 import InvitationScreen from "./InvitationScreen";
 import SnapScreen from "./SnapScreen";
 import MyLunchesScreen from "./MyLunchesScreen";
-
+import NotifScreenSent from "./NotifScreenSent";
 import NotifScreenReceived from "./NotifScreenReceived";
 import { HeaderBarImage, IconBar, SettingsBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -45,7 +45,7 @@ const NotifStack = () => {
     >
       <TopTabNotif.Screen
         name="Invitations envoyés"
-        component={NotifScreenReceived}
+        component={NotifScreenSent}
       />
       <TopTabNotif.Screen
         name="Invitations reçues"
