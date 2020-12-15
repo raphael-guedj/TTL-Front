@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
   },
   containerArea: {
     width: "100%",
-    paddingVertical: 5,
+    paddingVertical: 8,
     paddingHorizontal: 5,
     flexDirection: "row",
     flexWrap: "wrap",

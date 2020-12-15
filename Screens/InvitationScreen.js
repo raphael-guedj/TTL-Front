@@ -142,11 +142,13 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     {route.params.params.profession}
                   </ListItem.Title>
                 </Text>
-                <Text>
-                  <Feather name="map-pin" size={15} color="#c7d3dc" />
-                  <Text style={styles.title2}> Distance: </Text>
 
-                  <ListItem.Title style={{ fontSize: 15 }}>200m</ListItem.Title>
+                <Text>
+                  <Feather name="plus-circle" size={15} color="#c7d3dc" />
+                  <Text style={styles.title2}>Arrondissement: </Text>
+                  <ListItem.Title style={{ fontSize: 15 }}>
+                    {route.params.params.arrondissement}
+                  </ListItem.Title>
                 </Text>
               </View>
             </View>
@@ -570,7 +572,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
             <View>
               {errorMessage && (
                 <Text style={{ color: "#eb4d4b", textAlign: "center" }}>
-                  Vérifier que toutes les informations ont bien été remplies
+                  Vérifiez que toutes les informations aient bien été remplies.
                 </Text>
               )}
               <Button
@@ -715,6 +717,7 @@ const styles = StyleSheet.create({
   avatar: {
     flex: 1,
     marginLeft: 10,
+    justifyContent: "space-around",
   },
 });
 

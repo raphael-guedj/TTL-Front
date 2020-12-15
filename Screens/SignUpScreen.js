@@ -67,7 +67,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
 
   return (
     <ImageBackground
-      source={require("../assets/lunch.jpg")}
+      source={require("../assets/lunch_bright.jpg")}
       style={styles.image_hero}
     >
       <KeyboardAvoidingView
@@ -88,8 +88,8 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             placeholder="Prénom"
             onChangeText={(e) => setPseudo(e)}
             value={pseudo}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Feather name="edit" size={20} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Feather name="edit" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
@@ -99,7 +99,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           <Input
@@ -107,8 +107,8 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             onChangeText={(e) => setEmail(e)}
             value={email}
             textContentType={"emailAddress"}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Entypo name="email" size={20} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Entypo name="email" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
@@ -118,7 +118,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           <Input
@@ -126,8 +126,8 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             onChangeText={(e) => setPassword(e)}
             value={password}
             secureTextEntry={true}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Feather name="eye-off" size={20} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Feather name="eye-off" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
@@ -137,7 +137,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           <Input
@@ -145,8 +145,8 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             onChangeText={(e) => setPasswordConfirm(e)}
             value={passwordConfirm}
             secureTextEntry={true}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Feather name="eye-off" size={20} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Feather name="eye-off" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
@@ -156,7 +156,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           {passwordError && (
@@ -200,7 +200,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor: "#000000a0",
   },
   logo: {
     width: 160,
@@ -209,7 +208,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: "#fafae0",
+    color: "#fbfcfd",
     paddingVertical: 20,
     letterSpacing: 3,
     lineHeight: 35,
@@ -218,7 +217,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    opacity: 1,
   },
   button: {
     backgroundColor: "#F9B34C",

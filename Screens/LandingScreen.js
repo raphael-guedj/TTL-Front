@@ -6,7 +6,7 @@ import { FontAwesome } from "@expo/vector-icons";
 export default function LandingScreen({ navigation }) {
   return (
     <ImageBackground
-      source={require("../assets/lunch.jpg")}
+      source={require("../assets/lunch_bright.jpg")}
       style={styles.image}
     >
       <View style={styles.view}>
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#000000a0",
   },
 
   container: {
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 34,
-    color: "#fafae0",
+    color: "#fbfcfd",
     textAlign: "center",
     paddingVertical: 20,
     letterSpacing: 3,

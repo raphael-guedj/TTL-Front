@@ -14,6 +14,8 @@ import {
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
 
+import { Salsa_400Regular } from "@expo-google-fonts/salsa";
+
 import { FaunaOne_400Regular } from "@expo-google-fonts/fauna-one";
 import Navigation from "./Screens/Navigation";
 
@@ -26,6 +28,7 @@ export default function App() {
     Roboto_400Regular,
     Roboto_700Bold,
     FaunaOne_400Regular,
+    Salsa_400Regular,
   });
   if (!fontsLoaded) {
     return <AppLoading />;

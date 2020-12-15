@@ -13,6 +13,7 @@
     "@expo-google-fonts/fauna-one": "^0.1.0",
     "@expo-google-fonts/open-sans": "^0.1.0",
     "@expo-google-fonts/roboto": "^0.1.0",
+    "@expo-google-fonts/salsa": "^0.1.0",
     "@react-native-async-storage/async-storage": "^1.13.2",
     "@react-native-community/datetimepicker": "^3.0.0",
     "@react-native-community/masked-view": "0.1.10",
