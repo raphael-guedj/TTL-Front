@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, RefreshControl } from "react-native";
 import { PRIVATE_URL } from "../App";
 import { connect } from "react-redux";
-import MyInvitationReceivedScreen from "./MyInvitationReceivedScreen";
+import MyInvitationScreen from "./MyInvitationScreen";
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -10,16 +10,16 @@ const wait = (timeout) => {
   });
 };
 
-const NotifScreenReceived = ({ userState, navigation }) => {
+const NotifScreenSent = ({ userState, navigation }) => {
   const [invit, setInvit] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
   const getInvitSent = async () => {
     let rawResponse = await fetch(
-      `${PRIVATE_URL}/invitreceived?id=${userState.id}`
+      `${PRIVATE_URL}/invitsent?id=${userState.id}`
     );
     let response = await rawResponse.json();
-    console.log("invit receive", response);
+    // console.log("invit receive", response);
     setInvit(response.invit);
   };
 
@@ -34,6 +34,10 @@ const NotifScreenReceived = ({ userState, navigation }) => {
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
+  // useEffect(() => {
+  //   console.log(invit);
+  // }, [invit]);
+
   return (
     <ScrollView
       style={styles.container}
@@ -43,7 +47,7 @@ const NotifScreenReceived = ({ userState, navigation }) => {
       }
     >
       {invit.map((invitation, i) => (
-        <MyInvitationReceivedScreen
+        <MyInvitationScreen
           key={invitation._id}
           dataInvit={invitation}
           onRefresh={onRefresh}
@@ -101,4 +105,4 @@ function mapStateToProps(state) {
   return { userState: state.user };
 }
 
-export default connect(mapStateToProps, null)(NotifScreenReceived);
+export default connect(mapStateToProps, null)(NotifScreenSent);
