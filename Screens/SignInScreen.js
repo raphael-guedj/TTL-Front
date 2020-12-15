@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Input, Button } from "react-native-elements";
 import { connect } from "react-redux";
+import { Feather, Entypo } from "@expo/vector-icons";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PRIVATE_URL } from "../App";
@@ -68,13 +69,13 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
             value={email}
             textContentType={"emailAddress"}
             placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-mail" size={30} color="#fafae0" />}
+            leftIcon={<Entypo name="email" size={20} color="#fafae0" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
             inputStyle={{
               color: "#fff",
-              fontSize: 15,
+              fontSize: 14,
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
@@ -87,13 +88,13 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
             value={password}
             secureTextEntry={true}
             placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-eye-off" size={30} color="#fafae0" />}
+            leftIcon={<Feather name="eye-off" size={20} color="#fafae0" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
             inputStyle={{
               color: "#fff",
-              fontSize: 15,
+              fontSize: 14,
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
@@ -166,8 +167,7 @@ const styles = StyleSheet.create({
   },
   responseText: {
     textAlign: "center",
-    color: "#d90429",
-    fontStyle: "italic",
+    color: "#eb4d4b",
     fontSize: 15,
   },
 });

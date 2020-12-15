@@ -9,14 +9,11 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import { Card, Button, Avatar, Badge, ListItem } from "react-native-elements";
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import { Feather, FontAwesome, Entypo } from "@expo/vector-icons";
 
 function MyLunchesScreen({ navigation, userState }) {
-  const [isModalVisible, setModalVisible] = useState(false);
-
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+  const [isModalConfirmed, setModalConfirmed] = useState(false);
+  const [isModalCanceled, setModalCanceled] = useState(false);
 
   return (
     <ScrollView>
@@ -77,7 +74,7 @@ function MyLunchesScreen({ navigation, userState }) {
               <FontAwesome name="star" size={15} color="#f9b34c" />
               <FontAwesome name="star" size={15} color="#f9b34c" />
               <FontAwesome name="star-o" size={15} color="#f9b34c" />
-              <Text style={styles.title2}> 4.7 </Text>
+              <Text style={styles.title2}> 4.7</Text>
             </Text>
 
             <Button
@@ -85,9 +82,9 @@ function MyLunchesScreen({ navigation, userState }) {
               buttonStyle={{ borderColor: "#418581", borderWidth: 1 }}
               titleStyle={{ color: "black", padding: 10 }}
               title="Détails"
-              onPress={toggleModal}
+              onPress={() => setModalConfirmed(true)}
             />
-            <Modal isVisible={isModalVisible}>
+            <Modal isVisible={isModalConfirmed}>
               <View>
                 <Card
                   containerStyle={{
@@ -107,7 +104,7 @@ function MyLunchesScreen({ navigation, userState }) {
                       alignSelf: "stretch",
                     }}
                   >
-                    <Feather name="check-squareh" size={80} color="green" />
+                    <Feather name="check-square" size={80} color="green" />
                     <ListItem.Title
                       style={{
                         fontWeight: "bold",
@@ -118,7 +115,7 @@ function MyLunchesScreen({ navigation, userState }) {
                       CONFIRMATION
                     </ListItem.Title>
                     <ListItem.Subtitle style={styles.listItem}>
-                      Bonjour Kevin, votre RDV est désormais confirmé.
+                      Votre RDV avec Jojo est désormais confirmé.
                     </ListItem.Subtitle>
                     <ListItem.Subtitle style={styles.listItem}>
                       Merci pour votre réservation, qui vous rapporte 100 Forky
@@ -151,7 +148,7 @@ function MyLunchesScreen({ navigation, userState }) {
                     alignSelf: "center",
                   }}
                   title="Retour"
-                  onPress={toggleModal}
+                  onPress={() => setModalConfirmed(false)}
                 />
               </View>
             </Modal>
@@ -160,7 +157,7 @@ function MyLunchesScreen({ navigation, userState }) {
       </View>
       <View style={styles.view}>
         <Feather name="calendar" size={32} color="#eb4d4b" />
-        <Text style={styles.title2}> 20/12/2020 </Text>
+        <Text style={styles.title2}> 11/12/2020 </Text>
       </View>
       <View>
         <Card
@@ -178,7 +175,7 @@ function MyLunchesScreen({ navigation, userState }) {
           >
             <View>
               <Image
-                source={require("../assets/clara.jpg")}
+                source={require("../assets/profile.jpg")}
                 style={styles.img}
               />
               <Badge
@@ -191,14 +188,14 @@ function MyLunchesScreen({ navigation, userState }) {
               />
             </View>
             <View>
-              <Text style={styles.title3}> Votre déjeuner avec Clara </Text>
+              <Text style={styles.title3}> Votre déjeuner avec Jojo </Text>
               <Text style={styles.text}>
                 <Feather name="calendar" size={15} color="#c7d3dc" />{" "}
-                Rendez-vous à 12h30{" "}
+                Rendez-vous à 13h30{" "}
               </Text>
               <Text style={styles.text}>
                 <Feather name="map-pin" size={15} color="#c7d3dc" /> Au
-                restaurant "Le Barbu marseillais"
+                restaurant "Pastis et Olive"
               </Text>
             </View>
           </View>
@@ -213,9 +210,9 @@ function MyLunchesScreen({ navigation, userState }) {
               <FontAwesome name="star" size={15} color="#f9b34c" />
               <FontAwesome name="star" size={15} color="#f9b34c" />
               <FontAwesome name="star" size={15} color="#f9b34c" />
-              <FontAwesome name="star" size={15} color="#f9b34c" />
               <FontAwesome name="star-o" size={15} color="#f9b34c" />
-              <Text style={styles.title2}> 4.7 </Text>
+              <FontAwesome name="star-o" size={15} color="#f9b34c" />
+              <Text style={styles.title2}> 3.7 </Text>
             </Text>
 
             <Button
@@ -223,9 +220,9 @@ function MyLunchesScreen({ navigation, userState }) {
               buttonStyle={{ borderColor: "#eb4d4b", borderWidth: 1 }}
               titleStyle={{ color: "black", padding: 10 }}
               title="Détails"
-              onPress={toggleModal}
+              onPress={() => setModalCanceled(true)}
             />
-            <Modal isVisible={isModalVisible}>
+            <Modal isVisible={isModalCanceled}>
               <View>
                 <Card
                   containerStyle={{
@@ -245,7 +242,7 @@ function MyLunchesScreen({ navigation, userState }) {
                       alignSelf: "stretch",
                     }}
                   >
-                    <Feather name="check-squareh" size={80} color="green" />
+                    <Entypo name="squared-cross" size={80} color="#eb4d4b" />
                     <ListItem.Title
                       style={{
                         fontWeight: "bold",
@@ -253,20 +250,19 @@ function MyLunchesScreen({ navigation, userState }) {
                         marginTop: 20,
                       }}
                     >
-                      CONFIRMATION
+                      ANNULATION
                     </ListItem.Title>
                     <ListItem.Subtitle style={styles.listItem}>
-                      Bonjour Kevin, votre RDV est désormais confirmé.
+                      Oups Clara à eu un empêchement de dernière minute et ne
+                      pourra pas venir au déjeuner.
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle style={styles.listItemBold}>
+                      Votre déjeuner au restaurant "Pastis et Olive" a été
+                      annulé !
                     </ListItem.Subtitle>
                     <ListItem.Subtitle style={styles.listItem}>
-                      Merci pour votre réservation, qui vous rapporte 100 Forky
-                      ! Profitez bien de votre repas, et pensez ensuite à
-                      déposer votre avis. A noter que votre invité(e) vous
-                      attendra directement sur place !
-                    </ListItem.Subtitle>
-                    <ListItem.Subtitle style={styles.listItem}>
-                      A noter que votre invité(e) vous attendra directement sur
-                      place !
+                      À noter que vous pouvez reproposer une nouvelle date à
+                      votre invité(e) !
                     </ListItem.Subtitle>
                   </View>
                 </Card>
@@ -278,7 +274,7 @@ function MyLunchesScreen({ navigation, userState }) {
                     borderRadius: 20,
                     alignSelf: "center",
                   }}
-                  title="Annuler mon RDV"
+                  title="Proposer une autre date ?"
                 />
                 <Button
                   buttonStyle={{
@@ -289,7 +285,7 @@ function MyLunchesScreen({ navigation, userState }) {
                     alignSelf: "center",
                   }}
                   title="Retour"
-                  onPress={toggleModal}
+                  onPress={() => setModalCanceled(false)}
                 />
               </View>
             </Modal>
@@ -298,7 +294,7 @@ function MyLunchesScreen({ navigation, userState }) {
       </View>
       <View style={styles.view}>
         <Feather name="calendar" size={32} color="#F9B34C" />
-        <Text style={styles.title2}> 20/12/2020 </Text>
+        <Text style={styles.title2}> 03/12/2020 </Text>
       </View>
       <View>
         <Card
@@ -316,7 +312,7 @@ function MyLunchesScreen({ navigation, userState }) {
           >
             <View>
               <Image
-                source={require("../assets/clara.jpg")}
+                source={require("../assets/profile2.jpg")}
                 style={styles.img}
               />
               <Badge
@@ -329,14 +325,14 @@ function MyLunchesScreen({ navigation, userState }) {
               />
             </View>
             <View>
-              <Text style={styles.title3}> Votre déjeuner avec Clara </Text>
+              <Text style={styles.title3}> Votre déjeuner avec Jennifer </Text>
               <Text style={styles.text}>
                 <Feather name="calendar" size={15} color="#c7d3dc" />{" "}
                 Rendez-vous à 12h30{" "}
               </Text>
               <Text style={styles.text}>
                 <Feather name="map-pin" size={15} color="#c7d3dc" /> Au
-                restaurant "Le Barbu marseillais"
+                restaurant "Un jardin en ville"
               </Text>
             </View>
           </View>
@@ -353,7 +349,7 @@ function MyLunchesScreen({ navigation, userState }) {
               <FontAwesome name="star" size={15} color="#f9b34c" />
               <FontAwesome name="star" size={15} color="#f9b34c" />
               <FontAwesome name="star-o" size={15} color="#f9b34c" />
-              <Text style={styles.title2}> 4.7 </Text>
+              <Text style={styles.title2}> 4.2 </Text>
             </Text>
 
             <Button
@@ -361,9 +357,9 @@ function MyLunchesScreen({ navigation, userState }) {
               buttonStyle={{ borderColor: "#F9B34C", borderWidth: 1 }}
               titleStyle={{ color: "black", padding: 10 }}
               title="Détails"
-              onPress={toggleModal}
+              onPress={() => setModalConfirmed(true)}
             />
-            <Modal isVisible={isModalVisible}>
+            <Modal isVisible={isModalConfirmed}>
               <View>
                 <Card
                   containerStyle={{
@@ -383,7 +379,7 @@ function MyLunchesScreen({ navigation, userState }) {
                       alignSelf: "stretch",
                     }}
                   >
-                    <Feather name="check-squareh" size={80} color="green" />
+                    <Feather name="check-square" size={80} color="green" />
                     <ListItem.Title
                       style={{
                         fontWeight: "bold",
@@ -427,7 +423,7 @@ function MyLunchesScreen({ navigation, userState }) {
                     alignSelf: "center",
                   }}
                   title="Retour"
-                  onPress={toggleModal}
+                  onPress={() => setModalConfirmed(false)}
                 />
               </View>
             </Modal>
@@ -455,6 +451,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "black",
     margin: 5,
+    maxWidth: "83%",
   },
   img: {
     width: 100,
@@ -476,7 +473,7 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 10,
     margin: 5,
-    maxWidth: "80%",
+    maxWidth: "83%",
   },
   listItem: {
     marginTop: 20,
@@ -484,6 +481,14 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 15,
     letterSpacing: 1,
+  },
+  listItemBold: {
+    marginTop: 20,
+    textAlign: "center",
+    padding: 5,
+    fontSize: 15,
+    letterSpacing: 1,
+    fontWeight: "bold",
   },
 });
 

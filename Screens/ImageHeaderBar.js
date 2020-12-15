@@ -2,7 +2,7 @@ import React from "react";
 
 import { View, Image, TouchableOpacity } from "react-native";
 import { Badge } from "react-native-elements";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const HeaderBarImage = () => {
@@ -43,4 +43,22 @@ const IconBar = () => {
   );
 };
 
-export { HeaderBarImage, IconBar };
+const SettingsBar = () => {
+  const navigation = useNavigation();
+  return (
+    <View style={{ paddingRight: 20 }}>
+      <TouchableOpacity onPress={() => navigation.navigate("Reglage")}>
+        <View style={{ flexDirection: "row" }}>
+          <Feather
+            style={{ margin: 10 }}
+            name="settings"
+            size={28}
+            color="#418581"
+          />
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+export { HeaderBarImage, IconBar, SettingsBar };
