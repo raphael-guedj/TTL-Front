@@ -41,7 +41,7 @@ const NotifStack = () => {
           height: 45,
         },
       }}
-      initialRouteName="NotifEnvoye"
+      initialRouteName="Invitations envoyés"
     >
       <TopTabNotif.Screen
         name="Invitations envoyés"
