@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
-import { Card, Button, Avatar, Accessory } from "react-native-elements";
+import { Card, Button } from "react-native-elements";
 import { useIsFocused } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import { PRIVATE_URL } from "../App";
@@ -37,16 +37,6 @@ function ProfileScreen({ navigation, userState }) {
         margin: 10,
       }}
     >
-      <TouchableOpacity onPress={() => navigation.navigate("Reglage")}>
-        <View style={{ flexDirection: "row" }}>
-          <Feather
-            style={styles.settings}
-            name="settings"
-            size={28}
-            color="#418581"
-          />
-        </View>
-      </TouchableOpacity>
       <View
         style={{
           flex: 1,

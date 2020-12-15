@@ -12,8 +12,8 @@ import InvitationScreen from "./InvitationScreen";
 import SnapScreen from "./SnapScreen";
 import MyLunchesScreen from "./MyLunchesScreen";
 
-import NotifScreenReceived from "./NotifScreenReceived";
-import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
+import NotifScreenReceived from "./NotifScreen";
+import { HeaderBarImage, IconBar, SettingsBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -156,7 +156,7 @@ const ProfilStack = () => {
           headerTintColor: "#0b090a",
 
           headerLeft: () => <HeaderBarImage />,
-          headerRight: () => <IconBar />,
+          headerRight: () => <SettingsBar />,
         }}
         name="Detail"
         component={MyLunchesScreen}
