@@ -144,8 +144,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 </Text>
 
                 <Text>
-                  <Feather name="plus-circle" size={15} color="#c7d3dc" />
-                  <Text style={styles.title2}>Arrondissement: </Text>
+                  <Feather name="map-pin" size={15} color="#c7d3dc" />
+                  <Text style={styles.title2}> Code postale: </Text>
                   <ListItem.Title style={{ fontSize: 15 }}>
                     {route.params.params.arrondissement}
                   </ListItem.Title>
@@ -682,6 +682,8 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 100 / 2,
+    borderWidth: 3,
+    borderColor: "#d9eceb",
   },
   // reviewIcon: {
   //   paddingVertical: 5,

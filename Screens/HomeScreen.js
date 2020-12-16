@@ -86,7 +86,7 @@ const HomeScreen = ({ userState, navigation }) => {
     >
       <View style={{ alignSelf: "center" }}>
         <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
-          Organisez votre déjeuner
+          Organisez un déjeuner...
         </Text>
       </View>
       <View>
@@ -139,18 +139,15 @@ const HomeScreen = ({ userState, navigation }) => {
                   </View>
                 </View>
                 <View style={styles.verticleLine}></View>
+                <View style={{ paddingHorizontal: 10, paddingVertical: 25 }}>
+                  <FontAwesome name="map-marker" size={34} color="#418581" />
+                </View>
                 <View style={styles.containerLocation}>
-                  <View style={{ paddingHorizontal: 15 }}>
-                    <FontAwesome name="map-marker" size={34} color="#418581" />
-                  </View>
-                  <View
-                    style={{
-                      alignItems: "center",
-                    }}
-                  >
+                  <View>
                     <ListItem.Title>Situé à 200m</ListItem.Title>
+
                     <ListItem.Subtitle>
-                      {user.arrondissement} {user.city}
+                      {user.arrondissement} {"-"} {user.city}
                     </ListItem.Subtitle>
                   </View>
                 </View>
@@ -174,7 +171,11 @@ const styles = StyleSheet.create({
     // marginTop: Constants.statusBarHeight,
   },
   text: {
+<<<<<<< HEAD
+    fontSize: 20,
+=======
     fontSize: 23,
+>>>>>>> main
     color: "#0b090a",
     letterSpacing: 3,
     lineHeight: 35,
@@ -203,6 +204,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: 2,
     backgroundColor: "#CCCCCC",
+    marginLeft: 35,
   },
   containerLocation: {
     flex: 0.5,
