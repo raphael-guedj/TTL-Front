@@ -168,7 +168,14 @@ const ProfilStack = () => {
         component={EditProfilScreen}
       />
       <StackProfil.Screen name="Photo" component={SnapScreen} />
-      <StackProfil.Screen name="Reglage" component={SettingsScreen} />
+      <StackProfil.Screen
+        name="Réglages"
+        options={{
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+        }}
+        component={SettingsScreen}
+      />
     </StackProfil.Navigator>
   );
 };
