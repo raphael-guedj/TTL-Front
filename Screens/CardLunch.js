@@ -39,7 +39,9 @@ function CardLunch({ onRefresh, invit, userState }) {
     }
   };
 
-  return (
+  return !user ? (
+    <></>
+  ) : (
     <View>
       <View style={styles.view}>
         <Feather
@@ -70,7 +72,14 @@ function CardLunch({ onRefresh, invit, userState }) {
             }}
           >
             <View>
-              <Image source={{ uri: user.photo }} style={styles.img} />
+              <Image
+                source={
+                  user.photo
+                    ? { uri: user.photo }
+                    : require("../assets/default_avatar.jpg")
+                }
+                style={styles.img}
+              />
               <Badge
                 status={user.isConnected ? "success" : "error"}
                 containerStyle={{
