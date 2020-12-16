@@ -85,7 +85,7 @@ function ProfileScreen({ navigation, userState }) {
               alignSelf: "center",
             }}
             title="Modifier mon profil"
-            onPress={() => navigation.navigate("Modifier le profil")}
+            onPress={() => navigation.navigate("Modifier mon profil")}
           />
           <Button
             buttonStyle={{
@@ -95,8 +95,8 @@ function ProfileScreen({ navigation, userState }) {
               borderRadius: 20,
               alignSelf: "center",
             }}
-            title="Mes lunchs"
-            onPress={() => navigation.navigate("Detail")}
+            title="Mes Forkys"
+            onPress={() => navigation.navigate("Mes Forkys")}
           />
         </View>
       </View>

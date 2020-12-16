@@ -101,13 +101,22 @@ const HomeStack = () => {
         component={UserProfilScreen}
       />
       <StackHome.Screen
-        name="Modifier le profil"
+        name="Modifier mon profil"
         component={EditProfilScreen}
+        options={{
+          title: "Modifier mon profil",
+          headerStyle: {
+            backgroundColor: "#fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+        }}
       />
       <StackHome.Screen name="Photo" component={SnapScreen} />
       <StackHome.Screen
         options={{
-          title: "Invitation",
+          title: "Envoyer une invitation",
           headerStyle: {
             backgroundColor: "#Fff",
             height: 90,
@@ -117,7 +126,7 @@ const HomeStack = () => {
 
           headerRight: () => <IconBar />,
         }}
-        name="Invitation"
+        name="Envoyer une invitation"
         component={InvitationScreen}
       />
     </StackHome.Navigator>
@@ -128,7 +137,7 @@ const LunchStack = () => {
     <StackLunch.Navigator>
       <StackLunch.Screen
         options={{
-          title: "Mes Lunchs",
+          title: "Mes Forkys",
           headerStyle: {
             backgroundColor: "#fff",
             height: 90,
@@ -139,7 +148,7 @@ const LunchStack = () => {
           headerLeft: () => <HeaderBarImage />,
           headerRight: () => <IconBar />,
         }}
-        name="Detail"
+        name="Mes Forkys"
         component={MyLunchesScreen}
       />
       <StackLunch.Screen name="Confirmation" component={MyLunchesScreen} />
@@ -158,13 +167,36 @@ const ProfilStack = () => {
           headerLeft: () => <HeaderBarImage />,
           headerRight: () => <SettingsBar />,
         }}
-        name="Detail"
-        component={MyLunchesScreen}
-        name="Profil"
+        name="Mon Profil"
         component={ProfileScreen}
       />
       <StackProfil.Screen
-        name="Modifier le profil"
+        options={{
+          title: "Mes Forkys",
+          headerStyle: {
+            backgroundColor: "#fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+
+          headerLeft: () => <HeaderBarImage />,
+          headerRight: () => <IconBar />,
+        }}
+        name="Mes Forkys"
+        component={MyLunchesScreen}
+      />
+      <StackProfil.Screen
+        options={{
+          title: "Modifier mon profil",
+          headerStyle: {
+            backgroundColor: "#fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+        }}
+        name="Modifier mon profil"
         component={EditProfilScreen}
       />
       <StackProfil.Screen name="Photo" component={SnapScreen} />
@@ -186,11 +218,11 @@ const PageTab = (
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
 
-        if (route.name === "Dejeunez") {
+        if (route.name === "homeTab") {
           iconName = "ios-search";
-        } else if (route.name === "Mes Forky") {
+        } else if (route.name === "forkyTab") {
           iconName = "ios-list";
-        } else if (route.name === "Profil") {
+        } else if (route.name === "profilTab") {
           iconName = "md-person";
         }
         return <Ionicons name={iconName} size={34} color={color} />;
@@ -205,9 +237,27 @@ const PageTab = (
       },
     }}
   >
-    <Tab.Screen name="Dejeunez" component={HomeStack} />
-    <Tab.Screen name="Mes Forky" component={LunchStack} />
-    <Tab.Screen name="Profil" component={ProfilStack} />
+    <Tab.Screen
+      name="homeTab"
+      component={HomeStack}
+      options={{
+        title: "Déjeuner",
+      }}
+    />
+    <Tab.Screen
+      name="forkyTab"
+      component={LunchStack}
+      options={{
+        title: "Mes Forkys",
+      }}
+    />
+    <Tab.Screen
+      name="profilTab"
+      component={ProfilStack}
+      options={{
+        title: "Mon profil",
+      }}
+    />
   </Tab.Navigator>
 );
 
