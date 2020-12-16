@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import { ScrollView, RefreshControl } from "react-native";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 import CardLunch from "./CardLunch";
 
 const wait = (timeout) => {

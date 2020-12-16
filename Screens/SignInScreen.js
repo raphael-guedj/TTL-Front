@@ -9,9 +9,10 @@ import {
 } from "react-native";
 import { Input, Button } from "react-native-elements";
 import { connect } from "react-redux";
+import { Feather, Entypo } from "@expo/vector-icons";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const SignInScreen = ({ setReduxUser, navigation }) => {
   const [email, setEmail] = useState("");
@@ -45,7 +46,7 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
 
   return (
     <ImageBackground
-      source={require("../assets/lunch.jpg")}
+      source={require("../assets/lunch_bright.jpg")}
       style={styles.image_hero}
     >
       <KeyboardAvoidingView
@@ -57,7 +58,7 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
             style={styles.logo}
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
-          <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
+          <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
             Connexion
           </Text>
         </View>
@@ -67,18 +68,18 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
             onChangeText={(e) => setEmail(e)}
             value={email}
             textContentType={"emailAddress"}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-mail" size={30} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Entypo name="email" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
             inputStyle={{
               color: "#fff",
-              fontSize: 15,
+              fontSize: 14,
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           <Input
@@ -86,18 +87,18 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
             onChangeText={(e) => setPassword(e)}
             value={password}
             secureTextEntry={true}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-eye-off" size={30} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Feather name="eye-off" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
             inputStyle={{
               color: "#fff",
-              fontSize: 15,
+              fontSize: 14,
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           {!responseOk && (
@@ -132,7 +133,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor: "#000000a0",
   },
   logo: {
     width: 160,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 34,
-    color: "#fafae0",
+    color: "#fbfcfd",
     paddingVertical: 20,
     letterSpacing: 3,
     lineHeight: 35,
@@ -150,7 +150,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    opacity: 1,
   },
   button: {
     backgroundColor: "#F9B34C",
@@ -166,8 +165,7 @@ const styles = StyleSheet.create({
   },
   responseText: {
     textAlign: "center",
-    color: "#d90429",
-    fontStyle: "italic",
+    color: "#eb4d4b",
     fontSize: 15,
   },
 });

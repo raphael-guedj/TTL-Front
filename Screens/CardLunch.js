@@ -5,7 +5,7 @@ import Modal from "react-native-modal";
 import { Card, Button, Badge, ListItem } from "react-native-elements";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 function CardLunch({ invit, userState }) {
   const [isModalConfirmed, setModalConfirmed] = useState(false);

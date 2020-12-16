@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, RefreshControl } from "react-native";
 import CardLunch from "./CardLunch";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const wait = (timeout) => {
   return new Promise((resolve) => {

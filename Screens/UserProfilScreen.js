@@ -3,7 +3,9 @@ import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { connect } from "react-redux";
 import { Button, CheckBox, Card } from "react-native-elements";
 
-import { PRIVATE_URL } from "../App";
+import { Feather, Entypo, AntDesign } from "@expo/vector-icons";
+
+import { PRIVATE_URL } from "../config";
 
 function UserProfilScreen({ navigation, userState, route }) {
   const [language, setLanguage] = useState(true);
@@ -34,33 +36,51 @@ function UserProfilScreen({ navigation, userState, route }) {
           <Image style={styles.image} source={{ uri: route.params.photo }} />
           <View style={{ width: "70%" }}>
             <View style={styles.containerArea}>
-              <Text style={styles.title1}> Prénom: </Text>
-              <Text style={styles.text}> {route.params.name}</Text>
+              <Text>
+                <Feather name="edit" size={15} color="#c7d3dc" />
+                <Text style={styles.title1}> Prénom: </Text>
+                <Text style={styles.text}> {route.params.name}</Text>
+              </Text>
             </View>
             <View style={styles.containerArea}>
-              <Text style={styles.title1}> Profession: </Text>
-              <Text style={styles.text}> {route.params.profession}</Text>
+              <Text>
+                <Feather name="briefcase" size={15} color="#c7d3dc" />
+                <Text style={styles.title1}> Profession: </Text>
+                <Text style={styles.text}> {route.params.profession}</Text>
+              </Text>
             </View>
           </View>
         </View>
-        <View style={{ width: "40%", flexDirection: "row" }}>
+        <View style={{ width: "50%", flexDirection: "row" }}>
           <View style={styles.rowArea}>
-            <Text style={styles.title1}> Ville: </Text>
-            <Text style={styles.text}> {route.params.city}</Text>
+            <Text>
+              <Feather name="map-pin" size={15} color="#c7d3dc" />
+              <Text style={styles.title1}> Ville: </Text>
+              <Text style={styles.text}> {route.params.city}</Text>
+            </Text>
           </View>
           <View style={styles.containerArea}>
-            <Text style={styles.title1}> Arr: </Text>
-            <Text style={styles.text}> {route.params.arrondissement}</Text>
+            <Text>
+              <Feather name="plus-circle" size={15} color="#c7d3dc" />
+              <Text style={styles.title1}> Arr: </Text>
+              <Text style={styles.text}> {route.params.arrondissement}</Text>
+            </Text>
           </View>
         </View>
         <View style={styles.containerArea}>
-          <Text style={styles.title1}> Email: </Text>
-          <Text style={styles.text}> {route.params.email}</Text>
+          <Text>
+            <Entypo name="email" size={15} color="#c7d3dc" />
+            <Text style={styles.title1}> Email: </Text>
+            <Text style={styles.text}> {route.params.email}</Text>
+          </Text>
         </View>
 
         <View style={styles.containerArea}>
-          <Text style={styles.title1}> Secteur d'activité: </Text>
-          <Text style={styles.text}> {route.params.secteur}</Text>
+          <Text>
+            <AntDesign name="linechart" size={15} color="#c7d3dc" />
+            <Text style={styles.title1}> Secteur d'activité: </Text>
+            <Text style={styles.text}> {route.params.secteur}</Text>
+          </Text>
         </View>
       </Card>
       <View>
@@ -71,7 +91,7 @@ function UserProfilScreen({ navigation, userState, route }) {
             title={lang}
             checked={true}
             checkedColor="#418581"
-            size={20}
+            size={18}
             textStyle={{ fontWeight: "normal" }}
             containerStyle={{
               marginLeft: 14,
@@ -89,7 +109,7 @@ function UserProfilScreen({ navigation, userState, route }) {
           title="Rencontrer de nouvelles personnes"
           checked={route.params.wish1 ? true : false}
           checkedColor="#418581"
-          size={20}
+          size={18}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
             marginLeft: 14,
@@ -255,7 +275,7 @@ const styles = StyleSheet.create({
   containerArea: {
     width: "100%",
     paddingVertical: 8,
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
     flexDirection: "row",
     flexWrap: "wrap",
   },

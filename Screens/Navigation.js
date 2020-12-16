@@ -11,16 +11,16 @@ import EditProfilScreen from "./EditProfileScreen";
 import InvitationScreen from "./InvitationScreen";
 import SnapScreen from "./SnapScreen";
 import MyLunchesScreen from "./MyLunchesScreen";
-
-import NotifScreenReceived from "./NotifScreen";
-import { HeaderBarImage, IconBar } from "./ImageHeaderBar";
+import NotifScreenSent from "./NotifScreenSent";
+import NotifScreenReceived from "./NotifScreenReceived";
+import { HeaderBarImage, IconBar, SettingsBar } from "./ImageHeaderBar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const Stack = createStackNavigator();
 const StackHome = createStackNavigator();
@@ -41,11 +41,11 @@ const NotifStack = () => {
           height: 45,
         },
       }}
-      initialRouteName="NotifEnvoye"
+      initialRouteName="Invitations envoyés"
     >
       <TopTabNotif.Screen
         name="Invitations envoyés"
-        component={NotifScreenReceived}
+        component={NotifScreenSent}
       />
       <TopTabNotif.Screen
         name="Invitations reçues"
@@ -68,7 +68,7 @@ const HomeStack = () => {
           headerTitleAlign: "center",
           headerTintColor: "#0b090a",
           headerLeft: () => <HeaderBarImage />,
-          headerRight: () => <IconBar />,
+          // headerRight: () => <IconBar />,
         }}
         name="Home"
         component={HomeScreen}
@@ -100,10 +100,11 @@ const HomeStack = () => {
         name="Profil Utilisateur"
         component={UserProfilScreen}
       />
-      <StackProfil.Screen
+      <StackHome.Screen
         name="Modifier le profil"
         component={EditProfilScreen}
       />
+      <StackHome.Screen name="Photo" component={SnapScreen} />
       <StackHome.Screen
         options={{
           title: "Invitation",
@@ -135,6 +136,7 @@ const LunchStack = () => {
           headerTitleAlign: "center",
           headerTintColor: "#0b090a",
 
+          headerLeft: () => <HeaderBarImage />,
           headerRight: () => <IconBar />,
         }}
         name="Detail"
@@ -148,7 +150,19 @@ const LunchStack = () => {
 const ProfilStack = () => {
   return (
     <StackProfil.Navigator>
-      <StackProfil.Screen name="Profil" component={ProfileScreen} />
+      <StackProfil.Screen
+        options={{
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+
+          headerLeft: () => <HeaderBarImage />,
+          headerRight: () => <SettingsBar />,
+        }}
+        name="Detail"
+        component={MyLunchesScreen}
+        name="Profil"
+        component={ProfileScreen}
+      />
       <StackProfil.Screen
         name="Modifier le profil"
         component={EditProfilScreen}
