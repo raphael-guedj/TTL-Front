@@ -42,7 +42,6 @@ const NotifScreenReceived = ({ userState, navigation }) => {
         `http://172.16.0.18:3000/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      // console.log(response);
       setListUser(response.userExcl);
     };
     getUser();
