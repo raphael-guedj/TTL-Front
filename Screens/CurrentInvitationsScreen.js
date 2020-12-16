@@ -50,7 +50,7 @@ function CurrentInvitations({ userState }) {
       }
     >
       {myInvitations.map((invit, i) => (
-        <CardLunch invit={invit} key={i} />
+        <CardLunch invit={invit} key={i} onRefresh={onRefresh} />
       ))}
     </ScrollView>
   );

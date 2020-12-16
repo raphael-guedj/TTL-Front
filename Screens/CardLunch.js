@@ -7,7 +7,7 @@ import { Feather, FontAwesome } from "@expo/vector-icons";
 
 import { PRIVATE_URL } from "../config";
 
-function CardLunch({ invit, userState }) {
+function CardLunch({ onRefresh, invit, userState }) {
   const [isModalConfirmed, setModalConfirmed] = useState(false);
   const [user, setUser] = useState({});
 
@@ -29,6 +29,15 @@ function CardLunch({ invit, userState }) {
     };
     getUser();
   }, [invit]);
+
+  const cancelInvit = async () => {
+    let response = await fetch(`${PRIVATE_URL}/cancelinvit?id=${invit._id}`);
+    let responseJson = await response.json();
+    if (responseJson.result) {
+      setModalConfirmed(false);
+      onRefresh();
+    }
+  };
 
   return (
     <View>
@@ -169,6 +178,7 @@ function CardLunch({ invit, userState }) {
                     alignSelf: "center",
                   }}
                   title="Annuler mon RDV"
+                  onPress={() => cancelInvit()}
                 />
                 <Button
                   buttonStyle={{

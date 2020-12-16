@@ -40,6 +40,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState("date");
+  const [dateError, setDateError] = useState(false);
 
   // ======= State that keep value of hour in dropdown ======= //
   const [hours, setHours] = useState("");
@@ -57,9 +58,15 @@ const InvitationScreen = ({ navigation, route, userState }) => {
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === "ios");
-    currentDate.setHours(24, 59, 59);
+    currentDate.setHours(23, 59, 59);
     console.log(currentDate);
-    setDate(currentDate);
+    if (currentDate < Date.now()) {
+      setDateError(true);
+      setDate(currentDate);
+    } else {
+      setDateError(false);
+      setDate(currentDate);
+    }
   };
 
   const showMode = (currentMode) => {
@@ -79,7 +86,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       hours !== "" &&
       kitchen !== "" &&
       location !== "" &&
-      address !== ""
+      address !== "" &&
+      !dateError
     ) {
       let rawResponse = await fetch(`${PRIVATE_URL}/new-invitation`, {
         method: "post",
@@ -88,10 +96,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       });
 
       var responseJSON = await rawResponse.json();
-      // console.log(responseJSON);
       if (responseJSON.response) {
         navigation.navigate("Mes Forky");
-        // console.log("ma réponse est bonne");
       }
     } else {
       setErrorMessage(true);
@@ -99,7 +105,6 @@ const InvitationScreen = ({ navigation, route, userState }) => {
   };
 
   console.log("dans mon screen invitation", route);
-  // console.log("userState", userState);
 
   return (
     <KeyboardAvoidingView
@@ -299,6 +304,11 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                         }/${date.getFullYear()}`
                   }
                 />
+                {dateError && (
+                  <Text style={{ color: "red", margin: 2 }}>
+                    La date est passée, veuillez choisir une date valide.
+                  </Text>
+                )}
               </View>
               {show && (
                 <DateTimePicker

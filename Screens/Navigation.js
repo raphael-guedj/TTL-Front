@@ -167,6 +167,7 @@ const ProfilStack = () => {
         name="Modifier le profil"
         component={EditProfilScreen}
       />
+      <StackProfil.Screen name="Detail" component={MyLunchesScreen} />
       <StackProfil.Screen name="Photo" component={SnapScreen} />
       <StackProfil.Screen name="Reglage" component={SettingsScreen} />
     </StackProfil.Navigator>
