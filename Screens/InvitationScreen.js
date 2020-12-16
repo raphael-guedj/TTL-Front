@@ -92,7 +92,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       var responseJSON = await rawResponse.json();
       // console.log(responseJSON);
       if (responseJSON.response) {
-        navigation.navigate("Mes Forky");
+        navigation.navigate("Mes Forkys");
         // console.log("ma réponse est bonne");
       }
     } else {

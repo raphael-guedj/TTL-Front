@@ -17,9 +17,9 @@ function UserProfilScreen({ navigation, userState, route }) {
     );
     let response = await rawResponse.json();
     if (response.result) {
-      navigation.navigate("Invitation", route);
+      navigation.navigate("Envoyer une invitation", route);
     } else {
-      navigation.navigate("Modifier le profil");
+      navigation.navigate("Modifier mon profil");
     }
     // console.log(response);
   };
