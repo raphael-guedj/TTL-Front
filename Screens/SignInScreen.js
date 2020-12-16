@@ -20,6 +20,7 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
   const [responseOk, setResponseOk] = useState(true);
 
   const handleSignIn = async () => {
+    console.log(PRIVATE_URL);
     let rawResponse = await fetch(`${PRIVATE_URL}/sign-in`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -115,6 +116,7 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
               handleSignIn();
             }}
           ></Button>
+
           <Button
             buttonStyle={styles.buttonback}
             title="Revenir en arrière"
