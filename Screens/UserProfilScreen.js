@@ -31,66 +31,53 @@ function UserProfilScreen({ navigation, userState, route }) {
       style={{ flex: 1 }}
       contentContainerStyle={{ minHeight: "100%" }}
     >
-      <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
+      <Card
+        containerStyle={{
+          borderRadius: 5,
+          borderColor: "#abd6d3",
+          marginTop: 30,
+          padding: 10,
+        }}
+      >
         <View style={styles.avatar}>
           <Image style={styles.image} source={{ uri: route.params.photo }} />
-          <View style={{ width: "70%" }}>
+          <View style={{ width: "75%" }}>
             <View style={styles.containerArea}>
               <Text>
-                <Feather name="edit" size={15} color="#c7d3dc" />
-                <Text style={styles.title1}> Prénom: </Text>
+                <Feather name="edit" size={15} color="#F9B34C" />
+                {/* <Text style={styles.title1}> Prénom: </Text> */}
                 <Text style={styles.text}> {route.params.name}</Text>
               </Text>
             </View>
             <View style={styles.containerArea}>
               <Text>
-                <Feather name="briefcase" size={15} color="#c7d3dc" />
-                <Text style={styles.title1}> Profession: </Text>
+                <Feather name="briefcase" size={15} color="#F9B34C" />
+                {/* <Text style={styles.title1}> Profession: </Text> */}
                 <Text style={styles.text}> {route.params.profession}</Text>
+              </Text>
+            </View>
+            <View style={styles.rowArea}>
+              <Text>
+                <Feather name="map-pin" size={15} color="#F9B34C" />
+                {/* <Text style={styles.title1}> Ville: </Text> */}
+                <Text style={styles.text}>
+                  {" "}
+                  {route.params.city} {"-"}
+                  {route.params.arrondissement}
+                </Text>
               </Text>
             </View>
           </View>
         </View>
-        <View style={{ width: "50%", flexDirection: "row" }}>
-          <View style={styles.rowArea}>
-            <Text>
-              <Feather name="map-pin" size={15} color="#c7d3dc" />
-              <Text style={styles.title1}> Ville: </Text>
-              <Text style={styles.text}> {route.params.city}</Text>
-            </Text>
-          </View>
-          <View style={styles.containerArea}>
-            <Text>
-              <Feather name="plus-circle" size={15} color="#c7d3dc" />
-              <Text style={styles.title1}> Arr: </Text>
-              <Text style={styles.text}> {route.params.arrondissement}</Text>
-            </Text>
-          </View>
-        </View>
-        <View style={styles.containerArea}>
-          <Text>
-            <Entypo name="email" size={15} color="#c7d3dc" />
-            <Text style={styles.title1}> Email: </Text>
-            <Text style={styles.text}> {route.params.email}</Text>
-          </Text>
-        </View>
-
-        <View style={styles.containerArea}>
-          <Text>
-            <AntDesign name="linechart" size={15} color="#c7d3dc" />
-            <Text style={styles.title1}> Secteur d'activité: </Text>
-            <Text style={styles.text}> {route.params.secteur}</Text>
-          </Text>
-        </View>
       </Card>
-      <View>
+      <View style={styles.margin}>
         <Text style={styles.title2}> Langue(s) parlée(s): </Text>
         {route.params.language.map((lang, i) => (
           <CheckBox
             key={i}
             title={lang}
             checked={true}
-            checkedColor="#418581"
+            checkedColor="#F9B34C"
             size={18}
             textStyle={{ fontWeight: "normal" }}
             containerStyle={{
@@ -108,7 +95,7 @@ function UserProfilScreen({ navigation, userState, route }) {
         <CheckBox
           title="Rencontrer de nouvelles personnes"
           checked={route.params.wish1 ? true : false}
-          checkedColor="#418581"
+          checkedColor="#F9B34C"
           size={18}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
@@ -121,7 +108,7 @@ function UserProfilScreen({ navigation, userState, route }) {
         <CheckBox
           title="En reconversion professionnelle"
           checked={route.params.wish2 ? true : false}
-          checkedColor="#418581"
+          checkedColor="#F9B34C"
           size={20}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
@@ -134,7 +121,7 @@ function UserProfilScreen({ navigation, userState, route }) {
         <CheckBox
           title="Recherche d'opportunités professionnelles"
           checked={route.params.wish3 ? true : false}
-          checkedColor="#418581"
+          checkedColor="#F9B34C"
           size={20}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
@@ -147,7 +134,7 @@ function UserProfilScreen({ navigation, userState, route }) {
         <CheckBox
           title="Sortir du bureau"
           checked={route.params.wish4 ? true : false}
-          checkedColor="#418581"
+          checkedColor="#F9B34C"
           size={20}
           textStyle={{ fontWeight: "normal" }}
           containerStyle={{
@@ -172,7 +159,7 @@ function UserProfilScreen({ navigation, userState, route }) {
             key={i}
             title={food}
             checked={true}
-            checkedColor="#418581"
+            checkedColor="#F9B34C"
             size={20}
             textStyle={{ fontWeight: "normal" }}
             containerStyle={{
@@ -224,7 +211,7 @@ const styles = StyleSheet.create({
   title2: {
     fontSize: 15,
     marginLeft: 15,
-    marginTop: 10,
+    marginTop: 30,
     fontWeight: "bold",
     color: "black",
   },
@@ -250,8 +237,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: 120,
-    height: 120,
+    width: 105,
+    height: 105,
     borderRadius: 100,
     borderWidth: 3,
     borderColor: "#d9eceb",
@@ -274,16 +261,16 @@ const styles = StyleSheet.create({
   },
   containerArea: {
     width: "100%",
-    paddingVertical: 8,
+    paddingVertical: 3,
     paddingHorizontal: 5,
     flexDirection: "row",
     flexWrap: "wrap",
   },
   rowArea: {
-    width: "95%",
-    paddingVertical: 8,
+    width: "100%",
+    paddingVertical: 3,
     flexDirection: "row",
-    marginLeft: 10,
+    marginLeft: 5,
   },
 });
 

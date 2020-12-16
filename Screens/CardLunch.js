@@ -135,7 +135,7 @@ function CardLunch({ invit, userState }) {
                   containerStyle={{
                     borderRadius: 5,
                     borderColor: "#abd6d3",
-                    height: "75%",
+                    height: "70%",
                     maxWidth: "90%",
 
                     paddingHorizontal: 10,
@@ -197,23 +197,48 @@ function CardLunch({ invit, userState }) {
                     </ListItem.Subtitle>
                     <ListItem.Subtitle style={styles.listItem}>
                       {invit.statut_invit == "Accepté"
-                        ? `A noter que votre invité(e) vous attendra directement sur place ${invit.lieu_propose}, ${invit.adresse}.`
+                        ? `A noter que ${user.name} vous attendra directement sur place ${invit.lieu_propose}, ${invit.adresse}.`
                         : invit.statut_invit == "Refusé"
-                        ? `Si vous le souhaitez vous pouvez proposer une nouvelle date pour déjeuner avec ${user.name}.`
+                        ? `Ou proposer à une autre personne disponible...`
                         : `Ou attendre une réponse de ${user.name}...`}
                     </ListItem.Subtitle>
                   </View>
                 </Card>
-                <Button
-                  buttonStyle={{
-                    backgroundColor: "#418581",
-                    margin: 10,
-                    width: 250,
-                    borderRadius: 20,
-                    alignSelf: "center",
-                  }}
-                  title="Annuler mon RDV"
-                />
+                {invit.statut_invit == "Accepté" ? (
+                  <Button
+                    buttonStyle={{
+                      backgroundColor: "#418581",
+                      margin: 10,
+                      width: 250,
+                      borderRadius: 20,
+                      alignSelf: "center",
+                    }}
+                    title="Annuler mon RDV"
+                  />
+                ) : invit.statut_invit == "Refusé" ? (
+                  <Button
+                    buttonStyle={{
+                      backgroundColor: "#418581",
+                      margin: 10,
+                      width: 250,
+                      borderRadius: 20,
+                      alignSelf: "center",
+                    }}
+                    title="Proposer une autre date ?"
+                  />
+                ) : (
+                  <Button
+                    buttonStyle={{
+                      backgroundColor: "#418581",
+                      margin: 10,
+                      width: 250,
+                      borderRadius: 20,
+                      alignSelf: "center",
+                    }}
+                    title="Proposer un nouveau rendez-vous ?"
+                  />
+                )}
+
                 <Button
                   buttonStyle={{
                     backgroundColor: "#F9B34C",
