@@ -59,7 +59,7 @@ const SnapScreen = ({ userState, navigation }) => {
 
       if (response.result) {
         setVisible(false);
-        navigation.navigate("Modifier le profil");
+        navigation.navigate("Modifier mon profil");
       }
     }
   };

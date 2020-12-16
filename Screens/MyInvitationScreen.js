@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  ScrollView,
-  RefreshControl,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import AppLoading from "expo-app-loading";
 import Modal from "react-native-modal";
-import { Button, Card, Badge, ListItem } from "react-native-elements";
+import { Card, Button, Badge, ListItem } from "react-native-elements";
+
 import { PRIVATE_URL } from "../config";
 import { useIsFocused } from "@react-navigation/native";
 import { connect } from "react-redux";
@@ -59,106 +52,44 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
     return <AppLoading />;
   }
   return (
-    <View>
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+      }}
+    >
       <Card
         containerStyle={{
           padding: 0,
           marginVertical: 25,
           borderRadius: 5,
-          borderColor: "#abd6d3",
+          borderColor: "#418581",
+          width: "75%",
+          marginHorizontal: 0,
         }}
       >
         <View style={styles.wrapper}>
+          <View style={styles.containerImgData}>
+            <Image source={{ uri: listUser.photo }} style={styles.img} />
+            <Badge
+              status={listUser.isConnected ? "success" : "error"}
+              containerStyle={{
+                position: "absolute",
+                top: 2,
+                left: 8,
+              }}
+            />
+          </View>
           <View
             style={{
-              flex: 0.5,
+              paddingHorizontal: 10,
             }}
           >
-            <View style={styles.containerImgData}>
-              <View>
-                <Image source={{ uri: listUser.photo }} style={styles.img} />
-
-                <Badge
-                  status={listUser.isConnected ? "success" : "error"}
-                  containerStyle={{
-                    position: "absolute",
-                    top: 2,
-                    left: 8,
-                  }}
-                />
-              </View>
-              <View style={{ paddingHorizontal: 10 }}>
-                <ListItem.Title>{listUser.name}</ListItem.Title>
-                <ListItem.Subtitle>{listUser.profession}</ListItem.Subtitle>
-              </View>
-            </View>
-          </View>
-          <View style={styles.verticleLine}></View>
-          <View style={styles.containerLocation}>
-            <View
-              style={{
-                alignItems: "center",
-                flexDirection: "row",
-                width: "100%",
-                justifyContent: "space-around",
-                paddingLeft: 10,
-              }}
-            >
-              <ListItem.Title>
-                {listUser.arrondissement} {listUser.city}
-              </ListItem.Title>
-              <MaterialIcons
-                name="cancel"
-                size={35}
-                color="#F9B34C"
-                onPress={toggleModalCancel}
-              />
-            </View>
-            <Modal isVisible={isModalCancelVisible}>
-              <View>
-                <Card
-                  containerStyle={{
-                    borderRadius: 5,
-                    borderColor: "#abd6d3",
-                    paddingHorizontal: 10,
-                    height: "40%",
-                    justifyContent: "center",
-                  }}
-                >
-                  <View
-                    style={{
-                      alignItems: "center",
-                      justifyContent: "space-evenly",
-                      height: "100%",
-                    }}
-                  >
-                    <ListItem.Title
-                      style={{
-                        fontWeight: "bold",
-                        fontSize: 14,
-                        color: "#418581",
-                      }}
-                    >
-                      Votre invitation avec {listUser.name} a été annulé !
-                    </ListItem.Title>
-
-                    <Button
-                      buttonStyle={{
-                        backgroundColor: "#F9B34C",
-                        width: 100,
-                        borderRadius: 20,
-                        justifyContent: "center",
-                      }}
-                      title="Retour"
-                      onPress={() => {
-                        setModalCancelVisible(false);
-                        onRefresh();
-                      }}
-                    />
-                  </View>
-                </Card>
-              </View>
-            </Modal>
+            <ListItem.Title>{listUser.name}</ListItem.Title>
+            <ListItem.Subtitle>{listUser.profession}</ListItem.Subtitle>
+            <ListItem.Subtitle>
+              {listUser.arrondissement} {listUser.city}
+            </ListItem.Subtitle>
           </View>
         </View>
         <TouchableOpacity onPress={toggleModal}>
@@ -175,10 +106,8 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                     height: "70%",
                   }}
                 >
-                  <View style={styles.wrapper}>
+                  <View style={{ padding: 15 }}>
                     <View>
-                      {console.log(dataInvit)}
-
                       <View
                         style={{
                           paddingHorizontal: 10,
@@ -253,10 +182,12 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                           </ListItem.Title>
                         </Text>
 
-                        <Text style={{ marginTop: 20 }}>
+                        <Text style={styles.margin}>
                           <Feather name="mail" size={15} color="#c7d3dc" />
                           <Text style={styles.title2}> Message: </Text>
-                          <ListItem.Title style={{ fontSize: 13 }}>
+                          <ListItem.Title
+                            style={{ fontSize: 13, lineHeight: 20 }}
+                          >
                             {dataInvit.message}
                           </ListItem.Title>
                         </Text>
@@ -280,48 +211,80 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
           </View>
         </TouchableOpacity>
       </Card>
+      <View style={{ justifyContent: "center" }}>
+        <MaterialIcons
+          name="cancel"
+          size={45}
+          color="#F9B34C"
+          onPress={toggleModalCancel}
+        />
+      </View>
+      <Modal isVisible={isModalCancelVisible}>
+        <View>
+          <Card
+            containerStyle={{
+              borderRadius: 5,
+              borderColor: "#abd6d3",
+              paddingHorizontal: 10,
+              height: "40%",
+              justifyContent: "center",
+            }}
+          >
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "space-between",
+                height: "100%",
+              }}
+            >
+              <ListItem.Title
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 14,
+                  color: "#418581",
+                }}
+              >
+                Votre invitation avec {listUser.name} a été annulé !
+              </ListItem.Title>
+
+              <Button
+                buttonStyle={{
+                  backgroundColor: "#F9B34C",
+                  width: 100,
+                  borderRadius: 20,
+                  justifyContent: "center",
+                }}
+                title="Retour"
+                onPress={() => {
+                  setModalCancelVisible(false);
+                  onRefresh();
+                }}
+              />
+            </View>
+          </Card>
+        </View>
+      </Modal>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // marginTop: Constants.statusBarHeight,
-  },
   wrapper: {
-    flexDirection: "row",
     padding: 10,
+    flexDirection: "row",
   },
   containerImgData: {
     paddingVertical: 2,
-    flexDirection: "row",
-    alignItems: "center",
   },
   img: {
     width: 60,
     height: 60,
     borderRadius: 100 / 2,
   },
-  reviewIcon: {
-    paddingVertical: 5,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  verticleLine: {
-    height: "80%",
-    alignSelf: "center",
-    width: 2,
-    backgroundColor: "#CCCCCC",
-  },
-  containerLocation: {
-    flex: 0.5,
-    flexDirection: "row",
-    alignItems: "center",
-  },
+
   containerInvit: {
     width: "100%",
-    paddingVertical: 15,
+    paddingVertical: 7,
     flexDirection: "row",
     justifyContent: "center",
     backgroundColor: "#418581",
@@ -343,10 +306,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "bold",
     color: "black",
-    margin: 10,
   },
   margin: {
-    marginTop: 5,
+    marginVertical: 6,
   },
 });
 

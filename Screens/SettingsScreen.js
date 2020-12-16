@@ -14,29 +14,29 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { PRIVATE_URL } from "../config";
 
-function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
+function SettingsScreen({ setReduxUser, user }) {
+  const [visible, setVisible] = useState(false);
+
   const toggleOverlay = () => {
     setVisible(!visible);
   };
 
-  const [visible, setVisible] = useState(false);
-
   const handleLogOut = async () => {
-    await fetch(`${PRIVATE_URL}/logout?token=${userToken}`);
+    await fetch(`${PRIVATE_URL}/logout?token=${user.token}`);
 
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });
   };
 
   const handleDeleteUser = async () => {
-    await fetch(`${PRIVATE_URL}/delete-user?id=${userID}`);
+    await fetch(`${PRIVATE_URL}/delete-user?id=${user.id}`);
 
     AsyncStorage.removeItem("userToken");
     setReduxUser({ id: null, pseudo: null, token: null });
   };
 
   return (
-    <View style={styles.card}>
+    <View>
       <ScrollView>
         <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
           <Card.Title style={styles.title}>À propos</Card.Title>
@@ -69,20 +69,21 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
             />
           </View>
         </Card>
-        <Image
-          source={require("../assets/Logo_Forky_dark.png")}
-          style={styles.logo}
-        ></Image>
-        {/* <Card
-          containerStyle={{
-            // borderRadius: 5,
-            // borderColor: "#ed8764",
-            marginBottom: 20,
-          }}
-        > */}
         <View
           style={{
-            height: 80,
+            height: 150,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            source={require("../assets/Logo_Forky_dark.png")}
+            style={styles.logo}
+          />
+        </View>
+
+        <View
+          style={{
             alignItems: "center",
             justifyContent: "center",
           }}
@@ -101,8 +102,8 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
             onBackdropPress={toggleOverlay}
             overlayStyle={{
               borderRadius: 5,
-              width: "80%",
-              height: "20%",
+              width: "94%",
+              height: "25%",
               justifyContent: "space-between",
               borderWidth: 1,
               borderColor: "#418581",
@@ -125,32 +126,17 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
             />
           </Overlay>
         </View>
-        {/* </Card> */}
       </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  view: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#000000a0",
-  },
-
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f1faee",
-  },
   titleModal: {
-    fontSize: 16,
-    color: "black",
+    fontSize: 15,
+    color: "#0b090a",
     textAlign: "center",
-    marginTop: 10,
-    alignSelf: "center",
+    marginVertical: 10,
   },
   text: {
     fontSize: 15,
@@ -164,9 +150,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 120,
     height: 120,
-    flex: 1,
-    justifyContent: "center",
-    alignSelf: "center",
   },
   title: {
     flex: 1,
@@ -174,9 +157,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     fontSize: 20,
     color: "#418581",
-  },
-  card: {
-    marginTop: 0,
   },
 });
 
@@ -190,7 +170,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { userToken: state.user.token, userID: state.user.id };
+  return { user: state.user };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

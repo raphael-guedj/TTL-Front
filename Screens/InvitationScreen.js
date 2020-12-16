@@ -97,7 +97,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
 
       var responseJSON = await rawResponse.json();
       if (responseJSON.response) {
-        navigation.navigate("Mes Forky");
+        navigation.navigate("Mes Forkys");
+        // console.log("ma réponse est bonne");
       }
     } else {
       setErrorMessage(true);
@@ -147,8 +148,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 </Text>
 
                 <Text>
-                  <Feather name="plus-circle" size={15} color="#c7d3dc" />
-                  <Text style={styles.title2}>Arrondissement: </Text>
+                  <Feather name="map-pin" size={15} color="#c7d3dc" />
+                  <Text style={styles.title2}> Code postale: </Text>
                   <ListItem.Title style={{ fontSize: 15 }}>
                     {route.params.params.arrondissement}
                   </ListItem.Title>
@@ -325,8 +326,41 @@ const InvitationScreen = ({ navigation, route, userState }) => {
               <DropDownPicker
                 items={[
                   {
-                    label: "Locale",
-                    value: "Locale",
+                    label: "Africain",
+                    value: "Africain",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Arménien",
+                    value: "Arménien",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Asiatique",
+                    value: "Asiatique",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Cuisine saine",
+                    value: "Cuisine saine",
                     icon: () => (
                       <MaterialCommunityIcons
                         name="silverware-fork-knife"
@@ -338,28 +372,6 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                   {
                     label: "Thailandais",
                     value: "Thailandais",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Vietnamien",
-                    value: "Vietnamien",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Chinois",
-                    value: "Chinois",
                     icon: () => (
                       <MaterialCommunityIcons
                         name="silverware-fork-knife"
@@ -391,8 +403,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     ),
                   },
                   {
-                    label: "Tapas",
-                    value: "Tapas",
+                    label: "Halal",
+                    value: "Halal",
                     icon: () => (
                       <MaterialCommunityIcons
                         name="silverware-fork-knife"
@@ -424,6 +436,50 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     ),
                   },
                   {
+                    label: "Libanais",
+                    value: "Libanais",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Méditérranéen",
+                    value: "Méditérranéen",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Mexicain",
+                    value: "Mexicain",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Oriental",
+                    value: "Oriental",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
                     label: "Pakistanais",
                     value: "Pakistanais",
                     icon: () => (
@@ -435,8 +491,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     ),
                   },
                   {
-                    label: "Turk",
-                    value: "Turk",
+                    label: "Japonais",
+                    value: "Japonais",
                     icon: () => (
                       <MaterialCommunityIcons
                         name="silverware-fork-knife"
@@ -446,8 +502,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     ),
                   },
                   {
-                    label: "Espagnol",
-                    value: "Espagnol",
+                    label: "Tapas",
+                    value: "Tapas",
                     icon: () => (
                       <MaterialCommunityIcons
                         name="silverware-fork-knife"
@@ -457,30 +513,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     ),
                   },
                   {
-                    label: "Vegan",
-                    value: "Vegan",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Arménien",
-                    value: "Arménien",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Libanais",
-                    value: "Libanais",
+                    label: "Thaï",
+                    value: "Thaï",
                     icon: () => (
                       <MaterialCommunityIcons
                         name="silverware-fork-knife"
@@ -501,8 +535,41 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     ),
                   },
                   {
-                    label: "Créole",
-                    value: "Créole",
+                    label: "Turc",
+                    value: "Turc",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Vegan",
+                    value: "Vegan",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Végétarien",
+                    value: "Végétarien",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Vietnamien",
+                    value: "Vietnamien",
                     icon: () => (
                       <MaterialCommunityIcons
                         name="silverware-fork-knife"
@@ -624,6 +691,8 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 100 / 2,
+    borderWidth: 3,
+    borderColor: "#d9eceb",
   },
   // reviewIcon: {
   //   paddingVertical: 5,
