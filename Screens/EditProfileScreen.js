@@ -68,6 +68,8 @@ const EditProfilScreen = ({ navigation, userState }) => {
     getUser();
   }, [isFocused]);
 
+  // console.log(route);
+
   const handleRecord = async () => {
     if (
       name !== "" &&
@@ -95,10 +97,11 @@ const EditProfilScreen = ({ navigation, userState }) => {
       });
 
       let response = await rawResponse.json();
-      console.log(response);
+      // console.log(response);
 
       setEmptyProfil(false);
-      navigation.navigate("profilTab");
+
+      navigation.navigate("profilTab", { screen: "Mon Profil" });
     } else {
       setEmptyProfil(true);
     }

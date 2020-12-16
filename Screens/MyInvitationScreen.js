@@ -63,7 +63,7 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
           padding: 0,
           marginVertical: 25,
           borderRadius: 5,
-          borderColor: "#fbcf8e",
+          borderColor: "#418581",
           width: "75%",
           marginHorizontal: 0,
         }}

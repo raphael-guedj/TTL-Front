@@ -174,7 +174,7 @@ const LunchStack = () => {
 
 const ProfilStack = () => {
   return (
-    <StackProfil.Navigator>
+    <StackProfil.Navigator initialRouteName={"Mon Profil"}>
       <StackProfil.Screen
         options={{
           headerTitleAlign: "center",
