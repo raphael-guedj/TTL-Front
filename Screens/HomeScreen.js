@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     // marginTop: Constants.statusBarHeight,
   },
   text: {
-    fontSize: 18,
+    fontSize: 23,
     color: "#0b090a",
     letterSpacing: 3,
     lineHeight: 35,

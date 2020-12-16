@@ -41,10 +41,10 @@ const NotifStack = () => {
           height: 45,
         },
       }}
-      initialRouteName="Invitations envoyés"
+      initialRouteName="Invitations envoyées"
     >
       <TopTabNotif.Screen
-        name="Invitations envoyés"
+        name="Invitations envoyées"
         component={NotifScreenSent}
       />
       <TopTabNotif.Screen
@@ -128,6 +128,22 @@ const HomeStack = () => {
         }}
         name="Envoyer une invitation"
         component={InvitationScreen}
+      />
+      <StackHome.Screen
+        options={{
+          title: "Mes Forkys",
+          headerStyle: {
+            backgroundColor: "#fff",
+            height: 90,
+          },
+          headerTitleAlign: "center",
+          headerTintColor: "#0b090a",
+
+          headerLeft: () => <HeaderBarImage />,
+          headerRight: () => <IconBar />,
+        }}
+        name="Mes Forkys"
+        component={MyLunchesScreen}
       />
     </StackHome.Navigator>
   );
