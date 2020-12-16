@@ -3,7 +3,13 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import Modal from "react-native-modal";
 import { Card, Button, Badge, ListItem } from "react-native-elements";
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import {
+  Feather,
+  FontAwesome,
+  MaterialIcons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
+import moment from "moment";
 
 import { PRIVATE_URL } from "../config";
 
@@ -43,14 +49,17 @@ function CardLunch({ invit, userState }) {
           }
         />
         <Text style={styles.title2}>
-          {invit.date < Date.now() ? "Date passé" : invit.date}
+          {moment(invit.date).format("DD/MM/YYYY")}
         </Text>
       </View>
       <View>
         <Card
           containerStyle={{
             borderRadius: 5,
-            borderColor: "#abd6d3",
+            borderColor:
+              (invit.statut_invit == "Refusé" && "#eb4d4b") ||
+              (invit.statut_invit == "En cours" && "#ffa500") ||
+              (invit.statut_invit == "Accepté" && "#418581"),
             marginBottom: 20,
           }}
         >
@@ -89,7 +98,6 @@ function CardLunch({ invit, userState }) {
                 <Feather name="map-pin" size={15} color="#c7d3dc" />
                 Restaurant: {invit.lieu_propose}
               </Text>
-              <Text>Adresse: {invit.adresse}</Text>
             </View>
           </View>
           <View
@@ -110,7 +118,13 @@ function CardLunch({ invit, userState }) {
 
             <Button
               type="outline"
-              buttonStyle={{ borderColor: "#418581", borderWidth: 1 }}
+              buttonStyle={{
+                borderColor:
+                  (invit.statut_invit == "Refusé" && "#eb4d4b") ||
+                  (invit.statut_invit == "En cours" && "#ffa500") ||
+                  (invit.statut_invit == "Accepté" && "#418581"),
+                borderWidth: 1,
+              }}
               titleStyle={{ color: "black", padding: 10 }}
               title="Détails"
               onPress={() => setModalConfirmed(true)}
@@ -121,7 +135,8 @@ function CardLunch({ invit, userState }) {
                   containerStyle={{
                     borderRadius: 5,
                     borderColor: "#abd6d3",
-                    height: "80%",
+                    height: "75%",
+                    maxWidth: "90%",
 
                     paddingHorizontal: 10,
                     justifyContent: "center",
@@ -135,7 +150,18 @@ function CardLunch({ invit, userState }) {
                       alignSelf: "stretch",
                     }}
                   >
-                    <Feather name="check-square" size={80} color="green" />
+                    {invit.statut_invit == "Accepté" ? (
+                      <Feather name="check-square" size={80} color="#F9B34C" />
+                    ) : invit.statut_invit == "Refusé" ? (
+                      <MaterialIcons name="cancel" size={80} color="#F9B34C" />
+                    ) : (
+                      <MaterialCommunityIcons
+                        name="calendar-clock"
+                        size={80}
+                        color="#F9B34C"
+                      />
+                    )}
+
                     <ListItem.Title
                       style={{
                         fontWeight: "bold",
@@ -143,20 +169,38 @@ function CardLunch({ invit, userState }) {
                         marginTop: 20,
                       }}
                     >
-                      CONFIRMATION
+                      {invit.statut_invit == "Accepté"
+                        ? "CONFIRMATION"
+                        : invit.statut_invit == "Refusé"
+                        ? "ANNULATION"
+                        : "EN ATTENTE"}
                     </ListItem.Title>
                     <ListItem.Subtitle style={styles.listItem}>
-                      Bonjour Kevin, votre RDV est désormais confirmé.
+                      {invit.statut_invit == "Accepté"
+                        ? `Bonjour ${userState.pseudo}, votre déjeuner est désormais confirmé.`
+                        : invit.statut_invit == "Refusé"
+                        ? `Bonjour ${userState.pseudo}, votre déjeuner n’a pas été confirmé.`
+                        : `Bonjour ${userState.pseudo}, votre demande est encore en attente de confirmation.`}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle style={styles.listItem2}>
+                      {invit.statut_invit == "Accepté"
+                        ? `Vous avez rendez-vous avec ${user.name} à ${
+                            (invit.heure == 12 && "12h") ||
+                            (invit.heure == 12.5 && "12h30") ||
+                            (invit.heure == 13 && "13h") ||
+                            (invit.heure == 13.5 && "13h30") ||
+                            (invit.heure == 14 && "14h")
+                          }.`
+                        : invit.statut_invit == "Refusé"
+                        ? `Vous pouvez proposer une nouvelle date pour déjeuner avec ${user.name}.`
+                        : `Si vous le souhaitez vous pouvez proposer à une autre personne disponible.`}
                     </ListItem.Subtitle>
                     <ListItem.Subtitle style={styles.listItem}>
-                      Merci pour votre réservation, qui vous rapporte 100 Forky
-                      ! Profitez bien de votre repas, et pensez ensuite à
-                      déposer votre avis. A noter que votre invité(e) vous
-                      attendra directement sur place !
-                    </ListItem.Subtitle>
-                    <ListItem.Subtitle style={styles.listItem}>
-                      A noter que votre invité(e) vous attendra directement sur
-                      place !
+                      {invit.statut_invit == "Accepté"
+                        ? `A noter que votre invité(e) vous attendra directement sur place ${invit.lieu_propose}, ${invit.adresse}.`
+                        : invit.statut_invit == "Refusé"
+                        ? `Si vous le souhaitez vous pouvez proposer une nouvelle date pour déjeuner avec ${user.name}.`
+                        : `Ou attendre une réponse de ${user.name}...`}
                     </ListItem.Subtitle>
                   </View>
                 </Card>
@@ -236,6 +280,14 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 15,
     letterSpacing: 1,
+  },
+  listItem2: {
+    marginTop: 20,
+    textAlign: "center",
+    padding: 5,
+    fontSize: 15,
+    letterSpacing: 1,
+    fontWeight: "bold",
   },
 });
 

@@ -21,11 +21,11 @@ const InvitStack = () => {
       initialRouteName="Invitations récentes"
     >
       <TopTabForky.Screen
-        name="Invitations récentes"
+        name="Déjeuners à venir"
         component={CurrentInvitations}
       />
       <TopTabForky.Screen
-        name="Invitations passées"
+        name="Déjeuners passées"
         component={PassedInvitations}
       />
     </TopTabForky.Navigator>
