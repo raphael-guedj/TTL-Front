@@ -12,8 +12,6 @@ import AppLoading from "expo-app-loading";
 import Modal from "react-native-modal";
 import { Button, Card, Badge, ListItem } from "react-native-elements";
 import { PRIVATE_URL } from "../config";
-import { useIsFocused } from "@react-navigation/native";
-import { connect } from "react-redux";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
 
 const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {

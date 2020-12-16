@@ -317,123 +317,13 @@ const InvitationScreen = ({ navigation, route, userState }) => {
               <DropDownPicker
                 items={[
                   {
-                    label: "Locale",
-                    value: "Locale",
+                    label: "Anglais",
+                    value: "Anglais",
                     icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
+                      <MaterialIcons
+                        name="language"
                         size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Thailandais",
-                    value: "Thailandais",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Vietnamien",
-                    value: "Vietnamien",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Chinois",
-                    value: "Chinois",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Fast food",
-                    value: "Fast food",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Français",
-                    value: "Français",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Tapas",
-                    value: "Tapas",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Italien",
-                    value: "Italien",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Indien",
-                    value: "Indien",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Pakistanais",
-                    value: "Pakistanais",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Turk",
-                    value: "Turk",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
+                        color="#418581"
                       />
                     ),
                   },
@@ -441,65 +331,99 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     label: "Espagnol",
                     value: "Espagnol",
                     icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
+                      <MaterialIcons
+                        name="language"
                         size={20}
-                        color="#F9B34C"
+                        color="#418581"
                       />
                     ),
                   },
                   {
-                    label: "Vegan",
-                    value: "Vegan",
+                    label: "Italien",
+                    value: "Italien",
                     icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
+                      <MaterialIcons
+                        name="language"
                         size={20}
-                        color="#F9B34C"
+                        color="#418581"
+                      />
+                    ),
+                  },
+
+                  {
+                    label: "Français",
+                    value: "Français",
+                    icon: () => (
+                      <MaterialIcons
+                        name="language"
+                        size={20}
+                        color="#418581"
                       />
                     ),
                   },
                   {
-                    label: "Arménien",
-                    value: "Arménien",
+                    label: "Mandarin",
+                    value: "Mandarin",
                     icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
+                      <MaterialIcons
+                        name="language"
                         size={20}
-                        color="#F9B34C"
+                        color="#418581"
                       />
                     ),
                   },
                   {
-                    label: "Libanais",
-                    value: "Libanais",
+                    label: "Hebreu",
+                    value: "Hebreu",
                     icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
+                      <MaterialIcons
+                        name="language"
                         size={20}
-                        color="#F9B34C"
+                        color="#418581"
                       />
                     ),
                   },
                   {
-                    label: "Tunisien",
-                    value: "Tunisien",
+                    label: "Arabe",
+                    value: "Arabe",
                     icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
+                      <MaterialIcons
+                        name="language"
                         size={20}
-                        color="#F9B34C"
+                        color="#418581"
                       />
                     ),
                   },
                   {
-                    label: "Créole",
-                    value: "Créole",
+                    label: "Russe",
+                    value: "Russe",
                     icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
+                      <MaterialIcons
+                        name="language"
                         size={20}
-                        color="#F9B34C"
+                        color="#418581"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Portugais",
+                    value: "Portugais",
+                    icon: () => (
+                      <MaterialIcons
+                        name="language"
+                        size={20}
+                        color="#418581"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Autre",
+                    value: "Autre",
+                    icon: () => (
+                      <MaterialIcons
+                        name="language"
+                        size={20}
+                        color="#418581"
                       />
                     ),
                   },
