@@ -98,7 +98,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
       console.log(response);
 
       setEmptyProfil(false);
-      navigation.navigate("Profil");
+      navigation.navigate("profilTab");
     } else {
       setEmptyProfil(true);
     }

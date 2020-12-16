@@ -75,7 +75,7 @@ const SettingsBar = () => {
   const navigation = useNavigation();
   return (
     <View style={{ paddingRight: 20 }}>
-      <TouchableOpacity onPress={() => navigation.navigate("Reglage")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Réglages")}>
         <View style={{ flexDirection: "row" }}>
           <Feather
             style={{ margin: 10 }}
