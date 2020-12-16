@@ -27,7 +27,7 @@ import {
 import DropDownPicker from "react-native-dropdown-picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const InvitationScreen = ({ navigation, route, userState }) => {
   // ======= State that keep value of message in textarea ======= //
@@ -92,6 +92,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       var responseJSON = await rawResponse.json();
       // console.log(responseJSON);
       if (responseJSON.response) {
+        navigation.navigate("Mes Forky");
         // console.log("ma réponse est bonne");
       }
     } else {
@@ -107,10 +108,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       behavior={Platform.OS == "ios" ? "padding" : "height"}
       style={styles.container}
     >
-      <ScrollView
-        style={styles.container}
-        contentContainerStyle={{ paddingVertical: 25 }}
-      >
+      <ScrollView>
         <View>
           <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
             <View style={styles.wrapper}>
@@ -131,30 +129,26 @@ const InvitationScreen = ({ navigation, route, userState }) => {
 
               <View style={styles.avatar}>
                 <Text>
+                  <Feather name="edit" size={15} color="#c7d3dc" />
                   <Text style={styles.title2}> Prénom: </Text>
                   <ListItem.Title style={{ fontSize: 15 }}>
                     {route.params.params.name}
                   </ListItem.Title>
                 </Text>
                 <Text>
+                  <Feather name="briefcase" size={15} color="#c7d3dc" />
                   <Text style={styles.title2}> Profession: </Text>
                   <ListItem.Title style={{ fontSize: 15 }}>
                     {route.params.params.profession}
                   </ListItem.Title>
                 </Text>
+
                 <Text>
-                  <Text style={styles.title2}> Distance: </Text>
-
-                  <ListItem.Title style={{ fontSize: 15 }}>200m</ListItem.Title>
-                </Text>
-                <Text style={{ fontSize: 15, marginTop: 10 }}>
-                  <Text style={styles.title2}> Avis: </Text>
-
-                  <FontAwesome name="star" size={15} color="#f9b34c" />
-                  <FontAwesome name="star" size={15} color="#f9b34c" />
-                  <FontAwesome name="star" size={15} color="#f9b34c" />
-                  <FontAwesome name="star-o" size={15} color="#f9b34c" />
-                  <FontAwesome name="star-o" size={15} color="#f9b34c" />
+                  <Feather name="plus-circle" size={15} color="#c7d3dc" />
+                  <Text style={styles.title2}>Arrondissement: </Text>
+                  <ListItem.Title style={{ fontSize: 15 }}>
+                    {route.params.params.arrondissement}
+                  </ListItem.Title>
                 </Text>
               </View>
             </View>
@@ -170,7 +164,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                   defaultValue={inputMessage}
                   maxLength={300}
                   placeholder={"Entrez votre message ici ..."}
-                  placeholderTextColor={"#c7c7c7"}
+                  placeholderTextColor={"#b2c3cf"}
                   underlineColorAndroid={"transparent"}
                 />
               </View>
@@ -291,7 +285,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 <Button
                   icon={<Feather name="calendar" size={24} color="white" />}
                   buttonStyle={{
-                    backgroundColor: "#fbc87d",
+                    backgroundColor: "#F9B34C",
                     margin: 10,
                     width: 250,
                     borderRadius: 20,
@@ -327,7 +321,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Locale",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -338,7 +332,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Thailandais",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -349,7 +343,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Vietnamien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -360,7 +354,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Chinois",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -371,7 +365,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Fast food",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -382,7 +376,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Français",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -393,7 +387,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Tapas",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -404,7 +398,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Italien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -415,7 +409,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Indien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -426,7 +420,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Pakistanais",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -437,7 +431,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Turk",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -448,7 +442,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Espagnol",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -459,7 +453,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Vegan",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -470,7 +464,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Arménien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -481,7 +475,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Libanais",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -492,7 +486,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Tunisien",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -503,7 +497,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     value: "Créole",
                     icon: () => (
                       <MaterialCommunityIcons
-                        name="silverware-fork"
+                        name="silverware-fork-knife"
                         size={20}
                         color="#F9B34C"
                       />
@@ -539,8 +533,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 placeholder="Renseignez le nom du restaurant"
                 onChangeText={(e) => setLocation(e)}
                 value={location}
-                placeholderTextColor="#606770"
-                leftIcon={<Feather name="edit" size={20} color="#F9B34C" />}
+                placeholderTextColor="#b2c3cf"
+                leftIcon={<Feather name="edit" size={20} color="#c7d3dc" />}
                 leftIconContainerStyle={{
                   marginHorizontal: 5,
                 }}
@@ -560,8 +554,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 placeholder="Renseignez l'adresse du restaurant"
                 onChangeText={(e) => setAddress(e)}
                 value={address}
-                placeholderTextColor="#606770"
-                leftIcon={<Feather name="edit" size={20} color="#F9B34C" />}
+                placeholderTextColor="#b2c3cf"
+                leftIcon={<Feather name="edit" size={20} color="#c7d3dc" />}
                 leftIconContainerStyle={{
                   marginHorizontal: 5,
                 }}
@@ -577,8 +571,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
             </View>
             <View>
               {errorMessage && (
-                <Text style={{ color: "red" }}>
-                  Vérifier que toutes les informations ont bien été remplies
+                <Text style={{ color: "#eb4d4b", textAlign: "center" }}>
+                  Vérifiez que toutes les informations aient bien été remplies.
                 </Text>
               )}
               <Button
@@ -610,9 +604,12 @@ const styles = StyleSheet.create({
     letterSpacing: 3,
     lineHeight: 35,
   },
+  textReview: {
+    fontSize: 15,
+  },
   wrapper: {
     flexDirection: "row",
-    padding: 15,
+    padding: 5,
   },
 
   img: {
@@ -715,14 +712,12 @@ const styles = StyleSheet.create({
   location: {
     justifyContent: "space-between",
     marginBottom: 30,
-    marginTop: 100,
-  },
-  address: {
-    marginBottom: 30,
+    marginTop: 20,
   },
   avatar: {
     flex: 1,
-    marginLeft: 20,
+    marginLeft: 10,
+    justifyContent: "space-around",
   },
 });
 

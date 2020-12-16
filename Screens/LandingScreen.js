@@ -6,7 +6,7 @@ import { FontAwesome } from "@expo/vector-icons";
 export default function LandingScreen({ navigation }) {
   return (
     <ImageBackground
-      source={require("../assets/lunch.jpg")}
+      source={require("../assets/lunch_bright.jpg")}
       style={styles.image}
     >
       <View style={styles.view}>
@@ -14,7 +14,7 @@ export default function LandingScreen({ navigation }) {
           source={require("../assets/Logo_Forky_light.png")}
           style={styles.logo}
         ></Image>
-        <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
+        <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
           Forky ? For vous !
         </Text>
       </View>
@@ -42,7 +42,7 @@ export default function LandingScreen({ navigation }) {
         />
         <Button
           buttonStyle={{
-            backgroundColor: "#F9B34C",
+            backgroundColor: "#999",
             margin: 10,
             width: 250,
             borderRadius: 20,
@@ -50,7 +50,7 @@ export default function LandingScreen({ navigation }) {
           onPress={() => navigation.navigate("#")}
           icon={<FontAwesome name="linkedin-square" size={24} color="white" />}
           iconRight
-          title="Linkedin "
+          title="Linkedin (available soon) "
         />
       </View>
     </ImageBackground>
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#000000a0",
   },
 
   container: {
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 34,
-    color: "#fafae0",
+    color: "#fbfcfd",
     textAlign: "center",
     paddingVertical: 20,
     letterSpacing: 3,

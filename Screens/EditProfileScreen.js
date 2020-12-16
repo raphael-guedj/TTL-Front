@@ -17,7 +17,7 @@ import InputScrollView from "react-native-input-scroll-view";
 import { Feather, Entypo, MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const EditProfilScreen = ({ navigation, userState }) => {
   const [name, setName] = useState("");
@@ -127,8 +127,8 @@ const EditProfilScreen = ({ navigation, userState }) => {
             placeholder="Prénom"
             onChangeText={(e) => setName(e)}
             value={name}
-            placeholderTextColor="#606770"
-            leftIcon={<Feather name="edit" size={20} color="#c7d3dc" />}
+            placeholderTextColor="#b2c3cf"
+            leftIcon={<Feather name="edit" size={15} color="#c7d3dc" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
@@ -145,8 +145,8 @@ const EditProfilScreen = ({ navigation, userState }) => {
             placeholder="Profession"
             onChangeText={(e) => setJob(e)}
             value={job}
-            placeholderTextColor="#606770"
-            leftIcon={<Feather name="briefcase" size={20} color="#c7d3dc" />}
+            placeholderTextColor="#b2c3cf"
+            leftIcon={<Feather name="briefcase" size={15} color="#c7d3dc" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
@@ -166,8 +166,8 @@ const EditProfilScreen = ({ navigation, userState }) => {
           placeholder="Ville"
           onChangeText={(e) => setCity(e)}
           value={city}
-          placeholderTextColor="#606770"
-          leftIcon={<Feather name="map-pin" size={20} color="#c7d3dc" />}
+          placeholderTextColor="#b2c3cf"
+          leftIcon={<Feather name="map-pin" size={15} color="#c7d3dc" />}
           leftIconContainerStyle={{
             marginHorizontal: 5,
           }}
@@ -184,8 +184,8 @@ const EditProfilScreen = ({ navigation, userState }) => {
           placeholder="Arrondissement"
           onChangeText={(e) => setPostcode(e)}
           value={postcode}
-          placeholderTextColor="#606770"
-          leftIcon={<Feather name="plus-circle" size={20} color="#c7d3dc" />}
+          placeholderTextColor="#b2c3cf"
+          leftIcon={<Feather name="plus-circle" size={15} color="#c7d3dc" />}
           leftIconContainerStyle={{
             marginHorizontal: 5,
           }}
@@ -203,8 +203,8 @@ const EditProfilScreen = ({ navigation, userState }) => {
         placeholder="Email"
         onChangeText={(e) => setEmail(e)}
         value={email}
-        placeholderTextColor="#606770"
-        leftIcon={<Entypo name="email" size={19} color="#c7d3dc" />}
+        placeholderTextColor="#b2c3cf"
+        leftIcon={<Entypo name="email" size={15} color="#c7d3dc" />}
         leftIconContainerStyle={{
           marginHorizontal: 5,
         }}
@@ -421,7 +421,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
               maxLength={300}
               minLength={80}
               placeholder={"Décrivez-vous ici..."}
-              placeholderTextColor={"#606770"}
+              placeholderTextColor={"#b2c3cf"}
               underlineColorAndroid={"transparent"}
             />
           </InputScrollView>
@@ -663,10 +663,9 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     textAlign: "center",
-    color: "#d90429",
-    fontStyle: "italic",
+    color: "#eb4d4b",
     fontSize: 15,
-    marginTop: 15,
+    margin: 15,
   },
 });
 

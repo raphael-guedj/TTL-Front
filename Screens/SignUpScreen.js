@@ -10,9 +10,10 @@ import {
 import { Input, Button } from "react-native-elements";
 import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { Feather, Entypo } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 const SignUpScreen = ({ setReduxUser, navigation }) => {
   const [pseudo, setPseudo] = useState("");
@@ -66,7 +67,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
 
   return (
     <ImageBackground
-      source={require("../assets/lunch.jpg")}
+      source={require("../assets/lunch_bright.jpg")}
       style={styles.image_hero}
     >
       <KeyboardAvoidingView
@@ -78,7 +79,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             style={styles.logo}
             source={require("../assets/Logo_Forky_light.png")}
           ></Image>
-          <Text style={[styles.text, { fontFamily: "FaunaOne_400Regular" }]}>
+          <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
             Inscrivez-vous !
           </Text>
         </View>
@@ -87,18 +88,18 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             placeholder="Prénom"
             onChangeText={(e) => setPseudo(e)}
             value={pseudo}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-person" size={30} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Feather name="edit" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
             inputStyle={{
               color: "#fff",
-              fontSize: 15,
+              fontSize: 14,
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           <Input
@@ -106,18 +107,18 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             onChangeText={(e) => setEmail(e)}
             value={email}
             textContentType={"emailAddress"}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-mail" size={30} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Entypo name="email" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
             inputStyle={{
               color: "#fff",
-              fontSize: 15,
+              fontSize: 14,
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           <Input
@@ -125,18 +126,18 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             onChangeText={(e) => setPassword(e)}
             value={password}
             secureTextEntry={true}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-eye-off" size={30} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Feather name="eye-off" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
             inputStyle={{
               color: "#fff",
-              fontSize: 15,
+              fontSize: 14,
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           <Input
@@ -144,18 +145,18 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             onChangeText={(e) => setPasswordConfirm(e)}
             value={passwordConfirm}
             secureTextEntry={true}
-            placeholderTextColor="#fafae0"
-            leftIcon={<Ionicons name="ios-eye-off" size={30} color="#fafae0" />}
+            placeholderTextColor="#fbfcfd"
+            leftIcon={<Feather name="eye-off" size={20} color="#fbfcfd" />}
             leftIconContainerStyle={{
               marginHorizontal: 5,
             }}
             inputStyle={{
               color: "#fff",
-              fontSize: 15,
+              fontSize: 14,
               fontFamily: "Roboto_400Regular",
             }}
             inputContainerStyle={{
-              borderBottomColor: "#fafae0",
+              borderBottomColor: "#fbfcfd",
             }}
           />
           {passwordError && (
@@ -169,7 +170,7 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
             </Text>
           )}
           {emptyField && (
-            <Text style={styles.passwordText}>L'un des champs est vide</Text>
+            <Text style={styles.passwordText}>L'un des champs est vide.</Text>
           )}
         </View>
         <View>
@@ -199,7 +200,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-evenly",
-    backgroundColor: "#000000a0",
   },
   logo: {
     width: 160,
@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: "#fafae0",
+    color: "#fbfcfd",
     paddingVertical: 20,
     letterSpacing: 3,
     lineHeight: 35,
@@ -217,7 +217,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
-    opacity: 1,
   },
   button: {
     backgroundColor: "#F9B34C",
@@ -233,8 +232,7 @@ const styles = StyleSheet.create({
   },
   passwordText: {
     textAlign: "center",
-    color: "#d90429",
-    fontStyle: "italic",
+    color: "#eb4d4b",
     fontSize: 15,
   },
 });

@@ -1,11 +1,18 @@
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { Card, Button, Overlay } from "react-native-elements";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { PRIVATE_URL } from "../App";
+import { PRIVATE_URL } from "../config";
 
 function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
   const toggleOverlay = () => {
@@ -32,17 +39,6 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
     <View style={styles.card}>
       <ScrollView>
         <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
-          <Card.Title style={styles.title}>Mentions légales</Card.Title>
-          <Card.Divider />
-
-          <View>
-            <Text style={styles.text}>Préférences de confidentialité</Text>
-            <Text style={styles.text}>Politique de confidentialité</Text>
-            <Text style={styles.text}>Conditions d'utilisation</Text>
-          </View>
-        </Card>
-
-        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
           <Card.Title style={styles.title}>À propos</Card.Title>
           <Card.Divider />
 
@@ -50,6 +46,16 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
             <Text style={styles.text}>Nous contacter</Text>
             <Text style={styles.text}>Qui sommes nous ?</Text>
             <Text style={styles.text}>Règles d'utilisation</Text>
+          </View>
+        </Card>
+        <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
+          <Card.Title style={styles.title}>Mentions légales</Card.Title>
+          <Card.Divider />
+
+          <View>
+            <Text style={styles.text}>Préférences de confidentialité</Text>
+            <Text style={styles.text}>Politique de confidentialité</Text>
+            <Text style={styles.text}>Conditions d'utilisation</Text>
           </View>
         </Card>
 
@@ -67,44 +73,59 @@ function SettingsScreen({ navigation, setReduxUser, userToken, userID }) {
           source={require("../assets/Logo_Forky_dark.png")}
           style={styles.logo}
         ></Image>
-        <Card
+        {/* <Card
           containerStyle={{
-            borderRadius: 5,
-            borderColor: "#ed8764",
+            // borderRadius: 5,
+            // borderColor: "#ed8764",
             marginBottom: 20,
           }}
+        > */}
+        <View
+          style={{
+            height: 80,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          <View>
-            <Button
-              type="clear"
-              titleStyle={{ color: "#eb4d4b" }}
-              title="Supprimer mon compte"
-              onPress={toggleOverlay}
-            />
-            <Overlay
-              isVisible={visible}
-              onBackdropPress={toggleOverlay}
-              overlayStyle={{
-                borderRadius: 5,
-                width: "80%",
-                height: "20%",
-                justifyContent: "space-between",
-                borderWidth: 1,
-                borderColor: "#418581",
+          <TouchableOpacity onPress={toggleOverlay}>
+            <Text
+              style={{
+                color: "#eb4d4b",
               }}
             >
-              <Text style={styles.titleModal}>
-                Êtes-vous sur de vouloir supprimer votre compte ?
-              </Text>
-              <Button
-                type="clear"
-                titleStyle={{ color: "#eb4d4b" }}
-                title="Supprimer mon compte"
-                onPress={() => handleDeleteUser()}
-              />
-            </Overlay>
-          </View>
-        </Card>
+              Supprimer mon compte
+            </Text>
+          </TouchableOpacity>
+          <Overlay
+            isVisible={visible}
+            onBackdropPress={toggleOverlay}
+            overlayStyle={{
+              borderRadius: 5,
+              width: "80%",
+              height: "20%",
+              justifyContent: "space-between",
+              borderWidth: 1,
+              borderColor: "#418581",
+            }}
+          >
+            <Text style={styles.titleModal}>
+              Êtes-vous sur de vouloir supprimer votre compte ?
+            </Text>
+            <Button
+              type="clear"
+              titleStyle={{ color: "#418581" }}
+              title="Non, je veux continuer à déjeuner"
+              onPress={toggleOverlay}
+            />
+            <Button
+              type="clear"
+              titleStyle={{ color: "#eb4d4b", fontSize: 14 }}
+              title="Oui, j'ai pris ma décision"
+              onPress={() => handleDeleteUser()}
+            />
+          </Overlay>
+        </View>
+        {/* </Card> */}
       </ScrollView>
     </View>
   );
