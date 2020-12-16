@@ -57,6 +57,8 @@ const InvitationScreen = ({ navigation, route, userState }) => {
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === "ios");
+    currentDate.setHours(24, 59, 59);
+    console.log(currentDate);
     setDate(currentDate);
   };
 
@@ -67,10 +69,6 @@ const InvitationScreen = ({ navigation, route, userState }) => {
 
   const showDatepicker = () => {
     showMode("date");
-  };
-
-  const changeHeight = async () => {
-    setHeightDropdown(200);
   };
 
   const sendInvitation = async () => {
