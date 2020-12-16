@@ -86,7 +86,7 @@ const HomeScreen = ({ userState, navigation }) => {
     >
       <View style={{ alignSelf: "center" }}>
         <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
-          Organisez votre Dej !
+          Organisez votre déjeuner
         </Text>
       </View>
       <View>
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     // marginTop: Constants.statusBarHeight,
   },
   text: {
-    fontSize: 26,
+    fontSize: 18,
     color: "#0b090a",
     letterSpacing: 3,
     lineHeight: 35,

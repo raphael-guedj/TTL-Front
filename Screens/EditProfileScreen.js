@@ -223,64 +223,169 @@ const EditProfilScreen = ({ navigation, userState }) => {
         <DropDownPicker
           items={[
             {
-              label: "Banque / Assurance / Finance",
-              value: "bank",
+              label: "Agroalimentaire",
+              value: "Agroalimentaire",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
-              label: "Commerce / Négoce / Distribution",
-              value: "business",
+              label: "Activité informatique",
+              value: "Activité informatique",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
-              label: "Art / Culture",
-              value: "art",
+              label: "Activité juridique et comptable",
+              value: "Activité juridique et comptable",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
-              label: "Santé / Medical / Docteur",
-              value: "sante",
+              label: "Art - Culture",
+              value: "Art - Culture",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
-              label: "Immobilier / Notariat",
-              value: "asset",
+              label: "Automobile et aéronautique",
+              value: "Automobile et aéronautique",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
             },
             {
-              label: "Transport / Logistique",
+              label: "Banque et Assurances",
+              value: "Banque et Assurances",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Bois - Papier - Imprimerie",
+              value: "Bois - Papier - Imprimerie",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Chimie",
+              value: "Chimie",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Commerce - Négoce - Distribution",
+              value: "Commerce - Négoce - Distribution",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Communication et médias",
+              value: "Communication et médias",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Conseils et gestion des entreprises",
+              value: "Conseils et gestion des entreprises",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Construction",
+              value: "Construction",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Développeur web",
+              value: "Développeur web",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Energie - Eau",
+              value: "Energie - Eau",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Formation",
+              value: "Formation",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Graphisme - Design",
+              value: "Graphisme - Design",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Hôtellerie - Restauration - Loisirs",
+              value: "Hôtellerie - Restauration - Loisirs",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Immobilier",
+              value: "Immobilier",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Industrie pharmaceutique",
+              value: "Industrie pharmaceutique",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Mécanique - Métallurgie",
+              value: "mecanic",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "RH - Rectutement",
+              value: "recrutment",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Santé - Medical",
+              value: "Santé - Medical",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Télécommunication",
+              value: "telecommunication",
+              icon: () => (
+                <Feather name="briefcase" size={20} color="#418581" />
+              ),
+            },
+            {
+              label: "Transport et logistique",
               value: "transport",
-              icon: () => (
-                <Feather name="briefcase" size={20} color="#418581" />
-              ),
-            },
-            {
-              label: "Batiment",
-              value: "builder",
-              icon: () => (
-                <Feather name="briefcase" size={20} color="#418581" />
-              ),
-            },
-            {
-              label: "Édition / Communication / Multimédia",
-              value: "multimedia",
-              icon: () => (
-                <Feather name="briefcase" size={20} color="#418581" />
-              ),
-            },
-            {
-              label: "Informatique / Digital",
-              value: "it",
               icon: () => (
                 <Feather name="briefcase" size={20} color="#418581" />
               ),
@@ -319,21 +424,21 @@ const EditProfilScreen = ({ navigation, userState }) => {
               label: "Anglais",
               value: "Anglais",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
             {
               label: "Espagnol",
               value: "Espagnol",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
             {
               label: "Italien",
               value: "Italien",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
 
@@ -341,49 +446,49 @@ const EditProfilScreen = ({ navigation, userState }) => {
               label: "Français",
               value: "Français",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
             {
               label: "Mandarin",
               value: "Mandarin",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
             {
               label: "Hebreu",
               value: "Hebreu",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
             {
               label: "Arabe",
               value: "Arabe",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
             {
               label: "Russe",
               value: "Russe",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
             {
               label: "Portugais",
               value: "Portugais",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
             {
               label: "Autre",
               value: "Autre",
               icon: () => (
-                <MaterialIcons name="language" size={24} color="#418581" />
+                <MaterialIcons name="language" size={20} color="#418581" />
               ),
             },
           ]}
@@ -430,9 +535,9 @@ const EditProfilScreen = ({ navigation, userState }) => {
       <View style={{ marginTop: 10, marginBottom: 15 }}>
         <Text style={styles.titleStyle}> Mes envies: </Text>
         <CheckBox
-          title="Rencontrer de nouvelles personnes"
-          onPress={() => setWish1(!wish1)}
-          checked={wish1}
+          title="Déconnecter du travail"
+          onPress={() => setWish5(!wish5)}
+          checked={wish5}
           checkedColor="#418581"
           size={14}
           textStyle={{ fontWeight: "normal" }}
@@ -454,6 +559,15 @@ const EditProfilScreen = ({ navigation, userState }) => {
           textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
+          title="Rencontrer de nouvelles personnes"
+          onPress={() => setWish1(!wish1)}
+          checked={wish1}
+          checkedColor="#418581"
+          size={14}
+          textStyle={{ fontWeight: "normal" }}
+        />
+
+        <CheckBox
           title="Se reconvertir professionnellement"
           onPress={() => setWish4(!wish4)}
           checked={wish4}
@@ -462,15 +576,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
           textStyle={{ fontWeight: "normal" }}
         />
         <CheckBox
-          title="Se déconnecter du bureau"
-          onPress={() => setWish5(!wish5)}
-          checked={wish5}
-          checkedColor="#418581"
-          size={14}
-          textStyle={{ fontWeight: "normal" }}
-        />
-        <CheckBox
-          title="Découvrir le quartier autour de moi"
+          title="Découvrir le quartier et ses alentours"
           onPress={() => setWish6(!wish6)}
           checked={wish6}
           checkedColor="#418581"
@@ -483,24 +589,13 @@ const EditProfilScreen = ({ navigation, userState }) => {
         <DropDownPicker
           items={[
             {
-              label: "Thaï",
-              value: "Thaï",
+              label: "Arménien",
+              value: "Arménien",
               icon: () => (
                 <MaterialCommunityIcons
-                  name="silverware-fork"
+                  name="silverware-fork-knife"
                   size={20}
-                  color="#418581"
-                />
-              ),
-            },
-            {
-              label: "Italien",
-              value: "Italien",
-              icon: () => (
-                <MaterialCommunityIcons
-                  name="silverware-fork"
-                  size={20}
-                  color="#418581"
+                  color="#F9B34C"
                 />
               ),
             },
@@ -509,42 +604,163 @@ const EditProfilScreen = ({ navigation, userState }) => {
               value: "Chinois",
               icon: () => (
                 <MaterialCommunityIcons
-                  name="silverware-fork"
+                  name="silverware-fork-knife"
                   size={20}
-                  color="#418581"
+                  color="#F9B34C"
                 />
               ),
             },
             {
-              label: "Americain",
-              value: "Americain",
+              label: "Espagnol",
+              value: "Espagnol",
               icon: () => (
                 <MaterialCommunityIcons
-                  name="silverware-fork"
+                  name="silverware-fork-knife"
                   size={20}
-                  color="#418581"
+                  color="#F9B34C"
                 />
               ),
             },
             {
-              label: "Japonais",
-              value: "Japonais",
+              label: "Fast food",
+              value: "Fast food",
               icon: () => (
                 <MaterialCommunityIcons
-                  name="silverware-fork"
+                  name="silverware-fork-knife"
                   size={20}
-                  color="#418581"
+                  color="#F9B34C"
                 />
               ),
             },
             {
-              label: "Autre",
-              value: "Autre",
+              label: "Français",
+              value: "Français",
               icon: () => (
                 <MaterialCommunityIcons
-                  name="silverware-fork"
+                  name="silverware-fork-knife"
                   size={20}
-                  color="#418581"
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Italien",
+              value: "Italien",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Indien",
+              value: "Indien",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Libanais",
+              value: "Libanais",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Locale",
+              value: "Locale",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Pakistanais",
+              value: "Pakistanais",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Tapas",
+              value: "Tapas",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Thailandais",
+              value: "Thailandais",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Tunisien",
+              value: "Tunisien",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Turque",
+              value: "Turque",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Vegan",
+              value: "Vegan",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Vietnamien",
+              value: "Vietnamien",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
                 />
               ),
             },
@@ -557,11 +773,11 @@ const EditProfilScreen = ({ navigation, userState }) => {
           defaultValue={food}
           dropDownMaxHeight={130}
           style={{
-            width: "95%",
+            width: "100%",
             justifyContent: "center",
             alignSelf: "center",
           }}
-          containerStyle={{ height: 40 }}
+          containerStyle={{ height: 40, margin: 10 }}
           itemStyle={{
             justifyContent: "flex-start",
           }}

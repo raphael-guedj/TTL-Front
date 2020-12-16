@@ -47,7 +47,7 @@ export default function LandingScreen({ navigation }) {
             width: 250,
             borderRadius: 20,
           }}
-          onPress={() => navigation.navigate("#")}
+          onPress={() => navigation.navigate()}
           icon={<FontAwesome name="linkedin-square" size={24} color="white" />}
           iconRight
           title="Linkedin (available soon) "
