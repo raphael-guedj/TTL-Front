@@ -589,6 +589,17 @@ const EditProfilScreen = ({ navigation, userState }) => {
         <DropDownPicker
           items={[
             {
+              label: "Africain",
+              value: "Africain",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
               label: "Arménien",
               value: "Arménien",
               icon: () => (
@@ -600,8 +611,19 @@ const EditProfilScreen = ({ navigation, userState }) => {
               ),
             },
             {
-              label: "Chinois",
-              value: "Chinois",
+              label: "Asiatique",
+              value: "Asiatique",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Cuisine saine",
+              value: "Cuisine saine",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork-knife"
@@ -644,6 +666,17 @@ const EditProfilScreen = ({ navigation, userState }) => {
               ),
             },
             {
+              label: "Halal",
+              value: "Halal",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
               label: "Italien",
               value: "Italien",
               icon: () => (
@@ -677,8 +710,30 @@ const EditProfilScreen = ({ navigation, userState }) => {
               ),
             },
             {
-              label: "Locale",
-              value: "Locale",
+              label: "Méditérranéen",
+              value: "Méditérranéen",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Mexicain",
+              value: "Mexicain",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Oriental",
+              value: "Oriental",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork-knife"
@@ -699,6 +754,17 @@ const EditProfilScreen = ({ navigation, userState }) => {
               ),
             },
             {
+              label: "Japonais",
+              value: "Japonais",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
               label: "Tapas",
               value: "Tapas",
               icon: () => (
@@ -710,8 +776,8 @@ const EditProfilScreen = ({ navigation, userState }) => {
               ),
             },
             {
-              label: "Thailandais",
-              value: "Thailandais",
+              label: "Thaï",
+              value: "Thaï",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork-knife"
@@ -732,8 +798,8 @@ const EditProfilScreen = ({ navigation, userState }) => {
               ),
             },
             {
-              label: "Turque",
-              value: "Turque",
+              label: "Turc",
+              value: "Turc",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork-knife"
@@ -745,6 +811,17 @@ const EditProfilScreen = ({ navigation, userState }) => {
             {
               label: "Vegan",
               value: "Vegan",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Végétarien",
+              value: "Végétarien",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork-knife"
