@@ -147,7 +147,7 @@ const HomeScreen = ({ userState, navigation }) => {
                         }}
                       >
                         {" "}
-                        4.3
+                        {Math.floor(Math.random() * 5 - 1 + 1) / 1} avis
                       </Text>
                     </View>
                   </View>
@@ -158,7 +158,9 @@ const HomeScreen = ({ userState, navigation }) => {
                 </View>
                 <View style={styles.containerLocation}>
                   <View>
-                    <ListItem.Title>Situé à 200m</ListItem.Title>
+                    <ListItem.Title>
+                      Situé à {Math.floor(Math.random() * 999)}m
+                    </ListItem.Title>
 
                     <ListItem.Subtitle>
                       {user.arrondissement} {"-"} {user.city}
