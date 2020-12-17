@@ -86,7 +86,7 @@ const HomeScreen = ({ userState, navigation }) => {
     >
       <View style={{ alignSelf: "center" }}>
         <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
-          Organisez un déjeuner...
+          Organisez un déjeuner
         </Text>
       </View>
       <View>
