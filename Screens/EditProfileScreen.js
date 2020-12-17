@@ -68,6 +68,8 @@ const EditProfilScreen = ({ navigation, userState }) => {
     getUser();
   }, [isFocused]);
 
+  // console.log(route);
+
   const handleRecord = async () => {
     if (
       name !== "" &&
@@ -95,10 +97,11 @@ const EditProfilScreen = ({ navigation, userState }) => {
       });
 
       let response = await rawResponse.json();
-      console.log(response);
+      // console.log(response);
 
       setEmptyProfil(false);
-      navigation.navigate("profilTab");
+
+      navigation.navigate("profilTab", { screen: "Mon Profil" });
     } else {
       setEmptyProfil(true);
     }
@@ -613,6 +616,17 @@ const EditProfilScreen = ({ navigation, userState }) => {
             {
               label: "Asiatique",
               value: "Asiatique",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
+              label: "Casher",
+              value: "Casher",
               icon: () => (
                 <MaterialCommunityIcons
                   name="silverware-fork-knife"

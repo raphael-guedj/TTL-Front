@@ -117,6 +117,14 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                   source={{ uri: route.params.params.photo }}
                   style={styles.img}
                 />
+                <Badge
+                  status={route.params.params.isConnected ? "success" : "error"}
+                  containerStyle={{
+                    position: "absolute",
+                    top: 6,
+                    left: 15,
+                  }}
+                />
               </View>
 
               <View style={styles.avatar}>
@@ -337,6 +345,17 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                   {
                     label: "Asiatique",
                     value: "Asiatique",
+                    icon: () => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        size={20}
+                        color="#F9B34C"
+                      />
+                    ),
+                  },
+                  {
+                    label: "Casher",
+                    value: "Casher",
                     icon: () => (
                       <MaterialCommunityIcons
                         name="silverware-fork-knife"

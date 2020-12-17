@@ -41,7 +41,14 @@ function UserProfilScreen({ navigation, userState, route }) {
       >
         <View style={styles.avatar}>
           <Image style={styles.image} source={{ uri: route.params.photo }} />
-
+          <Badge
+            status={route.params.isConnected ? "success" : "error"}
+            containerStyle={{
+              position: "absolute",
+              top: 6,
+              left: 15,
+            }}
+          />
           <View style={{ width: "75%" }}>
             <View style={styles.containerArea}>
               <Text>
