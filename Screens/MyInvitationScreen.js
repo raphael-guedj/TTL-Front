@@ -242,6 +242,7 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                   fontWeight: "bold",
                   fontSize: 14,
                   color: "#418581",
+                  textAlign: "center",
                 }}
               >
                 Votre invitation avec {listUser.name} a été annulé !
