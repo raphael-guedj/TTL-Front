@@ -136,7 +136,6 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
                   containerStyle={{
                     borderRadius: 5,
                     borderColor: "#abd6d3",
-                    height: "70%",
                   }}
                 >
                   <View style={{ padding: 15 }}>

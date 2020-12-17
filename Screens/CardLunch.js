@@ -96,7 +96,7 @@ function CardLunch({ onRefresh, invit, userState }) {
                 containerStyle={{
                   position: "absolute",
                   top: 8,
-                  left: 10,
+                  left: 13,
                 }}
               />
             </View>

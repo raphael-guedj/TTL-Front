@@ -14,6 +14,7 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import moment from "moment";
+import { ScrollView } from "react-native-gesture-handler";
 
 const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -122,7 +123,6 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                   containerStyle={{
                     borderRadius: 5,
                     borderColor: "#abd6d3",
-                    height: "70%",
                   }}
                 >
                   <View style={{ padding: 15 }}>
@@ -200,16 +200,17 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                             {dataInvit.cuisine_propose}
                           </ListItem.Title>
                         </Text>
-
-                        <Text style={styles.margin}>
-                          <Feather name="mail" size={15} color="#c7d3dc" />
-                          <Text style={styles.title2}> Message: </Text>
-                          <ListItem.Title
-                            style={{ fontSize: 13, lineHeight: 20 }}
-                          >
-                            {dataInvit.message}
-                          </ListItem.Title>
-                        </Text>
+                        <ScrollView>
+                          <Text style={styles.margin}>
+                            <Feather name="mail" size={15} color="#c7d3dc" />
+                            <Text style={styles.title2}> Message: </Text>
+                            <ListItem.Title
+                              style={{ fontSize: 13, lineHeight: 20 }}
+                            >
+                              {dataInvit.message}
+                            </ListItem.Title>
+                          </Text>
+                        </ScrollView>
                       </View>
                     </View>
                   </View>
