@@ -96,7 +96,7 @@ function ProfileScreen({ navigation, userState }) {
               alignSelf: "center",
             }}
             title="Mes Forkys"
-            onPress={() => navigation.navigate("Mes Forkys")}
+            onPress={() => navigation.navigate("forkyTab")}
           />
         </View>
       </View>

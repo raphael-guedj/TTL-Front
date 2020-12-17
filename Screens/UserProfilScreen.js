@@ -100,58 +100,96 @@ function UserProfilScreen({ navigation, userState, route }) {
 
       <View>
         <Text style={styles.title2}> Mes envies: </Text>
-        <CheckBox
-          title="Rencontrer de nouvelles personnes"
-          checked={route.params.wish1 ? true : false}
-          checkedColor="#F9B34C"
-          size={18}
-          textStyle={{ fontWeight: "normal" }}
-          containerStyle={{
-            marginLeft: 14,
-            marginRight: 14,
-            borderRadius: 5,
-            borderColor: "#abd6d3",
-          }}
-        />
-        <CheckBox
-          title="En reconversion professionnelle"
-          checked={route.params.wish2 ? true : false}
-          checkedColor="#F9B34C"
-          size={20}
-          textStyle={{ fontWeight: "normal" }}
-          containerStyle={{
-            marginLeft: 14,
-            marginRight: 14,
-            borderRadius: 5,
-            borderColor: "#abd6d3",
-          }}
-        />
-        <CheckBox
-          title="Recherche d'opportunités professionnelles"
-          checked={route.params.wish3 ? true : false}
-          checkedColor="#F9B34C"
-          size={20}
-          textStyle={{ fontWeight: "normal" }}
-          containerStyle={{
-            marginLeft: 14,
-            marginRight: 14,
-            borderRadius: 5,
-            borderColor: "#abd6d3",
-          }}
-        />
-        <CheckBox
-          title="Sortir du bureau"
-          checked={route.params.wish4 ? true : false}
-          checkedColor="#F9B34C"
-          size={20}
-          textStyle={{ fontWeight: "normal" }}
-          containerStyle={{
-            marginLeft: 14,
-            marginRight: 14,
-            borderRadius: 5,
-            borderColor: "#abd6d3",
-          }}
-        />
+        {route.params.wish1 && (
+          <CheckBox
+            title="Rencontrer de nouvelles personnes"
+            checked={true}
+            checkedColor="#F9B34C"
+            size={18}
+            textStyle={{ fontWeight: "normal" }}
+            containerStyle={{
+              marginLeft: 14,
+              marginRight: 14,
+              borderRadius: 5,
+              borderColor: "#abd6d3",
+            }}
+          />
+        )}
+        {route.params.wish2 && (
+          <CheckBox
+            title="Découvrir un nouveau métier"
+            checked={true}
+            checkedColor="#F9B34C"
+            size={20}
+            textStyle={{ fontWeight: "normal" }}
+            containerStyle={{
+              marginLeft: 14,
+              marginRight: 14,
+              borderRadius: 5,
+              borderColor: "#abd6d3",
+            }}
+          />
+        )}
+        {route.params.wish3 && (
+          <CheckBox
+            title="Recherche d'opportunités professionnelles"
+            checked={true}
+            checkedColor="#F9B34C"
+            size={20}
+            textStyle={{ fontWeight: "normal" }}
+            containerStyle={{
+              marginLeft: 14,
+              marginRight: 14,
+              borderRadius: 5,
+              borderColor: "#abd6d3",
+            }}
+          />
+        )}
+        {route.params.wish4 && (
+          <CheckBox
+            title="Se reconvertir professionnellement"
+            checked={true}
+            checkedColor="#F9B34C"
+            size={20}
+            textStyle={{ fontWeight: "normal" }}
+            containerStyle={{
+              marginLeft: 14,
+              marginRight: 14,
+              borderRadius: 5,
+              borderColor: "#abd6d3",
+            }}
+          />
+        )}
+        {route.params.wish5 && (
+          <CheckBox
+            title="Déconnecter du travail"
+            checked={true}
+            checkedColor="#F9B34C"
+            size={20}
+            textStyle={{ fontWeight: "normal" }}
+            containerStyle={{
+              marginLeft: 14,
+              marginRight: 14,
+              borderRadius: 5,
+              borderColor: "#abd6d3",
+            }}
+          />
+        )}
+        {route.params.wish6 && (
+          <CheckBox
+            title="Découvrir le quartier et ses alentours"
+            checked={true}
+            checkedColor="#F9B34C"
+            size={20}
+            textStyle={{ fontWeight: "normal" }}
+            containerStyle={{
+              marginLeft: 14,
+              marginRight: 14,
+              borderRadius: 5,
+              borderColor: "#abd6d3",
+            }}
+          />
+        )}
       </View>
 
       <Text style={styles.title2}> À propos: </Text>

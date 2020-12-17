@@ -129,7 +129,7 @@ const HomeStack = () => {
         name="Envoyer une invitation"
         component={InvitationScreen}
       />
-      <StackHome.Screen
+      {/* <StackHome.Screen
         options={{
           title: "Mes Forkys",
           headerStyle: {
@@ -144,7 +144,7 @@ const HomeStack = () => {
         }}
         name="Mes Forkys"
         component={MyLunchesScreen}
-      />
+      /> */}
     </StackHome.Navigator>
   );
 };
@@ -186,7 +186,7 @@ const ProfilStack = () => {
         name="Mon Profil"
         component={ProfileScreen}
       />
-      <StackProfil.Screen
+      {/* <StackProfil.Screen
         options={{
           title: "Mes Forkys",
           headerStyle: {
@@ -201,7 +201,7 @@ const ProfilStack = () => {
         }}
         name="Mes Forkys"
         component={MyLunchesScreen}
-      />
+      /> */}
       <StackProfil.Screen
         options={{
           title: "Modifier mon profil",
