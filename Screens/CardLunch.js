@@ -155,7 +155,7 @@ function CardLunch({ onRefresh, invit, userState }) {
                   containerStyle={{
                     borderRadius: 5,
                     borderColor: "#abd6d3",
-                    height: "70%",
+                    height: "80%",
                     maxWidth: "90%",
 
                     paddingHorizontal: 10,
@@ -200,7 +200,7 @@ function CardLunch({ onRefresh, invit, userState }) {
                         ? `Bonjour ${userState.pseudo}, votre déjeuner est désormais confirmé.`
                         : invit.statut_invit == "Refusé"
                         ? `Bonjour ${userState.pseudo}, votre déjeuner n’a pas été confirmé.`
-                        : `Bonjour ${userState.pseudo}, votre demande est encore en attente de confirmation.`}
+                        : `Bonjour ${userState.pseudo}, votre déjeuner avec ${user.name} est encore en attente de confirmation.`}
                     </ListItem.Subtitle>
                     <ListItem.Subtitle style={styles.listItem2}>
                       {invit.statut_invit == "Accepté"
@@ -217,10 +217,16 @@ function CardLunch({ onRefresh, invit, userState }) {
                     </ListItem.Subtitle>
                     <ListItem.Subtitle style={styles.listItem}>
                       {invit.statut_invit == "Accepté"
-                        ? `A noter que ${user.name} vous attendra directement sur place ${invit.lieu_propose}, ${invit.adresse}.`
+                        ? `A noter que ${user.name} vous attendra directement à ${invit.lieu_propose}, ${invit.adresse}.`
                         : invit.statut_invit == "Refusé"
                         ? `Ou proposer à une autre personne disponible...`
-                        : `Ou attendre une réponse de ${user.name}...`}
+                        : `Pour rappel, le déjeuner est prévu à ${invit.lieu_propose}, ${invit.adresse}.`}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle style={styles.listItem2}>
+                      Voici le message envoyé / reçu:
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle style={styles.messageModal}>
+                      {invit.message}
                     </ListItem.Subtitle>
                   </View>
                 </Card>
@@ -335,6 +341,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 5,
     fontSize: 15,
+    letterSpacing: 1,
+  },
+  messageModal: {
+    textAlign: "justify",
+    padding: 5,
     letterSpacing: 1,
   },
   listItem2: {
