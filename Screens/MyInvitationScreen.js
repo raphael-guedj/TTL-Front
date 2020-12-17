@@ -205,7 +205,10 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                           <Feather name="mail" size={15} color="#c7d3dc" />
                           <Text style={styles.title2}> Message: </Text>
                           <ListItem.Title
-                            style={{ fontSize: 13, lineHeight: 20 }}
+                            style={{
+                              fontSize: 13,
+                              lineHeight: 20,
+                            }}
                           >
                             {dataInvit.message}
                           </ListItem.Title>
@@ -327,6 +330,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "bold",
     color: "black",
+    backgroundColor: "green",
   },
   margin: {
     marginVertical: 6,
