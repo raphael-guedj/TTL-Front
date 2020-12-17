@@ -155,7 +155,7 @@ function CardLunch({ onRefresh, invit, userState }) {
                   containerStyle={{
                     borderRadius: 5,
                     borderColor: "#abd6d3",
-                    height: "80%",
+
                     maxWidth: "90%",
 
                     paddingHorizontal: 10,

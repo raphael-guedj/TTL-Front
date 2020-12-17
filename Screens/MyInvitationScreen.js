@@ -330,7 +330,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "bold",
     color: "black",
-    backgroundColor: "green",
   },
   margin: {
     marginVertical: 6,
