@@ -625,6 +625,17 @@ const EditProfilScreen = ({ navigation, userState }) => {
               ),
             },
             {
+              label: "Casher",
+              value: "Casher",
+              icon: () => (
+                <MaterialCommunityIcons
+                  name="silverware-fork-knife"
+                  size={20}
+                  color="#F9B34C"
+                />
+              ),
+            },
+            {
               label: "Cuisine saine",
               value: "Cuisine saine",
               icon: () => (
