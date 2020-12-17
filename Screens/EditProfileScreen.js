@@ -1,3 +1,4 @@
+import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
@@ -9,7 +10,6 @@ import {
 } from "react-native";
 import { Button, Input, CheckBox } from "react-native-elements";
 import { useIsFocused } from "@react-navigation/native";
-import { connect } from "react-redux";
 import DropDownPicker from "react-native-dropdown-picker";
 import Textarea from "react-native-textarea";
 import InputScrollView from "react-native-input-scroll-view";

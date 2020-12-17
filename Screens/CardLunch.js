@@ -13,7 +13,7 @@ import moment from "moment";
 
 import { PRIVATE_URL } from "../config";
 
-function CardLunch({ invit, userState }) {
+function CardLunch({ onRefresh, invit, userState }) {
   const [isModalConfirmed, setModalConfirmed] = useState(false);
   const [user, setUser] = useState({});
 
@@ -36,7 +36,18 @@ function CardLunch({ invit, userState }) {
     getUser();
   }, [invit]);
 
-  return (
+  const cancelInvit = async () => {
+    let response = await fetch(`${PRIVATE_URL}/cancelinvit?id=${invit._id}`);
+    let responseJson = await response.json();
+    if (responseJson.result) {
+      setModalConfirmed(false);
+      onRefresh();
+    }
+  };
+
+  return !user ? (
+    <></>
+  ) : (
     <View>
       <View style={styles.view}>
         <Feather
@@ -70,7 +81,14 @@ function CardLunch({ invit, userState }) {
             }}
           >
             <View>
-              <Image source={{ uri: user.photo }} style={styles.img} />
+              <Image
+                source={
+                  user.photo
+                    ? { uri: user.photo }
+                    : require("../assets/default_avatar.jpg")
+                }
+                style={styles.img}
+              />
               <Badge
                 status={user.isConnected ? "success" : "error"}
                 containerStyle={{
@@ -214,6 +232,7 @@ function CardLunch({ invit, userState }) {
                       alignSelf: "center",
                     }}
                     title="Annuler mon RDV"
+                    onPress={() => cancelInvit()}
                   />
                 ) : invit.statut_invit == "Refusé" ? (
                   <Button
