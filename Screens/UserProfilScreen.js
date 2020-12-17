@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { connect } from "react-redux";
-import { Button, CheckBox, Card } from "react-native-elements";
+import { Button, CheckBox, Card, Badge } from "react-native-elements";
 
 import { Feather, Entypo, AntDesign } from "@expo/vector-icons";
 
@@ -36,33 +36,34 @@ function UserProfilScreen({ navigation, userState, route }) {
           borderRadius: 5,
           borderColor: "#abd6d3",
           marginTop: 30,
-          padding: 10,
+          padding: 0,
         }}
       >
         <View style={styles.avatar}>
           <Image style={styles.image} source={{ uri: route.params.photo }} />
+
           <View style={{ width: "75%" }}>
             <View style={styles.containerArea}>
               <Text>
-                <Feather name="edit" size={15} color="#F9B34C" />
+                <Feather name="edit" size={16} color="#F9B34C" />
                 {/* <Text style={styles.title1}> Prénom: </Text> */}
                 <Text style={styles.text}> {route.params.name}</Text>
               </Text>
             </View>
             <View style={styles.containerArea}>
               <Text>
-                <Feather name="briefcase" size={15} color="#F9B34C" />
+                <Feather name="briefcase" size={16} color="#F9B34C" />
                 {/* <Text style={styles.title1}> Profession: </Text> */}
                 <Text style={styles.text}> {route.params.profession}</Text>
               </Text>
             </View>
             <View style={styles.rowArea}>
               <Text>
-                <Feather name="map-pin" size={15} color="#F9B34C" />
+                <Feather name="map-pin" size={16} color="#F9B34C" />
                 {/* <Text style={styles.title1}> Ville: </Text> */}
                 <Text style={styles.text}>
                   {" "}
-                  {route.params.city} {"-"}
+                  {route.params.city} {" - "}
                   {route.params.arrondissement}
                 </Text>
               </Text>
@@ -237,8 +238,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: 105,
-    height: 105,
+    width: 120,
+    height: 120,
     borderRadius: 100,
     borderWidth: 3,
     borderColor: "#d9eceb",

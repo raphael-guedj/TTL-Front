@@ -117,38 +117,34 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                   source={{ uri: route.params.params.photo }}
                   style={styles.img}
                 />
-                <Badge
-                  status="success"
-                  containerStyle={{
-                    position: "absolute",
-                    top: 8,
-                    left: 10,
-                  }}
-                />
               </View>
 
               <View style={styles.avatar}>
+                <View style={styles.containerArea}>
+                  <Text>
+                    <Feather name="edit" size={16} color="#F9B34C" />
+                    {/* <Text style={styles.title1}> Prénom: </Text> */}
+                    <Text style={styles.text}> {route.params.params.name}</Text>
+                  </Text>
+                </View>
+                <View style={styles.containerArea}>
+                  <Text>
+                    <Feather name="briefcase" size={16} color="#F9B34C" />
+                    {/* <Text style={styles.title1}> Profession: </Text> */}
+                    <Text style={styles.text}>
+                      {" "}
+                      {route.params.params.profession}
+                    </Text>
+                  </Text>
+                </View>
                 <Text>
-                  <Feather name="edit" size={15} color="#c7d3dc" />
-                  <Text style={styles.title2}> Prénom: </Text>
-                  <ListItem.Title style={{ fontSize: 15 }}>
-                    {route.params.params.name}
-                  </ListItem.Title>
-                </Text>
-                <Text>
-                  <Feather name="briefcase" size={15} color="#c7d3dc" />
-                  <Text style={styles.title2}> Profession: </Text>
-                  <ListItem.Title style={{ fontSize: 15 }}>
-                    {route.params.params.profession}
-                  </ListItem.Title>
-                </Text>
-
-                <Text>
-                  <Feather name="map-pin" size={15} color="#c7d3dc" />
-                  <Text style={styles.title2}> Code postale: </Text>
-                  <ListItem.Title style={{ fontSize: 15 }}>
+                  <Feather name="map-pin" size={16} color="#F9B34C" />
+                  {/* <Text style={styles.title1}> Ville: </Text> */}
+                  <Text style={styles.text}>
+                    {" "}
+                    {route.params.params.city} {" - "}
                     {route.params.params.arrondissement}
-                  </ListItem.Title>
+                  </Text>
                 </Text>
               </View>
             </View>
@@ -736,7 +732,12 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: "#F5FCFF",
   },
-
+  text: {
+    fontSize: 15,
+    color: "black",
+    justifyContent: "center",
+    alignSelf: "center",
+  },
   textarea: {
     textAlignVertical: "top", // hack android
     height: 170,
