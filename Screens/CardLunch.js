@@ -155,7 +155,6 @@ function CardLunch({ onRefresh, invit, userState }) {
                   containerStyle={{
                     borderRadius: 5,
                     borderColor: "#abd6d3",
-
                     maxWidth: "90%",
 
                     paddingHorizontal: 10,
@@ -346,7 +345,8 @@ const styles = StyleSheet.create({
   messageModal: {
     textAlign: "justify",
     padding: 5,
-    letterSpacing: 1,
+    fontSize: 12,
+    fontStyle: "italic",
   },
   listItem2: {
     marginTop: 20,
