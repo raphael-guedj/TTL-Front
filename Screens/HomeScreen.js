@@ -147,7 +147,7 @@ const HomeScreen = ({ userState, navigation }) => {
                         }}
                       >
                         {" "}
-                        {Math.floor(Math.random() * 5 - 1 + 1) / 1} avis
+                        {Math.floor(Math.random() * 5) + 1} avis
                       </Text>
                     </View>
                   </View>

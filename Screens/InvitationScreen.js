@@ -385,17 +385,6 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                     ),
                   },
                   {
-                    label: "Thailandais",
-                    value: "Thailandais",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
                     label: "Fast food",
                     value: "Fast food",
                     icon: () => (
