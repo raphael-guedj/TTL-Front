@@ -9,6 +9,7 @@ import {
   MaterialIcons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import moment from "moment";
 
 import { PRIVATE_URL } from "../config";
@@ -16,6 +17,7 @@ import { PRIVATE_URL } from "../config";
 function CardLunch({ onRefresh, invit, userState }) {
   const [isModalConfirmed, setModalConfirmed] = useState(false);
   const [user, setUser] = useState({});
+  const navigation = useNavigation();
 
   useEffect(() => {
     const getUser = async () => {
@@ -244,6 +246,10 @@ function CardLunch({ onRefresh, invit, userState }) {
                       alignSelf: "center",
                     }}
                     title="Proposer une autre date ?"
+                    onPress={() => {
+                      setModalConfirmed(false);
+                      navigation.navigate("Profil Utilisateur", user);
+                    }}
                   />
                 ) : (
                   <Button
@@ -254,7 +260,11 @@ function CardLunch({ onRefresh, invit, userState }) {
                       borderRadius: 20,
                       alignSelf: "center",
                     }}
-                    title="Proposer un nouveau rendez-vous ?"
+                    title="Inviter une nouvelle personne ?"
+                    onPress={() => {
+                      setModalConfirmed(false);
+                      navigation.navigate("Home");
+                    }}
                   />
                 )}
 
