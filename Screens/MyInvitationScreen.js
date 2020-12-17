@@ -69,13 +69,13 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
         }}
       >
         <View style={styles.wrapper}>
-          <View style={styles.containerImgData}>
+          <View>
             <Image source={{ uri: listUser.photo }} style={styles.img} />
             <Badge
               status={listUser.isConnected ? "success" : "error"}
               containerStyle={{
                 position: "absolute",
-                top: 2,
+                top: 6,
                 left: 8,
               }}
             />
@@ -83,13 +83,32 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
           <View
             style={{
               paddingHorizontal: 10,
+              maxWidth: "80%",
+              justifyContent: "space-evenly",
             }}
           >
-            <ListItem.Title>{listUser.name}</ListItem.Title>
-            <ListItem.Subtitle>{listUser.profession}</ListItem.Subtitle>
-            <ListItem.Subtitle>
-              {listUser.arrondissement} {listUser.city}
-            </ListItem.Subtitle>
+            <View style={styles.containerArea}>
+              <Text>
+                <Feather name="edit" size={16} color="#c7d3dc" />
+                <ListItem.Subtitle> {listUser.name}</ListItem.Subtitle>
+              </Text>
+            </View>
+
+            <View style={styles.containerArea}>
+              <Text>
+                <Feather name="briefcase" size={16} color="#c7d3dc" />
+                <ListItem.Subtitle> {listUser.profession}</ListItem.Subtitle>
+              </Text>
+            </View>
+            <View style={styles.containerArea}>
+              <Text>
+                <Feather name="map-pin" size={15} color="#c7d3dc" />
+                <ListItem.Subtitle style={styles.text}>
+                  {" "}
+                  {listUser.arrondissement} {"-"} {listUser.city}
+                </ListItem.Subtitle>
+              </Text>
+            </View>
           </View>
         </View>
         <TouchableOpacity onPress={toggleModal}>
@@ -214,7 +233,7 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
       <View style={{ justifyContent: "center" }}>
         <MaterialIcons
           name="cancel"
-          size={45}
+          size={41}
           color="#F9B34C"
           onPress={toggleModalCancel}
         />
@@ -225,7 +244,6 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
             containerStyle={{
               borderRadius: 5,
               borderColor: "#abd6d3",
-              paddingHorizontal: 10,
               height: "40%",
               justifyContent: "center",
             }}
@@ -242,6 +260,7 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                   fontWeight: "bold",
                   fontSize: 14,
                   color: "#418581",
+                  textAlign: "center",
                 }}
               >
                 Votre invitation avec {listUser.name} a été annulé !
@@ -277,9 +296,11 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
   },
   img: {
-    width: 60,
-    height: 60,
+    width: 80,
+    height: 80,
     borderRadius: 100 / 2,
+    borderWidth: 1.5,
+    borderColor: "#d9eceb",
   },
 
   containerInvit: {

@@ -1009,6 +1009,11 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/annie-use-your-telescope/-/annie-use-your-telescope-0.1.0.tgz#db7564ef2197021581ce09116ce101cd3e21bb10"
   integrity sha512-qDaeIDp+cub3srJTuDnQ7kGiNF665/qL3Rv+58gYg/QuKj/qyvYVzNXkjgtNHhOpR53E53cAwoygNvIfnHjXcQ==
 
+"@expo-google-fonts/averia-sans-libre@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/averia-sans-libre/-/averia-sans-libre-0.1.0.tgz#563d293946046fc03ddf83e0384adcd37c041a42"
+  integrity sha512-SMWQL6hkusUxXa9wtGxCz5xs/jpzKQLaUH5AKTL3jJEwfWZkRcPhLh2OGyieBPHRsvE9egjpX6h0Cw/AUtAkBA==
+
 "@expo-google-fonts/balsamiq-sans@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/balsamiq-sans/-/balsamiq-sans-0.1.0.tgz#411d71bc300c6f6b6bd07c93196a73e876fe7a38"
@@ -1019,10 +1024,20 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/cagliostro/-/cagliostro-0.1.0.tgz#316c7d965a32f252bf6063c76019f4c6c3853205"
   integrity sha512-T/K1zB3HKqeeJK+wPybSRoB103TyLS0YBrEbLb5tL5k1NC1SagW5Lg1tu2FYrwrB0UH7wEAYw9H5ckIUFiqAyw==
 
+"@expo-google-fonts/carter-one@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/carter-one/-/carter-one-0.1.0.tgz#5a29fd723e36de6e9db9b21bd99c5864cf0f02cd"
+  integrity sha512-21GhR7487XOvD2wTlW44+H2zcs2PN2BsJPCL1ALFGrB4Nsh3ZBM1ABxJ6J62hEcVyFY5TQqKUbiUDPpSZo0ohQ==
+
 "@expo-google-fonts/fauna-one@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/fauna-one/-/fauna-one-0.1.0.tgz#9ccd89ba6b0aaddf29f1e3015899a8fe64aa43ae"
   integrity sha512-xyLpUSqgakQwygoZRJwoIA8kgGtkJxk893ByrLrz3elJhuxx+xQDDSXfQK7m1qJMPcPwk4WljGzVqtmHrjR2og==
+
+"@expo-google-fonts/happy-monkey@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/happy-monkey/-/happy-monkey-0.1.0.tgz#c759c8f83848c180eaa7c8eeeed489bb9a4c9275"
+  integrity sha512-n0wrtyXsMi3RKME+zZkJq3VxN6igD1cV7BajAewNXTvl0oh/w7kEG5TM2SJi5rlFnOiylWupIk8ZjLSg2bzycQ==
 
 "@expo-google-fonts/open-sans@^0.1.0":
   version "0.1.0"

@@ -14,8 +14,16 @@ export default function LandingScreen({ navigation }) {
           source={require("../assets/Logo_Forky_light.png")}
           style={styles.logo}
         ></Image>
-        <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
-          Forky ? For vous !
+      </View>
+      <View style={{ alignSelf: "center" }}>
+        <Text style={[styles.text, { fontFamily: "HappyMonkey_400Regular" }]}>
+          Déjeuner,
+        </Text>
+        <Text style={[styles.text, { fontFamily: "HappyMonkey_400Regular" }]}>
+          Rencontrer,
+        </Text>
+        <Text style={[styles.text, { fontFamily: "HappyMonkey_400Regular" }]}>
+          Recommencer...
         </Text>
       </View>
       <View style={styles.view}>
@@ -47,8 +55,10 @@ export default function LandingScreen({ navigation }) {
             width: 250,
             borderRadius: 20,
           }}
-          onPress={() => navigation.navigate()}
-          icon={<FontAwesome name="linkedin-square" size={24} color="white" />}
+          // onPress={() => navigation.navigate()}
+          icon={
+            <FontAwesome name="linkedin-square" size={24} color="#f5f3f4" />
+          }
           iconRight
           title="Linkedin (available soon) "
         />
@@ -74,10 +84,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    fontSize: 34,
-    color: "#fbfcfd",
+    fontSize: 28,
+    color: "#f5f3f4",
     textAlign: "center",
-    paddingVertical: 20,
     letterSpacing: 3,
     lineHeight: 35,
   },

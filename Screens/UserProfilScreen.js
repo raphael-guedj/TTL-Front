@@ -45,8 +45,8 @@ function UserProfilScreen({ navigation, userState, route }) {
             status={route.params.isConnected ? "success" : "error"}
             containerStyle={{
               position: "absolute",
-              top: 6,
-              left: 15,
+              top: 10,
+              left: 17,
             }}
           />
           <View style={{ width: "75%" }}>
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 100,
-    borderWidth: 3,
+    borderWidth: 1.5,
     borderColor: "#d9eceb",
   },
   textareaContainer: {

@@ -12,7 +12,7 @@ import {
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Feather } from "@expo/vector-icons";
 import { HeaderBarImage, IconBar, SettingsBar } from "./ImageHeaderBar";
 import { PRIVATE_URL } from "../config";
 
@@ -85,8 +85,14 @@ const HomeScreen = ({ userState, navigation }) => {
       }
     >
       <View style={{ alignSelf: "center" }}>
-        <Text style={[styles.text, { fontFamily: "Salsa_400Regular" }]}>
-          Organisez un déjeuner
+        <Text style={[styles.text, { fontFamily: "HappyMonkey_400Regular" }]}>
+          Déjeuner,
+        </Text>
+        <Text style={[styles.text, { fontFamily: "HappyMonkey_400Regular" }]}>
+          Rencontrer,
+        </Text>
+        <Text style={[styles.text, { fontFamily: "HappyMonkey_400Regular" }]}>
+          Recommencer...
         </Text>
       </View>
       <View>
@@ -102,7 +108,7 @@ const HomeScreen = ({ userState, navigation }) => {
                 padding: 0,
                 marginVertical: 25,
                 borderRadius: 5,
-                borderColor: "#abd6d3",
+                borderColor: "#418581",
               }}
             >
               <View style={styles.wrapper}>
@@ -119,23 +125,31 @@ const HomeScreen = ({ userState, navigation }) => {
                         status={user.isConnected ? "success" : "error"}
                         containerStyle={{
                           position: "absolute",
-                          top: 2,
+                          top: 6,
                           left: 8,
                         }}
                       />
                     </View>
                     <View style={{ paddingHorizontal: 10 }}>
                       <ListItem.Title>{user.name}</ListItem.Title>
-                      <ListItem.Subtitle>15 reviews</ListItem.Subtitle>
+                      <View style={styles.reviewIcon}>
+                        <FontAwesome name="star" size={15} color="#f9b34c" />
+                        <FontAwesome name="star" size={15} color="#f9b34c" />
+                        <FontAwesome name="star" size={15} color="#f9b34c" />
+                        <FontAwesome name="star" size={15} color="#f9b34c" />
+                        <FontAwesome name="star-o" size={15} color="#f9b34c" />
+                      </View>
+                      <Text
+                        style={{
+                          fontSize: 11,
+                          fontWeight: "bold",
+                          color: "#c7d3dc",
+                        }}
+                      >
+                        {" "}
+                        4.3
+                      </Text>
                     </View>
-                  </View>
-
-                  <View style={styles.reviewIcon}>
-                    <FontAwesome name="star" size={17} color="#f9b34c" />
-                    <FontAwesome name="star" size={17} color="#f9b34c" />
-                    <FontAwesome name="star" size={17} color="#f9b34c" />
-                    <FontAwesome name="star-o" size={17} color="#f9b34c" />
-                    <FontAwesome name="star-o" size={17} color="#f9b34c" />
                   </View>
                 </View>
                 <View style={styles.verticleLine}></View>
@@ -154,8 +168,10 @@ const HomeScreen = ({ userState, navigation }) => {
               </View>
 
               <View style={styles.containerJob}>
-                <Text style={{ fontWeight: "bold" }}>Profession: </Text>
-                <Text>{user.profession}</Text>
+                <Text style={{ fontWeight: "bold", color: "#f5f3f4" }}>
+                  <Feather name="briefcase" size={17} color="#f5f3f4" />
+                </Text>
+                <Text style={{ color: "#f5f3f4" }}> {user.profession}</Text>
               </View>
             </Card>
           </TouchableOpacity>
@@ -168,17 +184,22 @@ const HomeScreen = ({ userState, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
     // marginTop: Constants.statusBarHeight,
   },
   text: {
-    fontSize: 23,
-    color: "#0b090a",
+    fontSize: 28,
+    color: "#418581",
     letterSpacing: 3,
     lineHeight: 35,
+    textAlign: "center",
   },
   wrapper: {
     flexDirection: "row",
-    padding: 15,
+    padding: 10,
+
+    justifyContent: "center",
+    alignItems: "center",
   },
   containerImgData: {
     paddingVertical: 2,
@@ -186,9 +207,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   img: {
-    width: 60,
-    height: 60,
+    width: 80,
+    height: 80,
     borderRadius: 100 / 2,
+    borderWidth: 1.5,
+    borderColor: "#d9eceb",
   },
   reviewIcon: {
     paddingVertical: 5,
@@ -200,7 +223,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: 2,
     backgroundColor: "#CCCCCC",
-    marginLeft: 35,
+    marginLeft: 43,
   },
   containerLocation: {
     flex: 0.5,
@@ -212,7 +235,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     flexDirection: "row",
     justifyContent: "center",
-    backgroundColor: "#fff9f0",
+    backgroundColor: "#418581",
   },
 });
 

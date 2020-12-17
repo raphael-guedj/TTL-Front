@@ -310,13 +310,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
               ),
             },
             {
-              label: "Développeur web",
-              value: "Développeur web",
-              icon: () => (
-                <Feather name="briefcase" size={20} color="#418581" />
-              ),
-            },
-            {
               label: "Energie - Eau",
               value: "Energie - Eau",
               icon: () => (
@@ -935,7 +928,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 100,
-    borderWidth: 3,
+    borderWidth: 1.5,
     borderColor: "#d9eceb",
   },
   camera: {

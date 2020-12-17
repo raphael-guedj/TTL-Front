@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "@expo-google-fonts/annie-use-your-telescope": "^0.1.0",
+    "@expo-google-fonts/averia-sans-libre": "^0.1.0",
     "@expo-google-fonts/balsamiq-sans": "^0.1.0",
     "@expo-google-fonts/cagliostro": "^0.1.0",
+    "@expo-google-fonts/carter-one": "^0.1.0",
     "@expo-google-fonts/fauna-one": "^0.1.0",
+    "@expo-google-fonts/happy-monkey": "^0.1.0",
     "@expo-google-fonts/open-sans": "^0.1.0",
     "@expo-google-fonts/roboto": "^0.1.0",
     "@expo-google-fonts/salsa": "^0.1.0",

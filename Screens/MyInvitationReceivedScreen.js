@@ -68,37 +68,61 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
     <View
       style={{
         flexDirection: "row",
-        justifyContent: "space-evenly",
+        marginLeft: 20,
+        // justifyContent: "space-evenly",
       }}
     >
       <Card
         containerStyle={{
           padding: 0,
-          marginVertical: 25,
+          marginVertical: 15,
           borderRadius: 5,
           borderColor: "#418581",
-          width: "68%",
+          width: "80%",
           marginHorizontal: 0,
         }}
       >
         <View style={styles.wrapper}>
-          <View style={styles.containerImgData}>
+          <View>
             <Image source={{ uri: listUser.photo }} style={styles.img} />
             <Badge
               status={listUser.isConnected ? "success" : "error"}
               containerStyle={{
                 position: "absolute",
-                top: 2,
+                top: 6,
                 left: 8,
               }}
             />
           </View>
-          <View style={{ paddingHorizontal: 10 }}>
-            <ListItem.Title>{listUser.name}</ListItem.Title>
-            <ListItem.Subtitle>{listUser.profession}</ListItem.Subtitle>
-            <ListItem.Subtitle>
-              {listUser.arrondissement} {listUser.city}
-            </ListItem.Subtitle>
+          <View
+            style={{
+              paddingHorizontal: 10,
+              maxWidth: "80%",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <View style={styles.containerArea}>
+              <Text>
+                <Feather name="edit" size={16} color="#c7d3dc" />
+                <ListItem.Subtitle> {listUser.name}</ListItem.Subtitle>
+              </Text>
+            </View>
+
+            <View style={styles.containerArea}>
+              <Text>
+                <Feather name="briefcase" size={16} color="#c7d3dc" />
+                <ListItem.Subtitle> {listUser.profession}</ListItem.Subtitle>
+              </Text>
+            </View>
+            <View style={styles.containerArea}>
+              <Text>
+                <Feather name="map-pin" size={15} color="#c7d3dc" />
+                <ListItem.Subtitle style={styles.text}>
+                  {" "}
+                  {listUser.arrondissement} {"-"} {listUser.city}
+                </ListItem.Subtitle>
+              </Text>
+            </View>
           </View>
         </View>
         <TouchableOpacity onPress={toggleModal}>
@@ -220,27 +244,6 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
           </View>
         </TouchableOpacity>
       </Card>
-      <View
-        style={{
-          alignItems: "center",
-          flexDirection: "row",
-          width: 90,
-          justifyContent: "space-evenly",
-        }}
-      >
-        <MaterialIcons
-          name="cancel"
-          size={40}
-          color="#F9B34C"
-          onPress={toggleModalCancel}
-        />
-        <Feather
-          name="check-circle"
-          size={37}
-          color="#418581"
-          onPress={toggleModalAccept}
-        />
-      </View>
 
       <Modal isVisible={isModalCancelVisible}>
         <View>
@@ -287,7 +290,27 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
           </Card>
         </View>
       </Modal>
-
+      <View
+        style={{
+          alignItems: "center",
+          // flexDirection: "row",
+          width: 80,
+          justifyContent: "space-evenly",
+        }}
+      >
+        <MaterialIcons
+          name="cancel"
+          size={41}
+          color="#F9B34C"
+          onPress={toggleModalCancel}
+        />
+        <Feather
+          name="check-circle"
+          size={35}
+          color="#418581"
+          onPress={toggleModalAccept}
+        />
+      </View>
       <Modal isVisible={isModalAcceptVisible}>
         <View>
           <Card
@@ -344,13 +367,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 15,
   },
-  containerImgData: {
-    paddingVertical: 2,
-  },
+
   img: {
-    width: 60,
-    height: 60,
+    width: 80,
+    height: 80,
     borderRadius: 100 / 2,
+    borderWidth: 1.5,
+    borderColor: "#d9eceb",
   },
   containerInvit: {
     width: "100%",
@@ -374,5 +397,8 @@ const styles = StyleSheet.create({
     marginVertical: 6,
   },
 });
+
+{
+}
 
 export default MyInvitationReceivedScreen;

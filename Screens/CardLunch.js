@@ -104,7 +104,7 @@ function CardLunch({ onRefresh, invit, userState }) {
                 Votre déjeuner avec {user.name}{" "}
               </Text>
               <Text style={styles.text}>
-                <Feather name="calendar" size={15} color="#c7d3dc" />
+                <Feather name="calendar" size={15} color="#c7d3dc" />{" "}
                 Rendez-vous:{" "}
                 {(invit.heure == 12 && "12h") ||
                   (invit.heure == 12.5 && "12h30") ||
@@ -113,8 +113,8 @@ function CardLunch({ onRefresh, invit, userState }) {
                   (invit.heure == 14 && "14h")}
               </Text>
               <Text style={styles.text}>
-                <Feather name="map-pin" size={15} color="#c7d3dc" />
-                Restaurant: {invit.lieu_propose}
+                <Feather name="map-pin" size={15} color="#c7d3dc" /> Restaurant:{" "}
+                {invit.lieu_propose}
               </Text>
             </View>
           </View>
@@ -300,6 +300,8 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 100 / 2,
+    borderWidth: 1.5,
+    borderColor: "#d9eceb",
   },
   title1: {
     fontSize: 15,
