@@ -7,6 +7,9 @@ import { Feather } from "@expo/vector-icons";
 import { PRIVATE_URL } from "../config";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+// Appelle au back pour recupérer les données utilisateurs présente en bdd à l'initialisation de l'app
+// et mise a jour des états grace aux données existantes du user.
+
 function ProfileScreen({ navigation, userState }) {
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
@@ -15,6 +18,7 @@ function ProfileScreen({ navigation, userState }) {
 
   const isFocused = useIsFocused();
 
+  // Recuperation des données via l'ID user, en utilisant redux ou son stocké les informations de chaque utilisateurs.
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
@@ -74,7 +78,8 @@ function ProfileScreen({ navigation, userState }) {
             </Text>
           </View>
         </Card>
-
+        // Ajout d'un onPress et de la fonction "navigation.navigate" sur chaque
+        bouton pour effectuer une redirection vers les différents screens.
         <View>
           <Button
             buttonStyle={{

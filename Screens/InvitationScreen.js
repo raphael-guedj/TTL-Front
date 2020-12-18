@@ -695,7 +695,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 100 / 2,
-    borderWidth: 3,
+    borderWidth: 1.5,
     borderColor: "#d9eceb",
   },
   // reviewIcon: {

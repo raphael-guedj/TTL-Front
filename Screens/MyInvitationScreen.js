@@ -16,6 +16,9 @@ import {
 import moment from "moment";
 import { ScrollView } from "react-native-gesture-handler";
 
+// Ajout du composant react-native "modal" et des états, afin d'afficher un popup capable de mettre à jour les infos en fonction du status de l'invitation.
+//
+
 const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [isModalCancelVisible, setModalCancelVisible] = useState(false);
@@ -25,6 +28,7 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
     setModalVisible(!isModalVisible);
   };
 
+  // Recuperation des données via l'ID user, en utilisant redux ou son stocké les informations de chaque utilisateurs.
   useEffect(() => {
     const getUserData = async () => {
       let rawResponse = await fetch(
@@ -132,6 +136,8 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                           paddingHorizontal: 10,
                         }}
                       >
+                        // Utilisation du module "moment" afin de mettre la date
+                        au bon format.
                         <Card.Title style={styles.title}>
                           Recap de mon invitation
                         </Card.Title>
@@ -200,7 +206,6 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                             {dataInvit.cuisine_propose}
                           </ListItem.Title>
                         </Text>
-
                         <Text style={styles.margin}>
                           <Feather name="mail" size={15} color="#c7d3dc" />
                           <Text style={styles.title2}> Message: </Text>

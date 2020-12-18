@@ -19,6 +19,9 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
   const [password, setPassword] = useState("");
   const [responseOk, setResponseOk] = useState(true);
 
+  // Méthode POST
+  // Utilisation d'une route en POST pour envoyer les infos saisi par l'utilisateur et les envoyer à la bdd via le back
+
   const handleSignIn = async () => {
     console.log(PRIVATE_URL);
     let rawResponse = await fetch(`${PRIVATE_URL}/sign-in`, {
@@ -27,6 +30,8 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
       body: `email=${email}&password=${password}`,
     });
 
+    // rawResponse.json
+    // Permet de convertir les informations envoyées depuis le back au format JSON(lisible en javascript).
     let response = await rawResponse.json();
     // console.log(response);
     if (response.result) {
@@ -45,6 +50,8 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
     }
   };
 
+  // KEYBOARD AVOIDING VIEW
+  //Utilisation de la balise "KeyboardAvoidingView" pour eviter que le clavier se superpose sur les boutons de l'app.
   return (
     <ImageBackground
       source={require("../assets/lunch_bright.jpg")}

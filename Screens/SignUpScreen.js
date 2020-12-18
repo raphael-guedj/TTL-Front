@@ -15,6 +15,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { PRIVATE_URL } from "../config";
 
+// PRIVATE_URL
+// Utilisation d'une constante pour simplifier la mise à jour de l'addresse IP à un seul endroit, sur le fichier "config.js"
+
 const SignUpScreen = ({ setReduxUser, navigation }) => {
   const [pseudo, setPseudo] = useState("");
   const [email, setEmail] = useState("");

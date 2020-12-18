@@ -19,6 +19,11 @@ import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 import { PRIVATE_URL } from "../config";
 
+// Création du design et des emplacements pour intégrer l'ensemble des champs de saisi pour modifier le profil utilisateur.
+
+//USESTATE
+// Utilisation des états pour mettre à jour tous les champs de saisie individuellement.
+
 const EditProfilScreen = ({ navigation, userState }) => {
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
@@ -39,6 +44,11 @@ const EditProfilScreen = ({ navigation, userState }) => {
   const [emptyProfil, setEmptyProfil] = useState(false);
 
   const isFocused = useIsFocused();
+
+  // USEEFFECT
+  // Appelle au back pour recupérer les données utilisateurs présente en bdd à l'initialisation de l'app
+  // et mise a jour des états grace aux données existantes du user.
+  // Recuperation des données via l'ID user, en utilisant redux ou sont stockées les informations de chaque utilisateurs.
 
   useEffect(() => {
     const getUser = async () => {
@@ -875,7 +885,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
       <View>
         {emptyProfil && (
           <Text style={styles.emptyText}>
-            L'un des champs du profil est vide, re-vérifiez avant d'enregistrer
+            L'un des champs du profil est vide, re-vérifiez avant d'enregistrer.
           </Text>
         )}
         <Button

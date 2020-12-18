@@ -11,7 +11,10 @@ import {
 } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 
-// slides
+// Intégration d'un carousel de présentation pour via l'import AppIntroSlider, composant react native.
+// Ajout des informations (titre, image, etc.) dans une variable "slides" afin de pouvoir les utiliser dans la fonction CarouselScreen.
+// Ajout de la balise safeAreaView pour éviter que l'encoche du téléphone ne cache une partie de l'écran.
+
 const slides = [
   {
     key: "Slide 1",
