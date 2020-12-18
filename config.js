@@ -1,1 +1,1 @@
-export const PRIVATE_URL = "http://172.16.0.29:3000";
+export const PRIVATE_URL = "https://forky-mobile-app-test.herokuapp.com";
