@@ -128,12 +128,32 @@ function CardLunch({ onRefresh, invit, userState }) {
             }}
           >
             <Text style={styles.text}>
-              <FontAwesome name="star" size={15} color="#f9b34c" />
-              <FontAwesome name="star" size={15} color="#f9b34c" />
-              <FontAwesome name="star" size={15} color="#f9b34c" />
-              <FontAwesome name="star" size={15} color="#f9b34c" />
-              <FontAwesome name="star-o" size={15} color="#f9b34c" />
-              <Text style={styles.title2}> 4.7 </Text>
+              <MaterialCommunityIcons
+                name="silverware-fork"
+                size={20}
+                color="#f9b34c"
+              />
+              <MaterialCommunityIcons
+                name="silverware-fork"
+                size={20}
+                color="#f9b34c"
+              />
+              <MaterialCommunityIcons
+                name="silverware-fork"
+                size={20}
+                color="#c7d3dc"
+              />
+
+              <Text
+                style={{
+                  fontSize: 13,
+                  fontWeight: "bold",
+                  color: "#c7d3dc",
+                }}
+              >
+                {" "}
+                {Math.floor(Math.random() * 20) + 1} déjeuners
+              </Text>
             </Text>
 
             <Button
