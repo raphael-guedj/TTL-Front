@@ -19,6 +19,9 @@ function ProfileScreen({ navigation, userState }) {
   const isFocused = useIsFocused();
 
   // Recuperation des données via l'ID user, en utilisant redux ou son stocké les informations de chaque utilisateurs.
+  // Ajout d'un onPress et de la fonction "navigation.navigate" sur chaque
+  // bouton pour effectuer une redirection vers les différents screens.
+
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
@@ -78,8 +81,7 @@ function ProfileScreen({ navigation, userState }) {
             </Text>
           </View>
         </Card>
-        // Ajout d'un onPress et de la fonction "navigation.navigate" sur chaque
-        bouton pour effectuer une redirection vers les différents screens.
+
         <View>
           <Button
             buttonStyle={{
