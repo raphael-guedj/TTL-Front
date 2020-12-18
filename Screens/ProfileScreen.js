@@ -55,21 +55,18 @@ function ProfileScreen({ navigation, userState }) {
             <Card.Title style={styles.title1}>Profil</Card.Title>
 
             <Text>
-              <Feather name="edit" size={16} color="#F9B34C" />
               <Text style={styles.title2}> Prénom: </Text>
               <Text style={styles.text}>
                 {name != "" ? name : "Non renseigné"}
               </Text>
             </Text>
             <Text>
-              <Feather name="map-pin" size={16} color="#F9B34C" />
               <Text style={styles.title2}> Ville: </Text>
               <Text style={styles.text}>
                 {city != "" ? city : "Non renseigné"}
               </Text>
             </Text>
             <Text>
-              <Feather name="briefcase" size={16} color="#F9B34C" />
               <Text style={styles.title2}> Profession: </Text>
               <Text style={styles.text}>
                 {job != "" ? job : "Non renseigné"}
