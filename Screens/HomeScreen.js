@@ -12,7 +12,11 @@ import {
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
 import { ListItem, Card, Badge } from "react-native-elements";
-import { FontAwesome, Feather } from "@expo/vector-icons";
+import {
+  FontAwesome,
+  Feather,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import { HeaderBarImage, IconBar, SettingsBar } from "./ImageHeaderBar";
 import { PRIVATE_URL } from "../config";
 
@@ -133,11 +137,21 @@ const HomeScreen = ({ userState, navigation }) => {
                     <View style={{ paddingHorizontal: 10 }}>
                       <ListItem.Title>{user.name}</ListItem.Title>
                       <View style={styles.reviewIcon}>
-                        <FontAwesome name="star" size={15} color="#f9b34c" />
-                        <FontAwesome name="star" size={15} color="#f9b34c" />
-                        <FontAwesome name="star" size={15} color="#f9b34c" />
-                        <FontAwesome name="star" size={15} color="#f9b34c" />
-                        <FontAwesome name="star-o" size={15} color="#f9b34c" />
+                        <MaterialCommunityIcons
+                          name="silverware-fork"
+                          size={20}
+                          color="#f9b34c"
+                        />
+                        <MaterialCommunityIcons
+                          name="silverware-fork"
+                          size={20}
+                          color="#f9b34c"
+                        />
+                        <MaterialCommunityIcons
+                          name="silverware-fork"
+                          size={20}
+                          color="#c7d3dc"
+                        />
                       </View>
                       <Text
                         style={{
@@ -147,7 +161,7 @@ const HomeScreen = ({ userState, navigation }) => {
                         }}
                       >
                         {" "}
-                        {Math.floor(Math.random() * 5) + 1} avis
+                        {Math.floor(Math.random() * 20) + 1} déjeuners
                       </Text>
                     </View>
                   </View>
