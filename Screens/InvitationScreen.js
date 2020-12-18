@@ -97,7 +97,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
 
       var responseJSON = await rawResponse.json();
       if (responseJSON.response) {
-        navigation.navigate("Mes Forkys");
+        navigation.navigate("forkyTab");
         // console.log("ma réponse est bonne");
       }
     } else {
@@ -376,17 +376,6 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                   {
                     label: "Cuisine saine",
                     value: "Cuisine saine",
-                    icon: () => (
-                      <MaterialCommunityIcons
-                        name="silverware-fork-knife"
-                        size={20}
-                        color="#F9B34C"
-                      />
-                    ),
-                  },
-                  {
-                    label: "Thailandais",
-                    value: "Thailandais",
                     icon: () => (
                       <MaterialCommunityIcons
                         name="silverware-fork-knife"

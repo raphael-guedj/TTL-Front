@@ -44,8 +44,8 @@ function SettingsScreen({ setReduxUser, user }) {
 
           <View>
             <Text style={styles.text}>Nous contacter</Text>
-            <Text style={styles.text}>Qui sommes nous ?</Text>
             <Text style={styles.text}>Règles d'utilisation</Text>
+            <Text style={styles.text}>Qui sommes nous ?</Text>
           </View>
         </Card>
         <Card containerStyle={{ borderRadius: 5, borderColor: "#abd6d3" }}>
