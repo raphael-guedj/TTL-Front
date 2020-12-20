@@ -34,7 +34,6 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
   };
 
   const toggleModalCancel = () => {
-    console.log("toto");
     const cancelInvitation = async () => {
       let rawResponse = await fetch(
         `${PRIVATE_URL}/cancelinvit?id=${dataInvit._id}`

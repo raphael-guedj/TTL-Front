@@ -28,7 +28,7 @@ function ProfileScreen({ navigation, userState }) {
         `${PRIVATE_URL}/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      console.log(response);
+      // console.log(response);
       response.myUser.name && setName(response.myUser.name);
       response.myUser.profession && setJob(response.myUser.profession);
       response.myUser.city && setCity(response.myUser.city);

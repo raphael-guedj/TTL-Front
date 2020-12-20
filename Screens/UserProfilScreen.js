@@ -24,7 +24,7 @@ function UserProfilScreen({ navigation, userState, route }) {
     // console.log(response);
   };
 
-  console.log(route);
+  // console.log(route);
 
   return (
     <ScrollView
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log("state", state.user.id);
+  // console.log("state", state.user.id);
   return { userState: state.user };
 }
 

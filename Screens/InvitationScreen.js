@@ -105,7 +105,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
     }
   };
 
-  console.log("dans mon screen invitation", route);
+  // console.log("dans mon screen invitation", route);
 
   return (
     <KeyboardAvoidingView

@@ -136,8 +136,8 @@ const MyInvitationScreen = ({ dataInvit, onRefresh }) => {
                           paddingHorizontal: 10,
                         }}
                       >
-                        // Utilisation du module "moment" afin de mettre la date
-                        au bon format.
+                        {/* Utilisation du module "moment" afin de mettre la date
+                        au bon format. */}
                         <Card.Title style={styles.title}>
                           Recap de mon invitation
                         </Card.Title>
