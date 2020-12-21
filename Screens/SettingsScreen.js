@@ -103,35 +103,35 @@ function SettingsScreen({ setReduxUser, user }) {
             >
               Supprimer mon compte
             </Text>
+            <Overlay
+              isVisible={visible}
+              onBackdropPress={toggleOverlay}
+              overlayStyle={{
+                borderRadius: 5,
+                width: "94%",
+                height: "25%",
+                justifyContent: "space-between",
+                borderWidth: 1,
+                borderColor: "#418581",
+              }}
+            >
+              <Text style={styles.titleModal}>
+                Êtes-vous sur de vouloir supprimer votre compte ?
+              </Text>
+              <Button
+                type="clear"
+                titleStyle={{ color: "#418581" }}
+                title="Non, je veux continuer à déjeuner"
+                onPress={toggleOverlay}
+              />
+              <Button
+                type="clear"
+                titleStyle={{ color: "#eb4d4b", fontSize: 14 }}
+                title="Oui, j'ai pris ma décision"
+                onPress={() => handleDeleteUser()}
+              />
+            </Overlay>
           </TouchableOpacity>
-          <Overlay
-            isVisible={visible}
-            onBackdropPress={toggleOverlay}
-            overlayStyle={{
-              borderRadius: 5,
-              width: "94%",
-              height: "25%",
-              justifyContent: "space-between",
-              borderWidth: 1,
-              borderColor: "#418581",
-            }}
-          >
-            <Text style={styles.titleModal}>
-              Êtes-vous sur de vouloir supprimer votre compte ?
-            </Text>
-            <Button
-              type="clear"
-              titleStyle={{ color: "#418581" }}
-              title="Non, je veux continuer à déjeuner"
-              onPress={toggleOverlay}
-            />
-            <Button
-              type="clear"
-              titleStyle={{ color: "#eb4d4b", fontSize: 14 }}
-              title="Oui, j'ai pris ma décision"
-              onPress={() => handleDeleteUser()}
-            />
-          </Overlay>
         </View>
       </ScrollView>
     </View>
