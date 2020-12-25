@@ -103,18 +103,20 @@ function SettingsScreen({ setReduxUser, user }) {
             >
               Supprimer mon compte
             </Text>
-            <Overlay
-              isVisible={visible}
-              onBackdropPress={toggleOverlay}
-              overlayStyle={{
-                borderRadius: 5,
-                width: "94%",
-                height: "25%",
-                justifyContent: "space-between",
-                borderWidth: 1,
-                borderColor: "#418581",
-              }}
-            >
+          </TouchableOpacity>
+          <Overlay
+            isVisible={visible}
+            onBackdropPress={toggleOverlay}
+            overlayStyle={{
+              borderRadius: 5,
+              width: "94%",
+              height: "25%",
+              justifyContent: "space-between",
+              borderWidth: 1,
+              borderColor: "#418581",
+            }}
+          >
+            <View>
               <Text style={styles.titleModal}>
                 Êtes-vous sur de vouloir supprimer votre compte ?
               </Text>
@@ -130,8 +132,8 @@ function SettingsScreen({ setReduxUser, user }) {
                 title="Oui, j'ai pris ma décision"
                 onPress={() => handleDeleteUser()}
               />
-            </Overlay>
-          </TouchableOpacity>
+            </View>
+          </Overlay>
         </View>
       </ScrollView>
     </View>
