@@ -3,10 +3,8 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import AppLoading from "expo-app-loading";
 import Modal from "react-native-modal";
 import { Card, Button, Badge, ListItem } from "react-native-elements";
-
 import { PRIVATE_URL } from "../config";
-import { useIsFocused } from "@react-navigation/native";
-import { connect } from "react-redux";
+
 import {
   MaterialIcons,
   Feather,
@@ -14,7 +12,6 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import moment from "moment";
-import { ScrollView } from "react-native-gesture-handler";
 
 // Ajout du composant react-native "modal" et des états, afin d'afficher un popup capable de mettre à jour les infos en fonction du status de l'invitation.
 //

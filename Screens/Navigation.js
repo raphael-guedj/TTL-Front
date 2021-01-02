@@ -68,7 +68,6 @@ const HomeStack = () => {
           headerTitleAlign: "center",
           headerTintColor: "#0b090a",
           headerLeft: () => <HeaderBarImage />,
-          // headerRight: () => <IconBar />,
         }}
         name="Home"
         component={HomeScreen}
@@ -129,22 +128,6 @@ const HomeStack = () => {
         name="Envoyer une invitation"
         component={InvitationScreen}
       />
-      {/* <StackHome.Screen
-        options={{
-          title: "Mes Forkys",
-          headerStyle: {
-            backgroundColor: "#fff",
-            height: 90,
-          },
-          headerTitleAlign: "center",
-          headerTintColor: "#0b090a",
-
-          headerLeft: () => <HeaderBarImage />,
-          headerRight: () => <IconBar />,
-        }}
-        name="Mes Forkys"
-        component={MyLunchesScreen}
-      /> */}
     </StackHome.Navigator>
   );
 };
@@ -186,22 +169,7 @@ const ProfilStack = () => {
         name="Mon Profil"
         component={ProfileScreen}
       />
-      {/* <StackProfil.Screen
-        options={{
-          title: "Mes Forkys",
-          headerStyle: {
-            backgroundColor: "#fff",
-            height: 90,
-          },
-          headerTitleAlign: "center",
-          headerTintColor: "#0b090a",
 
-          headerLeft: () => <HeaderBarImage />,
-          headerRight: () => <IconBar />,
-        }}
-        name="Mes Forkys"
-        component={MyLunchesScreen}
-      /> */}
       <StackProfil.Screen
         options={{
           title: "Modifier mon profil",
@@ -320,7 +288,6 @@ function Navigation({ setReduxUser, userState }) {
       <Stack.Screen name="LandingScreen" component={LandingScreen} />
       <Stack.Screen name="Inscription" component={SignUpScreen} />
       <Stack.Screen name="Connexion" component={SignInScreen} />
-      {/* <Stack.Screen name="Carousel" component={CarouselScreen} /> */}
     </Stack.Navigator>
   );
 }

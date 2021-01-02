@@ -5,7 +5,6 @@ import Modal from "react-native-modal";
 import { Card, Button, Badge, ListItem } from "react-native-elements";
 import {
   Feather,
-  FontAwesome,
   MaterialIcons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";

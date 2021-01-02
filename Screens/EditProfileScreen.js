@@ -106,7 +106,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
         }`,
       });
 
-      let response = await rawResponse.json();
+      await rawResponse.json();
       // console.log(response);
 
       setEmptyProfil(false);

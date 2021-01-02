@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Image,
@@ -9,10 +9,8 @@ import {
 } from "react-native";
 import { Input, Button } from "react-native-elements";
 import { connect } from "react-redux";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { Feather, Entypo } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { PRIVATE_URL } from "../config";
 
 // PRIVATE_URL

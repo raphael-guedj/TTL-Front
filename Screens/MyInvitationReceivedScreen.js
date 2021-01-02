@@ -68,7 +68,6 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
       style={{
         flexDirection: "row",
         marginLeft: 20,
-        // justifyContent: "space-evenly",
       }}
     >
       <Card
@@ -291,7 +290,7 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
       <View
         style={{
           alignItems: "center",
-          // flexDirection: "row",
+
           width: 80,
           justifyContent: "space-evenly",
         }}
