@@ -1,11 +1,13 @@
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 import { Card, Button } from "react-native-elements";
 import { useIsFocused } from "@react-navigation/native";
-import { Feather } from "@expo/vector-icons";
+
 import { PRIVATE_URL } from "../config";
-import { TouchableOpacity } from "react-native-gesture-handler";
+
+// Appelle au back pour recupérer les données utilisateurs présente en bdd à l'initialisation de l'app
+// et mise a jour des états grace aux données existantes du user.
 
 function ProfileScreen({ navigation, userState }) {
   const [name, setName] = useState("");
@@ -14,6 +16,10 @@ function ProfileScreen({ navigation, userState }) {
   const [photo, setPhoto] = useState("");
 
   const isFocused = useIsFocused();
+
+  // Recuperation des données via l'ID user, en utilisant redux ou son stocké les informations de chaque utilisateurs.
+  // Ajout d'un onPress et de la fonction "navigation.navigate" sur chaque
+  // bouton pour effectuer une redirection vers les différents screens.
 
   useEffect(() => {
     const getUser = async () => {
@@ -140,9 +146,7 @@ const styles = StyleSheet.create({
   avatar: {
     justifyContent: "center",
     alignItems: "center",
-    // borderWidth: 1,
-    // borderColor: "#418581",
-    // borderRadius: 30,
+
     padding: 10,
   },
   image: {

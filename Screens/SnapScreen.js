@@ -13,7 +13,6 @@ const SnapScreen = ({ userState, navigation }) => {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const [visible, setVisible] = useState(false);
-  const [retake, setRetake] = useState(false);
   const isFocused = useIsFocused();
 
   var camera = useRef(null);

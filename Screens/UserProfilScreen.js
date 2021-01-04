@@ -47,21 +47,21 @@ function UserProfilScreen({ navigation, userState, route }) {
             <View style={styles.containerArea}>
               <Text>
                 <Feather name="edit" size={16} color="#F9B34C" />
-                {/* <Text style={styles.title1}> Prénom: </Text> */}
+
                 <Text style={styles.text}> {route.params.name}</Text>
               </Text>
             </View>
             <View style={styles.containerArea}>
               <Text>
                 <Feather name="briefcase" size={16} color="#F9B34C" />
-                {/* <Text style={styles.title1}> Profession: </Text> */}
+
                 <Text style={styles.text}> {route.params.profession}</Text>
               </Text>
             </View>
             <View style={styles.rowArea}>
               <Text>
                 <Feather name="map-pin" size={16} color="#F9B34C" />
-                {/* <Text style={styles.title1}> Ville: </Text> */}
+
                 <Text style={styles.text}>
                   {" "}
                   {route.params.city} {" - "}

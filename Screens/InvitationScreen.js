@@ -51,6 +51,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === "ios");
     currentDate.setHours(23, 59, 59);
+
     if (currentDate < Date.now()) {
       setDateError(true);
       setDate(currentDate);
@@ -123,14 +124,14 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 <View style={styles.containerArea}>
                   <Text>
                     <Feather name="edit" size={16} color="#F9B34C" />
-                    {/* <Text style={styles.title1}> Prénom: </Text> */}
+
                     <Text style={styles.text}> {route.params.params.name}</Text>
                   </Text>
                 </View>
                 <View style={styles.containerArea}>
                   <Text>
                     <Feather name="briefcase" size={16} color="#F9B34C" />
-                    {/* <Text style={styles.title1}> Profession: </Text> */}
+
                     <Text style={styles.text}>
                       {" "}
                       {route.params.params.profession}
@@ -139,7 +140,7 @@ const InvitationScreen = ({ navigation, route, userState }) => {
                 </View>
                 <Text>
                   <Feather name="map-pin" size={16} color="#F9B34C" />
-                  {/* <Text style={styles.title1}> Ville: </Text> */}
+
                   <Text style={styles.text}>
                     {" "}
                     {route.params.params.city} {" - "}
@@ -683,15 +684,10 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 100 / 2,
-    borderWidth: 3,
+    borderWidth: 1.5,
     borderColor: "#d9eceb",
   },
-  // reviewIcon: {
-  //   paddingVertical: 5,
-  //   flexDirection: "row",
-  //   justifyContent: "center",
-  //   alignSelf: "flex-start",
-  // },
+
   verticleLine: {
     height: "80%",
     alignSelf: "center",
