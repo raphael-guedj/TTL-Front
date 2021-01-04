@@ -34,7 +34,6 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
   };
 
   const toggleModalCancel = () => {
-    console.log("toto");
     const cancelInvitation = async () => {
       let rawResponse = await fetch(
         `${PRIVATE_URL}/cancelinvit?id=${dataInvit._id}`
@@ -69,7 +68,6 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
       style={{
         flexDirection: "row",
         marginLeft: 20,
-        // justifyContent: "space-evenly",
       }}
     >
       <Card
@@ -292,7 +290,7 @@ const MyInvitationReceivedScreen = ({ dataInvit, onRefresh }) => {
       <View
         style={{
           alignItems: "center",
-          // flexDirection: "row",
+
           width: 80,
           justifyContent: "space-evenly",
         }}

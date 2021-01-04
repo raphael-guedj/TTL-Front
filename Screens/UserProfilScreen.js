@@ -8,9 +8,6 @@ import { Feather, Entypo, AntDesign } from "@expo/vector-icons";
 import { PRIVATE_URL } from "../config";
 
 function UserProfilScreen({ navigation, userState, route }) {
-  const [language, setLanguage] = useState(true);
-  const [food, setFood] = useState([]);
-
   const handleinvit = async () => {
     let rawResponse = await fetch(
       `${PRIVATE_URL}/mydataprofile?id=${userState.id}`
@@ -23,8 +20,6 @@ function UserProfilScreen({ navigation, userState, route }) {
     }
     // console.log(response);
   };
-
-  console.log(route);
 
   return (
     <ScrollView
@@ -53,21 +48,21 @@ function UserProfilScreen({ navigation, userState, route }) {
             <View style={styles.containerArea}>
               <Text>
                 <Feather name="edit" size={16} color="#F9B34C" />
-                {/* <Text style={styles.title1}> Prénom: </Text> */}
+
                 <Text style={styles.text}> {route.params.name}</Text>
               </Text>
             </View>
             <View style={styles.containerArea}>
               <Text>
                 <Feather name="briefcase" size={16} color="#F9B34C" />
-                {/* <Text style={styles.title1}> Profession: </Text> */}
+
                 <Text style={styles.text}> {route.params.profession}</Text>
               </Text>
             </View>
             <View style={styles.rowArea}>
               <Text>
                 <Feather name="map-pin" size={16} color="#F9B34C" />
-                {/* <Text style={styles.title1}> Ville: </Text> */}
+
                 <Text style={styles.text}>
                   {" "}
                   {route.params.city} {" - "}
@@ -321,7 +316,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log("state", state.user.id);
+  // console.log("state", state.user.id);
   return { userState: state.user };
 }
 

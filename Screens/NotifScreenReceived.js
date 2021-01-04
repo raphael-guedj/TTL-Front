@@ -19,7 +19,7 @@ const NotifScreenReceived = ({ userState, navigation }) => {
       `${PRIVATE_URL}/invitreceived?id=${userState.id}`
     );
     let response = await rawResponse.json();
-    console.log("invit receive", response);
+    // console.log("invit receive", response);
     setInvit(response.invit);
   };
 

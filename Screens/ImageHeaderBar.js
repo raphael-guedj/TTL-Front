@@ -43,7 +43,7 @@ const IconBar = ({ myId, refreshing }) => {
   const updateNotif = async () => {
     let rawResponse = await fetch(`${PRIVATE_URL}/updatenotif?id=${myId}`);
     let response = await rawResponse.json();
-    console.log(response);
+    // console.log(response);
   };
 
   const navigation = useNavigation();

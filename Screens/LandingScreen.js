@@ -3,6 +3,14 @@ import { Button } from "react-native-elements";
 import { Text, View, ImageBackground, StyleSheet, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
+// Création de la page d'entrée du site, ajout des fonts via expo et import dans le composant app.js.
+
+// RECUPERATION ET REDIRECTION
+// Ajout des images correspondantes en utiliant le bon chemin et redirection des boutons vers les composants sign in et sign up.
+
+// STYLE
+// Intégration du style en inline et dans une variable "styles" pour rendre le code plus clair.
+
 export default function LandingScreen({ navigation }) {
   return (
     <ImageBackground

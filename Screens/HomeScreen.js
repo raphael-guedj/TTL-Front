@@ -17,7 +17,7 @@ import {
   Feather,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-import { HeaderBarImage, IconBar, SettingsBar } from "./ImageHeaderBar";
+import { IconBar } from "./ImageHeaderBar";
 import { PRIVATE_URL } from "../config";
 
 const wait = (timeout) => {
@@ -29,9 +29,6 @@ const wait = (timeout) => {
 const HomeScreen = ({ userState, navigation }) => {
   const [listUser, setListUser] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-  // navigation.setOptions({
-  //   headerRight: () => <IconBar myId={userState.id} />,
-  // });
 
   useEffect(() => {
     navigation.setOptions({

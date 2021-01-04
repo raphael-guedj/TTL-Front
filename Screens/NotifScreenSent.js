@@ -34,10 +34,6 @@ const NotifScreenSent = ({ userState, navigation }) => {
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
-  // useEffect(() => {
-  //   console.log(invit);
-  // }, [invit]);
-
   return (
     <ScrollView
       style={styles.container}

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   ScrollView,
@@ -14,6 +14,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { PRIVATE_URL } from "../config";
 
+// ASYNC STORAGE
+// Utilisation du storage en local sur le téléphone, avec "asycn storage". Il permet de stocker le token (unique pour chaque user)
+// Si le token est présent alors il récupère les données présentes en bdd afin de rediriger l'utilisateur sur la bonne page
+// (home si connecté ou login si pas connecté)
+
 function SettingsScreen({ setReduxUser, user }) {
   const [visible, setVisible] = useState(false);
 
@@ -21,6 +26,8 @@ function SettingsScreen({ setReduxUser, user }) {
     setVisible(!visible);
   };
 
+  // FETCH
+  // Méthode permettant d'appeler un URL et récupérer une route en back
   const handleLogOut = async () => {
     await fetch(`${PRIVATE_URL}/logout?token=${user.token}`);
 
@@ -109,21 +116,23 @@ function SettingsScreen({ setReduxUser, user }) {
               borderColor: "#418581",
             }}
           >
-            <Text style={styles.titleModal}>
-              Êtes-vous sur de vouloir supprimer votre compte ?
-            </Text>
-            <Button
-              type="clear"
-              titleStyle={{ color: "#418581" }}
-              title="Non, je veux continuer à déjeuner"
-              onPress={toggleOverlay}
-            />
-            <Button
-              type="clear"
-              titleStyle={{ color: "#eb4d4b", fontSize: 14 }}
-              title="Oui, j'ai pris ma décision"
-              onPress={() => handleDeleteUser()}
-            />
+            <View>
+              <Text style={styles.titleModal}>
+                Êtes-vous sur de vouloir supprimer votre compte ?
+              </Text>
+              <Button
+                type="clear"
+                titleStyle={{ color: "#418581" }}
+                title="Non, je veux continuer à déjeuner"
+                onPress={toggleOverlay}
+              />
+              <Button
+                type="clear"
+                titleStyle={{ color: "#eb4d4b", fontSize: 14 }}
+                title="Oui, j'ai pris ma décision"
+                onPress={() => handleDeleteUser()}
+              />
+            </View>
           </Overlay>
         </View>
       </ScrollView>

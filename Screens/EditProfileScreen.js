@@ -19,6 +19,11 @@ import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 import { PRIVATE_URL } from "../config";
 
+// Création du design et des emplacements pour intégrer l'ensemble des champs de saisi pour modifier le profil utilisateur.
+
+//USESTATE
+// Utilisation des états pour mettre à jour tous les champs de saisie individuellement.
+
 const EditProfilScreen = ({ navigation, userState }) => {
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
@@ -40,13 +45,18 @@ const EditProfilScreen = ({ navigation, userState }) => {
 
   const isFocused = useIsFocused();
 
+  // USEEFFECT
+  // Appelle au back pour recupérer les données utilisateurs présente en bdd à l'initialisation de l'app
+  // et mise a jour des états grace aux données existantes du user.
+  // Recuperation des données via l'ID user, en utilisant redux ou sont stockées les informations de chaque utilisateurs.
+
   useEffect(() => {
     const getUser = async () => {
       let rawResponse = await fetch(
         `${PRIVATE_URL}/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      console.log(response);
+      // console.log(response);
       response.myUser.name && setName(response.myUser.name);
       response.myUser.email && setEmail(response.myUser.email);
       response.myUser.profession && setJob(response.myUser.profession);
@@ -96,7 +106,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
         }`,
       });
 
-      let response = await rawResponse.json();
+      await rawResponse.json();
       // console.log(response);
 
       setEmptyProfil(false);
@@ -875,7 +885,7 @@ const EditProfilScreen = ({ navigation, userState }) => {
       <View>
         {emptyProfil && (
           <Text style={styles.emptyText}>
-            L'un des champs du profil est vide, re-vérifiez avant d'enregistrer
+            L'un des champs du profil est vide, re-vérifiez avant d'enregistrer.
           </Text>
         )}
         <Button

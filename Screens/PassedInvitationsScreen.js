@@ -39,7 +39,7 @@ function PassedInvitations({ userState }) {
       );
       let responseJson = await response.json();
       setMyInvitations(responseJson.invitations);
-      console.log(myInvitations);
+      // console.log(myInvitations);
     };
     getMyInvitations();
   }, [refreshing]);

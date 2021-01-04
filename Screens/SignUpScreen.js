@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Image,
@@ -9,11 +9,12 @@ import {
 } from "react-native";
 import { Input, Button } from "react-native-elements";
 import { connect } from "react-redux";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { Feather, Entypo } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { PRIVATE_URL } from "../config";
+
+// PRIVATE_URL
+// Utilisation d'une constante pour simplifier la mise à jour de l'addresse IP à un seul endroit, sur le fichier "config.js"
 
 const SignUpScreen = ({ setReduxUser, navigation }) => {
   const [pseudo, setPseudo] = useState("");
