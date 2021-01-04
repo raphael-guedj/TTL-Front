@@ -11,9 +11,10 @@ const wait = (timeout) => {
   });
 };
 
+// Screen qui affiche toutes les invitations à venir.
 function CurrentInvitations({ userState }) {
-  const [myInvitations, setMyInvitations] = useState([]);
-  const [refreshing, setRefreshing] = useState(false);
+  const [myInvitations, setMyInvitations] = useState([]); // Etat qui gère toutes les invitations.
+  const [refreshing, setRefreshing] = useState(false); // Etat qui gère le rafraichissement de la page.
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -21,6 +22,7 @@ function CurrentInvitations({ userState }) {
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
+  // Hook d'effet initial qui gère la récupération des invitations liées à l'utilisateur.
   useEffect(() => {
     const getMyInvitations = async () => {
       let response = await fetch(
@@ -32,6 +34,7 @@ function CurrentInvitations({ userState }) {
     getMyInvitations();
   }, []);
 
+  // Hook d'effet appelé au rafraichissement de la page qui gère la récupération des invitations liées à l'utilisateur.
   useEffect(() => {
     const getMyInvitations = async () => {
       let response = await fetch(

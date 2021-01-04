@@ -46,7 +46,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
         `${PRIVATE_URL}/getmydata?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      console.log(response);
       response.myUser.name && setName(response.myUser.name);
       response.myUser.email && setEmail(response.myUser.email);
       response.myUser.profession && setJob(response.myUser.profession);
@@ -67,8 +66,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
     };
     getUser();
   }, [isFocused]);
-
-  // console.log(route);
 
   const handleRecord = async () => {
     if (
@@ -97,8 +94,6 @@ const EditProfilScreen = ({ navigation, userState }) => {
       });
 
       let response = await rawResponse.json();
-      // console.log(response);
-
       setEmptyProfil(false);
 
       navigation.navigate("profilTab", { screen: "Mon Profil" });
@@ -970,7 +965,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  // console.log("state", state.user);
   return { userState: state.user };
 }
 

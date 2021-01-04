@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 import { connect } from "react-redux";
 import { Button, CheckBox, Card, Badge } from "react-native-elements";
 
-import { Feather, Entypo, AntDesign } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 import { PRIVATE_URL } from "../config";
 
 function UserProfilScreen({ navigation, userState, route }) {
-  const [language, setLanguage] = useState(true);
-  const [food, setFood] = useState([]);
-
   const handleinvit = async () => {
     let rawResponse = await fetch(
       `${PRIVATE_URL}/mydataprofile?id=${userState.id}`
@@ -21,10 +18,7 @@ function UserProfilScreen({ navigation, userState, route }) {
     } else {
       navigation.navigate("Modifier mon profil");
     }
-    // console.log(response);
   };
-
-  console.log(route);
 
   return (
     <ScrollView
@@ -321,7 +315,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log("state", state.user.id);
   return { userState: state.user };
 }
 

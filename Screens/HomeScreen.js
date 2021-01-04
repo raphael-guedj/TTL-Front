@@ -17,7 +17,7 @@ import {
   Feather,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-import { HeaderBarImage, IconBar, SettingsBar } from "./ImageHeaderBar";
+import { IconBar } from "./ImageHeaderBar";
 import { PRIVATE_URL } from "../config";
 
 const wait = (timeout) => {
@@ -29,9 +29,6 @@ const wait = (timeout) => {
 const HomeScreen = ({ userState, navigation }) => {
   const [listUser, setListUser] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-  // navigation.setOptions({
-  //   headerRight: () => <IconBar myId={userState.id} />,
-  // });
 
   useEffect(() => {
     navigation.setOptions({
@@ -51,9 +48,7 @@ const HomeScreen = ({ userState, navigation }) => {
     async function askPermissions() {
       var { status } = await Permissions.askAsync(Permissions.LOCATION);
       if (status === "granted") {
-        Location.watchPositionAsync({ distanceInterval: 2 }, (location) => {
-          // console.log(location);
-        });
+        Location.watchPositionAsync({ distanceInterval: 2 }, (location) => {});
       }
     }
     askPermissions();
@@ -62,7 +57,6 @@ const HomeScreen = ({ userState, navigation }) => {
         `${PRIVATE_URL}/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      // console.log(response);
       setListUser(response.userExcl);
     };
     getUser();
@@ -74,7 +68,6 @@ const HomeScreen = ({ userState, navigation }) => {
         `${PRIVATE_URL}/alluser?id=${userState.id}`
       );
       let response = await rawResponse.json();
-      // console.log(response);
       setListUser(response.userExcl);
     };
     getUser();
@@ -256,7 +249,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  // console.log("state", state.user.id);
   return { userState: state.user };
 }
 

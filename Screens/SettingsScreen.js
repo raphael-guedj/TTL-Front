@@ -109,21 +109,23 @@ function SettingsScreen({ setReduxUser, user }) {
               borderColor: "#418581",
             }}
           >
-            <Text style={styles.titleModal}>
-              Êtes-vous sur de vouloir supprimer votre compte ?
-            </Text>
-            <Button
-              type="clear"
-              titleStyle={{ color: "#418581" }}
-              title="Non, je veux continuer à déjeuner"
-              onPress={toggleOverlay}
-            />
-            <Button
-              type="clear"
-              titleStyle={{ color: "#eb4d4b", fontSize: 14 }}
-              title="Oui, j'ai pris ma décision"
-              onPress={() => handleDeleteUser()}
-            />
+            <View>
+              <Text style={styles.titleModal}>
+                Êtes-vous sur de vouloir supprimer votre compte ?
+              </Text>
+              <Button
+                type="clear"
+                titleStyle={{ color: "#418581" }}
+                title="Non, je veux continuer à déjeuner"
+                onPress={toggleOverlay}
+              />
+              <Button
+                type="clear"
+                titleStyle={{ color: "#eb4d4b", fontSize: 14 }}
+                title="Oui, j'ai pris ma décision"
+                onPress={() => handleDeleteUser()}
+              />
+            </View>
           </Overlay>
         </View>
       </ScrollView>
@@ -164,7 +166,6 @@ function mapDispatchToProps(dispatch) {
   return {
     setReduxUser: function (user) {
       dispatch({ type: "user", user });
-      // console.log("dispatch", pseudo, id, token);
     },
   };
 }

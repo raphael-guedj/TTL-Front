@@ -30,28 +30,20 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { PRIVATE_URL } from "../config";
 
 const InvitationScreen = ({ navigation, route, userState }) => {
-  // ======= State that keep value of message in textarea ======= //
-  const [inputMessage, setInputMessage] = useState("");
+  const [inputMessage, setInputMessage] = useState(""); // Etat qui gère le message de l'invitation.
+  const [duration, setDuration] = useState(0); // Etat qui gère la durée du RDV.
 
-  // ======= State that keep value of duration in slider ======= //
-  const [duration, setDuration] = useState(0);
+  // ======= Tous les états qui gèrent la date ======= //
+  const [date, setDate] = useState(new Date()); // Etat qui gère la date du RDV.
+  const [show, setShow] = useState(false); // Etat qui gère l'affichage du calendrier.
+  const [mode, setMode] = useState("date"); // Etat qui gère le mode d'affichage de la date.
+  const [dateError, setDateError] = useState(false); // Etat qui gère l'erreur dans la date.
+  // ================================================= //
 
-  // ======= All states that manage date ======= //
-  const [date, setDate] = useState(new Date());
-  const [show, setShow] = useState(false);
-  const [mode, setMode] = useState("date");
-  const [dateError, setDateError] = useState(false);
-
-  // ======= State that keep value of hour in dropdown ======= //
-  const [hours, setHours] = useState("");
-  // ======= State that keep value of kitchen in dropdown ======= //
-  const [kitchen, setKitchen] = useState("");
-
-  // ======= State that keep value of location in input ======= //
-  const [location, setLocation] = useState("");
-
-  // ======= State that keep value of address in input ======= //
-  const [address, setAddress] = useState("");
+  const [hours, setHours] = useState(""); // Etat qui gère l'heure du RDV.
+  const [kitchen, setKitchen] = useState(""); // Etat qui gère la cuisine proposé.
+  const [location, setLocation] = useState(""); // Etat qui gère le lieu du RDV.
+  const [address, setAddress] = useState(""); // Etat qui gère l'adresse du RDV.
 
   const [errorMessage, setErrorMessage] = useState(false);
 
@@ -59,7 +51,6 @@ const InvitationScreen = ({ navigation, route, userState }) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === "ios");
     currentDate.setHours(23, 59, 59);
-    console.log(currentDate);
     if (currentDate < Date.now()) {
       setDateError(true);
       setDate(currentDate);
@@ -98,14 +89,11 @@ const InvitationScreen = ({ navigation, route, userState }) => {
       var responseJSON = await rawResponse.json();
       if (responseJSON.response) {
         navigation.navigate("forkyTab");
-        // console.log("ma réponse est bonne");
       }
     } else {
       setErrorMessage(true);
     }
   };
-
-  console.log("dans mon screen invitation", route);
 
   return (
     <KeyboardAvoidingView
@@ -808,7 +796,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  // console.log("state", state.user.id);
   return { userState: state.user };
 }
 

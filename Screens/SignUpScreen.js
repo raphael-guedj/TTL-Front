@@ -43,7 +43,6 @@ const SignUpScreen = ({ setReduxUser, navigation }) => {
         });
 
         let response = await rawResponse.json();
-        console.log("utilisateur créer", response);
         if (response.result) {
           setReduxUser({
             pseudo: response.user.name,
@@ -241,7 +240,6 @@ function mapDispatchToProps(dispatch) {
   return {
     setReduxUser: function (user) {
       dispatch({ type: "user", user });
-      console.log("dispatch", user);
     },
   };
 }

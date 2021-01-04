@@ -268,7 +268,6 @@ function Navigation({ setReduxUser, userState }) {
   useEffect(() => {
     const getUser = async () => {
       await AsyncStorage.getItem("userToken", function (error, data) {
-        // console.log("data", data);
         setToken(data);
       });
     };
@@ -281,7 +280,6 @@ function Navigation({ setReduxUser, userState }) {
         var rawResponse = await fetch(`${PRIVATE_URL}/get-user?token=` + token);
 
         const jsonResponse = await rawResponse.json();
-        // console.log("ma réponse", jsonResponse);
 
         setReduxUser({
           pseudo: jsonResponse.user.name,

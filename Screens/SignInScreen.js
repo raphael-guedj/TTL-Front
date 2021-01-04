@@ -20,7 +20,6 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
   const [responseOk, setResponseOk] = useState(true);
 
   const handleSignIn = async () => {
-    console.log(PRIVATE_URL);
     let rawResponse = await fetch(`${PRIVATE_URL}/sign-in`, {
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -28,7 +27,6 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
     });
 
     let response = await rawResponse.json();
-    // console.log(response);
     if (response.result) {
       setResponseOk(true);
       setReduxUser({
@@ -37,7 +35,6 @@ const SignInScreen = ({ setReduxUser, navigation }) => {
         token: response.userExists.token,
       });
       AsyncStorage.setItem("userToken", response.userExists.token);
-      // navigation.navigate("Carousel");
     } else {
       setResponseOk(false);
       setEmail("");
@@ -176,7 +173,6 @@ function mapDispatchToProps(dispatch) {
   return {
     setReduxUser: function (user) {
       dispatch({ type: "user", user });
-      // console.log("dispatch", pseudo, id, token);
     },
   };
 }

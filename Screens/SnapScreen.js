@@ -45,7 +45,6 @@ const SnapScreen = ({ userState, navigation }) => {
         name: "photo_user.jpg",
         id: userState.id,
       });
-      //   console.log("data", data);
       let rawResponse = await fetch(
         `${PRIVATE_URL}/uploadPhoto?id=${userState.id}`,
         {
@@ -55,7 +54,6 @@ const SnapScreen = ({ userState, navigation }) => {
       );
 
       let response = await rawResponse.json();
-      //   console.log(response);
 
       if (response.result) {
         setVisible(false);
@@ -175,7 +173,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  // console.log("state", state.user);
   return { userState: state.user };
 }
 

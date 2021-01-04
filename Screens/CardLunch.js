@@ -5,7 +5,6 @@ import Modal from "react-native-modal";
 import { Card, Button, Badge, ListItem } from "react-native-elements";
 import {
   Feather,
-  FontAwesome,
   MaterialIcons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
@@ -14,11 +13,14 @@ import moment from "moment";
 
 import { PRIVATE_URL } from "../config";
 
+// CardLunch est un composant qui va être appelé par les screens "CurrentInvitation" et "PassedInvitation".
+// L'objet "invit" représente un élément d'un tableau d'invitation.
 function CardLunch({ onRefresh, invit, userState }) {
-  const [isModalConfirmed, setModalConfirmed] = useState(false);
-  const [user, setUser] = useState({});
+  const [isModalConfirmed, setModalConfirmed] = useState(false); // Etat qui gère la validation du modal
+  const [user, setUser] = useState({}); // Etat qui met à jour un utilisateur pour chaque card appelée par notre tableau d'invitation
   const navigation = useNavigation();
 
+  // Hook d'effet appelé à chaque invitation. Il permet de récupérer les informations de l'utilisateur par invitation.
   useEffect(() => {
     const getUser = async () => {
       if (invit.id_sender == userState.id) {
@@ -38,6 +40,7 @@ function CardLunch({ onRefresh, invit, userState }) {
     getUser();
   }, [invit]);
 
+  // Méthode qui permet d'annuler une invitation.
   const cancelInvit = async () => {
     let response = await fetch(`${PRIVATE_URL}/cancelinvit?id=${invit._id}`);
     let responseJson = await response.json();

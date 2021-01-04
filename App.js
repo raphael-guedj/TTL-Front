@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "react-native-gesture-handler";
 import { LogBox } from "react-native";
 LogBox.ignoreAllLogs(true);

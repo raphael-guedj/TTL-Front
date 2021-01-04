@@ -19,7 +19,6 @@ const NotifScreenReceived = ({ userState, navigation }) => {
       `${PRIVATE_URL}/invitreceived?id=${userState.id}`
     );
     let response = await rawResponse.json();
-    console.log("invit receive", response);
     setInvit(response.invit);
   };
 
@@ -97,7 +96,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  // console.log("state", state.user.id);
   return { userState: state.user };
 }
 

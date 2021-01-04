@@ -19,7 +19,6 @@ const NotifScreenSent = ({ userState, navigation }) => {
       `${PRIVATE_URL}/invitsent?id=${userState.id}`
     );
     let response = await rawResponse.json();
-    // console.log("invit receive", response);
     setInvit(response.invit);
   };
 
@@ -33,10 +32,6 @@ const NotifScreenSent = ({ userState, navigation }) => {
 
     wait(2000).then(() => setRefreshing(false));
   }, []);
-
-  // useEffect(() => {
-  //   console.log(invit);
-  // }, [invit]);
 
   return (
     <ScrollView
@@ -101,7 +96,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  // console.log("state", state.user.id);
   return { userState: state.user };
 }
 
